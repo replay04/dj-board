@@ -68,6 +68,13 @@ header{
 .st-shazam{border-color:var(--blue);color:var(--blue)}
 .st-tiktok{border-color:var(--tiktok);color:var(--tiktok)}
 
+#btn-play-all{
+  background:var(--accent);border:none;color:var(--bg);
+  padding:6px 13px;border-radius:100px;font-size:11px;font-weight:600;
+  transition:all .15s;white-space:nowrap;cursor:pointer;
+}
+#btn-play-all:hover{opacity:.85}
+#btn-play-all.playing{background:var(--red);color:white}
 #btn-copy-all{
   background:var(--surf2);border:1px solid var(--border);color:var(--text2);
   padding:6px 13px;border-radius:100px;font-size:11px;font-weight:500;
@@ -85,7 +92,7 @@ header{
   position:sticky;top:0;z-index:80;
 }
 #player-bar.on{display:flex}
-#yt-hidden{position:absolute;width:1px;height:1px;opacity:0;left:-9999px}
+#yt-hidden{position:fixed;bottom:0;right:0;width:1px;height:1px;pointer-events:none;opacity:0.01;z-index:-1}
 .pb-art{width:38px;height:38px;border-radius:4px;object-fit:cover;background:var(--surf2);flex-shrink:0}
 .pb-text{flex:0 0 auto;min-width:0;max-width:170px}
 .pb-t{font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -503,13 +510,14 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
     <span class="source-tag st-singles">● Singles</span>
     <span class="source-tag st-shazam">● Shazam</span>
     <span class="source-tag st-tiktok">♪ TikTok</span>
-    <button id="btn-copy-all" onclick="copyAll()">📋 Copier tous</button>
+    <button id="btn-play-all" onclick="playAll()">▶ Tout écouter</button>
+  <button id="btn-copy-all" onclick="copyAll()">📋 Copier tous</button>
   </div>
 </header>
 
 <!-- PLAYER BAR -->
 <div id="player-bar">
-  <div id="yt-hidden"><div id="yt-iframe"></div></div>
+  <div id="yt-hidden"><iframe id="yt-iframe" width="1" height="1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
   <img class="pb-art" id="pb-art" src="" alt="">
   <div class="pb-text">
     <div class="pb-t" id="pb-t">—</div>
@@ -789,7 +797,10 @@ function renderTable(data){
     const pb=document.createElement('button');
     pb.className='play-btn'+(playingYt===yt?' on':'');
     pb.textContent=playingYt===yt?'⏸':'▶';
-    pb.onclick=()=>pLoad(yt,title,artist,d);
+    pb.onclick=()=>{
+      pb.textContent='⏳';
+      pLoad(yt,title,artist,d);
+    };
     t1.appendChild(pb);
 
     // Copy
@@ -970,7 +981,7 @@ function copyAll(){
 function onYouTubeIframeAPIReady(){
   ytPlayer=new YT.Player('yt-iframe',{
     height:'1',width:'1',
-    playerVars:{autoplay:0,controls:0,disablekb:1,playsinline:1},
+    playerVars:{autoplay:1,controls:0,disablekb:1,playsinline:1,origin:window.location.origin},
     events:{
       onReady:()=>{ytReady=true;pVol(80)},
       onStateChange:(e)=>{
@@ -995,7 +1006,11 @@ function updSeek(){
   $('pb-dur').textContent=fmtT(dur);
 }
 function pLoad(yt,title,artist,d){
-  if(!ytReady) return;
+  if(!ytReady) {
+    // API pas encore prête — réessayer dans 500ms
+    setTimeout(()=>pLoad(yt,title,artist,d), 500);
+    return;
+  }
   if(playingYt===yt){pToggle();return}
   if(playingBtn){playingBtn.textContent='▶';playingBtn.classList.remove('on')}
   playingYt=yt;
@@ -1195,6 +1210,50 @@ function perfYT(){const d=perfTracks[perfIdx];if(d) pLoad(d[10],d[0],d[1],d)}
 
 // ── INIT ──
 loadData();
+
+// ── PLAY ALL ──
+let playAllActive = false;
+
+function playAll() {
+  const btn = document.getElementById('btn-play-all');
+  // Si déjà en train de jouer tout → stop
+  if(playAllActive) {
+    playAllActive = false;
+    btn.textContent = '▶ Tout écouter';
+    btn.classList.remove('playing');
+    pStop();
+    return;
+  }
+  // Lancer le premier titre de la queue
+  const data = sorted(filtered());
+  if(!data.length) return;
+  queue = data;
+  qIdx = 0;
+  playAllActive = true;
+  btn.textContent = '⏹ Stop';
+  btn.classList.add('playing');
+  const d = data[0];
+  pLoad(d[10], d[0], d[1], d);
+  // Override onended pour enchaîner automatiquement
+  if(ytPlayer) {
+    ytPlayer.addEventListener = ytPlayer.addEventListener || function(){};
+  }
+}
+
+// Patch pNext pour gérer la fin de "play all"
+const _origPNext = pNext;
+function pNext() {
+  if(playAllActive && qIdx >= queue.length - 1) {
+    // Fin de la playlist
+    playAllActive = false;
+    const btn = document.getElementById('btn-play-all');
+    if(btn) { btn.textContent = '▶ Tout écouter'; btn.classList.remove('playing'); }
+    pStop();
+    return;
+  }
+  _origPNext();
+}
+
 </script>
 </body>
 </html>
