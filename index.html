@@ -687,40 +687,90 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 // [title, artist, radio, singles, shazam, tiktok, tags[],
 //  bpm, weeks, trend, youtubeId, mixte, camelot, moments[]]
 // ────────────────────────────────────────────────────────────
-// ── CHARGEMENT DYNAMIQUE data.json ──
+const T = [
+  ["Melodrama",          "Disiz & Theodora",           2,  1,  8,  1,["ambiance","fr","rap"],            154,27, 1,"O2tKlnfrLkY",3,"4B",["cocktail","diner"]],
+  ["Dracula",            "Tame Impala",                49,25,  0,  4,["ambiance","intl"],                 98, 3, 9,"g4wMT8VBBQU",2,"4A",["cocktail","diner"]],
+  ["RUINART",            "R2",                          0, 0,  0,  7,["ambiance","fr","rap"],              86, 0, 0,"iXBlNNFqdkQ",2,"3B",["diner"]],
+  ["Tchébé 2x",          "Bilouki",                     0, 0,  0,  3,["dancefloor","fr","rap"],            98, 0, 0,"nH5OkN3fFcs",2,"9B",["dance"]],
+  ["Lune de miel",       "Don Choa feat. Zaho",         0, 0,  0,  9,["mariage","slow","fr"],              72, 0, 0,"dQ5vFm9qPLk",5,"4B",["slow"]],
+  ["Mystery of Love",    "Sufjan Stevens",              0, 0,  0, 15,["mariage","slow","intl"],            68, 0, 0,"hNP3PBkuTvo",5,"2A",["slow","cocktail"]],
+  ["SPA",                "GIMS & Theodora",            10, 8, 21,  0,["ambiance","fr","rap"],              88,12,-2,"hT8nvc6fxBs",3,"12A",["cocktail","diner"]],
+  ["Pocahontas",         "PLK",                        22, 2,  5,  0,["ambiance","fr","rap"],              87, 6, 6,"JvokQ1Mkbl0",2,"5A",["diner"]],
+  ["Avec Moi",           "RnBoi & Nono La Grinta",      0, 9, 20,  0,["ambiance","fr","rap"],              82, 0, 0,"8Rn7K8BPWQA",2,"2B",["diner"]],
+  ["The Fate of Ophelia","Taylor Swift",               11,26,  6,  0,["mariage","slow","intl","pop"],     140, 5, 0,"ko70cExuzZM",4,"8A",["slow"]],
+  ["Comme Caroline",     "Zaho feat. MC Solaar",       15,44, 13,  0,["mariage","ambiance","fr"],          78, 4, 7,"uRA8xnBxm8U",5,"9A",["cocktail","slow"]],
+  ["What You Want",      "Angèle & Justice",           13,82, 17,  0,["dancefloor","mariage","fr","pop"], 110, 7, 9,"e5s8MdtnbMM",4,"6B",["dance"]],
+  ["Nuevayol",           "Bad Bunny",                   9,19,  1,  0,["dancefloor","intl"],               136, 8, 1,"s4ftEdW2wdo",2,"6A",["dance"]],
+  ["End of Beginning",   "DJO",                         8,38, 12,  0,["ambiance","intl","pop"],            77,14,-3,"xy3AcmW0lrQ",3,"9B",["cocktail","diner"]],
+  ["Argent Sale",        "La Rvfleuze",                55, 5, 14,  0,["rap","fr"],                         85, 5, 2,"2An67RbHxi4",1,"1B",["diner"]],
+  ["GMK",                "WIXO & LA2S",                 0,20,  2,  0,["dancefloor","fr","rap"],             95, 0, 0,"nH5OkN3fFcs",2,"8B",["dance"]],
+  ["Raindance",          "Dave & Tems",                35,46,  7,  0,["ambiance","intl"],                  95, 4, 3,"4h3OVfBPMcA",3,"11A",["cocktail","diner"]],
+  ["I Just Might",       "Bruno Mars",                  1,52,  0,  0,["dancefloor","intl","pop"],          103,12, 0,"mrV8kK5t0V8",5,"7B",["dance","fin"]],
+  ["La recette",         "Jeck & Carla",                3,89,  9,  0,["dancefloor","mariage","fr","pop"], 100,10, 3,"9kBpbQDZdbQ",5,"7A",["dance","fin"]],
+  ["Gone Gone Gone",     "David Guetta & Teddy Swims",  4, 0,  0,  0,["dancefloor","intl","electro"],     128,25, 3,"8iT9DRe3cHE",4,"11B",["dance","fin"]],
+  ["Zoo",                "Shakira",                     5,43,  0,  0,["dancefloor","intl","pop"],          104,18,-3,"Kw3935PH01E",5,"5B",["dance"]],
+  ["Dream As One",       "Miley Cyrus",                 6, 0,  0,  0,["mariage","ambiance","intl","pop"],  82, 9, 0,"RLRrAVHPkPE",4,"3A",["cocktail","slow"]],
+  ["Unfaithful",         "Blasterjaxx",                 7, 0, 22,  0,["dancefloor","intl","electro"],     132, 6, 2,"z5DdAQUhHV4",2,"12B",["dance"]],
+  ["Quand Même",         "M. Pokora",                  16, 0,  0,  0,["mariage","fr","variete"],           84, 9,-4,"Hl2Z6P74URo",5,"1A",["cocktail","slow"]],
+  ["Ça Fait Mal",        "Vitaa",                      19, 0,  0,  0,["mariage","slow","fr","variete"],    72, 3,17,"3SoSpZTcxVo",5,"8A",["slow"]],
+  ["Soirée mondaine",    "Oria",                       27, 0, 10,  0,["dancefloor","mariage","fr","pop"], 108, 2,20,"xzBTvODwmr8",4,"3B",["dance","fin"]],
+  ["L'Horizon",          "Pierre Garnier",             23, 0,  0,  0,["mariage","fr","variete"],           76, 7,-1,"fj_MkTfWS3s",5,"5A",["cocktail","slow"]],
+  ["Tant Pis Pour Elle", "Charlotte Cardin",           25,74,  0,  0,["mariage","slow","fr"],               68, 8,-6,"4lSWkqXoVRo",4,"9B",["slow"]],
+  ["Les Épines du Cœur", "Vanessa Paradis",            28, 0,  0,  0,["mariage","slow","fr","variete"],    65, 4, 1,"Pf0KhFaQ2Gs",5,"6A",["slow"]],
+  ["Génération Impolie", "Franglish feat. Keblack",    20,24,  0,  0,["ambiance","fr","rap"],               90, 8,-4,"9bZkp7q19f0",2,"2B",["diner"]],
+  ["Karma",              "Bigflo & Oli",               45,83,  0,  0,["ambiance","dancefloor","fr","rap"],  96, 5,-10,"e7vLBRgFEOE",3,"7B",["dance"]],
+  ["La Camisa Negra",    "Elliott",                    21, 0,  0,  0,["dancefloor","mariage","fr"],        105, 8,-4,"gFRWTaGb6oY",3,"10A",["dance"]],
+  ["Elle Voulait",       "RnBoi",                       0, 3,  0,  0,["ambiance","fr","rap"],               84, 0, 0,"Mzgx9dp0Jdw",2,"4A",["diner"]],
+  ["Promenade",          "La Rvfleuze & Koba LaD",      0, 4,  0,  0,["rap","fr"],                         90, 0, 0,"Re1p02biXCU",1,"9A",["diner"]],
+  ["Crypto",             "La Rvfleuze & Hamza",         0, 6,  0,  0,["rap","fr"],                         88, 0, 0,"315T1Ki52sE",1,"5B",["diner"]],
+  ["B.M.S (By My Side)", "Rambo Goyard",                0, 7,  0,  0,["rap","fr"],                         93, 0, 0,"DPSGMTknY9s",1,"3A",["diner"]],
+  ["Miss Kitoko",        "Theodora",                    0,18,  0,  0,["pop","fr"],                          80, 0, 0,"rbaOn9SAAnk",3,"6B",["cocktail","diner"]],
+  ["One Track Mind",     "Naïka",                       0,72,  3,  0,["pop","fr"],                          88, 0, 0,"PhxPYdBRgYs",3,"8A",["cocktail"]],
+  ["Ensemble",           "Charlotte Cardin",             0, 0, 16,  0,["mariage","slow","fr"],               66, 0, 0,"2pCh-KLR9M0",4,"2A",["slow"]],
+  ["Jamaican (Bam Bam)", "HUGEL & SOLTO",                0, 0, 23,  0,["dancefloor","electro","fr"],        124, 0, 0,"i34pFNr42mc",2,"7A",["dance","fin"]],
+];
+
+// ── DONNÉES + CHARGEMENT ──
 const DATA_URL = 'https://raw.githubusercontent.com/replay04/dj-board/main/data.json';
 let T = [];
 
+const EMBEDDED = {
+  updated: '2026-04-30',
+  week: 18,
+  tracks: [{"title": "Melodrama", "artist": "Disiz & Theodora", "radio": 2, "singles": 1, "shazam": 8, "tiktok": 1, "tags": ["ambiance", "fr", "rap"], "bpm": 154, "weeks": 27, "trend": 1, "youtubeId": "O2tKlnfrLkY", "mixte": 3, "camelot": "4B", "moments": ["cocktail", "diner"]}, {"title": "Dracula", "artist": "Tame Impala", "radio": 49, "singles": 25, "shazam": 0, "tiktok": 4, "tags": ["ambiance", "intl"], "bpm": 98, "weeks": 3, "trend": 9, "youtubeId": "g4wMT8VBBQU", "mixte": 2, "camelot": "4A", "moments": ["cocktail", "diner"]}, {"title": "RUINART", "artist": "R2", "radio": 0, "singles": 0, "shazam": 0, "tiktok": 7, "tags": ["ambiance", "fr", "rap"], "bpm": 86, "weeks": 0, "trend": 0, "youtubeId": "iXBlNNFqdkQ", "mixte": 2, "camelot": "3B", "moments": ["diner"]}, {"title": "Tchébé 2x", "artist": "Bilouki", "radio": 0, "singles": 0, "shazam": 0, "tiktok": 3, "tags": ["dancefloor", "fr", "rap"], "bpm": 98, "weeks": 0, "trend": 0, "youtubeId": "nH5OkN3fFcs", "mixte": 2, "camelot": "9B", "moments": ["dance"]}, {"title": "Lune de miel", "artist": "Don Choa feat. Zaho", "radio": 0, "singles": 0, "shazam": 0, "tiktok": 9, "tags": ["mariage", "slow", "fr"], "bpm": 72, "weeks": 0, "trend": 0, "youtubeId": "dQ5vFm9qPLk", "mixte": 5, "camelot": "4B", "moments": ["slow"]}, {"title": "Mystery of Love", "artist": "Sufjan Stevens", "radio": 0, "singles": 0, "shazam": 0, "tiktok": 15, "tags": ["mariage", "slow", "intl"], "bpm": 68, "weeks": 0, "trend": 0, "youtubeId": "hNP3PBkuTvo", "mixte": 5, "camelot": "2A", "moments": ["slow", "cocktail"]}, {"title": "SPA", "artist": "GIMS & Theodora", "radio": 10, "singles": 8, "shazam": 21, "tiktok": 0, "tags": ["ambiance", "fr", "rap"], "bpm": 88, "weeks": 12, "trend": -2, "youtubeId": "hT8nvc6fxBs", "mixte": 3, "camelot": "12A", "moments": ["cocktail", "diner"]}, {"title": "Pocahontas", "artist": "PLK", "radio": 22, "singles": 2, "shazam": 5, "tiktok": 0, "tags": ["ambiance", "fr", "rap"], "bpm": 87, "weeks": 6, "trend": 6, "youtubeId": "JvokQ1Mkbl0", "mixte": 2, "camelot": "5A", "moments": ["diner"]}, {"title": "Avec Moi", "artist": "RnBoi & Nono La Grinta", "radio": 0, "singles": 9, "shazam": 20, "tiktok": 0, "tags": ["ambiance", "fr", "rap"], "bpm": 82, "weeks": 0, "trend": 0, "youtubeId": "8Rn7K8BPWQA", "mixte": 2, "camelot": "2B", "moments": ["diner"]}, {"title": "The Fate of Ophelia", "artist": "Taylor Swift", "radio": 11, "singles": 26, "shazam": 6, "tiktok": 0, "tags": ["mariage", "slow", "intl", "pop"], "bpm": 140, "weeks": 5, "trend": 0, "youtubeId": "ko70cExuzZM", "mixte": 4, "camelot": "8A", "moments": ["slow"]}, {"title": "Comme Caroline", "artist": "Zaho feat. MC Solaar", "radio": 15, "singles": 44, "shazam": 13, "tiktok": 0, "tags": ["mariage", "ambiance", "fr"], "bpm": 78, "weeks": 4, "trend": 7, "youtubeId": "uRA8xnBxm8U", "mixte": 5, "camelot": "9A", "moments": ["cocktail", "slow"]}, {"title": "What You Want", "artist": "Angèle & Justice", "radio": 13, "singles": 82, "shazam": 17, "tiktok": 0, "tags": ["dancefloor", "mariage", "fr", "pop"], "bpm": 110, "weeks": 7, "trend": 9, "youtubeId": "e5s8MdtnbMM", "mixte": 4, "camelot": "6B", "moments": ["dance"]}, {"title": "Nuevayol", "artist": "Bad Bunny", "radio": 9, "singles": 19, "shazam": 1, "tiktok": 0, "tags": ["dancefloor", "intl"], "bpm": 136, "weeks": 8, "trend": 1, "youtubeId": "s4ftEdW2wdo", "mixte": 2, "camelot": "6A", "moments": ["dance"]}, {"title": "End of Beginning", "artist": "DJO", "radio": 8, "singles": 38, "shazam": 12, "tiktok": 0, "tags": ["ambiance", "intl", "pop"], "bpm": 77, "weeks": 14, "trend": -3, "youtubeId": "xy3AcmW0lrQ", "mixte": 3, "camelot": "9B", "moments": ["cocktail", "diner"]}, {"title": "Argent Sale", "artist": "La Rvfleuze", "radio": 55, "singles": 5, "shazam": 14, "tiktok": 0, "tags": ["rap", "fr"], "bpm": 85, "weeks": 5, "trend": 2, "youtubeId": "2An67RbHxi4", "mixte": 1, "camelot": "1B", "moments": ["diner"]}, {"title": "GMK", "artist": "WIXO & LA2S", "radio": 0, "singles": 20, "shazam": 2, "tiktok": 0, "tags": ["dancefloor", "fr", "rap"], "bpm": 95, "weeks": 0, "trend": 0, "youtubeId": "nH5OkN3fFcs", "mixte": 2, "camelot": "8B", "moments": ["dance"]}, {"title": "Raindance", "artist": "Dave & Tems", "radio": 35, "singles": 46, "shazam": 7, "tiktok": 0, "tags": ["ambiance", "intl"], "bpm": 95, "weeks": 4, "trend": 3, "youtubeId": "4h3OVfBPMcA", "mixte": 3, "camelot": "11A", "moments": ["cocktail", "diner"]}, {"title": "I Just Might", "artist": "Bruno Mars", "radio": 1, "singles": 52, "shazam": 0, "tiktok": 0, "tags": ["dancefloor", "intl", "pop"], "bpm": 103, "weeks": 12, "trend": 0, "youtubeId": "mrV8kK5t0V8", "mixte": 5, "camelot": "7B", "moments": ["dance", "fin"]}, {"title": "La recette", "artist": "Jeck & Carla", "radio": 3, "singles": 89, "shazam": 9, "tiktok": 0, "tags": ["dancefloor", "mariage", "fr", "pop"], "bpm": 100, "weeks": 10, "trend": 3, "youtubeId": "9kBpbQDZdbQ", "mixte": 5, "camelot": "7A", "moments": ["dance", "fin"]}, {"title": "Gone Gone Gone", "artist": "David Guetta & Teddy Swims", "radio": 4, "singles": 0, "shazam": 0, "tiktok": 0, "tags": ["dancefloor", "intl", "electro"], "bpm": 128, "weeks": 25, "trend": 3, "youtubeId": "8iT9DRe3cHE", "mixte": 4, "camelot": "11B", "moments": ["dance", "fin"]}, {"title": "Zoo", "artist": "Shakira", "radio": 5, "singles": 43, "shazam": 0, "tiktok": 0, "tags": ["dancefloor", "intl", "pop"], "bpm": 104, "weeks": 18, "trend": -3, "youtubeId": "Kw3935PH01E", "mixte": 5, "camelot": "5B", "moments": ["dance"]}, {"title": "Dream As One", "artist": "Miley Cyrus", "radio": 6, "singles": 0, "shazam": 0, "tiktok": 0, "tags": ["mariage", "ambiance", "intl", "pop"], "bpm": 82, "weeks": 9, "trend": 0, "youtubeId": "RLRrAVHPkPE", "mixte": 4, "camelot": "3A", "moments": ["cocktail", "slow"]}, {"title": "Unfaithful", "artist": "Blasterjaxx", "radio": 7, "singles": 0, "shazam": 22, "tiktok": 0, "tags": ["dancefloor", "intl", "electro"], "bpm": 132, "weeks": 6, "trend": 2, "youtubeId": "z5DdAQUhHV4", "mixte": 2, "camelot": "12B", "moments": ["dance"]}, {"title": "Quand Même", "artist": "M. Pokora", "radio": 16, "singles": 0, "shazam": 0, "tiktok": 0, "tags": ["mariage", "fr", "variete"], "bpm": 84, "weeks": 9, "trend": -4, "youtubeId": "Hl2Z6P74URo", "mixte": 5, "camelot": "1A", "moments": ["cocktail", "slow"]}, {"title": "Ça Fait Mal", "artist": "Vitaa", "radio": 19, "singles": 0, "shazam": 0, "tiktok": 0, "tags": ["mariage", "slow", "fr", "variete"], "bpm": 72, "weeks": 3, "trend": 17, "youtubeId": "3SoSpZTcxVo", "mixte": 5, "camelot": "8A", "moments": ["slow"]}, {"title": "Soirée mondaine", "artist": "Oria", "radio": 27, "singles": 0, "shazam": 10, "tiktok": 0, "tags": ["dancefloor", "mariage", "fr", "pop"], "bpm": 108, "weeks": 2, "trend": 20, "youtubeId": "xzBTvODwmr8", "mixte": 4, "camelot": "3B", "moments": ["dance", "fin"]}, {"title": "L'Horizon", "artist": "Pierre Garnier", "radio": 23, "singles": 0, "shazam": 0, "tiktok": 0, "tags": ["mariage", "fr", "variete"], "bpm": 76, "weeks": 7, "trend": -1, "youtubeId": "fj_MkTfWS3s", "mixte": 5, "camelot": "5A", "moments": ["cocktail", "slow"]}, {"title": "Tant Pis Pour Elle", "artist": "Charlotte Cardin", "radio": 25, "singles": 74, "shazam": 0, "tiktok": 0, "tags": ["mariage", "slow", "fr"], "bpm": 68, "weeks": 8, "trend": -6, "youtubeId": "4lSWkqXoVRo", "mixte": 4, "camelot": "9B", "moments": ["slow"]}, {"title": "Les Épines du Cœur", "artist": "Vanessa Paradis", "radio": 28, "singles": 0, "shazam": 0, "tiktok": 0, "tags": ["mariage", "slow", "fr", "variete"], "bpm": 65, "weeks": 4, "trend": 1, "youtubeId": "Pf0KhFaQ2Gs", "mixte": 5, "camelot": "6A", "moments": ["slow"]}, {"title": "Génération Impolie", "artist": "Franglish feat. Keblack", "radio": 20, "singles": 24, "shazam": 0, "tiktok": 0, "tags": ["ambiance", "fr", "rap"], "bpm": 90, "weeks": 8, "trend": -4, "youtubeId": "9bZkp7q19f0", "mixte": 2, "camelot": "2B", "moments": ["diner"]}, {"title": "Karma", "artist": "Bigflo & Oli", "radio": 45, "singles": 83, "shazam": 0, "tiktok": 0, "tags": ["ambiance", "dancefloor", "fr", "rap"], "bpm": 96, "weeks": 5, "trend": -10, "youtubeId": "e7vLBRgFEOE", "mixte": 3, "camelot": "7B", "moments": ["dance"]}, {"title": "La Camisa Negra", "artist": "Elliott", "radio": 21, "singles": 0, "shazam": 0, "tiktok": 0, "tags": ["dancefloor", "mariage", "fr"], "bpm": 105, "weeks": 8, "trend": -4, "youtubeId": "gFRWTaGb6oY", "mixte": 3, "camelot": "10A", "moments": ["dance"]}, {"title": "Elle Voulait", "artist": "RnBoi", "radio": 0, "singles": 3, "shazam": 0, "tiktok": 0, "tags": ["ambiance", "fr", "rap"], "bpm": 84, "weeks": 0, "trend": 0, "youtubeId": "Mzgx9dp0Jdw", "mixte": 2, "camelot": "4A", "moments": ["diner"]}, {"title": "Promenade", "artist": "La Rvfleuze & Koba LaD", "radio": 0, "singles": 4, "shazam": 0, "tiktok": 0, "tags": ["rap", "fr"], "bpm": 90, "weeks": 0, "trend": 0, "youtubeId": "Re1p02biXCU", "mixte": 1, "camelot": "9A", "moments": ["diner"]}, {"title": "Crypto", "artist": "La Rvfleuze & Hamza", "radio": 0, "singles": 6, "shazam": 0, "tiktok": 0, "tags": ["rap", "fr"], "bpm": 88, "weeks": 0, "trend": 0, "youtubeId": "315T1Ki52sE", "mixte": 1, "camelot": "5B", "moments": ["diner"]}, {"title": "B.M.S (By My Side)", "artist": "Rambo Goyard", "radio": 0, "singles": 7, "shazam": 0, "tiktok": 0, "tags": ["rap", "fr"], "bpm": 93, "weeks": 0, "trend": 0, "youtubeId": "DPSGMTknY9s", "mixte": 1, "camelot": "3A", "moments": ["diner"]}, {"title": "Miss Kitoko", "artist": "Theodora", "radio": 0, "singles": 18, "shazam": 0, "tiktok": 0, "tags": ["pop", "fr"], "bpm": 80, "weeks": 0, "trend": 0, "youtubeId": "rbaOn9SAAnk", "mixte": 3, "camelot": "6B", "moments": ["cocktail", "diner"]}, {"title": "One Track Mind", "artist": "Naïka", "radio": 0, "singles": 72, "shazam": 3, "tiktok": 0, "tags": ["pop", "fr"], "bpm": 88, "weeks": 0, "trend": 0, "youtubeId": "PhxPYdBRgYs", "mixte": 3, "camelot": "8A", "moments": ["cocktail"]}, {"title": "Ensemble", "artist": "Charlotte Cardin", "radio": 0, "singles": 0, "shazam": 16, "tiktok": 0, "tags": ["mariage", "slow", "fr"], "bpm": 66, "weeks": 0, "trend": 0, "youtubeId": "2pCh-KLR9M0", "mixte": 4, "camelot": "2A", "moments": ["slow"]}, {"title": "Jamaican (Bam Bam)", "artist": "HUGEL & SOLTO", "radio": 0, "singles": 0, "shazam": 23, "tiktok": 0, "tags": ["dancefloor", "electro", "fr"], "bpm": 124, "weeks": 0, "trend": 0, "youtubeId": "i34pFNr42mc", "mixte": 2, "camelot": "7A", "moments": ["dance", "fin"]}]
+};
+
+function parseTracks(tracks) {
+  return tracks.map(d => [
+    d.title, d.artist,
+    d.radio||0, d.singles||0, d.shazam||0, d.tiktok||0,
+    d.tags||[], d.bpm||0, d.weeks||0, d.trend||0,
+    d.youtubeId||'', d.mixte||3, d.camelot||'?', d.moments||['diner']
+  ]);
+}
+
+function setMeta(updated, week) {
+  const el = document.querySelector('.logo-sub');
+  if(el) el.textContent = `Philippe Amouyal · PADJ.FR · Semaine ${week} — Màj ${updated}`;
+}
+
 async function loadData() {
+  // Données embarquées immédiates
+  T = parseTracks(EMBEDDED.tracks);
+  setMeta(EMBEDDED.updated, EMBEDDED.week);
+  render();
+  // Fetch mise à jour en arrière-plan
   try {
-    // Afficher un loader
-    document.getElementById('tbody').innerHTML = '<tr><td colspan="13" style="text-align:center;padding:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)">⏳ Chargement des classements...</td></tr>';
-    document.getElementById('card-grid').innerHTML = '<div style="padding:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)">⏳ Chargement...</div>';
-
-    const r = await fetch(DATA_URL + '?t=' + Date.now()); // cache-bust
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const data = await r.json();
-
-    // Convertir format JSON → format interne T[]
-    T = data.tracks.map(d => [
-      d.title, d.artist,
-      d.radio||0, d.singles||0, d.shazam||0, d.tiktok||0,
-      d.tags||[], d.bpm||0, d.weeks||0, d.trend||0,
-      d.youtubeId||'', d.mixte||3, d.camelot||'?', d.moments||['diner']
-    ]);
-
-    // Afficher la date de mise à jour
-    const upd = data.updated || '';
-    const week = data.week || '';
-    document.querySelector('.logo-sub').textContent =
-      `Philippe Amouyal · PADJ.FR · Semaine ${week} — Màj ${upd}`;
-
-    render();
-  } catch(e) {
-    console.error('Erreur chargement data.json:', e);
-    document.getElementById('tbody').innerHTML =
-      '<tr><td colspan="13" style="text-align:center;padding:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--red)">❌ Erreur de chargement. Vérifie ta connexion.</td></tr>';
-  }
+    const r = await fetch(DATA_URL + '?v=' + Date.now());
+    if(r.ok) {
+      const d = await r.json();
+      if((d.week||0) >= EMBEDDED.week) {
+        T = parseTracks(d.tracks);
+        setMeta(d.updated, d.week);
+        render();
+      }
+    }
+  } catch(e) { console.log('Données locales utilisées'); }
 }
 
 // ── STATE ──
