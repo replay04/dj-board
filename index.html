@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DJ Board — Philippe Amouyal</title>
-<script src="https://www.youtube.com/iframe_api"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
@@ -92,8 +91,7 @@ header{
   position:sticky;top:0;z-index:80;
 }
 #player-bar.on{display:flex}
-#yt-hidden{position:fixed;bottom:0;right:0;width:1px;height:1px;pointer-events:none;opacity:0.01;z-index:-1}
-.pb-art{width:38px;height:38px;border-radius:4px;object-fit:cover;background:var(--surf2);flex-shrink:0}
+
 .pb-text{flex:0 0 auto;min-width:0;max-width:170px}
 .pb-t{font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pb-a{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px}
@@ -101,11 +99,11 @@ header{
 .pb-c{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .pb-c:hover,.pb-c.on{border-color:var(--accent);color:var(--accent)}
 .pb-c.on{background:var(--accent);color:var(--bg)}
-.pb-seek-row{flex:1;display:flex;align-items:center;gap:8px;min-width:80px}
+
 .pb-time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);white-space:nowrap;flex-shrink:0}
-.pb-seek{flex:1;height:3px;border-radius:2px;background:var(--border);cursor:pointer;appearance:none;accent-color:var(--accent)}
-.pb-seek::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer}
-.pb-vol{width:55px;height:3px;accent-color:var(--teal);cursor:pointer;flex-shrink:0}
+
+
+
 .pb-x{background:none;border:none;color:var(--muted);font-size:18px;padding:0 2px;transition:color .15s;flex-shrink:0}
 .pb-x:hover{color:var(--red)}
 
@@ -496,6 +494,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   .btn-sl-yt{display:none!important}
 }
 </style>
+<script src="https://w.soundcloud.com/player/api.js"></script>
 </head>
 <body>
 
@@ -515,25 +514,24 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   </div>
 </header>
 
-<!-- PLAYER BAR -->
+<!-- PLAYER BAR SOUNDCLOUD -->
 <div id="player-bar">
-  <div id="yt-hidden"><iframe id="yt-iframe" width="1" height="1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-  <img class="pb-art" id="pb-art" src="" alt="">
   <div class="pb-text">
     <div class="pb-t" id="pb-t">—</div>
     <div class="pb-a" id="pb-a">—</div>
   </div>
   <div class="pb-ctrl">
     <button class="pb-c" onclick="pPrev()" title="Précédent">◀</button>
-    <button class="pb-c" id="pb-pp" onclick="pToggle()" title="Play/Pause">▶</button>
     <button class="pb-c" onclick="pNext()" title="Suivant">▶▶</button>
   </div>
-  <div class="pb-seek-row">
-    <span class="pb-time" id="pb-el">0:00</span>
-    <input type="range" class="pb-seek" id="pb-seek" min="0" max="100" value="0" step=".1" oninput="pSeek(this.value)">
-    <span class="pb-time" id="pb-dur">0:00</span>
-  </div>
-  <input type="range" class="pb-vol" title="Volume" min="0" max="100" value="80" oninput="pVol(this.value)">
+  <iframe id="sc-widget"
+    src=""
+    width="100%"
+    height="20"
+    style="flex:1;min-width:200px;border:none;border-radius:4px"
+    allow="autoplay"
+    scrolling="no">
+  </iframe>
   <button class="pb-x" onclick="pStop()">✕</button>
 </div>
 
@@ -714,7 +712,7 @@ let sortKey='score', activeFilter='all', viewMode='table';
 let notes=JSON.parse(localStorage.getItem('djb-notes')||'{}');
 let modalKey=null;
 let queue=[], qIdx=0, playingYt=null, playingBtn=null;
-let ytPlayer=null, ytReady=false, seekTimer=null;
+let seekTimer=null;
 let perfTracks=[], perfIdx=0;
 
 // ── HELPERS ──
@@ -742,7 +740,7 @@ const SC_COL={4:'var(--gold)',3:'var(--teal)',2:'var(--muted)',1:'var(--muted)'}
 function filtered(){
   return T.filter(d=>{
     const [,,r,s,sh,tt,tags,,,,,,, mo]=d;
-    if(activeFilter==='all') return true;
+    if(activeFilter==='all') return true; // score 0 sans ytId = caché
     if(activeFilter==='triple') return isMulti(d);
     if(activeFilter==='tiktok') return tt>0;
     if(activeFilter==='noted') return !!notes[key(d)];
@@ -755,7 +753,14 @@ function filtered(){
 }
 function sorted(arr){
   return [...arr].sort((a,b)=>{
-    if(sortKey==='score') return sc(b[2],b[3],b[4],b[5])-sc(a[2],a[3],a[4],a[5]);
+    if(sortKey==='score') {
+      const sa = sc(a[2],a[3],a[4],a[5]);
+      const sb = sc(b[2],b[3],b[4],b[5]);
+      // Titres score 0 toujours en bas
+      if(sa===0 && sb>0) return 1;
+      if(sb===0 && sa>0) return -1;
+      return sb-sa;
+    }
     if(sortKey==='radio') return (a[2]||999)-(b[2]||999);
     if(sortKey==='singles') return (a[3]||999)-(b[3]||999);
     if(sortKey==='shazam') return (a[4]||999)-(b[4]||999);
@@ -781,7 +786,15 @@ function trend(t){
 function renderTable(data){
   const tbody=$('tbody');
   tbody.innerHTML='';
-  data.forEach((d,i)=>{
+  // Filtrer les titres auto-détectés sans données (score=0, pas de YT ID, pas de camelot)
+  const displayData = data.filter(d => {
+    const s = sc(d[2],d[3],d[4],d[5]);
+    const hasYt = d[10] && d[10].length > 3;
+    const hasCam = d[12] && d[12] !== '?';
+    // Garder si: score > 0 OU a un YT ID valide OU a une tonalité
+    return s > 0 || hasYt || hasCam;
+  });
+  displayData.forEach((d,i)=>{
     const [title,artist,radio,singles,shazam,tiktok,tags,bpm,weeks,trd,yt,mixte,camelot,moments]=d;
     const s=sc(radio,singles,shazam,tiktok), g=gr(s), pct=Math.min(100,s);
     const k=key(d), n=notes[k];
@@ -797,10 +810,7 @@ function renderTable(data){
     const pb=document.createElement('button');
     pb.className='play-btn'+(playingYt===yt?' on':'');
     pb.textContent=playingYt===yt?'⏸':'▶';
-    pb.onclick=()=>{
-      pb.textContent='⏳';
-      pLoad(yt,title,artist,d);
-    };
+    pb.onclick=()=>pLoad(yt,title,artist,d);
     t1.appendChild(pb);
 
     // Copy
@@ -867,7 +877,13 @@ function renderTable(data){
 function renderCards(data){
   const grid=$('card-grid');
   grid.innerHTML='';
-  data.forEach((d,i)=>{
+  const displayData = data.filter(d => {
+    const s = sc(d[2],d[3],d[4],d[5]);
+    const hasYt = d[10] && d[10].length > 3;
+    const hasCam = d[12] && d[12] !== '?';
+    return s > 0 || hasYt || hasCam;
+  });
+  displayData.forEach((d,i)=>{
     const [title,artist,radio,singles,shazam,tiktok,tags,bpm,weeks,trd,yt,mixte,camelot,moments]=d;
     const s=sc(radio,singles,shazam,tiktok), g=gr(s);
     const k=key(d), n=notes[k];
@@ -978,92 +994,90 @@ function copyAll(){
 }
 
 // ── YOUTUBE PLAYER ──
-function onYouTubeIframeAPIReady(){
-  ytPlayer=new YT.Player('yt-iframe',{
-    height:'1',width:'1',
-    playerVars:{autoplay:1,controls:0,disablekb:1,playsinline:1,origin:window.location.origin},
-    events:{
-      onReady:()=>{ytReady=true;pVol(80)},
-      onStateChange:(e)=>{
-        const pp=$('pb-pp');
-        if(e.data===YT.PlayerState.PLAYING){
-          pp.textContent='⏸';pp.classList.add('on');
-          seekTimer=setInterval(updSeek,400);
-        } else {
-          pp.textContent='▶';pp.classList.remove('on');
-          clearInterval(seekTimer);
-        }
-        if(e.data===YT.PlayerState.ENDED) pNext();
-      }
-    }
+function initSCWidget() {
+  const iframe = document.getElementById('sc-widget');
+  if (!iframe || !window.SC) return;
+  scWidget = SC.Widget(iframe);
+  scWidget.bind(SC.Widget.Events.READY, () => {
+    scReady = true;
+    scWidget.bind(SC.Widget.Events.FINISH, () => pNext());
   });
 }
-function updSeek(){
-  if(!ytPlayer?.getDuration) return;
-  const dur=ytPlayer.getDuration()||0, cur=ytPlayer.getCurrentTime()||0;
-  $('pb-seek').value=dur?(cur/dur)*100:0;
-  $('pb-el').textContent=fmtT(cur);
-  $('pb-dur').textContent=fmtT(dur);
-}
-function pLoad(yt,title,artist,d){
-  if(!ytReady) {
-    // API pas encore prête — réessayer dans 500ms
-    setTimeout(()=>pLoad(yt,title,artist,d), 500);
-    return;
-  }
-  if(playingYt===yt){pToggle();return}
-  if(playingBtn){playingBtn.textContent='▶';playingBtn.classList.remove('on')}
-  playingYt=yt;
-  ytPlayer.loadVideoById(yt);
-  pVol(80);
-  $('pb-art').src=`https://img.youtube.com/vi/${yt}/default.jpg`;
-  $('pb-t').textContent=title;
-  $('pb-a').textContent=artist||'';
-  $('player-bar').classList.add('on');
-  $('pb-seek').value=0;
-  $('pb-el').textContent='0:00';
-  $('pb-dur').textContent='…';
-  // find queue index
-  qIdx=queue.findIndex(x=>x[10]===yt);
-  // Update buttons
-  setTimeout(()=>{
-    document.querySelectorAll('.play-btn,.card-play').forEach(b=>{
+
+function pLoad(yt, title, artist, d) {
+  const query = encodeURIComponent(title + ' ' + artist);
+  const scUrl = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/search%3Fq%3D${query}&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false&color=%23e8ff47`;
+
+  // Update iframe src
+  const iframe = document.getElementById('sc-widget');
+  iframe.src = scUrl;
+  scReady = false;
+
+  // Reinit widget after src change
+  setTimeout(() => {
+    initSCWidget();
+  }, 1000);
+
+  playingYt = yt;
+  document.getElementById('pb-t').textContent = title;
+  document.getElementById('pb-a').textContent = artist || '';
+  document.getElementById('player-bar').classList.add('on');
+
+  // Update queue index
+  qIdx = queue.findIndex(x => x[10] === yt);
+
+  // Update play buttons
+  setTimeout(() => {
+    document.querySelectorAll('.play-btn, .card-play').forEach(b => {
       b.classList.remove('on');
-      if(b.classList.contains('play-btn')) b.textContent='▶';
-      else{b.textContent='▶ Écouter';b.classList.remove('on')}
+      if (b.classList.contains('play-btn')) b.textContent = '▶';
+      else { b.textContent = '▶ Écouter'; }
     });
-    // Mark playing
-    const rows=document.querySelectorAll('#tbody tr');
-    if(qIdx>=0&&rows[qIdx]){
-      const pb=rows[qIdx].querySelector('.play-btn');
-      if(pb){pb.textContent='⏸';pb.classList.add('on');playingBtn=pb}
+    const rows = document.querySelectorAll('#tbody tr');
+    if (qIdx >= 0 && rows[qIdx]) {
+      const pb = rows[qIdx].querySelector('.play-btn');
+      if (pb) { pb.textContent = '⏸'; pb.classList.add('on'); playingBtn = pb; }
     }
-  },150);
+  }, 200);
 }
-function pToggle(){
-  if(!ytPlayer) return;
-  ytPlayer.getPlayerState()===YT.PlayerState.PLAYING?ytPlayer.pauseVideo():ytPlayer.playVideo();
+
+function pToggle() {
+  if (scWidget && scReady) scWidget.toggle();
 }
-function pStop(){
-  ytPlayer?.stopVideo();clearInterval(seekTimer);
-  $('player-bar').classList.remove('on');
-  playingYt=null;
-  if(playingBtn){playingBtn.textContent='▶';playingBtn.classList.remove('on');playingBtn=null}
+
+function pStop() {
+  const iframe = document.getElementById('sc-widget');
+  iframe.src = '';
+  scReady = false;
+  document.getElementById('player-bar').classList.remove('on');
+  playingYt = null;
+  if (playingBtn) { playingBtn.textContent = '▶'; playingBtn.classList.remove('on'); playingBtn = null; }
   render();
 }
-function pNext(){
-  qIdx=Math.min(queue.length-1,qIdx+1);
-  const d=queue[qIdx];
-  pLoad(d[10],d[0],d[1],d);
+
+function pNext() {
+  if (playAllActive && qIdx >= queue.length - 1) {
+    playAllActive = false;
+    const btn = document.getElementById('btn-play-all');
+    if (btn) { btn.textContent = '▶ Tout écouter'; btn.classList.remove('playing'); }
+    pStop(); return;
+  }
+  qIdx = Math.min(queue.length - 1, qIdx + 1);
+  const d = queue[qIdx];
+  pLoad(d[10], d[0], d[1], d);
 }
-function pPrev(){
-  if(ytPlayer?.getCurrentTime&&ytPlayer.getCurrentTime()>3){ytPlayer.seekTo(0,true);return}
-  qIdx=Math.max(0,qIdx-1);
-  const d=queue[qIdx];
-  pLoad(d[10],d[0],d[1],d);
+
+function pPrev() {
+  qIdx = Math.max(0, qIdx - 1);
+  const d = queue[qIdx];
+  pLoad(d[10], d[0], d[1], d);
 }
-function pSeek(v){ytPlayer?.getDuration&&ytPlayer.seekTo(ytPlayer.getDuration()*v/100,true)}
-function pVol(v){ytPlayer?.setVolume&&ytPlayer.setVolume(parseInt(v))}
+
+function pSeek(v) { if (scWidget && scReady) scWidget.seekTo(v); }
+function pVol(v) { if (scWidget && scReady) scWidget.setVolume(parseInt(v)); }
+
+// Init SC widget when page loads
+window.addEventListener('load', () => setTimeout(initSCWidget, 500));
 
 // ── NOTES ──
 function saveNotes(){localStorage.setItem('djb-notes',JSON.stringify(notes));$('note-cnt').textContent=Object.keys(notes).length}
@@ -1235,9 +1249,7 @@ function playAll() {
   const d = data[0];
   pLoad(d[10], d[0], d[1], d);
   // Override onended pour enchaîner automatiquement
-  if(ytPlayer) {
-    ytPlayer.addEventListener = ytPlayer.addEventListener || function(){};
-  }
+
 }
 
 // Patch pNext pour gérer la fin de "play all"
