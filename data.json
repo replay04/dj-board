@@ -1,46 +1,1488 @@
 {
   "updated": "2026-04-30",
   "week": 18,
+  "sources": {
+    "radio_count": 0,
+    "singles_count": 1,
+    "shazam_count": 0,
+    "spotify_count": 0,
+    "apple_count": 86,
+    "deezer_count": 100
+  },
   "tracks": [
-    {"title":"Melodrama","artist":"Disiz & Theodora","radio":2,"singles":1,"shazam":8,"tiktok":1,"tags":["ambiance","fr","rap"],"bpm":154,"weeks":27,"trend":1,"youtubeId":"O2tKlnfrLkY","mixte":3,"camelot":"4B","moments":["cocktail","diner"]},
-    {"title":"Dracula","artist":"Tame Impala","radio":49,"singles":25,"shazam":0,"tiktok":4,"tags":["ambiance","intl"],"bpm":98,"weeks":3,"trend":9,"youtubeId":"g4wMT8VBBQU","mixte":2,"camelot":"4A","moments":["cocktail","diner"]},
-    {"title":"RUINART","artist":"R2","radio":0,"singles":0,"shazam":0,"tiktok":7,"tags":["ambiance","fr","rap"],"bpm":86,"weeks":0,"trend":0,"youtubeId":"iXBlNNFqdkQ","mixte":2,"camelot":"3B","moments":["diner"]},
-    {"title":"Tchébé 2x","artist":"Bilouki","radio":0,"singles":0,"shazam":0,"tiktok":3,"tags":["dancefloor","fr","rap"],"bpm":98,"weeks":0,"trend":0,"youtubeId":"nH5OkN3fFcs","mixte":2,"camelot":"9B","moments":["dance"]},
-    {"title":"Lune de miel","artist":"Don Choa feat. Zaho","radio":0,"singles":0,"shazam":0,"tiktok":9,"tags":["mariage","slow","fr"],"bpm":72,"weeks":0,"trend":0,"youtubeId":"dQ5vFm9qPLk","mixte":5,"camelot":"4B","moments":["slow"]},
-    {"title":"Mystery of Love","artist":"Sufjan Stevens","radio":0,"singles":0,"shazam":0,"tiktok":15,"tags":["mariage","slow","intl"],"bpm":68,"weeks":0,"trend":0,"youtubeId":"hNP3PBkuTvo","mixte":5,"camelot":"2A","moments":["slow","cocktail"]},
-    {"title":"SPA","artist":"GIMS & Theodora","radio":10,"singles":8,"shazam":21,"tiktok":0,"tags":["ambiance","fr","rap"],"bpm":88,"weeks":12,"trend":-2,"youtubeId":"hT8nvc6fxBs","mixte":3,"camelot":"12A","moments":["cocktail","diner"]},
-    {"title":"Pocahontas","artist":"PLK","radio":22,"singles":2,"shazam":5,"tiktok":0,"tags":["ambiance","fr","rap"],"bpm":87,"weeks":6,"trend":6,"youtubeId":"JvokQ1Mkbl0","mixte":2,"camelot":"5A","moments":["diner"]},
-    {"title":"Avec Moi","artist":"RnBoi & Nono La Grinta","radio":0,"singles":9,"shazam":20,"tiktok":0,"tags":["ambiance","fr","rap"],"bpm":82,"weeks":0,"trend":0,"youtubeId":"8Rn7K8BPWQA","mixte":2,"camelot":"2B","moments":["diner"]},
-    {"title":"The Fate of Ophelia","artist":"Taylor Swift","radio":11,"singles":26,"shazam":6,"tiktok":0,"tags":["mariage","slow","intl","pop"],"bpm":140,"weeks":5,"trend":0,"youtubeId":"ko70cExuzZM","mixte":4,"camelot":"8A","moments":["slow"]},
-    {"title":"Comme Caroline","artist":"Zaho feat. MC Solaar","radio":15,"singles":44,"shazam":13,"tiktok":0,"tags":["mariage","ambiance","fr"],"bpm":78,"weeks":4,"trend":7,"youtubeId":"uRA8xnBxm8U","mixte":5,"camelot":"9A","moments":["cocktail","slow"]},
-    {"title":"What You Want","artist":"Angèle & Justice","radio":13,"singles":82,"shazam":17,"tiktok":0,"tags":["dancefloor","mariage","fr","pop"],"bpm":110,"weeks":7,"trend":9,"youtubeId":"e5s8MdtnbMM","mixte":4,"camelot":"6B","moments":["dance"]},
-    {"title":"Nuevayol","artist":"Bad Bunny","radio":9,"singles":19,"shazam":1,"tiktok":0,"tags":["dancefloor","intl"],"bpm":136,"weeks":8,"trend":1,"youtubeId":"s4ftEdW2wdo","mixte":2,"camelot":"6A","moments":["dance"]},
-    {"title":"End of Beginning","artist":"DJO","radio":8,"singles":38,"shazam":12,"tiktok":0,"tags":["ambiance","intl","pop"],"bpm":77,"weeks":14,"trend":-3,"youtubeId":"xy3AcmW0lrQ","mixte":3,"camelot":"9B","moments":["cocktail","diner"]},
-    {"title":"Argent Sale","artist":"La Rvfleuze","radio":55,"singles":5,"shazam":14,"tiktok":0,"tags":["rap","fr"],"bpm":85,"weeks":5,"trend":2,"youtubeId":"2An67RbHxi4","mixte":1,"camelot":"1B","moments":["diner"]},
-    {"title":"GMK","artist":"WIXO & LA2S","radio":0,"singles":20,"shazam":2,"tiktok":0,"tags":["dancefloor","fr","rap"],"bpm":95,"weeks":0,"trend":0,"youtubeId":"nH5OkN3fFcs","mixte":2,"camelot":"8B","moments":["dance"]},
-    {"title":"Raindance","artist":"Dave & Tems","radio":35,"singles":46,"shazam":7,"tiktok":0,"tags":["ambiance","intl"],"bpm":95,"weeks":4,"trend":3,"youtubeId":"4h3OVfBPMcA","mixte":3,"camelot":"11A","moments":["cocktail","diner"]},
-    {"title":"I Just Might","artist":"Bruno Mars","radio":1,"singles":52,"shazam":0,"tiktok":0,"tags":["dancefloor","intl","pop"],"bpm":103,"weeks":12,"trend":0,"youtubeId":"mrV8kK5t0V8","mixte":5,"camelot":"7B","moments":["dance","fin"]},
-    {"title":"La recette","artist":"Jeck & Carla","radio":3,"singles":89,"shazam":9,"tiktok":0,"tags":["dancefloor","mariage","fr","pop"],"bpm":100,"weeks":10,"trend":3,"youtubeId":"9kBpbQDZdbQ","mixte":5,"camelot":"7A","moments":["dance","fin"]},
-    {"title":"Gone Gone Gone","artist":"David Guetta & Teddy Swims","radio":4,"singles":0,"shazam":0,"tiktok":0,"tags":["dancefloor","intl","electro"],"bpm":128,"weeks":25,"trend":3,"youtubeId":"8iT9DRe3cHE","mixte":4,"camelot":"11B","moments":["dance","fin"]},
-    {"title":"Zoo","artist":"Shakira","radio":5,"singles":43,"shazam":0,"tiktok":0,"tags":["dancefloor","intl","pop"],"bpm":104,"weeks":18,"trend":-3,"youtubeId":"Kw3935PH01E","mixte":5,"camelot":"5B","moments":["dance"]},
-    {"title":"Dream As One","artist":"Miley Cyrus","radio":6,"singles":0,"shazam":0,"tiktok":0,"tags":["mariage","ambiance","intl","pop"],"bpm":82,"weeks":9,"trend":0,"youtubeId":"RLRrAVHPkPE","mixte":4,"camelot":"3A","moments":["cocktail","slow"]},
-    {"title":"Unfaithful","artist":"Blasterjaxx","radio":7,"singles":0,"shazam":22,"tiktok":0,"tags":["dancefloor","intl","electro"],"bpm":132,"weeks":6,"trend":2,"youtubeId":"z5DdAQUhHV4","mixte":2,"camelot":"12B","moments":["dance"]},
-    {"title":"Quand Même","artist":"M. Pokora","radio":16,"singles":0,"shazam":0,"tiktok":0,"tags":["mariage","fr","variete"],"bpm":84,"weeks":9,"trend":-4,"youtubeId":"Hl2Z6P74URo","mixte":5,"camelot":"1A","moments":["cocktail","slow"]},
-    {"title":"Ça Fait Mal","artist":"Vitaa","radio":19,"singles":0,"shazam":0,"tiktok":0,"tags":["mariage","slow","fr","variete"],"bpm":72,"weeks":3,"trend":17,"youtubeId":"3SoSpZTcxVo","mixte":5,"camelot":"8A","moments":["slow"]},
-    {"title":"Soirée mondaine","artist":"Oria","radio":27,"singles":0,"shazam":10,"tiktok":0,"tags":["dancefloor","mariage","fr","pop"],"bpm":108,"weeks":2,"trend":20,"youtubeId":"xzBTvODwmr8","mixte":4,"camelot":"3B","moments":["dance","fin"]},
-    {"title":"L'Horizon","artist":"Pierre Garnier","radio":23,"singles":0,"shazam":0,"tiktok":0,"tags":["mariage","fr","variete"],"bpm":76,"weeks":7,"trend":-1,"youtubeId":"fj_MkTfWS3s","mixte":5,"camelot":"5A","moments":["cocktail","slow"]},
-    {"title":"Tant Pis Pour Elle","artist":"Charlotte Cardin","radio":25,"singles":74,"shazam":0,"tiktok":0,"tags":["mariage","slow","fr"],"bpm":68,"weeks":8,"trend":-6,"youtubeId":"4lSWkqXoVRo","mixte":4,"camelot":"9B","moments":["slow"]},
-    {"title":"Les Épines du Cœur","artist":"Vanessa Paradis","radio":28,"singles":0,"shazam":0,"tiktok":0,"tags":["mariage","slow","fr","variete"],"bpm":65,"weeks":4,"trend":1,"youtubeId":"Pf0KhFaQ2Gs","mixte":5,"camelot":"6A","moments":["slow"]},
-    {"title":"Génération Impolie","artist":"Franglish feat. Keblack","radio":20,"singles":24,"shazam":0,"tiktok":0,"tags":["ambiance","fr","rap"],"bpm":90,"weeks":8,"trend":-4,"youtubeId":"9bZkp7q19f0","mixte":2,"camelot":"2B","moments":["diner"]},
-    {"title":"Karma","artist":"Bigflo & Oli","radio":45,"singles":83,"shazam":0,"tiktok":0,"tags":["ambiance","dancefloor","fr","rap"],"bpm":96,"weeks":5,"trend":-10,"youtubeId":"e7vLBRgFEOE","mixte":3,"camelot":"7B","moments":["dance"]},
-    {"title":"La Camisa Negra","artist":"Elliott","radio":21,"singles":0,"shazam":0,"tiktok":0,"tags":["dancefloor","mariage","fr"],"bpm":105,"weeks":8,"trend":-4,"youtubeId":"gFRWTaGb6oY","mixte":3,"camelot":"10A","moments":["dance"]},
-    {"title":"Elle Voulait","artist":"RnBoi","radio":0,"singles":3,"shazam":0,"tiktok":0,"tags":["ambiance","fr","rap"],"bpm":84,"weeks":0,"trend":0,"youtubeId":"Mzgx9dp0Jdw","mixte":2,"camelot":"4A","moments":["diner"]},
-    {"title":"Promenade","artist":"La Rvfleuze & Koba LaD","radio":0,"singles":4,"shazam":0,"tiktok":0,"tags":["rap","fr"],"bpm":90,"weeks":0,"trend":0,"youtubeId":"Re1p02biXCU","mixte":1,"camelot":"9A","moments":["diner"]},
-    {"title":"Crypto","artist":"La Rvfleuze & Hamza","radio":0,"singles":6,"shazam":0,"tiktok":0,"tags":["rap","fr"],"bpm":88,"weeks":0,"trend":0,"youtubeId":"315T1Ki52sE","mixte":1,"camelot":"5B","moments":["diner"]},
-    {"title":"B.M.S (By My Side)","artist":"Rambo Goyard","radio":0,"singles":7,"shazam":0,"tiktok":0,"tags":["rap","fr"],"bpm":93,"weeks":0,"trend":0,"youtubeId":"DPSGMTknY9s","mixte":1,"camelot":"3A","moments":["diner"]},
-    {"title":"Miss Kitoko","artist":"Theodora","radio":0,"singles":18,"shazam":0,"tiktok":0,"tags":["pop","fr"],"bpm":80,"weeks":0,"trend":0,"youtubeId":"rbaOn9SAAnk","mixte":3,"camelot":"6B","moments":["cocktail","diner"]},
-    {"title":"One Track Mind","artist":"Naïka","radio":0,"singles":72,"shazam":3,"tiktok":0,"tags":["pop","fr"],"bpm":88,"weeks":0,"trend":0,"youtubeId":"PhxPYdBRgYs","mixte":3,"camelot":"8A","moments":["cocktail"]},
-    {"title":"Ensemble","artist":"Charlotte Cardin","radio":0,"singles":0,"shazam":16,"tiktok":0,"tags":["mariage","slow","fr"],"bpm":66,"weeks":0,"trend":0,"youtubeId":"2pCh-KLR9M0","mixte":4,"camelot":"2A","moments":["slow"]},
-    {"title":"Jamaican (Bam Bam)","artist":"HUGEL & SOLTO","radio":0,"singles":0,"shazam":23,"tiktok":0,"tags":["dancefloor","electro","fr"],"bpm":124,"weeks":0,"trend":0,"youtubeId":"i34pFNr42mc","mixte":2,"camelot":"7A","moments":["dance","fin"]}
+    {
+      "title": "Dragon Style",
+      "artist": "Bob Dominator",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 2,
+      "deezer": 4,
+      "score": 9,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Dragons Lair",
+      "artist": "Bob Dominator",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 12,
+      "deezer": 4,
+      "score": 9,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Golden",
+      "artist": "Huntr/X, Ejae, Audrey Nuna, Rei Ami & Kpop Demon Hunters Cast",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 13,
+      "deezer": 1,
+      "score": 9,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Go",
+      "artist": "Blackpink",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 2,
+      "deezer": 4,
+      "score": 9,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Free",
+      "artist": "Rumi",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 24,
+      "deezer": 11,
+      "score": 8,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 8,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 3,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 7,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Let Me Be",
+      "artist": "The Second Voice",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 1,
+      "deezer": 0,
+      "score": 5,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Mourir Sur Scène",
+      "artist": "Bon Entendeur & Dalida",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 4,
+      "deezer": 0,
+      "score": 5,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 5,
+      "deezer": 0,
+      "score": 5,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Soleil Bleu",
+      "artist": "Bleu Soleil & Luiza",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 6,
+      "deezer": 0,
+      "score": 5,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Dansons",
+      "artist": "Céline Dion",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 9,
+      "deezer": 0,
+      "score": 5,
+      "tags": [
+        "fr"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 28,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 19,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 17,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 26,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "electro"
+      ],
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
+      "mixte": 4,
+      "camelot": "11B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 4,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 29,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 16,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Smooth Criminal",
+      "artist": "Michael Jackson",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 11,
+      "deezer": 0,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Le Petit Pêcheur",
+      "artist": "Manon Lisa",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 14,
+      "deezer": 0,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Jump",
+      "artist": "Blackpink",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 2,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Soda Pop",
+      "artist": "Saja Boys",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 3,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Strategy",
+      "artist": "Twice",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 6,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "What It Sounds Like",
+      "artist": "Huntr/X",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 7,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Takedown",
+      "artist": "Huntr/X",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 8,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Your Idol",
+      "artist": "Saja Boys",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 10,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Do It",
+      "artist": "Stray Kids",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 12,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Dynamite",
+      "artist": "Bts",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 13,
+      "score": 4,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Mystery of Love",
+      "artist": "Sufjan Stevens",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl"
+      ],
+      "bpm": 68,
+      "youtubeId": "hNP3PBkuTvo",
+      "mixte": 5,
+      "camelot": "2A",
+      "moments": [
+        "slow",
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 50,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 36,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 43,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Like Jennie",
+      "artist": "Jennie",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 14,
+      "score": 3,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Redred",
+      "artist": "Cortis",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 15,
+      "score": 3,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 67,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Dracula",
+      "artist": "Tame Impala",
+      "tags": [
+        "ambiance",
+        "intl"
+      ],
+      "bpm": 98,
+      "youtubeId": "g4wMT8VBBQU",
+      "mixte": 2,
+      "camelot": "4A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "RUINART",
+      "artist": "R2",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 86,
+      "youtubeId": "iXBlNNFqdkQ",
+      "mixte": 2,
+      "camelot": "3B",
+      "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Lune de miel",
+      "artist": "Don Choa feat. Zaho",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 72,
+      "youtubeId": "dQ5vFm9qPLk",
+      "mixte": 5,
+      "camelot": "4B",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Pocahontas",
+      "artist": "PLK",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 87,
+      "youtubeId": "JvokQ1Mkbl0",
+      "mixte": 2,
+      "camelot": "5A",
+      "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Argent Sale",
+      "artist": "La Rvfleuze",
+      "tags": [
+        "rap",
+        "fr"
+      ],
+      "bpm": 85,
+      "youtubeId": "2An67RbHxi4",
+      "mixte": 1,
+      "camelot": "1B",
+      "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Dream As One",
+      "artist": "Miley Cyrus",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 82,
+      "youtubeId": "RLRrAVHPkPE",
+      "mixte": 4,
+      "camelot": "3A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Quand Même",
+      "artist": "M. Pokora",
+      "tags": [
+        "mariage",
+        "fr",
+        "variete"
+      ],
+      "bpm": 84,
+      "youtubeId": "Hl2Z6P74URo",
+      "mixte": 5,
+      "camelot": "1A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Ça Fait Mal",
+      "artist": "Vitaa",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr",
+        "variete"
+      ],
+      "bpm": 72,
+      "youtubeId": "3SoSpZTcxVo",
+      "mixte": 5,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Soirée mondaine",
+      "artist": "Oria",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "L'Horizon",
+      "artist": "Pierre Garnier",
+      "tags": [
+        "mariage",
+        "fr",
+        "variete"
+      ],
+      "bpm": 76,
+      "youtubeId": "fj_MkTfWS3s",
+      "mixte": 5,
+      "camelot": "5A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Les Épines du Cœur",
+      "artist": "Vanessa Paradis",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr",
+        "variete"
+      ],
+      "bpm": 65,
+      "youtubeId": "Pf0KhFaQ2Gs",
+      "mixte": 5,
+      "camelot": "6A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Génération Impolie",
+      "artist": "Franglish feat. Keblack",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 90,
+      "youtubeId": "9bZkp7q19f0",
+      "mixte": 2,
+      "camelot": "2B",
+      "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Karma",
+      "artist": "Bigflo & Oli",
+      "tags": [
+        "ambiance",
+        "dancefloor",
+        "fr",
+        "rap"
+      ],
+      "bpm": 96,
+      "youtubeId": "e7vLBRgFEOE",
+      "mixte": 3,
+      "camelot": "7B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La Camisa Negra",
+      "artist": "Elliott",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr"
+      ],
+      "bpm": 105,
+      "youtubeId": "gFRWTaGb6oY",
+      "mixte": 3,
+      "camelot": "10A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Miss Kitoko",
+      "artist": "Theodora",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 80,
+      "youtubeId": "rbaOn9SAAnk",
+      "mixte": 3,
+      "camelot": "6B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Ensemble",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 66,
+      "youtubeId": "2pCh-KLR9M0",
+      "mixte": 4,
+      "camelot": "2A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Jamaican (Bam Bam)",
+      "artist": "HUGEL & SOLTO",
+      "tags": [
+        "dancefloor",
+        "electro",
+        "fr"
+      ],
+      "bpm": 124,
+      "youtubeId": "i34pFNr42mc",
+      "mixte": 2,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo (De \"Zootopie 2\")",
+      "artist": "Disney & Shakira",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "As-Tu Déjà Vu Dieu",
+      "artist": "Mesly Niatis",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "How It’S Done",
+      "artist": "Huntr/X",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    },
+    {
+      "title": "Moonlit Floor (Kiss Me)",
+      "artist": "Lisa",
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "tags": [
+        "intl"
+      ],
+      "bpm": 0,
+      "weeks": 0,
+      "trend": 0,
+      "youtubeId": "",
+      "mixte": 3,
+      "camelot": "?",
+      "moments": [
+        "diner"
+      ],
+      "new": true
+    }
   ]
 }
