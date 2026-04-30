@@ -687,48 +687,41 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 // [title, artist, radio, singles, shazam, tiktok, tags[],
 //  bpm, weeks, trend, youtubeId, mixte, camelot, moments[]]
 // ────────────────────────────────────────────────────────────
-const T = [
-  ["Melodrama",          "Disiz & Theodora",           2,  1,  8,  1,["ambiance","fr","rap"],            154,27, 1,"O2tKlnfrLkY",3,"4B",["cocktail","diner"]],
-  ["Dracula",            "Tame Impala",                49,25,  0,  4,["ambiance","intl"],                 98, 3, 9,"g4wMT8VBBQU",2,"4A",["cocktail","diner"]],
-  ["RUINART",            "R2",                          0, 0,  0,  7,["ambiance","fr","rap"],              86, 0, 0,"iXBlNNFqdkQ",2,"3B",["diner"]],
-  ["Tchébé 2x",          "Bilouki",                     0, 0,  0,  3,["dancefloor","fr","rap"],            98, 0, 0,"nH5OkN3fFcs",2,"9B",["dance"]],
-  ["Lune de miel",       "Don Choa feat. Zaho",         0, 0,  0,  9,["mariage","slow","fr"],              72, 0, 0,"dQ5vFm9qPLk",5,"4B",["slow"]],
-  ["Mystery of Love",    "Sufjan Stevens",              0, 0,  0, 15,["mariage","slow","intl"],            68, 0, 0,"hNP3PBkuTvo",5,"2A",["slow","cocktail"]],
-  ["SPA",                "GIMS & Theodora",            10, 8, 21,  0,["ambiance","fr","rap"],              88,12,-2,"hT8nvc6fxBs",3,"12A",["cocktail","diner"]],
-  ["Pocahontas",         "PLK",                        22, 2,  5,  0,["ambiance","fr","rap"],              87, 6, 6,"JvokQ1Mkbl0",2,"5A",["diner"]],
-  ["Avec Moi",           "RnBoi & Nono La Grinta",      0, 9, 20,  0,["ambiance","fr","rap"],              82, 0, 0,"8Rn7K8BPWQA",2,"2B",["diner"]],
-  ["The Fate of Ophelia","Taylor Swift",               11,26,  6,  0,["mariage","slow","intl","pop"],     140, 5, 0,"ko70cExuzZM",4,"8A",["slow"]],
-  ["Comme Caroline",     "Zaho feat. MC Solaar",       15,44, 13,  0,["mariage","ambiance","fr"],          78, 4, 7,"uRA8xnBxm8U",5,"9A",["cocktail","slow"]],
-  ["What You Want",      "Angèle & Justice",           13,82, 17,  0,["dancefloor","mariage","fr","pop"], 110, 7, 9,"e5s8MdtnbMM",4,"6B",["dance"]],
-  ["Nuevayol",           "Bad Bunny",                   9,19,  1,  0,["dancefloor","intl"],               136, 8, 1,"s4ftEdW2wdo",2,"6A",["dance"]],
-  ["End of Beginning",   "DJO",                         8,38, 12,  0,["ambiance","intl","pop"],            77,14,-3,"xy3AcmW0lrQ",3,"9B",["cocktail","diner"]],
-  ["Argent Sale",        "La Rvfleuze",                55, 5, 14,  0,["rap","fr"],                         85, 5, 2,"2An67RbHxi4",1,"1B",["diner"]],
-  ["GMK",                "WIXO & LA2S",                 0,20,  2,  0,["dancefloor","fr","rap"],             95, 0, 0,"nH5OkN3fFcs",2,"8B",["dance"]],
-  ["Raindance",          "Dave & Tems",                35,46,  7,  0,["ambiance","intl"],                  95, 4, 3,"4h3OVfBPMcA",3,"11A",["cocktail","diner"]],
-  ["I Just Might",       "Bruno Mars",                  1,52,  0,  0,["dancefloor","intl","pop"],          103,12, 0,"mrV8kK5t0V8",5,"7B",["dance","fin"]],
-  ["La recette",         "Jeck & Carla",                3,89,  9,  0,["dancefloor","mariage","fr","pop"], 100,10, 3,"9kBpbQDZdbQ",5,"7A",["dance","fin"]],
-  ["Gone Gone Gone",     "David Guetta & Teddy Swims",  4, 0,  0,  0,["dancefloor","intl","electro"],     128,25, 3,"8iT9DRe3cHE",4,"11B",["dance","fin"]],
-  ["Zoo",                "Shakira",                     5,43,  0,  0,["dancefloor","intl","pop"],          104,18,-3,"Kw3935PH01E",5,"5B",["dance"]],
-  ["Dream As One",       "Miley Cyrus",                 6, 0,  0,  0,["mariage","ambiance","intl","pop"],  82, 9, 0,"RLRrAVHPkPE",4,"3A",["cocktail","slow"]],
-  ["Unfaithful",         "Blasterjaxx",                 7, 0, 22,  0,["dancefloor","intl","electro"],     132, 6, 2,"z5DdAQUhHV4",2,"12B",["dance"]],
-  ["Quand Même",         "M. Pokora",                  16, 0,  0,  0,["mariage","fr","variete"],           84, 9,-4,"Hl2Z6P74URo",5,"1A",["cocktail","slow"]],
-  ["Ça Fait Mal",        "Vitaa",                      19, 0,  0,  0,["mariage","slow","fr","variete"],    72, 3,17,"3SoSpZTcxVo",5,"8A",["slow"]],
-  ["Soirée mondaine",    "Oria",                       27, 0, 10,  0,["dancefloor","mariage","fr","pop"], 108, 2,20,"xzBTvODwmr8",4,"3B",["dance","fin"]],
-  ["L'Horizon",          "Pierre Garnier",             23, 0,  0,  0,["mariage","fr","variete"],           76, 7,-1,"fj_MkTfWS3s",5,"5A",["cocktail","slow"]],
-  ["Tant Pis Pour Elle", "Charlotte Cardin",           25,74,  0,  0,["mariage","slow","fr"],               68, 8,-6,"4lSWkqXoVRo",4,"9B",["slow"]],
-  ["Les Épines du Cœur", "Vanessa Paradis",            28, 0,  0,  0,["mariage","slow","fr","variete"],    65, 4, 1,"Pf0KhFaQ2Gs",5,"6A",["slow"]],
-  ["Génération Impolie", "Franglish feat. Keblack",    20,24,  0,  0,["ambiance","fr","rap"],               90, 8,-4,"9bZkp7q19f0",2,"2B",["diner"]],
-  ["Karma",              "Bigflo & Oli",               45,83,  0,  0,["ambiance","dancefloor","fr","rap"],  96, 5,-10,"e7vLBRgFEOE",3,"7B",["dance"]],
-  ["La Camisa Negra",    "Elliott",                    21, 0,  0,  0,["dancefloor","mariage","fr"],        105, 8,-4,"gFRWTaGb6oY",3,"10A",["dance"]],
-  ["Elle Voulait",       "RnBoi",                       0, 3,  0,  0,["ambiance","fr","rap"],               84, 0, 0,"Mzgx9dp0Jdw",2,"4A",["diner"]],
-  ["Promenade",          "La Rvfleuze & Koba LaD",      0, 4,  0,  0,["rap","fr"],                         90, 0, 0,"Re1p02biXCU",1,"9A",["diner"]],
-  ["Crypto",             "La Rvfleuze & Hamza",         0, 6,  0,  0,["rap","fr"],                         88, 0, 0,"315T1Ki52sE",1,"5B",["diner"]],
-  ["B.M.S (By My Side)", "Rambo Goyard",                0, 7,  0,  0,["rap","fr"],                         93, 0, 0,"DPSGMTknY9s",1,"3A",["diner"]],
-  ["Miss Kitoko",        "Theodora",                    0,18,  0,  0,["pop","fr"],                          80, 0, 0,"rbaOn9SAAnk",3,"6B",["cocktail","diner"]],
-  ["One Track Mind",     "Naïka",                       0,72,  3,  0,["pop","fr"],                          88, 0, 0,"PhxPYdBRgYs",3,"8A",["cocktail"]],
-  ["Ensemble",           "Charlotte Cardin",             0, 0, 16,  0,["mariage","slow","fr"],               66, 0, 0,"2pCh-KLR9M0",4,"2A",["slow"]],
-  ["Jamaican (Bam Bam)", "HUGEL & SOLTO",                0, 0, 23,  0,["dancefloor","electro","fr"],        124, 0, 0,"i34pFNr42mc",2,"7A",["dance","fin"]],
-];
+// ── CHARGEMENT DYNAMIQUE data.json ──
+const DATA_URL = 'https://raw.githubusercontent.com/replay04/dj-board/main/data.json';
+let T = [];
+
+async function loadData() {
+  try {
+    // Afficher un loader
+    document.getElementById('tbody').innerHTML = '<tr><td colspan="13" style="text-align:center;padding:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)">⏳ Chargement des classements...</td></tr>';
+    document.getElementById('card-grid').innerHTML = '<div style="padding:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)">⏳ Chargement...</div>';
+
+    const r = await fetch(DATA_URL + '?t=' + Date.now()); // cache-bust
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+
+    // Convertir format JSON → format interne T[]
+    T = data.tracks.map(d => [
+      d.title, d.artist,
+      d.radio||0, d.singles||0, d.shazam||0, d.tiktok||0,
+      d.tags||[], d.bpm||0, d.weeks||0, d.trend||0,
+      d.youtubeId||'', d.mixte||3, d.camelot||'?', d.moments||['diner']
+    ]);
+
+    // Afficher la date de mise à jour
+    const upd = data.updated || '';
+    const week = data.week || '';
+    document.querySelector('.logo-sub').textContent =
+      `Philippe Amouyal · PADJ.FR · Semaine ${week} — Màj ${upd}`;
+
+    render();
+  } catch(e) {
+    console.error('Erreur chargement data.json:', e);
+    document.getElementById('tbody').innerHTML =
+      '<tr><td colspan="13" style="text-align:center;padding:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--red)">❌ Erreur de chargement. Vérifie ta connexion.</td></tr>';
+  }
+}
 
 // ── STATE ──
 let sortKey='score', activeFilter='all', viewMode='table';
@@ -1223,7 +1216,7 @@ function perfNav(dir){perfIdx=Math.max(0,Math.min(perfTracks.length-1,perfIdx+di
 function perfYT(){const d=perfTracks[perfIdx];if(d) pLoad(d[10],d[0],d[1],d)}
 
 // ── INIT ──
-render();
+loadData();
 </script>
 </body>
 </html>
