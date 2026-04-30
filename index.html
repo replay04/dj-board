@@ -1025,8 +1025,12 @@ async function pLoad(yt, title, artist, d) {
   // Search Deezer for track preview
   try {
     const q = encodeURIComponent(title + ' ' + artist.split('&')[0].split('feat')[0].trim());
-    const res = await fetch(`https://api.deezer.com/search?q=${q}&limit=5&output=json`);
-    const data = await res.json();
+    // Proxy CORS pour contourner la restriction Deezer
+    const dzUrl = `https://api.deezer.com/search?q=${q}&limit=5`;
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(dzUrl)}`;
+    const res = await fetch(proxyUrl);
+    const wrapper = await res.json();
+    const data = JSON.parse(wrapper.contents);
     const track = data.data && data.data.find(t => t.preview);
 
     document.getElementById('dz-loading').style.display = 'none';
