@@ -581,7 +581,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   #view-table th:nth-child(10), #view-table td:nth-child(10),
   #view-table th:nth-child(11), #view-table td:nth-child(11),
   #view-table th:nth-child(12), #view-table td:nth-child(12)
-  { display:none }
+  { display:none !important }
 
   /* Compact cells */
   td{padding:8px 6px;font-size:11px}
@@ -596,10 +596,9 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   /* Tabs */
   .ntab{padding:10px 12px;font-size:9px}
 
-  /* No horizontal scroll on mobile */
+  /* Table fits screen */
   table{min-width:unset;width:100%}
-  .table-wrap{overflow-x:hidden}
-  body{overflow-x:hidden}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 }
 
 </style>
@@ -610,7 +609,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.12</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.13</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
