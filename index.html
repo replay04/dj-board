@@ -510,7 +510,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.4</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.6</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
@@ -880,9 +880,9 @@ function renderTable(data) {
 
     const t3=document.createElement('td');
     let badges='';
-    if(weeks>=8) badges+='<span class="tbadge b-streak">★'+weeks+'</span>';
-    if(isMulti(d)) badges+='<span class="tbadge b-multi">×'+[radio,singles,shazam,tiktok].filter(x=>x>0).length+'</span>';
-    t3.innerHTML='<div class="tname">'+title+badges+(n?' <span style="font-size:9px;color:var(--gold)">'+n.st+'</span>':'')+'</div>';
+    if(weeks>=8) badges+='<span class="tbadge" style="border-color:var(--muted);color:var(--muted)">'+weeks+'sem</span>';
+    if(isMulti(d)) badges+='<span class="tbadge" style="border-color:var(--muted);color:var(--muted)">×'+[radio,singles,shazam,tiktok].filter(x=>x>0).length+'</span>';
+    t3.innerHTML='<div class="tname">'+title+badges+'</div>'+(n?'<div style="font-size:9px;color:var(--gold);margin-top:2px">'+n.st+'</div>':'');
 
     const t3b=document.createElement('td');
     t3b.innerHTML='<span style="font-size:12px;color:var(--text2)">'+artist+'</span>';
@@ -910,7 +910,7 @@ function renderTable(data) {
 
     const t10=document.createElement('td');
     var genre=d[15]||'';
-    t10.innerHTML=genre?'<span style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:var(--text2);white-space:nowrap">'+genre+'</span>':'<span style="color:var(--muted2)">—</span>';
+    t10.innerHTML=genre?'<span style="font-size:11px;color:var(--text2);white-space:nowrap">'+genre+'</span>':'<span style="color:var(--muted2)">—</span>';
 
     const t11=document.createElement('td');t11.style.textAlign='center';
     t11.innerHTML='<span style="color:var(--gold);font-size:11px">'+('★'.repeat(mixte)+'☆'.repeat(5-mixte))+'</span>';
