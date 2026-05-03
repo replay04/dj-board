@@ -509,7 +509,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">PADJ.fr</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
@@ -1280,6 +1280,8 @@ async function pLoad(yt, title, artist, d) {
   $('pb-t').textContent = title;
   $('pb-a').textContent = '⏳...';
   $('player-bar').classList.add('on');
+  // Always resync queue with current sort/filter before finding index
+  queue = sorted(filtered());
   qIdx = queue.findIndex(function(x) { return x[10] === yt; });
 
   // Update row buttons
