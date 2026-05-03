@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DJ Board — Philippe Amouyal</title>
+<title>PADJ.fr Board</title>
 <script src="https://www.youtube.com/iframe_api"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -579,7 +579,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
     <button class="fchip" onclick="setFilter('intl',this)">🌍 Intl</button>
     <button class="fchip" onclick="setFilter('mixte5',this)">⭐ Toutes générations</button>
     <button class="fchip" onclick="setFilter('tiktok',this)">🎵 TikTok</button>
-    <button class="fchip" onclick="setFilter('noted',this)">📝 Mes notes</button>
+    <button class="fchip" onclick="setFilter('noted',this)">⭐ Mes favoris</button>
     <div class="view-toggle">
       <button class="vtbtn on" id="vt-table" onclick="setView('table')">☰</button>
       <button class="vtbtn" id="vt-card" onclick="setView('card')">⊞</button>
@@ -729,7 +729,7 @@ function parseTracks(arr) {
 
 function setMeta(u,w) {
   const el=document.querySelector('.logo-sub');
-  if(el) el.textContent='Philippe Amouyal · PADJ.FR · Semaine '+w+' — Màj '+u;
+  if(el) el.textContent='Semaine '+w+' / '+u.substring(0,4);
 }
 
 async function loadData() {
