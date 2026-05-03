@@ -862,7 +862,10 @@ function renderTable(data) {
     const pb=document.createElement('button');
     pb.className='play-btn'+(playingYt===yt?' on':'');
     pb.textContent=playingYt===yt?'⏸':'▶';
-    pb.onclick=()=>pLoad(yt,title,artist,d);
+    pb.onclick=function(){
+      if(playingYt===yt) { pToggle(); return; }
+      pLoad(yt,title,artist,d);
+    };
     t1.appendChild(pb);
 
     const t2=document.createElement('td');t2.style.textAlign='center';
@@ -962,7 +965,7 @@ function renderCards(data) {
         charts.map(c=>'<div class="card-chart-item"><span class="cci-label" style="color:'+c.c+'">'+c.l+'</span><span class="cci-val" style="color:'+(c.v?c.c:'var(--muted2)')+'">'+( c.v?'#'+c.v:'—')+'</span></div>').join('')+
       '</div>'+
       '<div class="card-bottom">'+
-        '<button class="card-play '+(playingYt===yt?'on':'')+'" onclick="pLoad(\''+yt+'\',\''+title.replace(/'/g,"\\'")+'\',\''+artist.replace(/'/g,"\\'")+'\')">'+( playingYt===yt?'⏸ En cours':'▶ Écouter')+'</button>'+
+        '<button class="card-play '+(playingYt===yt?'on':'')+'" onclick="playingYt===\''+yt+'\' ? pToggle() : pLoad(\''+yt+'\',\''+title.replace(/'/g,"\\'")+'\',\''+artist.replace(/'/g,"\\'")+'\')">'+( playingYt===yt?'⏸ En cours':'▶ Écouter')+'</button>'+
         '<button class="card-cp" onclick="copyLink(\''+yt+'\',this)">🔗</button>'+
         '<button class="card-note '+(n?'has':'')+'" onclick="openModal(\''+k+'\',\''+title.replace(/'/g,"\\'")+'\')">📝</button>'+
       '</div>';
@@ -1255,22 +1258,31 @@ async function spSearch(title, artist) {
   if (spCache[k]) return spCache[k];
   if (!spToken) return null;
   try {
-    var q = encodeURIComponent(title + ' ' + artist.split('&')[0].split('feat')[0].trim());
-    var r = await fetch('https://api.spotify.com/v1/search?q=' + q + '&type=track&limit=3&market=FR', {
-      headers: {'Authorization': 'Bearer ' + spToken}
-    });
+    // Use precise track: artist: filters to avoid wrong results
+    var cleanArtist = artist.split('&')[0].split('feat')[0].split(',')[0].trim();
+    var q = 'track:' + encodeURIComponent(title) + ' artist:' + encodeURIComponent(cleanArtist);
+    var url = 'https://api.spotify.com/v1/search?q=' + q + '&type=track&limit=5&market=FR';
+    
+    var r = await fetch(url, { headers: {'Authorization': 'Bearer ' + spToken} });
+    
     if (r.status === 401) {
       var ok = await spRefreshToken();
       if (!ok) { spLogout(); return null; }
-      r = await fetch('https://api.spotify.com/v1/search?q=' + q + '&type=track&limit=3&market=FR', {
-        headers: {'Authorization': 'Bearer ' + spToken}
-      });
+      r = await fetch(url, { headers: {'Authorization': 'Bearer ' + spToken} });
     }
+    
     var data = await r.json();
-    var id = data.tracks && data.tracks.items && data.tracks.items.length > 0
-      ? data.tracks.items[0].uri : null;
-    if (id) spCache[k] = id;
-    return id;
+    if (!data.tracks || !data.tracks.items || data.tracks.items.length === 0) return null;
+    
+    // Verify the result matches - pick first where title matches
+    var titleLow = title.toLowerCase();
+    var match = data.tracks.items.find(function(t) {
+      return t.name.toLowerCase().includes(titleLow) || titleLow.includes(t.name.toLowerCase());
+    });
+    
+    var uri = match ? match.uri : data.tracks.items[0].uri;
+    if (uri) spCache[k] = uri;
+    return uri;
   } catch(e) { return null; }
 }
 
