@@ -516,21 +516,31 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   </div>
 </header>
 
-<!-- PLAYER BAR -->
+<!-- PLAYER BAR SPOTIFY -->
 <div id="player-bar">
-  <div style="min-width:0;max-width:150px;flex-shrink:0">
-    <div id="pb-t" style="font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">—</div>
-    <div id="pb-a" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:2px">—</div>
+  <div style="min-width:0;max-width:130px;flex-shrink:0">
+    <div id="pb-t" style="font-weight:600;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">—</div>
+    <div id="pb-a" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">—</div>
   </div>
-  <div style="display:flex;gap:6px;flex-shrink:0">
-    <button class="pb-c" onclick="pPrev()">◀</button>
-    <button class="pb-c" onclick="pNext()">▶▶</button>
+  <div style="display:flex;gap:5px;flex-shrink:0">
+    <button class="pb-c" onclick="pPrev()" title="Précédent">◀</button>
+    <button class="pb-c" onclick="pNext()" title="Suivant">▶▶</button>
   </div>
   <iframe id="sp-embed"
-    style="flex:1;min-width:200px;height:52px;border:none;border-radius:8px"
+    src=""
+    style="flex:1;min-width:180px;max-width:500px;height:52px;border:none;border-radius:8px"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     loading="lazy">
   </iframe>
+  <div id="sp-login-wrap" style="flex-shrink:0">
+    <button id="sp-login-btn" onclick="spLogin()"
+      style="background:#1DB954;border:none;color:white;padding:6px 12px;border-radius:100px;
+      font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:5px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      Connecter Spotify
+    </button>
+    <div id="sp-user" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9px;color:#1DB954;cursor:pointer" onclick="spLogout()" title="Déconnecter">✓ Spotify</div>
+  </div>
   <button class="pb-x" onclick="pStop()">✕</button>
 </div>
 
@@ -993,59 +1003,127 @@ function copyAll() {
 }
 
 // ══════════════════════════════════════════
-// SPOTIFY EMBED PLAYER
 // ══════════════════════════════════════════
-function pLoad(yt, title, artist, d) {
-  playingYt=yt;
-  $('pb-t').textContent=title;
-  $('pb-a').textContent=artist;
-  $('player-bar').classList.add('on');
-  qIdx=queue.findIndex(function(x){return x[10]===yt});
+// SPOTIFY OAUTH + SEARCH + EMBED PLAYER
+// ══════════════════════════════════════════
+var SP_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
+var SP_REDIRECT  = 'https://replay04.github.io/dj-board/callback';
+var spToken      = null;
+var spCache      = {};
 
-  // Spotify embed search
-  var query=encodeURIComponent(title+' '+artist);
-  $('sp-embed').src='https://open.spotify.com/embed/search/'+query+'?utm_source=generator&autoplay=1';
-
-  setTimeout(function(){
-    document.querySelectorAll('.play-btn,.card-play').forEach(function(b){
-      b.classList.remove('on');
-      if(b.classList.contains('play-btn')) b.textContent='▶';
-      else b.textContent='▶ Écouter';
-    });
-    var rows=document.querySelectorAll('#tbody tr');
-    if(qIdx>=0&&rows[qIdx]){
-      var pb=rows[qIdx].querySelector('.play-btn');
-      if(pb){pb.textContent='⏸';pb.classList.add('on');playingBtn=pb;}
-    }
-  },100);
+function spLogin() {
+  localStorage.setItem('sp_back', window.location.href);
+  var url = 'https://accounts.spotify.com/authorize'
+    + '?client_id=' + SP_CLIENT_ID
+    + '&response_type=token'
+    + '&redirect_uri=' + encodeURIComponent(SP_REDIRECT)
+    + '&scope=user-read-private'
+    + '&show_dialog=false';
+  window.location.href = url;
 }
 
-function pToggle() { /* not needed for Spotify embed */ }
+function spLogout() {
+  spToken = null;
+  localStorage.removeItem('sp_token');
+  localStorage.removeItem('sp_token_exp');
+  $('sp-login-btn').style.display = 'flex';
+  $('sp-user').style.display = 'none';
+}
+
+function spLoadToken() {
+  var token = localStorage.getItem('sp_token');
+  var exp   = parseInt(localStorage.getItem('sp_token_exp') || '0');
+  if (token && Date.now() < exp - 60000) {
+    spToken = token;
+    $('sp-login-btn').style.display = 'none';
+    $('sp-user').style.display = 'block';
+    return true;
+  }
+  return false;
+}
+
+async function spSearch(title, artist) {
+  var k = title + '|' + artist;
+  if (spCache[k]) return spCache[k];
+  if (!spToken) return null;
+  try {
+    var q = encodeURIComponent(title + ' ' + artist.split('&')[0].split('feat')[0].trim());
+    var r = await fetch('https://api.spotify.com/v1/search?q=' + q + '&type=track&limit=3&market=FR', {
+      headers: {'Authorization': 'Bearer ' + spToken}
+    });
+    if (r.status === 401) { spLogout(); return null; }
+    var data = await r.json();
+    var id = data.tracks && data.tracks.items && data.tracks.items.length > 0 ? data.tracks.items[0].id : null;
+    if (id) spCache[k] = id;
+    return id;
+  } catch(e) { return null; }
+}
+
+async function pLoad(yt, title, artist, d) {
+  playingYt = yt;
+  $('pb-t').textContent = title;
+  $('pb-a').textContent = artist;
+  $('player-bar').classList.add('on');
+  qIdx = queue.findIndex(function(x) { return x[10] === yt; });
+
+  // Update buttons
+  document.querySelectorAll('.play-btn,.card-play').forEach(function(b) {
+    b.classList.remove('on');
+    b.textContent = b.classList.contains('play-btn') ? '▶' : '▶ Écouter';
+  });
+  var rows = document.querySelectorAll('#tbody tr');
+  if (qIdx >= 0 && rows[qIdx]) {
+    var pb = rows[qIdx].querySelector('.play-btn');
+    if (pb) { pb.textContent = '⏸'; pb.classList.add('on'); playingBtn = pb; }
+  }
+
+  if (spToken) {
+    $('pb-a').textContent = '⏳...';
+    var spId = await spSearch(title, artist);
+    if (spId) {
+      $('pb-a').textContent = artist;
+      $('sp-embed').src = 'https://open.spotify.com/embed/track/' + spId
+        + '?utm_source=generator&autoplay=1&theme=0';
+      return;
+    }
+    $('pb-a').textContent = artist + ' (non trouvé)';
+  } else {
+    $('pb-a').textContent = artist + ' — connecte Spotify ↑';
+  }
+  // YouTube fallback
+  $('sp-embed').src = 'https://www.youtube.com/embed/' + yt + '?autoplay=1&rel=0&modestbranding=1';
+}
+
+function pToggle() {}
+
 function pStop() {
-  $('sp-embed').src='';
+  $('sp-embed').src = '';
   $('player-bar').classList.remove('on');
-  playingYt=null;
-  if(playingBtn){playingBtn.textContent='▶';playingBtn.classList.remove('on');playingBtn=null;}
+  playingYt = null;
+  if (playingBtn) { playingBtn.textContent = '▶'; playingBtn.classList.remove('on'); playingBtn = null; }
   render();
 }
 
 function pNext() {
-  if(playAllActive&&qIdx>=queue.length-1){
-    playAllActive=false;
-    var btn=$('btn-play-all');
-    if(btn){btn.textContent='▶ Tout écouter';btn.classList.remove('playing');}
-    pStop();return;
+  if (playAllActive && qIdx >= queue.length - 1) {
+    playAllActive = false;
+    var btn = $('btn-play-all');
+    if (btn) { btn.textContent = '▶ Tout écouter'; btn.classList.remove('playing'); }
+    pStop(); return;
   }
-  qIdx=Math.min(queue.length-1,qIdx+1);
-  var d=queue[qIdx];
-  pLoad(d[10],d[0],d[1],d);
+  qIdx = Math.min(queue.length - 1, qIdx + 1);
+  var nd = queue[qIdx];
+  pLoad(nd[10], nd[0], nd[1], nd);
 }
 
 function pPrev() {
-  qIdx=Math.max(0,qIdx-1);
-  var d=queue[qIdx];
-  pLoad(d[10],d[0],d[1],d);
+  qIdx = Math.max(0, qIdx - 1);
+  var pd = queue[qIdx];
+  pLoad(pd[10], pd[0], pd[1], pd);
 }
+
+// Init on load
+spLoadToken();
 
 // ══════════════════════════════════════════
 // PLAY ALL
