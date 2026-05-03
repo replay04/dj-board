@@ -592,7 +592,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.16</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.17</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
@@ -1469,29 +1469,35 @@ async function pLoad(yt, title, artist, d) {
     return;
   }
 
-  if (!spReady) {
-    $('pb-a').textContent = '⏳ Initialisation Spotify...';
-    // Wait for player to be ready
-    var waited = 0;
-    while (!spReady && waited < 10000) {
-      await new Promise(function(r){setTimeout(r, 500)});
-      waited += 500;
-    }
-    if (!spReady) { $('pb-a').textContent = 'Spotify non prêt. Recharge la page.'; return; }
-  }
-
   var uri = await spSearch(title, artist);
   if (!uri) { $('pb-a').textContent = artist + ' (non trouvé sur Spotify)'; return; }
 
   try {
-    await fetch('https://api.spotify.com/v1/me/player/play?device_id=' + spDeviceId, {
-      method: 'PUT',
-      headers: {'Authorization': 'Bearer ' + spToken, 'Content-Type': 'application/json'},
-      body: JSON.stringify({uris: [uri]})
-    });
+    // Try SDK first (desktop), fallback to Connect API (mobile/CarPlay)
+    if (spReady && spDeviceId) {
+      // Desktop: play via SDK
+      await fetch('https://api.spotify.com/v1/me/player/play?device_id=' + spDeviceId, {
+        method: 'PUT',
+        headers: {'Authorization': 'Bearer ' + spToken, 'Content-Type': 'application/json'},
+        body: JSON.stringify({uris: [uri]})
+      });
+    } else {
+      // Mobile/CarPlay: use Connect API - plays on active Spotify app
+      var r = await fetch('https://api.spotify.com/v1/me/player/play', {
+        method: 'PUT',
+        headers: {'Authorization': 'Bearer ' + spToken, 'Content-Type': 'application/json'},
+        body: JSON.stringify({uris: [uri]})
+      });
+      if (r.status === 404) {
+        // No active device - open Spotify app via deep link
+        $('pb-a').textContent = 'Ouvre Spotify puis réessaie';
+        window.location.href = 'spotify:track:' + uri.replace('spotify:track:','');
+        return;
+      }
+    }
     $('pb-a').textContent = artist;
   } catch(e) {
-    $('pb-a').textContent = 'Erreur lecture: ' + e.message;
+    $('pb-a').textContent = 'Erreur: ' + e.message;
   }
 }
 
