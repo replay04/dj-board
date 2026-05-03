@@ -374,16 +374,18 @@ def main():
         for key, rank in sorted(source_dict.items(), key=lambda x: x[1])[:20]:
             t_title, t_artist = key.split("|", 1)
             if normalize(t_title) not in known and rank <= 15:
-                log(f"  Nouveau titre détecté ({source_name} #{rank}): {t_title} — {t_artist}")
-                new_tracks_added += 1
-                known.add(normalize(t_title))
-                # Ajouter avec données minimales
                 sp2 = find_rank(t_title, t_artist, spotify)
                 am2 = find_rank(t_title, t_artist, apple)
                 dz2 = find_rank(t_title, t_artist, deezer)
                 r2  = find_rank(t_title, t_artist, radio)
                 s2  = find_rank(t_title, t_artist, singles)
                 sc2 = compute_score(r2, s2, 0, 0, sp2, am2, dz2)
+                # Ne pas ajouter si score trop faible (pas assez de données)
+                if sc2 < 15:
+                    continue
+                log(f"  Nouveau titre détecté ({source_name} #{rank}, score:{sc2}): {t_title} — {t_artist}")
+                new_tracks_added += 1
+                known.add(normalize(t_title))
                 tracks.append({
                     "title": t_title.title(),
                     "artist": t_artist.title(),
@@ -400,7 +402,7 @@ def main():
                     "new": True
                 })
     
-    log(f"  {new_tracks_added} nouveaux titres détectés")
+    log(f"  {new_tracks_added} nouveaux titres détectés (avec données uniquement)")
     
     # Trier par score
     tracks.sort(key=lambda x: x.get("score", 0), reverse=True)
