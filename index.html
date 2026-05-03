@@ -601,6 +601,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
         <th class="tc" id="th-shazam" onclick="setSort('shazam',this)" style="color:var(--blue)">Shazam</th>
         <th class="tc" id="th-tiktok" onclick="setSort('tiktok',this)" style="color:var(--tiktok)">TikTok</th>
         <th onclick="setSort('bpm',this)" style="cursor:pointer;color:var(--muted2)" title="Trier par BPM">BPM</th>
+        <th onclick="setSort('year',this)" style="cursor:pointer;color:var(--muted2)" title="Trier par année">Année</th>
         <th>Moment</th>
         <th class="tc" onclick="setSort('public',this)" style="cursor:pointer" title="Trier par public">Public</th>
         <th onclick="setSort('note',this)" style="cursor:pointer" title="Trier par favoris">Favoris</th>
@@ -818,6 +819,7 @@ function sorted(arr) {
     if(sortKey==='tiktok')  return (a[5]||999)-(b[5]||999);
     if(sortKey==='public')  return (b[11]||0)-(a[11]||0);
     if(sortKey==='bpm') return (a[7]||0)-(b[7]||0);
+    if(sortKey==='year') return (b[14]||0)-(a[14]||0);
     if(sortKey==='artist') return (a[1]||'').localeCompare(b[1]||'');
     if(sortKey==='note') {
       var na = notes[trackKey(a)] ? 1 : 0;
@@ -943,7 +945,7 @@ function renderTable(data) {
     hb.title=isLiked?'Retirer des favoris Spotify':'Ajouter aux favoris Spotify';
     hb.onclick=function(){spToggleLike(yt,title,artist,hb)};
     t13.appendChild(hb);
-    [t0,t1,t2,t3,t3b,t4,t5,t6,t7,t8,t9,t10,t11,t12].forEach(td=>tr.appendChild(td));
+    [t0,t1,t2,t3,t3b,t4,t5,t6,t7,t8,t9,t9b,t10,t11,t12].forEach(td=>tr.appendChild(td));
     tbody.appendChild(tr);
   });
 }
