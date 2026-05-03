@@ -573,23 +573,14 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   .fchip{padding:3px 8px;font-size:8px}
   .fl{display:none}
 
-  /* Table - hide non-essential columns on mobile */
-  /* Keep: #, ▶, Titre, Artiste, Score, Genre, Énergie, Favoris */
-  /* Hide: 🔗, Radio, Singles, Shazam, TikTok, BPM, Année */
-  #view-table th:nth-child(3),  /* 🔗 */
-  #view-table td:nth-child(3),
-  #view-table th:nth-child(7),  /* Radio */
-  #view-table td:nth-child(7),
-  #view-table th:nth-child(8),  /* Singles */
-  #view-table td:nth-child(8),
-  #view-table th:nth-child(9),  /* Shazam */
-  #view-table td:nth-child(9),
-  #view-table th:nth-child(10), /* TikTok */
-  #view-table td:nth-child(10),
-  #view-table th:nth-child(11), /* BPM */
-  #view-table td:nth-child(11),
-  #view-table th:nth-child(12), /* Année */
-  #view-table td:nth-child(12)
+  /* Table mobile - Hide: 🔗(3), Radio(7), Singles(8), Shazam(9), TikTok(10), BPM(11), Année(12) */
+  #view-table th:nth-child(3), #view-table td:nth-child(3),
+  #view-table th:nth-child(7), #view-table td:nth-child(7),
+  #view-table th:nth-child(8), #view-table td:nth-child(8),
+  #view-table th:nth-child(9), #view-table td:nth-child(9),
+  #view-table th:nth-child(10), #view-table td:nth-child(10),
+  #view-table th:nth-child(11), #view-table td:nth-child(11),
+  #view-table th:nth-child(12), #view-table td:nth-child(12)
   { display:none }
 
   /* Compact cells */
@@ -605,8 +596,10 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   /* Tabs */
   .ntab{padding:10px 12px;font-size:9px}
 
-  /* Table min-width override for mobile */
+  /* No horizontal scroll on mobile */
   table{min-width:unset;width:100%}
+  .table-wrap{overflow-x:hidden}
+  body{overflow-x:hidden}
 }
 
 </style>
@@ -617,7 +610,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.10</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.12</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
