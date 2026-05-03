@@ -1214,11 +1214,15 @@ function updatePB(state) {
   if (!state) return;
   var track = state.track_window && state.track_window.current_track;
   if (!track) return;
+  var artistName = track.artists.map(function(a){return a.name}).join(', ');
   $('pb-t').textContent = track.name;
-  $('pb-a').textContent = track.artists.map(function(a){return a.name}).join(', ');
+  $('pb-a').textContent = artistName;
   var art = track.album && track.album.images && track.album.images[track.album.images.length-1];
   if (art) $('pb-art').src = art.url;
   $('pb-pp').textContent = state.paused ? '▶' : '⏸';
+  // Update MediaSession for CarPlay/keyboard
+  navigator.mediaSession.playbackState = state.paused ? 'paused' : 'playing';
+  updateMediaSession(track.name, artistName, art ? art.url : '', state.duration);
   var dur = state.duration || 1;
   var pos = state.position || 0;
   $('pb-dur').textContent = fmtT(dur/1000);
@@ -1316,7 +1320,15 @@ async function pLoad(yt, title, artist, d) {
 }
 
 function pToggle() {
-  if (spPlayer) spPlayer.togglePlay();
+  if (!spPlayer) return;
+  spPlayer.getCurrentState().then(function(state) {
+    if (!state) return;
+    if (state.paused) {
+      spPlayer.resume();
+    } else {
+      spPlayer.pause();
+    }
+  });
 }
 
 function pStop() {
@@ -1613,6 +1625,44 @@ function perfNav(dir){perfIdx=Math.max(0,Math.min(perfTracks.length-1,perfIdx+di
 function perfYT(){var d=perfTracks[perfIdx];if(d) pLoad(d[10],d[0],d[1],d)}
 
 loadData();
+
+// ── MEDIA KEYS (clavier, CarPlay, télécommande) ──
+navigator.mediaSession.setActionHandler('play', function() {
+  if (spPlayer) spPlayer.resume();
+});
+navigator.mediaSession.setActionHandler('pause', function() {
+  if (spPlayer) spPlayer.pause();
+});
+navigator.mediaSession.setActionHandler('previoustrack', function() {
+  pPrev();
+});
+navigator.mediaSession.setActionHandler('nexttrack', function() {
+  pNext();
+});
+navigator.mediaSession.setActionHandler('seekto', function(details) {
+  if (spPlayer && details.seekTime) {
+    spPlayer.seek(details.seekTime * 1000);
+  }
+});
+
+function updateMediaSession(title, artist, artUrl, duration) {
+  if (!navigator.mediaSession) return;
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: title,
+    artist: artist,
+    artwork: artUrl ? [{src: artUrl, sizes: '96x96', type: 'image/jpeg'}] : []
+  });
+  if (duration) {
+    try {
+      navigator.mediaSession.setPositionState({
+        duration: duration / 1000,
+        playbackRate: 1,
+        position: 0
+      });
+    } catch(e) {}
+  }
+}
+
 </script>
 </body>
 </html>
