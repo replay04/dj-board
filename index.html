@@ -510,7 +510,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.3</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.4</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
@@ -1256,6 +1256,10 @@ function updatePB(state) {
   var art = track.album && track.album.images && track.album.images[track.album.images.length-1];
   if (art) $('pb-art').src = art.url;
   $('pb-pp').textContent = state.paused ? '▶' : '⏸';
+  // Highlight now-playing row
+  document.querySelectorAll('#tbody tr').forEach(function(r){ r.classList.remove('now-playing'); });
+  var rows = document.querySelectorAll('#tbody tr');
+  if(qIdx>=0 && rows[qIdx]) rows[qIdx].classList.add('now-playing');
   // Update MediaSession for CarPlay/keyboard
   navigator.mediaSession.playbackState = state.paused ? 'paused' : 'playing';
   updateMediaSession(track.name, artistName, art ? art.url : '', state.duration);
