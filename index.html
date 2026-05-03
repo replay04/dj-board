@@ -901,12 +901,11 @@ function renderTable(data) {
     const t8=document.createElement('td');t8.style.textAlign='center';
     t8.innerHTML=tiktok?'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--tiktok)">#'+tiktok+'</span>':'<span style="color:var(--muted2)">—</span>';
 
-    const t9=document.createElement('td');
-    var bpmColor=bpm>=128?'var(--red)':bpm>=110?'var(--gold)':bpm>=90?'var(--teal)':'var(--muted)';
-    t9.innerHTML='<span style="color:'+bpmColor+';font-family:monospace;font-size:13px;font-weight:600">'+( bpm||'—')+'</span>';
+    const t9=document.createElement('td');t9.style.textAlign='center';
+    t9.innerHTML=bpm?'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--text2)">'+bpm+'</span>':'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted2)">—</span>';
 
-    const t9b=document.createElement('td');
-    t9b.innerHTML='<span style="color:var(--muted);font-family:monospace;font-size:11px">'+(d[14]||'—')+'</span>';
+    const t9b=document.createElement('td');t9b.style.textAlign='center';
+    t9b.innerHTML=d[14]?'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--text2)">'+d[14]+'</span>':'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted2)">—</span>';
 
     const t10=document.createElement('td');
     t10.innerHTML=moments.slice(0,2).map(m=>'<span class="mo '+MO_CLS[m]+'">'+MO_LBL[m]+'</span>').join('');
