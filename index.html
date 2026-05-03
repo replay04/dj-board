@@ -508,8 +508,8 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <!-- HEADER -->
 <header>
   <div>
-    <div class="logo">DJ <em>BOARD</em></div>
-    <div class="logo-sub">Philippe Amouyal · PADJ.FR · Avril 2026</div>
+    <div class="logo">PADJ.fr <em>BOARD</em></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Philippe Amouyal</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
@@ -593,13 +593,14 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
         <th class="tc" style="width:40px">#</th>
         <th class="tc" style="width:36px">▶</th>
         <th class="tc" style="width:32px">🔗</th>
-        <th>Titre / Artiste</th>
+        <th>Titre</th>
+        <th style="color:var(--muted2)">Artiste</th>
         <th class="tc sa" id="th-score" onclick="setSort('score',this)">Score ▴</th>
         <th class="tc" id="th-radio" onclick="setSort('radio',this)" style="color:var(--gold)">Radio</th>
         <th class="tc" id="th-singles" onclick="setSort('singles',this)" style="color:var(--red)">Singles</th>
         <th class="tc" id="th-shazam" onclick="setSort('shazam',this)" style="color:var(--blue)">Shazam</th>
         <th class="tc" id="th-tiktok" onclick="setSort('tiktok',this)" style="color:var(--tiktok)">TikTok</th>
-        <th onclick="setSort('camelot',this)" style="cursor:pointer" title="Trier par tonalité">Ton.</th>
+        <th onclick="setSort('year',this)" style="cursor:pointer;color:var(--muted2)" title="Trier par année de sortie">Année</th>
         <th>Moment</th>
         <th class="tc" onclick="setSort('public',this)" style="cursor:pointer" title="Trier par public">Public</th>
         <th onclick="setSort('note',this)" style="cursor:pointer" title="Trier par favoris">Favoris</th>
@@ -815,7 +816,7 @@ function sorted(arr) {
     if(sortKey==='shazam')  return (a[4]||999)-(b[4]||999);
     if(sortKey==='tiktok')  return (a[5]||999)-(b[5]||999);
     if(sortKey==='public')  return (b[11]||0)-(a[11]||0);
-    if(sortKey==='camelot') return (a[12]||'zzz').localeCompare(b[12]||'zzz');
+    if(sortKey==='year') return (a[7]||0)-(b[7]||0); // BPM sort as proxy for now
     if(sortKey==='note') {
       var na = notes[trackKey(a)] ? 1 : 0;
       var nb2 = notes[trackKey(b)] ? 1 : 0;
@@ -873,7 +874,10 @@ function renderTable(data) {
     let badges='';
     if(weeks>=8) badges+='<span class="tbadge b-streak">★'+weeks+'</span>';
     if(isMulti(d)) badges+='<span class="tbadge b-multi">×'+[radio,singles,shazam,tiktok].filter(x=>x>0).length+'</span>';
-    t3.innerHTML='<div class="tname">'+title+badges+'</div><div class="tartist">'+artist+'</div>'+(n?'<div class="note-txt">'+n.st+(n.tx?' — '+n.tx:'')+'</div>':'');
+    t3.innerHTML='<div class="tname">'+title+badges+'</div>'+(n?'<div class="note-txt">'+n.st+(n.tx?' — '+n.tx:'')+'</div>':'');
+
+    const t3b=document.createElement('td');
+    t3b.innerHTML='<div class="tartist" style="font-size:11px">'+artist+'</div>';
 
     const t4=document.createElement('td');
     t4.innerHTML='<div class="sc-wrap"><div class="sc-bar"><div class="sc-fill f'+g+'" style="width:'+pct+'%"></div></div><span class="sc-n s'+g+'">'+s+'</span><span class="grade g'+g+'">'+g+'</span></div>';
