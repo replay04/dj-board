@@ -506,30 +506,14 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 
 /* ── MOBILE RESPONSIVE ── */
 @media(max-width:768px){
-  /* Header compact */
-  header{padding:12px 16px 10px;grid-template-columns:1fr}
-  .header-right{gap:6px}
-  .source-tag{font-size:8px;padding:2px 7px}
-  #btn-play-all,#btn-copy-all{padding:5px 10px;font-size:10px}
-
-  /* Hide desktop table */
-  .table-wrap{display:none!important}
-
-  /* Show mobile list automatically */
-  #mobile-list{display:block}
-
-  /* Filter bar compact */
+  header{padding:12px 16px 10px}
+  .logo{font-size:22px}
+  .source-tag{display:none}
+  #btn-copy-all{display:none}
   .filter-bar{padding:8px 12px;gap:4px}
-  .fchip{padding:3px 8px;font-size:8px}
-  .fl{display:none}
-  .view-toggle{display:none}
-
-  /* Tabs compact */
-  .ntab{padding:10px 14px;font-size:9px}
-
-  /* Player bar mobile */
-  #player-bar{padding:8px 12px;flex-wrap:wrap}
-  #player-bar .pb-seek-wrap{width:100%;order:10}
+  .ntab{padding:10px 12px;font-size:9px}
+  #player-bar{padding:8px 12px;flex-wrap:wrap;gap:8px}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 }
 
 /* Mobile list */
@@ -608,7 +592,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.15</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.16</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
