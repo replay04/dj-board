@@ -1276,12 +1276,12 @@ async function spSearch(title, artist) {
 
 // ── PLAYER CONTROLS ──
 async function pLoad(yt, title, artist, d) {
+  // Resync queue with current display order
+  queue = sorted(filtered());
   playingYt = yt;
   $('pb-t').textContent = title;
   $('pb-a').textContent = '⏳...';
   $('player-bar').classList.add('on');
-  // Always resync queue with current sort/filter before finding index
-  queue = sorted(filtered());
   qIdx = queue.findIndex(function(x) { return x[10] === yt; });
 
   // Update row buttons
