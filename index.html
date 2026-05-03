@@ -509,7 +509,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Philippe Amouyal</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">PADJ.fr</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
@@ -594,7 +594,7 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
         <th class="tc" style="width:36px">▶</th>
         <th class="tc" style="width:32px">🔗</th>
         <th>Titre</th>
-        <th style="color:var(--muted2)">Artiste</th>
+        <th onclick="setSort('artist',this)" style="cursor:pointer;color:var(--muted2)" title="Trier par artiste">Artiste</th>
         <th class="tc sa" id="th-score" onclick="setSort('score',this)">Score ▴</th>
         <th class="tc" id="th-radio" onclick="setSort('radio',this)" style="color:var(--gold)">Radio</th>
         <th class="tc" id="th-singles" onclick="setSort('singles',this)" style="color:var(--red)">Singles</th>
@@ -816,7 +816,8 @@ function sorted(arr) {
     if(sortKey==='shazam')  return (a[4]||999)-(b[4]||999);
     if(sortKey==='tiktok')  return (a[5]||999)-(b[5]||999);
     if(sortKey==='public')  return (b[11]||0)-(a[11]||0);
-    if(sortKey==='year') return (a[7]||0)-(b[7]||0); // BPM sort as proxy for now
+    if(sortKey==='year') return (a[7]||0)-(b[7]||0);
+    if(sortKey==='artist') return (a[1]||'').localeCompare(b[1]||'');
     if(sortKey==='note') {
       var na = notes[trackKey(a)] ? 1 : 0;
       var nb2 = notes[trackKey(b)] ? 1 : 0;
@@ -906,7 +907,7 @@ function renderTable(data) {
     const t12=document.createElement('td');
     const nb=document.createElement('button');
     nb.className='note-btn'+(n?' has-note':'');
-    nb.textContent=n?n.st:'⭐ Favori';
+    nb.textContent=n?n.st:'♥';
     nb.onclick=()=>openModal(k,title);
     t12.appendChild(nb);
 
@@ -918,7 +919,7 @@ function renderTable(data) {
     hb.title=isLiked?'Retirer des favoris Spotify':'Ajouter aux favoris Spotify';
     hb.onclick=function(){spToggleLike(yt,title,artist,hb)};
     t13.appendChild(hb);
-    [t0,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t13,t12].forEach(td=>tr.appendChild(td));
+    [t0,t1,t2,t3,t3b,t4,t5,t6,t7,t8,t9,t10,t11,t12].forEach(td=>tr.appendChild(td));
     tbody.appendChild(tr);
   });
 }
