@@ -513,24 +513,36 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
   </div>
 </header>
 
-<!-- PLAYER BAR YOUTUBE -->
+<!-- SPOTIFY PLAYER BAR -->
 <div id="player-bar">
-  <div class="pb-text" style="min-width:0;max-width:140px;flex-shrink:0">
+  <img id="pb-art" src="" alt="" style="width:44px;height:44px;border-radius:4px;object-fit:cover;background:var(--surf2);flex-shrink:0">
+  <div class="pb-text" style="min-width:0;max-width:160px;flex-shrink:0">
     <div class="pb-t" id="pb-t" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;font-size:12px">—</div>
     <div class="pb-a" id="pb-a" style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">—</div>
   </div>
   <div class="pb-ctrl">
     <button class="pb-c" onclick="pPrev()" title="Précédent">◀</button>
+    <button class="pb-c" id="pb-pp" onclick="pToggle()" title="Play/Pause">⏸</button>
     <button class="pb-c" onclick="pNext()" title="Suivant">▶▶</button>
   </div>
-  <iframe id="yt-embed"
-    src=""
-    width="280"
-    height="52"
-    style="border:none;border-radius:6px;flex-shrink:0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
+  <div style="flex:1;display:flex;flex-direction:column;gap:3px;min-width:120px">
+    <input type="range" id="pb-seek" min="0" max="100" value="0" step="0.1"
+      style="width:100%;height:3px;accent-color:var(--accent);cursor:pointer"
+      oninput="pSeek(this.value)">
+    <div style="display:flex;justify-content:space-between">
+      <span id="pb-el" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">0:00</span>
+      <span id="pb-dur" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">0:00</span>
+    </div>
+  </div>
+  <input type="range" id="pb-vol" min="0" max="100" value="80"
+    style="width:60px;height:3px;accent-color:var(--teal);cursor:pointer;flex-shrink:0"
+    oninput="pVol(this.value)" title="Volume">
+  <div id="sp-login-btn" onclick="spotifyLogin()"
+    style="background:#1DB954;border:none;color:white;padding:6px 12px;border-radius:100px;
+    font-size:10px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:5px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+    Connexion Spotify
+  </div>
   <button class="pb-x" onclick="pStop()">✕</button>
 </div>
 
@@ -993,20 +1005,153 @@ function copyAll(){
 }
 
 // ── YOUTUBE PLAYER ──
+// ── SPOTIFY WEB PLAYBACK SDK ──
+const SP_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
+const SP_REDIRECT   = 'https://replay04.github.io/dj-board/callback';
+const SP_SCOPES     = 'streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state';
+
+let spToken     = null;
+let spPlayer    = null;
+let spReady     = false;
+let spDeviceId  = null;
+let spState     = null;
+let seekTimer   = null;
 let playingYtId = '';
+let spTrackUri  = null;
 
-function pLoad(yt, title, artist, d) {
-  playingYt = yt;
-  playingYtId = yt;
+// ── AUTH ──
+function spotifyLogin() {
+  const state = Math.random().toString(36).substring(7);
+  localStorage.setItem('sp_state', state);
+  const params = new URLSearchParams({
+    client_id:     SP_CLIENT_ID,
+    response_type: 'token',
+    redirect_uri:  SP_REDIRECT,
+    scope:         SP_SCOPES,
+    state:         state,
+    show_dialog:   'false'
+  });
+  window.location.href = 'https://accounts.spotify.com/authorize?' + params;
+}
 
-  // Update info
-  document.getElementById('pb-t').textContent = title;
-  document.getElementById('pb-a').textContent = artist || '';
+function handleCallback() {
+  const hash = window.location.hash.substring(1);
+  if(!hash) return;
+  const params = new URLSearchParams(hash);
+  const token = params.get('access_token');
+  const expiresIn = parseInt(params.get('expires_in') || '3600');
+  if(token) {
+    spToken = token;
+    localStorage.setItem('sp_token', token);
+    localStorage.setItem('sp_token_exp', Date.now() + expiresIn * 1000);
+    window.history.replaceState({},'',window.location.pathname);
+    initSpotify();
+  }
+}
+
+function loadToken() {
+  const token = localStorage.getItem('sp_token');
+  const exp   = parseInt(localStorage.getItem('sp_token_exp') || '0');
+  if(token && Date.now() < exp) { spToken = token; return true; }
+  return false;
+}
+
+// ── INIT SDK ──
+function initSpotify() {
+  if(!spToken) return;
+  document.getElementById('sp-login-btn').style.display = 'none';
+
+  window.onSpotifyWebPlaybackSDKReady = () => {
+    spPlayer = new Spotify.Player({
+      name: 'DJ Board — PADJ.fr',
+      getOAuthToken: cb => cb(spToken),
+      volume: 0.8
+    });
+
+    spPlayer.addListener('ready', ({ device_id }) => {
+      spDeviceId = device_id;
+      spReady    = true;
+      console.log('Spotify ready — device:', device_id);
+    });
+
+    spPlayer.addListener('not_ready', ({ device_id }) => {
+      spReady = false;
+      console.log('Spotify not ready');
+    });
+
+    spPlayer.addListener('player_state_changed', state => {
+      if(!state) return;
+      spState = state;
+      updatePlayerUI(state);
+    });
+
+    spPlayer.addListener('authentication_error', () => {
+      spToken = null;
+      localStorage.removeItem('sp_token');
+      document.getElementById('sp-login-btn').style.display = 'flex';
+      alert('Session Spotify expirée — reconnecte-toi.');
+    });
+
+    spPlayer.connect();
+  };
+
+  // Load SDK script
+  if(!document.getElementById('sp-sdk')) {
+    const s = document.createElement('script');
+    s.id  = 'sp-sdk';
+    s.src = 'https://sdk.scdn.co/spotify-player.js';
+    document.head.appendChild(s);
+  }
+}
+
+function updatePlayerUI(state) {
+  if(!state) return;
+  const track = state.track_window?.current_track;
+  if(!track) return;
+
+  document.getElementById('pb-t').textContent   = track.name;
+  document.getElementById('pb-a').textContent   = track.artists.map(a=>a.name).join(', ');
+  document.getElementById('pb-art').src         = track.album?.images?.[2]?.url || '';
+  document.getElementById('pb-pp').textContent  = state.paused ? '▶' : '⏸';
   document.getElementById('player-bar').classList.add('on');
 
-  // Load YouTube iframe with autoplay
-  const embed = document.getElementById('yt-embed');
-  embed.src = `https://www.youtube.com/embed/${yt}?autoplay=1&rel=0&modestbranding=1`;
+  const dur = state.duration || 0;
+  const pos = state.position  || 0;
+  document.getElementById('pb-dur').textContent = fmtT(dur/1000);
+  document.getElementById('pb-el').textContent  = fmtT(pos/1000);
+  if(dur) document.getElementById('pb-seek').value = (pos/dur)*100;
+
+  // Progress timer
+  clearInterval(seekTimer);
+  if(!state.paused) {
+    seekTimer = setInterval(async () => {
+      if(!spPlayer) return;
+      const s = await spPlayer.getCurrentState();
+      if(!s || s.paused) { clearInterval(seekTimer); return; }
+      const p = s.position, d = s.duration;
+      document.getElementById('pb-el').textContent  = fmtT(p/1000);
+      document.getElementById('pb-seek').value      = d ? (p/d)*100 : 0;
+      if(p >= d - 500) pNext(); // auto-next
+    }, 1000);
+  }
+}
+
+// ── SEARCH & PLAY ──
+async function searchSpotify(title, artist) {
+  const q = encodeURIComponent(title + ' ' + artist.split('&')[0].split('feat')[0].trim());
+  const r = await fetch(`https://api.spotify.com/v1/search?q=${q}&type=track&limit=5&market=FR`, {
+    headers: { 'Authorization': 'Bearer ' + spToken }
+  });
+  const data = await r.json();
+  return data.tracks?.items?.[0]?.uri || null;
+}
+
+async function pLoad(yt, title, artist, d) {
+  playingYt   = yt;
+  playingYtId = yt;
+  document.getElementById('pb-t').textContent = title;
+  document.getElementById('pb-a').textContent = '⏳ Recherche Spotify...';
+  document.getElementById('player-bar').classList.add('on');
 
   qIdx = queue.findIndex(x => x[10] === yt);
 
@@ -1023,16 +1168,37 @@ function pLoad(yt, title, artist, d) {
       if(pb){pb.textContent='⏸';pb.classList.add('on');playingBtn=pb;}
     }
   }, 100);
+
+  if(!spToken || !spReady) {
+    document.getElementById('pb-a').textContent = '⚠️ Connecte-toi à Spotify →';
+    document.getElementById('sp-login-btn').style.display = 'flex';
+    return;
+  }
+
+  try {
+    const uri = await searchSpotify(title, artist);
+    if(!uri) { document.getElementById('pb-a').textContent = '⚠️ Titre introuvable sur Spotify'; return; }
+    spTrackUri = uri;
+
+    await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${spDeviceId}`, {
+      method:  'PUT',
+      headers: { 'Authorization': 'Bearer ' + spToken, 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ uris: [uri] })
+    });
+  } catch(e) {
+    document.getElementById('pb-a').textContent = '⚠️ Erreur Spotify: ' + e.message;
+  }
 }
 
 function pToggle() {
-  // YouTube iframe doesn't support external pause easily - skip
+  if(spPlayer) spPlayer.togglePlay();
 }
 
 function pStop() {
-  const embed = document.getElementById('yt-embed');
-  embed.src = '';
+  if(spPlayer) spPlayer.pause();
+  clearInterval(seekTimer);
   document.getElementById('player-bar').classList.remove('on');
+  document.getElementById('pb-art').src = '';
   playingYt = null; playingYtId = '';
   if(playingBtn){playingBtn.textContent='▶';playingBtn.classList.remove('on');playingBtn=null;}
   render();
@@ -1046,20 +1212,37 @@ function pNext() {
     pStop(); return;
   }
   qIdx = Math.min(queue.length-1, qIdx+1);
-  const d = queue[qIdx];
-  pLoad(d[10], d[0], d[1], d);
+  const d2 = queue[qIdx];
+  pLoad(d2[10], d2[0], d2[1], d2);
 }
 
 function pPrev() {
-  qIdx = Math.max(0, qIdx-1);
-  const d = queue[qIdx];
-  pLoad(d[10], d[0], d[1], d);
+  if(spPlayer) {
+    spPlayer.getCurrentState().then(s => {
+      if(s && s.position > 3000) { spPlayer.seek(0); return; }
+      qIdx = Math.max(0, qIdx-1);
+      const d2 = queue[qIdx];
+      pLoad(d2[10], d2[0], d2[1], d2);
+    });
+  }
 }
 
-function pSeek(v) {}
-function pVol(v) {}
-function openSC() {}
-function openYT() {}
+function pSeek(v) {
+  if(spPlayer) spPlayer.getCurrentState().then(s => {
+    if(s) spPlayer.seek(s.duration * v / 100);
+  });
+}
+
+function pVol(v) {
+  if(spPlayer) spPlayer.setVolume(parseInt(v)/100);
+}
+
+// ── INIT ──
+if(loadToken()) {
+  initSpotify();
+} else {
+  handleCallback();
+}
 
 // ── NOTES ──
 function saveNotes(){localStorage.setItem('djb-notes',JSON.stringify(notes));$('note-cnt').textContent=Object.keys(notes).length}
