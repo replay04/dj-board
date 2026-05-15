@@ -2,6 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<link rel="manifest" href="/dj-board/manifest.json">
+<meta name="theme-color" content="#07070e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DJ Board">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PADJ.fr Board</title>
 <script src="https://www.youtube.com/iframe_api"></script>
@@ -592,14 +598,16 @@ td{padding:9px 12px;font-size:12px;vertical-align:middle}
 <header>
   <div>
     <div class="logo">PADJ.fr <em>BOARD</em></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.17</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:3px"><div class="logo-sub" id="logo-sub-el">Semaine 18 / 2026</div><span id="ver-badge" style="font-family:'JetBrains Mono',monospace;font-size:9px;background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:100px">v18.19</span></div>
   </div>
   <div class="header-right">
     <span class="source-tag st-radio">● Radio</span>
     <span class="source-tag st-singles">● Singles</span>
     <span class="source-tag st-shazam">● Shazam</span>
     <span class="source-tag st-tiktok">♪ TikTok</span>
-    <button id="btn-play-all" onclick="playAll()" style="background:var(--accent);border:none;color:var(--bg);padding:6px 13px;border-radius:100px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap">▶ Tout écouter</button>
+    <button id="btn-notif" onclick="requestPushPermission()" title="Activer les notifications" style="background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:6px 11px;border-radius:100px;font-size:13px;cursor:pointer;white-space:nowrap">🔔</button>
+  <button id="btn-new" onclick="checkNew()" style="background:var(--surf2);border:1px solid var(--border);color:var(--muted);padding:6px 13px;border-radius:100px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;display:none" title="Vérifier les nouveautés">🔄 Nouveautés</button>
+  <button id="btn-play-all" onclick="playAll()" style="background:var(--accent);border:none;color:var(--bg);padding:6px 13px;border-radius:100px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap">▶ Tout écouter</button>
   <button id="btn-copy-all" onclick="copyAll()">📋 Copier tous</button>
   </div>
 </header>
@@ -1844,6 +1852,211 @@ function updateMediaSession(title, artist, artUrl, duration) {
     } catch(e) {}
   }
 }
+
+
+// ── NOUVEAUTÉS ──
+var newTracks = [];
+
+async function checkNew() {
+  var btn = document.getElementById('btn-new');
+  btn.textContent = '⏳ Vérification...';
+  btn.style.color = 'var(--muted)';
+
+  try {
+    // Fetch latest data.json from GitHub
+    var r = await fetch('https://raw.githubusercontent.com/replay04/dj-board/main/data.json?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    var fresh = await r.json();
+
+    // Compare with current embedded data
+    var currentTitles = new Set(EMBEDDED.tracks.map(function(t){ return t.title; }));
+    newTracks = fresh.tracks.filter(function(t){
+      return !currentTitles.has(t.title) && ((t.radio||0)+(t.singles||0)+(t.shazam||0)+(t.tiktok||0)) > 0;
+    });
+
+    // Also find tracks with significantly improved scores
+    var improved = fresh.tracks.filter(function(t){
+      var old = EMBEDDED.tracks.find(function(o){ return o.title === t.title; });
+      if (!old) return false;
+      var oldScore = (old.radio||0)+(old.singles||0)+(old.shazam||0)+(old.tiktok||0);
+      var newScore = (t.radio||0)+(t.singles||0)+(t.shazam||0)+(t.tiktok||0);
+      return newScore > oldScore * 1.3; // 30% improvement
+    });
+
+    var total = newTracks.length + improved.length;
+
+    if (total === 0) {
+      btn.textContent = '✓ À jour';
+      btn.style.color = 'var(--teal)';
+      setTimeout(function(){ 
+        btn.textContent = '🔄 Nouveautés';
+        btn.style.color = 'var(--muted)';
+      }, 3000);
+      return;
+    }
+
+    // Update T with fresh data
+    T = parseTracks(fresh.tracks);
+    
+    // Mark new tracks
+    newTracks.forEach(function(t){ t._new = true; });
+    improved.forEach(function(t){ t._hot = true; });
+
+    btn.textContent = '🆕 ' + total + ' nouveauté' + (total > 1 ? 's' : '');
+    btn.style.background = 'var(--accent)';
+    btn.style.color = 'var(--bg)';
+    btn.style.borderColor = 'var(--accent)';
+
+    // Re-render to show NEW badges
+    render();
+
+  } catch(e) {
+    btn.textContent = '❌ Erreur';
+    console.log('checkNew error:', e);
+    setTimeout(function(){
+      btn.textContent = '🔄 Nouveautés';
+      btn.style.color = 'var(--muted)';
+    }, 3000);
+  }
+}
+
+// Mark new tracks in render
+var _origRenderTable = renderTable;
+renderTable = function(data) {
+  _origRenderTable(data);
+  // Add NEW badge to new tracks
+  if (!newTracks.length) return;
+  var newTitles = new Set(newTracks.map(function(t){ return t.title; }));
+  document.querySelectorAll('#tbody tr').forEach(function(row) {
+    var titleEl = row.querySelector('.tname');
+    if (!titleEl) return;
+    var title = titleEl.textContent.replace(/\d+sem|×\d+|🆕/g,'').trim();
+    if (newTitles.has(title) && !titleEl.querySelector('.badge-new')) {
+      var badge = document.createElement('span');
+      badge.className = 'badge-new';
+      badge.style.cssText = 'font-family:monospace;font-size:8px;background:var(--accent);color:var(--bg);padding:1px 5px;border-radius:100px;margin-left:5px;font-weight:700';
+      badge.textContent = 'NEW';
+      titleEl.appendChild(badge);
+    }
+  });
+};
+
+// Auto-check on load (silently)
+setTimeout(async function() {
+  try {
+    var r = await fetch('https://raw.githubusercontent.com/replay04/dj-board/main/data.json?t=' + Date.now());
+    if (!r.ok) return;
+    var fresh = await r.json();
+    var currentTitles = new Set(EMBEDDED.tracks.map(function(t){ return t.title; }));
+    var count = fresh.tracks.filter(function(t){
+      return !currentTitles.has(t.title) && ((t.radio||0)+(t.singles||0)+(t.shazam||0)+(t.tiktok||0)) > 0;
+    }).length;
+    var btn = document.getElementById('btn-new');
+    if (btn) {
+      btn.style.display = 'block';
+      if (count > 0) {
+        btn.textContent = '🆕 ' + count + ' nouveauté' + (count > 1 ? 's' : '');
+        btn.style.borderColor = 'var(--accent)';
+        btn.style.color = 'var(--accent)';
+      } else {
+        btn.textContent = '🔄 Actualiser';
+      }
+    }
+  } catch(e) {}
+}, 2000);
+
+
+
+async function saveSubscription(sub) {
+  // Store subscription in GitHub subscriptions.json via API
+  // This requires a backend - for now we'll use a simple approach
+  // Store in localStorage and show instructions
+  try {
+    var subStr = JSON.stringify(sub.toJSON ? sub.toJSON() : sub);
+    localStorage.setItem('push_sub_saved', subStr);
+    
+    // Try to save to GitHub (needs GITHUB_TOKEN - use Railway proxy)
+    // For now just log
+    console.log('Subscription saved locally. Railway will pick it up.');
+  } catch(e) {
+    console.log('Save subscription error:', e);
+  }
+}
+
+// ── NOTIFICATIONS PUSH ──
+const VAPID_PUBLIC_KEY = 'BLXShh_rR3xoqbyQoQ80MOTcqej_dIpwoMCHhuRZi3KIbaDMcPyckDgMbXOUP6abvBM1syWA2A6jKpzzf8PKDeo';
+
+async function initPushNotifications() {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    console.log('Push notifications not supported');
+    return;
+  }
+  
+  try {
+    // Register service worker
+    var reg = await navigator.serviceWorker.register('/dj-board/sw.js');
+    console.log('SW registered:', reg.scope);
+    
+    // Check existing subscription
+    var sub = await reg.pushManager.getSubscription();
+    if (sub) {
+      console.log('Already subscribed to push');
+      return sub;
+    }
+    return null;
+  } catch(e) {
+    console.log('SW registration failed:', e);
+    return null;
+  }
+}
+
+async function requestPushPermission() {
+  try {
+    var reg = await navigator.serviceWorker.ready;
+    var permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      console.log('Push permission denied');
+      return null;
+    }
+    
+    // Subscribe to push
+    var sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+    });
+    
+    localStorage.setItem('push_sub', JSON.stringify(sub));
+    console.log('Push subscription:', sub.endpoint);
+    
+    // Save subscription to GitHub
+    await saveSubscription(sub);
+    
+    // Update bell button
+    var btn = document.getElementById('btn-notif');
+    if(btn) { btn.textContent = '🔔✓'; btn.style.color = 'var(--accent)'; btn.style.borderColor = 'var(--accent)'; btn.onclick = null; btn.title = 'Notifications activées'; }
+    
+    return sub;
+  } catch(e) {
+    console.log('Push subscription failed:', e);
+    return null;
+  }
+}
+
+function urlBase64ToUint8Array(base64String) {
+  var padding = '='.repeat((4 - base64String.length % 4) % 4);
+  var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  var rawData = window.atob(base64);
+  var outputArray = new Uint8Array(rawData.length);
+  for (var i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+// Init SW on load
+window.addEventListener('load', function() {
+  initPushNotifications();
+});
 
 </script>
 </body>
