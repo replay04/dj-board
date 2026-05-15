@@ -1,0 +1,16 @@
+{
+  "name": "PADJ.fr Board",
+  "short_name": "DJ Board",
+  "description": "Classements musicaux DJ - PADJ.fr",
+  "start_url": "/dj-board/",
+  "display": "standalone",
+  "background_color": "#07070e",
+  "theme_color": "#07070e",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2307070e'/><text y='.9em' font-size='90'>\ud83c\udfb5</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

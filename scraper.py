@@ -423,6 +423,10 @@ def main():
     
     log(f"=== {len(tracks)} titres — semaine {week} ===")
     push_to_github(data)
+    # Notifier les abonnés
+    new_count = len([t for t in tracks if t.get("new")])
+    if new_count > 0:
+        notify_new_tracks(new_count, week)
     log("=== Terminé ===")
 
 if __name__ == "__main__":
