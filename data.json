@@ -1,91 +1,37 @@
 {
-  "updated": "2026-05-15",
+  "updated": "2026-05-16",
   "week": 20,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 86,
+    "apple_count": 92,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "Gone Gone Gone",
-      "artist": "David Guetta & Teddy Swims",
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
       "tags": [
-        "dancefloor",
-        "intl",
-        "electro"
-      ],
-      "bpm": 128,
-      "youtubeId": "8iT9DRe3cHE",
-      "mixte": 4,
-      "camelot": "11B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 40,
-      "deezer": 15,
-      "score": 7,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 6,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
-      "tags": [
-        "dancefloor",
         "mariage",
-        "fr",
-        "pop"
+        "slow",
+        "fr"
       ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
       "mixte": 4,
-      "camelot": "3B",
+      "camelot": "9B",
       "moments": [
-        "dance",
-        "fin"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 18,
-      "deezer": 93,
+      "apple": 9,
+      "deezer": 0,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -111,34 +57,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 25,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 30,
+      "apple": 17,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -165,7 +84,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 16,
+      "apple": 19,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -192,7 +111,32 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 21,
+      "apple": 18,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 13,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -219,25 +163,24 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 26,
+      "apple": 21,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
       "tags": [
         "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
+        "intl",
+        "electro"
       ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
+      "mixte": 4,
+      "camelot": "11B",
       "moments": [
         "dance",
         "fin"
@@ -247,8 +190,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 22,
-      "deezer": 0,
+      "apple": 0,
+      "deezer": 11,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -273,33 +216,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 17,
+      "apple": 16,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -327,26 +244,53 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 27,
+      "deezer": 25,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Dream As One",
-      "artist": "Miley Cyrus",
+      "title": "Soirée mondaine",
+      "artist": "Oria",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 45,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
         "mariage",
-        "ambiance",
+        "slow",
         "intl",
         "pop"
       ],
-      "bpm": 82,
-      "youtubeId": "RLRrAVHPkPE",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
       "mixte": 4,
-      "camelot": "3A",
+      "camelot": "8A",
       "moments": [
-        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -354,9 +298,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 58,
-      "deezer": 93,
-      "score": 3,
+      "apple": 60,
+      "deezer": 0,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -379,36 +323,37 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 45,
-      "deezer": 93,
-      "score": 3,
+      "apple": 69,
+      "deezer": 0,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "La recette",
+      "artist": "Jeck & Carla",
       "tags": [
-        "ambiance",
-        "intl",
+        "dancefloor",
+        "mariage",
+        "fr",
         "pop"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
       "moments": [
-        "cocktail",
-        "diner"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 53,
+      "apple": 80,
       "deezer": 0,
-      "score": 2,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -538,7 +483,34 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 93,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -556,6 +528,34 @@
       "camelot": "1B",
       "moments": [
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Dream As One",
+      "artist": "Miley Cyrus",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 82,
+      "youtubeId": "RLRrAVHPkPE",
+      "mixte": 4,
+      "camelot": "3A",
+      "moments": [
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
@@ -644,7 +644,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 93,
+      "deezer": 0,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -697,7 +697,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 93,
+      "deezer": 0,
       "score": 0,
       "weeks": 0,
       "trend": 0
