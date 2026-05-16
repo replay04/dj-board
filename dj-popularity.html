@@ -187,7 +187,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.2.2</div>
+    <div class="badge version"><div class="dot"></div> v2.2.3</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -354,7 +354,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.2.2';
+const APP_VERSION = '2.2.3';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1498,20 +1498,60 @@ async function loadSpotifyUrl() {
 
 async function fetchPlaylistTracks(id, token) {
   const rows = [];
-  let url = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=100&market=FR`;
-  let page = 0;
-  while (url) {
-    page++;
-    const data = await _spotifyFetch(url, `playlist-page-${page}`);
-    (data.items || []).forEach(item => {
+
+  // Stratégie 1 : endpoint /tracks (standard)
+  try {
+    let url = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=100&market=FR`;
+    let page = 0;
+    while (url) {
+      page++;
+      const data = await _spotifyFetch(url, `playlist-page-${page}`);
+      (data.items || []).forEach(item => {
+        const t = item.track;
+        if (!t || !t.id) return;
+        rows.push({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:t.album?.name,popularity:t.popularity,image:t.album?.images?.[1]?.url});
+      });
+      url = data.next || null;
+    }
+    if (rows.length) {
+      log('OK', `Playlist: ${rows.length} titres sur ${page} page(s)`);
+      return rows;
+    }
+  } catch(e) {
+    log('WARN', `Endpoint /tracks échoué (${e.message}), tentative via /playlists…`);
+  }
+
+  // Stratégie 2 : endpoint /playlists/{id} qui inclut tracks dans la réponse principale
+  try {
+    const playlist = await _spotifyFetch(
+      `https://api.spotify.com/v1/playlists/${id}?market=FR`,
+      'playlist-full'
+    );
+    const items = playlist.tracks?.items || [];
+    items.forEach(item => {
       const t = item.track;
       if (!t || !t.id) return;
       rows.push({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:t.album?.name,popularity:t.popularity,image:t.album?.images?.[1]?.url});
     });
-    url = data.next || null;
+    // Paginer si plus de 100 titres
+    let next = playlist.tracks?.next;
+    let page = 1;
+    while (next) {
+      page++;
+      const data = await _spotifyFetch(next, `playlist-page-${page}`);
+      (data.items || []).forEach(item => {
+        const t = item.track;
+        if (!t || !t.id) return;
+        rows.push({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:t.album?.name,popularity:t.popularity,image:t.album?.images?.[1]?.url});
+      });
+      next = data.next || null;
+    }
+    log('OK', `Playlist (via /playlists): ${rows.length} titres`);
+    return rows;
+  } catch(e) {
+    log('ERROR', `Les deux stratégies ont échoué: ${e.message}`);
+    throw e;
   }
-  log('OK', `Playlist: ${rows.length} titres sur ${page} page(s)`);
-  return rows;
 }
 
 async function fetchAlbumTracks(id, token) {
