@@ -51,6 +51,18 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .service-alert .alert-icon{font-size:16px;flex-shrink:0;}
 .service-alert .alert-close{margin-left:auto;cursor:pointer;opacity:.6;font-size:16px;} .service-alert .alert-close:hover{opacity:1;}
 
+/* ── EXPORTIFY FALLBACK ── */
+.exportify-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;margin-top:8px;}
+.exportify-box h3{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--text);}
+.exportify-box p{font-size:12px;color:var(--text-dim);margin-bottom:20px;line-height:1.6;}
+.exportify-steps{display:flex;gap:12px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.exportify-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:11px;color:var(--text-dim);display:flex;align-items:center;gap:6px;}
+.exportify-step .step-num{background:var(--accent);color:#0a0a0f;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.exportify-drop{border:2px dashed var(--border);border-radius:8px;padding:24px;cursor:pointer;transition:all .2s;margin-top:8px;}
+.exportify-drop:hover,.exportify-drop.dragover{border-color:var(--accent);background:rgba(232,255,71,.04);}
+.exportify-drop p{font-size:12px;color:var(--text-dim);margin:0;}
+#exportify-csv-input{display:none;}
+
 /* ── TABS ── */
 .tabs{display:flex;padding:0 24px;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
 .tabs::-webkit-scrollbar{display:none;}
@@ -187,7 +199,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.2.3</div>
+    <div class="badge version"><div class="dot"></div> v2.3.0</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -354,7 +366,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.2.3';
+const APP_VERSION = '2.3.0';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1441,6 +1453,138 @@ async function deezerSearch(query, limit = 10) {
 }
 
 // ══════════════════════════════════════════════════════════════
+//  EXPORTIFY FALLBACK
+// ══════════════════════════════════════════════════════════════
+function showExportifyFallback(originalUrl, playlistId) {
+  const exportifyUrl = `https://exportify.net/#playlists`;
+  const spotifyUri = `spotify:playlist:${playlistId}`;
+
+  document.getElementById('playlist-results').innerHTML = `
+    <div class="exportify-box">
+      <div style="font-size:32px;margin-bottom:12px">🔒</div>
+      <h3>Playlist inaccessible via l'API Spotify</h3>
+      <p>Cette playlist (mixée ou générée par Spotify) ne peut pas être lue directement.<br>
+      Exporte-la via Exportify en 3 clics, puis glisse le CSV ici.</p>
+
+      <div class="exportify-steps">
+        <div class="exportify-step"><span class="step-num">1</span> Ouvre Exportify</div>
+        <div class="exportify-step"><span class="step-num">2</span> Connecte Spotify & exporte</div>
+        <div class="exportify-step"><span class="step-num">3</span> Glisse le CSV ici</div>
+      </div>
+
+      <a href="${exportifyUrl}" target="_blank" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:16px">
+        🔗 Ouvrir Exportify
+      </a>
+
+      <div class="exportify-drop" id="exportify-drop" onclick="document.getElementById('exportify-csv-input').click()">
+        <div style="font-size:24px;margin-bottom:8px">📂</div>
+        <p>Glisse le CSV ici ou clique pour choisir</p>
+      </div>
+      <input type="file" id="exportify-csv-input" accept=".csv">
+    </div>`;
+
+  // Events drag & drop
+  const drop = document.getElementById('exportify-drop');
+  const input = document.getElementById('exportify-csv-input');
+
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault(); drop.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file && file.name.endsWith('.csv')) parseExportifyCSV(file);
+    else showNotif('❌ Fichier .csv requis');
+  });
+  input.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) parseExportifyCSV(file);
+  });
+
+  log('INFO', `Exportify fallback affiché pour playlist ${playlistId}`);
+}
+
+async function parseExportifyCSV(file) {
+  const reader = new FileReader();
+  reader.onload = async e => {
+    const text = e.target.result;
+    const lines = text.split('\n').filter(l => l.trim());
+    if (lines.length < 2) { showNotif('❌ CSV vide'); return; }
+
+    // Détecter les colonnes (Exportify ou TuneMyMusic)
+    const raw = lines[0];
+    // Gérer les guillemets dans le CSV
+    const parseCSVLine = line => {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === '"') { inQuotes = !inQuotes; continue; }
+        if (line[i] === ',' && !inQuotes) { result.push(current.trim()); current = ''; continue; }
+        current += line[i];
+      }
+      result.push(current.trim());
+      return result;
+    };
+
+    const headers = parseCSVLine(lines[0]).map(h => h.toLowerCase().replace(/\s+/g,'_'));
+    const findCol = (...names) => { for (const n of names) { const i = headers.findIndex(h => names.some(name => h.includes(name))); if (i >= 0) return i; } return -1; };
+
+    const iTitle  = headers.findIndex(h => h.includes('track') || h.includes('title') || h === 'name');
+    const iArtist = headers.findIndex(h => h.includes('artist'));
+    const iPop    = headers.findIndex(h => h.includes('popularity'));
+    const iBpm    = headers.findIndex(h => h.includes('bpm') || h.includes('tempo'));
+    const iId     = headers.findIndex(h => h.includes('spotify_id') || h.includes('track_id') || h.includes('uri'));
+
+    showNotif(`📂 ${lines.length - 1} titres détectés, enrichissement…`);
+    log('INFO', `CSV parsé — colonnes: ${headers.join(', ')}`);
+
+    const rows = lines.slice(1).map(line => {
+      const cols = parseCSVLine(line);
+      return {
+        title:      iTitle  >= 0 ? cols[iTitle]  || '' : '',
+        artist:     iArtist >= 0 ? cols[iArtist] || '' : '',
+        popularity: iPop    >= 0 ? parseInt(cols[iPop]) || 0 : 0,
+        bpm:        iBpm    >= 0 ? parseInt(cols[iBpm]) || null : null,
+        id:         iId     >= 0 ? (cols[iId] || '').replace('spotify:track:','') : null,
+      };
+    }).filter(r => r.title && r.title.length > 0);
+
+    if (!rows.length) { showNotif('❌ Aucun titre lisible dans le CSV'); return; }
+
+    // Enrichir BPM + Popularité via Spotify si les IDs sont présents
+    const idsToFetch = rows.filter(r => r.id && !r.bpm).map(r => r.id);
+    if (idsToFetch.length) {
+      const features = await spotifyAudioFeatures(idsToFetch);
+      rows.forEach(r => {
+        if (r.id && features[r.id]) {
+          if (!r.bpm) r.bpm = features[r.id].bpm;
+          r.key = features[r.id].key;
+        }
+      });
+      // Récupérer popularité si absente
+      const idsNoPop = rows.filter(r => r.id && !r.popularity).map(r => r.id);
+      for (let i = 0; i < idsNoPop.length; i += 50) {
+        try {
+          const data = await _spotifyFetch(`https://api.spotify.com/v1/tracks?ids=${idsNoPop.slice(i,i+50).join(',')}&market=FR`, 'tracks-pop');
+          (data.tracks||[]).forEach(t => {
+            const r = rows.find(r => r.id === t.id);
+            if (r) r.popularity = t.popularity;
+          });
+        } catch(e) { /* continue */ }
+      }
+    }
+
+    playlistData = rows;
+    renderPlaylist();
+    document.getElementById('playlist-filters').style.display = 'flex';
+    updateKPIs();
+    log('OK', `CSV chargé — ${rows.length} titres`);
+    showNotif(`✅ ${rows.length} titres chargés depuis CSV !`);
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+// ══════════════════════════════════════════════════════════════
 //  TABS
 // ══════════════════════════════════════════════════════════════
 function switchTab(name, el) {
@@ -1476,10 +1620,19 @@ async function loadSpotifyUrl() {
   } catch(e) {
     log('ERROR', `Chargement ${type} échoué: ${e.message}`);
     showNotif('❌ Erreur chargement');
-    document.getElementById('playlist-results').innerHTML = '<div class="empty-state"><div class="icon">❌</div><h3>Erreur de chargement</h3><p>'+escHtml(e.message)+'</p></div>';
+    if (type === 'playlist') {
+      showExportifyFallback(input, id);
+    } else {
+      document.getElementById('playlist-results').innerHTML = '<div class="empty-state"><div class="icon">❌</div><h3>Erreur de chargement</h3><p>'+escHtml(e.message)+'</p></div>';
+    }
     return;
   }
 
+  if (!rows.length && type === 'playlist') {
+    log('WARN', 'Playlist vide ou inaccessible — affichage Exportify');
+    showExportifyFallback(input, id);
+    return;
+  }
   if (!rows.length) { showNotif('❌ Aucun titre'); log('WARN','Aucun titre récupéré'); return; }
   log('OK', `${rows.length} titres chargés, récupération BPM…`);
   showNotif(`⏳ ${rows.length} titres, BPM en cours…`);
