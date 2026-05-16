@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PADJ — Popularité v2.1</title>
+<title>PADJ — Popularité v2.2</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -33,6 +33,16 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .badge.deezer-on{border-color:var(--deezer);color:var(--deezer);}
 .badge.version{border-color:var(--accent4);color:var(--accent4);font-family:var(--mono);letter-spacing:1px;}
 .badge.clickable{cursor:pointer;transition:opacity .2s;} .badge.clickable:hover{opacity:.75;}
+
+/* ── OAUTH OVERLAY ── */
+.oauth-overlay{position:fixed;inset:0;background:rgba(10,10,15,.92);z-index:1000;display:flex;align-items:center;justify-content:center;}
+.oauth-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center;max-width:380px;width:90%;}
+.oauth-box h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--accent);margin-bottom:8px;}
+.oauth-box p{font-size:13px;color:var(--text-dim);margin-bottom:24px;line-height:1.6;}
+.oauth-box .spotify-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--spotify);color:#fff;border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.oauth-box .spotify-btn:hover{background:#17a547;transform:translateY(-1px);}
+.oauth-box .skip-btn{display:block;margin-top:14px;font-size:11px;color:var(--text-muted);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;}
+.oauth-box .skip-btn:hover{color:var(--text-dim);}
 
 /* ── ALERTES SERVICE ── */
 .service-alert{display:flex;align-items:center;gap:10px;padding:10px 24px;font-size:12px;font-weight:600;border-bottom:1px solid var(--border);animation:fadeIn .3s ease;}
@@ -177,15 +187,26 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.1.1</div>
+    <div class="badge version"><div class="dot"></div> v2.2.1</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
-    <div class="badge" id="spotify-badge"><div class="dot"></div> Spotify</div>
+    <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
     <div class="badge deezer-on" id="deezer-badge"><div class="dot"></div> Deezer</div>
     <div class="badge clickable" id="dev-toggle-btn" onclick="switchTab('dev',this)" title="Ouvrir DevTools" style="border-color:var(--accent4);color:var(--accent4)"><div class="dot"></div> DevTools</div>
   </div>
 </header>
 
+<div id="oauth-overlay" class="oauth-overlay" style="display:none">
+  <div class="oauth-box">
+    <h2>PADJ Popularité</h2>
+    <p>Connecte ton compte Spotify pour accéder à toutes tes playlists, y compris celles générées par Spotify.</p>
+    <button class="spotify-btn" onclick="spotifyLogin()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      Se connecter avec Spotify
+    </button>
+    <button class="skip-btn" onclick="skipLogin()">Continuer sans connexion (accès limité)</button>
+  </div>
+</div>
 <div id="service-alerts"></div>
 <div class="tabs">
   <div class="tab active" onclick="switchTab('playlist',this)">📋 Playlist</div>
@@ -333,7 +354,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.1.1';
+const APP_VERSION = '2.2.1';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -697,10 +718,11 @@ function updateKPIs() {
   set('kpi-tracks', playlistData.length || '0');
   set('kpi-errors', _metrics.errorsAPI, _metrics.errorsAPI > 0 ? 'danger' : 'ok');
   set('kpi-success-rate', successRate + '%', successRate === 100 ? 'ok' : successRate > 80 ? 'warn' : 'danger');
-  set('kpi-latency-spotify', latSp ? fmtMs(latSp) : '—', latSp < 500 ? 'ok' : latSp < 1500 ? 'warn' : 'danger');
-  set('kpi-latency-deezer', latDz ? fmtMs(latDz) : '—', latDz < 500 ? 'ok' : latDz < 1500 ? 'warn' : 'danger');
+  set('kpi-latency-spotify', latSp ? fmtMs(latSp) : '—', latSp === null ? '' : latSp < 500 ? 'ok' : latSp < 1500 ? 'warn' : 'danger');
+  set('kpi-latency-deezer', latDz ? fmtMs(latDz) : '—', latDz === null ? '' : latDz < 500 ? 'ok' : latDz < 1500 ? 'warn' : 'danger');
   set('kpi-set-size', `${setTracks.length} titre${setTracks.length !== 1 ? 's' : ''}`);
-  set('kpi-token', spotifyToken ? '✓ Actif' : '✗ Absent', spotifyToken ? 'ok' : 'danger');
+  const oauthActive = !!sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  set('kpi-token', spotifyToken ? (oauthActive ? '✓ OAuth' : '✓ CC (limité)') : '✗ Absent', spotifyToken ? 'ok' : 'danger');
   const statusLabels = { ok:'✓ OK', quota:'⚠ Quota', error:'✗ Erreur', unknown:'— Inconnu' };
   const statusCls = { ok:'ok', quota:'warn', error:'danger', unknown:'' };
   ['spotify','shazam','deezer'].forEach(s => {
@@ -855,6 +877,22 @@ const TESTS = [
     }
   },
   {
+    name: 'OAuth — PKCE generateRandom',
+    fn: () => {
+      const r = generateRandom(16);
+      if (typeof r !== 'string' || r.length < 10) throw new Error('generateRandom invalide');
+    }
+  },
+  {
+    name: 'OAuth — sha256 disponible',
+    async: true,
+    fn: async () => {
+      const h = await sha256('test');
+      if (typeof h !== 'string' || !h.length) throw new Error('sha256 invalide');
+      return h.slice(0,10) + '…';
+    }
+  },
+  {
     name: 'Spotify token — endpoint accessible',
     async: true,
     fn: async () => {
@@ -959,12 +997,18 @@ async function runBenchmarks() {
 
   const benches = [];
 
-  // Bench 1 : Token Spotify
+  // Bench 1 : Token Spotify (via Client Credentials pour ne pas casser la session OAuth)
   try {
-    spotifyToken = null;
     const t0 = performance.now();
-    await getSpotifyToken();
-    benches.push({ label: 'Auth Spotify (token)', ms: performance.now() - t0, ref: 500 });
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded','Authorization':'Basic '+btoa(SPOTIFY_CLIENT_ID+':'+SPOTIFY_CLIENT_SECRET)},
+      body:'grant_type=client_credentials'
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const d = await res.json();
+    if (!d.access_token) throw new Error('Pas de token');
+    benches.push({ label: 'Auth Spotify (CC)', ms: performance.now() - t0, ref: 500 });
   } catch(e) { benches.push({ label: 'Auth Spotify', ms: null, err: e.message }); }
 
   // Bench 2 : Search Spotify
@@ -1037,13 +1081,188 @@ async function runBenchmarks() {
 }
 
 // ══════════════════════════════════════════════════════════════
-//  SPOTIFY AUTH
+//  SPOTIFY AUTH — OAuth 2.0 PKCE + Client Credentials fallback
 // ══════════════════════════════════════════════════════════════
+const SPOTIFY_REDIRECT_URI = 'https://replay04.github.io/dj-board/dj-popularity.html';
+const SPOTIFY_SCOPES = 'playlist-read-private playlist-read-collaborative user-library-read';
+const OAUTH_STATE_KEY = 'padj_oauth_state';
+const OAUTH_TOKEN_KEY = 'padj_oauth_token';
+const OAUTH_EXPIRY_KEY = 'padj_oauth_expiry';
+const OAUTH_VERIFIER_KEY = 'padj_oauth_verifier';
+
+// ── PKCE helpers ─────────────────────────────────────────────
+function generateRandom(len) {
+  const arr = new Uint8Array(len);
+  crypto.getRandomValues(arr);
+  return btoa(String.fromCharCode(...arr)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+}
+
+async function sha256(plain) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(plain);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return btoa(String.fromCharCode(...new Uint8Array(hash))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+}
+
+// ── Login OAuth ───────────────────────────────────────────────
+async function spotifyLogin() {
+  const state = generateRandom(16);
+  const verifier = generateRandom(64);
+  const challenge = await sha256(verifier);
+
+  sessionStorage.setItem(OAUTH_STATE_KEY, state);
+  sessionStorage.setItem(OAUTH_VERIFIER_KEY, verifier);
+
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: SPOTIFY_CLIENT_ID,
+    scope: SPOTIFY_SCOPES,
+    redirect_uri: SPOTIFY_REDIRECT_URI,
+    state,
+    code_challenge_method: 'S256',
+    code_challenge: challenge,
+  });
+
+  log('INFO', 'Redirection OAuth Spotify…');
+  window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
+}
+
+// ── Callback OAuth (échange code → token) ────────────────────
+async function handleOAuthCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  const error = params.get('error');
+
+  if (error) {
+    log('WARN', `OAuth annulé: ${error}`);
+    // Nettoyer l'URL
+    window.history.replaceState({}, '', window.location.pathname);
+    showOAuthOverlay();
+    return;
+  }
+
+  if (!code) return; // Pas de callback
+
+  const savedState = sessionStorage.getItem(OAUTH_STATE_KEY);
+  const verifier = sessionStorage.getItem(OAUTH_VERIFIER_KEY);
+
+  if (state !== savedState) {
+    log('ERROR', 'OAuth state mismatch — possible CSRF');
+    window.history.replaceState({}, '', window.location.pathname);
+    return;
+  }
+
+  log('INFO', 'Échange code OAuth…');
+  const t0 = Date.now();
+
+  try {
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: SPOTIFY_REDIRECT_URI,
+        client_id: SPOTIFY_CLIENT_ID,
+        code_verifier: verifier,
+      })
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!data.access_token) throw new Error('Pas de token');
+
+    spotifyToken = data.access_token;
+    const expiry = Date.now() + (data.expires_in * 1000);
+    const ms = Date.now() - t0;
+
+    // Stocker token + expiry
+    sessionStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
+    sessionStorage.setItem(OAUTH_EXPIRY_KEY, String(expiry));
+    if (data.refresh_token) sessionStorage.setItem('padj_refresh_token', data.refresh_token);
+
+    // Nettoyer l'URL (enlever ?code=... de l'URL)
+    window.history.replaceState({}, '', window.location.pathname);
+    sessionStorage.removeItem(OAUTH_STATE_KEY);
+    sessionStorage.removeItem(OAUTH_VERIFIER_KEY);
+
+    _metrics.latenciesSpotify.push(ms);
+    setServiceStatus('spotify', 'ok');
+    updateBadgeLoggedIn(data);
+    updateKPIs();
+    log('OK', `OAuth Spotify réussi en ${fmtMs(ms)} — token valide ${Math.round(data.expires_in/60)}min`);
+    showNotif('✅ Connecté à Spotify !');
+    hideOAuthOverlay();
+
+  } catch(e) {
+    _metrics.errorsAPI++;
+    setServiceStatus('spotify', 'error');
+    log('ERROR', `OAuth échange échoué: ${e.message}`);
+    showNotif('❌ Connexion Spotify échouée');
+    window.history.replaceState({}, '', window.location.pathname);
+    showOAuthOverlay();
+  }
+}
+
+// ── Refresh token ─────────────────────────────────────────────
+async function refreshSpotifyToken() {
+  const refreshToken = sessionStorage.getItem('padj_refresh_token');
+  if (!refreshToken) { spotifyToken = null; showOAuthOverlay(); return null; }
+  try {
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+        client_id: SPOTIFY_CLIENT_ID,
+      })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    spotifyToken = data.access_token;
+    sessionStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
+    sessionStorage.setItem(OAUTH_EXPIRY_KEY, String(Date.now() + data.expires_in * 1000));
+    if (data.refresh_token) sessionStorage.setItem('padj_refresh_token', data.refresh_token);
+    log('OK', 'Token Spotify rafraîchi');
+    return spotifyToken;
+  } catch(e) {
+    log('ERROR', `Refresh token échoué: ${e.message}`);
+    spotifyToken = null;
+    showOAuthOverlay();
+    return null;
+  }
+}
+
+// ── getSpotifyToken — retourne le token valide ────────────────
 async function getSpotifyToken() {
-  if (spotifyToken) return spotifyToken;
+  // 1. Token en mémoire valide ?
+  if (spotifyToken) {
+    const expiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+    if (Date.now() < expiry - 60000) return spotifyToken; // 1min de marge
+    // Token expiré → refresh
+    log('INFO', 'Token expiré, refresh…');
+    return await refreshSpotifyToken();
+  }
+  // 2. Token en sessionStorage ?
+  const stored = sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  const expiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+  if (stored && Date.now() < expiry - 60000) {
+    spotifyToken = stored;
+    setServiceStatus('spotify', 'ok');
+    updateBadgeLoggedIn();
+    log('OK', 'Token Spotify restauré depuis sessionStorage');
+    return spotifyToken;
+  }
+  // 3. Fallback Client Credentials (playlists publiques seulement)
+  log('INFO', 'Pas de token OAuth — fallback Client Credentials');
+  return await getClientCredentialsToken();
+}
+
+async function getClientCredentialsToken() {
   const t0 = Date.now();
   try {
-    log('INFO', 'Authentification Spotify…');
     const res = await fetch('https://accounts.spotify.com/api/token', {
       method:'POST',
       headers:{'Content-Type':'application/x-www-form-urlencoded','Authorization':'Basic '+btoa(SPOTIFY_CLIENT_ID+':'+SPOTIFY_CLIENT_SECRET)},
@@ -1051,26 +1270,60 @@ async function getSpotifyToken() {
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    if (!data.access_token) {
-      setServiceStatus('spotify', 'error');
-      throw new Error('Pas de token dans la réponse');
-    }
+    if (!data.access_token) throw new Error('Pas de token');
     spotifyToken = data.access_token;
-    const ms = Date.now() - t0;
-    _metrics.latenciesSpotify.push(ms);
-    document.getElementById('spotify-badge').className = 'badge spotify-on';
-    updateQuotaDisplay();
+    _metrics.latenciesSpotify.push(Date.now() - t0);
+    // Badge en mode limité
+    const badge = document.getElementById('spotify-badge');
+    if (badge) { badge.className = 'badge warn'; }
+    const label = document.getElementById('spotify-badge-label');
+    if (label) label.textContent = 'Spotify (limité)';
     updateKPIs();
-    log('OK', `Token Spotify obtenu en ${fmtMs(ms)}`);
+    log('OK', `Client Credentials OK en ${fmtMs(Date.now()-t0)} — accès limité aux playlists publiques`);
     return spotifyToken;
   } catch(e) {
     _metrics.errorsAPI++;
     setServiceStatus('spotify', 'error');
-    log('ERROR', `Auth Spotify échouée: ${e.message}`);
-    showNotif('❌ Erreur connexion Spotify');
-    updateKPIs();
+    log('ERROR', `Client Credentials échoué: ${e.message}`);
     return null;
   }
+}
+
+// ── Mise à jour badge après login ─────────────────────────────
+async function updateBadgeLoggedIn(tokenData) {
+  const badge = document.getElementById('spotify-badge');
+  const label = document.getElementById('spotify-badge-label');
+  if (badge) badge.className = 'badge spotify-on';
+  // Récupérer le nom de l'utilisateur
+  try {
+    const res = await fetch('https://api.spotify.com/v1/me', {
+      headers: {'Authorization': 'Bearer ' + spotifyToken}
+    });
+    if (res.ok) {
+      const me = await res.json();
+      if (label) label.textContent = me.display_name || 'Spotify ✓';
+      log('OK', `Connecté en tant que: ${me.display_name}`);
+    }
+  } catch(e) {
+    if (label) label.textContent = 'Spotify ✓';
+  }
+}
+
+// ── Overlay OAuth ─────────────────────────────────────────────
+function showOAuthOverlay() {
+  const el = document.getElementById('oauth-overlay');
+  if (el) el.style.display = 'flex';
+}
+
+function hideOAuthOverlay() {
+  const el = document.getElementById('oauth-overlay');
+  if (el) el.style.display = 'none';
+}
+
+function skipLogin() {
+  hideOAuthOverlay();
+  log('INFO', 'Utilisateur a choisi de continuer sans OAuth — accès limité');
+  getClientCredentialsToken();
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -1592,7 +1845,26 @@ log('INFO', `PADJ Popularité v${APP_VERSION} — démarrage`);
 updateQuotaDisplay();
 updateShazamQuotaDisplay();
 renderEnv();
-getSpotifyToken();
+
+// Gérer le callback OAuth si on revient de Spotify
+const _urlParams = new URLSearchParams(window.location.search);
+if (_urlParams.has('code') || _urlParams.has('error')) {
+  handleOAuthCallback();
+} else {
+  // Vérifier si token déjà présent en session
+  const _storedToken = sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  const _storedExpiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+  if (_storedToken && Date.now() < _storedExpiry - 60000) {
+    spotifyToken = _storedToken;
+    setServiceStatus('spotify', 'ok');
+    updateBadgeLoggedIn();
+    hideOAuthOverlay();
+    log('OK', 'Session Spotify restaurée');
+  } else {
+    // Montrer overlay login
+    showOAuthOverlay();
+  }
+}
 
 // Erreurs JS globales → log automatique
 window.addEventListener('error', e => {
