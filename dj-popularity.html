@@ -187,7 +187,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.2.1</div>
+    <div class="badge version"><div class="dot"></div> v2.2.2</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -354,7 +354,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.2.1';
+const APP_VERSION = '2.2.2';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1498,7 +1498,7 @@ async function loadSpotifyUrl() {
 
 async function fetchPlaylistTracks(id, token) {
   const rows = [];
-  let url = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=100&market=FR&fields=next,items(track(id,name,popularity,duration_ms,artists,album(name,images)))`;
+  let url = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=100&market=FR`;
   let page = 0;
   while (url) {
     page++;
