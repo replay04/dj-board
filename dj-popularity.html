@@ -192,6 +192,40 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 
 /* Dev actions */
 .dev-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+
+/* ── COLLECTION ── */
+.collection-upload{border:2px dashed var(--border);border-radius:12px;padding:40px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:20px;}
+.collection-upload:hover,.collection-upload.dragover{border-color:var(--accent);background:rgba(232,255,71,.04);}
+.collection-upload h3{font-size:15px;font-weight:500;margin-bottom:6px;}
+.collection-upload p{font-size:12px;color:var(--text-dim);}
+#nml-input{display:none;}
+
+.coll-stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px;}
+.coll-stat{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+.coll-stat-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1;}
+.coll-stat-label{font-size:11px;color:var(--text-dim);margin-top:4px;}
+
+.gap-filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+.ambiance-chip{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;}
+.ambiance-chip:hover{border-color:var(--accent);color:var(--accent);}
+.ambiance-chip.active{background:var(--accent);color:#0a0a0f;border-color:var(--accent);}
+
+.gap-track{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid rgba(42,42,58,.5);border-radius:6px;transition:background .15s;}
+.gap-track:hover{background:rgba(232,255,71,.04);}
+.gap-track:last-child{border-bottom:none;}
+.gap-track-info{flex:1;min-width:0;}
+.gap-track-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gap-track-artist{font-size:11px;color:var(--text-dim);}
+.gap-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.gap-status.missing{background:rgba(255,71,87,.15);color:var(--danger);}
+.gap-status.owned{background:rgba(46,213,115,.15);color:var(--ok);}
+.gap-dance{display:flex;align-items:center;gap:4px;}
+.gap-dance-bar{width:40px;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.gap-dance-fill{height:100%;border-radius:2px;background:var(--accent2);}
+.bpm-range-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:12px;}
+.gap-section-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;padding:8px 0;}
+.gap-section-missing{color:var(--danger);}
+.gap-section-owned{color:var(--ok);}
 </style>
 </head>
 <body>
@@ -199,7 +233,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.5.4</div>
+    <div class="badge version"><div class="dot"></div> v2.5.5</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -424,7 +458,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.5.4';
+const APP_VERSION = '2.5.5';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1767,11 +1801,16 @@ async function findGaps() {
     } catch(e) { log('DEBUG', `Chart ${pid}: ${e.message}`); }
   }
 
-  // Dédupliquer par ID
-  const seen = new Set();
+  // Dédupliquer par ID ET par titre+artiste normalisé
+  const seenIds = new Set();
+  const seenTitles = new Set();
   allTracks = allTracks.filter(t => {
-    if (!t.id || seen.has(t.id)) return false;
-    seen.add(t.id);
+    if (!t.id) return false;
+    if (seenIds.has(t.id)) return false;
+    const titleKey = (t.title + '||' + t.artist).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,30);
+    if (seenTitles.has(titleKey)) return false;
+    seenIds.add(t.id);
+    seenTitles.add(titleKey);
     return true;
   });
 
@@ -1825,7 +1864,7 @@ function renderGapResults(missing, owned) {
 
   const renderTrack = (t, status) => `
     <div class="gap-track">
-      ${t.image ? `<img src="${escHtml(t.image)}" style="width:36px;height:36px;border-radius:4px;object-fit:cover;flex-shrink:0">` : '<div style="width:36px;height:36px;background:var(--surface2);border-radius:4px;flex-shrink:0"></div>'}
+      ${t.image ? `<img src="${escHtml(t.image)}" style="width:40px;height:40px;border-radius:4px;object-fit:cover;flex-shrink:0">` : `<div style="width:40px;height:40px;background:var(--surface2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px">🎵</div>`}
       <div class="gap-track-info">
         <div class="gap-track-title">${escHtml(t.title)}</div>
         <div class="gap-track-artist">${escHtml(t.artist)}</div>
@@ -1834,23 +1873,26 @@ function renderGapResults(missing, owned) {
         <span style="font-size:10px;color:var(--text-dim)">💃</span>
         <div class="gap-dance-bar"><div class="gap-dance-fill" style="width:${Math.round(t.danceability*100)}%"></div></div>
       </div>` : ''}
-      ${t.bpm ? `<span class="meta-badge">${t.bpm}</span>` : ''}
+      ${t.bpm ? `<span class="meta-badge">${t.bpm} BPM</span>` : ''}
       <div class="score-badge ${scoreClass(t.popularity||0)}">${t.popularity||'—'}</div>
-      <span class="gap-status ${status}">${status === 'missing' ? '❌ Manque' : '✅ Possédé'}</span>
-      ${t.id ? `<button class="play-track-btn" data-track-id="${t.id}" onclick="playTrack('${t.id}',[],0)" title="Écouter">▶</button>` : ''}
+      <span class="gap-status ${status}">${status === 'missing' ? '❌ Manque' : '✅ OK'}</span>
+      ${t.id ? `<a class="play-track-btn" href="https://open.spotify.com/track/${t.id}" target="_blank" title="Ouvrir dans Spotify">▶</a>` : ''}
     </div>`;
 
   container.innerHTML = `
-    <div class="results-header">
-      <div class="results-count"><strong style="color:var(--danger)">${missing.length}</strong> manquants · <strong style="color:var(--ok)">${owned.length}</strong> déjà dans ta collection</div>
+    <div class="results-header" style="margin-bottom:16px">
+      <div class="results-count">
+        <strong style="color:var(--danger)">${missing.length}</strong> à acquérir &nbsp;·&nbsp;
+        <strong style="color:var(--ok)">${owned.length}</strong> déjà dans ta collection
+      </div>
     </div>
-    <div style="margin-bottom:20px">
-      <h4 style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--danger);margin-bottom:10px;text-transform:uppercase">❌ À acquérir (${missing.length})</h4>
-      ${missing.slice(0,30).map(t => renderTrack(t, 'missing')).join('') || '<p style="font-size:12px;color:var(--text-dim)">Aucun manquant trouvé</p>'}
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px">
+      <div class="gap-section-title gap-section-missing">❌ À ACQUÉRIR (${missing.length})</div>
+      ${missing.slice(0,30).map(t => renderTrack(t, 'missing')).join('') || '<p style="font-size:12px;color:var(--text-dim);padding:8px 0">Aucun manquant — tu as tout !</p>'}
     </div>
-    ${owned.length ? `<div>
-      <h4 style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--ok);margin-bottom:10px;text-transform:uppercase">✅ Déjà dans ta collection (${owned.length})</h4>
-      ${owned.slice(0,10).map(t => renderTrack(t, 'owned')).join('')}
+    ${owned.length ? `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px">
+      <div class="gap-section-title gap-section-owned">✅ DÉJÀ DANS TA COLLECTION (${owned.length})</div>
+      ${owned.slice(0,15).map(t => renderTrack(t, 'owned')).join('')}
     </div>` : ''}`;
 }
 
@@ -2286,7 +2328,7 @@ function renderSearchResults(spRes, dzRes, containerId) {
           <td class="track-rank">${i+1}</td>
           <td>
             <div style="display:flex;align-items:center;gap:8px">
-              <button class="play-track-btn" data-track-id="${t.id||''}" onclick="event.stopPropagation();playTrack('${t.id||''}',_lastSearchResults,${i})" title="Écouter">▶</button>
+              <a class="play-track-btn" href="${t.id ? 'https://open.spotify.com/track/'+t.id : '#'}" target="_blank" onclick="event.stopPropagation()" title="Ouvrir dans Spotify">▶</a>
               <div><div class="track-title">${escHtml(t.title)}</div><div class="track-artist">${escHtml(t.album||'')}</div></div>
             </div>
           </td>
