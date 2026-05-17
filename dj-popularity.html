@@ -233,7 +233,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.5.5</div>
+    <div class="badge version"><div class="dot"></div> v2.5.6</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -458,7 +458,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.5.5';
+const APP_VERSION = '2.5.6';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1876,7 +1876,7 @@ function renderGapResults(missing, owned) {
       ${t.bpm ? `<span class="meta-badge">${t.bpm} BPM</span>` : ''}
       <div class="score-badge ${scoreClass(t.popularity||0)}">${t.popularity||'—'}</div>
       <span class="gap-status ${status}">${status === 'missing' ? '❌ Manque' : '✅ OK'}</span>
-      ${t.id ? `<a class="play-track-btn" href="https://open.spotify.com/track/${t.id}" target="_blank" title="Ouvrir dans Spotify">▶</a>` : ''}
+      ${t.id ? `<a class="play-track-btn" href="spotify:track:${t.id}" title="Ouvrir dans Spotify">▶</a>` : ''}
     </div>`;
 
   container.innerHTML = `
@@ -2328,7 +2328,7 @@ function renderSearchResults(spRes, dzRes, containerId) {
           <td class="track-rank">${i+1}</td>
           <td>
             <div style="display:flex;align-items:center;gap:8px">
-              <a class="play-track-btn" href="${t.id ? 'https://open.spotify.com/track/'+t.id : '#'}" target="_blank" onclick="event.stopPropagation()" title="Ouvrir dans Spotify">▶</a>
+              <a class="play-track-btn" href="${t.id ? 'spotify:track:'+t.id : '#'}" onclick="event.stopPropagation()" title="Ouvrir dans Spotify">▶</a>
               <div><div class="track-title">${escHtml(t.title)}</div><div class="track-artist">${escHtml(t.album||'')}</div></div>
             </div>
           </td>
@@ -2494,8 +2494,7 @@ function playTrack(trackId, trackList, index) {
     showNotif('❌ ID track invalide');
     return;
   }
-  const url = `https://open.spotify.com/track/${trackId}`;
-  window.open(url, '_blank');
+  window.location.href = `spotify:track:${trackId}`;
   log('OK', `Ouvert dans Spotify: ${trackId}`);
 }
 
