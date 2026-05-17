@@ -255,7 +255,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.5.1</div>
+    <div class="badge version"><div class="dot"></div> v2.5.2</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -480,7 +480,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.5.1';
+const APP_VERSION = '2.5.2';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -531,10 +531,12 @@ function showServiceAlert(service, type, message) {
   const div = document.createElement('div');
   div.id = alertId;
   div.className = `service-alert ${type}`;
+  const reconnectBtn = service === 'spotify' ? `<button onclick="spotifyLogin()" style="margin-left:8px;padding:4px 12px;background:var(--spotify);color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif">↺ Reconnecter</button>` : '';
   div.innerHTML = `
     <span class="alert-icon">${icons[type] || '⚠️'}</span>
     <span><strong>${escHtmlSimple(service)}</strong> — ${escHtmlSimple(message)}</span>
-    <span class="alert-close" onclick="dismissAlert('${alertId}')">×</span>`;
+    ${reconnectBtn}
+    <span class="alert-close" onclick="dismissAlert('${alertId}')" style="margin-left:auto">×</span>`;
   container.appendChild(div);
   log('WARN', `[ALERTE] ${service}: ${message}`);
 }
@@ -581,7 +583,7 @@ function setServiceStatus(service, status) {
 
   } else if (status === 'error') {
     const msgs = {
-      spotify: 'Spotify API inaccessible. Vérifie ta connexion ou tes clés API.',
+      spotify: 'Session Spotify expirée.',
       shazam:  'Shazam API inaccessible. Vérifie ta clé RapidAPI.',
       deezer:  'Deezer inaccessible.',
     };
@@ -1385,7 +1387,8 @@ async function getSpotifyToken() {
   }
   // 3. Fallback Client Credentials (playlists publiques seulement)
   log('INFO', 'Pas de token OAuth — fallback Client Credentials');
-  return await getClientCredentialsToken();
+  const ccToken = await getClientCredentialsToken();
+  return ccToken;
 }
 
 async function getClientCredentialsToken() {
@@ -1733,6 +1736,14 @@ function setStyleFilter(style, el) {
 async function findGaps() {
   if (!_collection.length) { showNotif('❌ Charge d\'abord ta collection'); return; }
 
+  // Vérifier/rafraîchir le token Spotify avant de démarrer
+  const token = await getSpotifyToken();
+  if (!token) {
+    showNotif('❌ Connexion Spotify requise — clique sur "Reconnecter"');
+    showServiceAlert('spotify', 'error', 'Session Spotify expirée.');
+    return;
+  }
+
   const container = document.getElementById('gap-results');
   container.innerHTML = '<div class="loader"><div class="spinner"></div>Recherche des titres populaires…</div>';
 
@@ -1759,10 +1770,26 @@ async function findGaps() {
 
   let allTracks = [];
 
-  // Stratégie 1 : Recherche Spotify par genre/style
+  // Stratégie 1 : Recherche Spotify par genre/style (top 50 par popularité)
   try {
     for (const seed of style.seeds.slice(0, 2)) {
-      const results = await spotifySearch(`genre:${seed}`, 20);
+      const results = await spotifySearch(`genre:${seed}`, 25);
+      allTracks.push(...results);
+    }
+    // Recherche complémentaire sur les artistes emblématiques du style
+    const artistSeeds = {
+      pop: ['Dua Lipa', 'The Weeknd', 'Harry Styles', 'Taylor Swift', 'Ed Sheeran'],
+      rnb: ['Drake', 'Beyonce', 'Kendrick Lamar', 'SZA', 'Bruno Mars'],
+      house: ['David Guetta', 'Calvin Harris', 'Kygo', 'Martin Garrix', 'Avicii'],
+      french: ['Aya Nakamura', 'Jul', 'Naps', 'SCH', 'Dadju'],
+      latino: ['Bad Bunny', 'J Balvin', 'Maluma', 'Ozuna', 'Shakira'],
+      rock: ['Coldplay', 'Imagine Dragons', 'The Killers', 'Muse', 'Arctic Monkeys'],
+      '80s90s': ['Michael Jackson', 'Madonna', 'Prince', 'Whitney Houston', 'George Michael'],
+      afro: ['Burna Boy', 'Wizkid', 'Davido', 'Tiwa Savage', 'Afrobeats'],
+    };
+    const artists = (artistSeeds[style.id] || []).slice(0, 3);
+    for (const artist of artists) {
+      const results = await spotifySearch(artist, 8);
       allTracks.push(...results);
     }
   } catch(e) { log('WARN', `Search seeds: ${e.message}`); }
