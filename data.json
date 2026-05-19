@@ -1,39 +1,39 @@
 {
-  "updated": "2026-05-18",
+  "updated": "2026-05-19",
   "week": 21,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 89,
+    "apple_count": 91,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
+        "mariage",
         "ambiance",
-        "fr",
-        "rap"
+        "fr"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
       "moments": [
         "cocktail",
-        "diner"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 15,
+      "apple": 9,
       "deezer": 0,
-      "score": 4,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -58,168 +58,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 24,
+      "apple": 10,
       "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 11,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Gone Gone Gone",
-      "artist": "David Guetta & Teddy Swims",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "electro"
-      ],
-      "bpm": 128,
-      "youtubeId": "8iT9DRe3cHE",
-      "mixte": 4,
-      "camelot": "11B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 8,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 13,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
-      "mixte": 4,
-      "camelot": "3B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 27,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 12,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 39,
-      "deezer": 0,
-      "score": 3,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -244,9 +85,112 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 46,
+      "apple": 8,
       "deezer": 0,
-      "score": 3,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 14,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 18,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 24,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 29,
+      "deezer": 0,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -272,25 +216,108 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 48,
-      "score": 2,
+      "deezer": 36,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 46,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "electro"
+      ],
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
+      "mixte": 4,
+      "camelot": "11B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 14,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Soirée mondaine",
+      "artist": "Oria",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 35,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
         "mariage",
-        "ambiance",
-        "fr"
+        "slow",
+        "intl",
+        "pop"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
       "moments": [
-        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -298,7 +325,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 56,
+      "apple": 69,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -325,53 +352,26 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 57,
+      "apple": 51,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
       "tags": [
-        "dancefloor",
         "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 54,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
+        "slow",
         "fr"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
       "moments": [
-        "cocktail"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
