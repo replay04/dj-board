@@ -1,79 +1,27 @@
 {
-  "updated": "2026-05-20",
+  "updated": "2026-05-21",
   "week": 21,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 85,
+    "apple_count": 90,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 10,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 7,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
       "tags": [
         "dancefloor",
         "intl",
-        "pop"
+        "electro"
       ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
+      "mixte": 4,
+      "camelot": "11B",
       "moments": [
         "dance",
         "fin"
@@ -83,9 +31,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 5,
-      "deezer": 0,
-      "score": 5,
+      "apple": 67,
+      "deezer": 6,
+      "score": 6,
       "weeks": 0,
       "trend": 0
     },
@@ -110,8 +58,112 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 14,
+      "apple": 17,
+      "deezer": 83,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 5,
       "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 8,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 23,
+      "deezer": 74,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 10,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -137,25 +189,24 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 15,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
       "tags": [
         "dancefloor",
-        "mariage",
-        "fr",
+        "intl",
         "pop"
       ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
       "mixte": 5,
-      "camelot": "7A",
+      "camelot": "7B",
       "moments": [
         "dance",
         "fin"
@@ -165,7 +216,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 22,
+      "apple": 13,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -198,72 +249,49 @@
       "trend": 0
     },
     {
-      "title": "One Track Mind",
-      "artist": "Naïka",
+      "title": "Soirée mondaine",
+      "artist": "Oria",
       "tags": [
-        "pop",
-        "fr"
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
       "moments": [
-        "cocktail"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 25,
-      "deezer": 0,
+      "apple": 37,
+      "deezer": 74,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
+      "title": "La recette",
+      "artist": "Jeck & Carla",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
-      "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 36,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
+        "dancefloor",
         "mariage",
-        "slow",
-        "intl",
+        "fr",
         "pop"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
       "moments": [
-        "slow"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
@@ -277,20 +305,19 @@
       "trend": 0
     },
     {
-      "title": "Gone Gone Gone",
-      "artist": "David Guetta & Teddy Swims",
+      "title": "Pocahontas",
+      "artist": "PLK",
       "tags": [
-        "dancefloor",
-        "intl",
-        "electro"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 128,
-      "youtubeId": "8iT9DRe3cHE",
-      "mixte": 4,
-      "camelot": "11B",
+      "bpm": 87,
+      "youtubeId": "JvokQ1Mkbl0",
+      "mixte": 2,
+      "camelot": "5A",
       "moments": [
-        "dance",
-        "fin"
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
@@ -298,8 +325,35 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 14,
-      "score": 3,
+      "deezer": 74,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 90,
+      "deezer": 0,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -325,25 +379,26 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 47,
-      "deezer": 0,
-      "score": 3,
+      "apple": 0,
+      "deezer": 74,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
+      "title": "L'Horizon",
+      "artist": "Pierre Garnier",
       "tags": [
         "mariage",
-        "slow",
-        "fr"
+        "fr",
+        "variete"
       ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
+      "bpm": 76,
+      "youtubeId": "fj_MkTfWS3s",
+      "mixte": 5,
+      "camelot": "5A",
       "moments": [
+        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -351,8 +406,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 79,
-      "deezer": 0,
+      "apple": 0,
+      "deezer": 74,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Génération Impolie",
+      "artist": "Franglish feat. Keblack",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 90,
+      "youtubeId": "9bZkp7q19f0",
+      "mixte": 2,
+      "camelot": "2B",
+      "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 74,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -463,46 +544,20 @@
       "trend": 0
     },
     {
-      "title": "Pocahontas",
-      "artist": "PLK",
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 87,
-      "youtubeId": "JvokQ1Mkbl0",
-      "mixte": 2,
-      "camelot": "5A",
-      "moments": [
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
-      "tags": [
-        "ambiance",
+        "mariage",
+        "slow",
         "intl",
         "pop"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
       "moments": [
-        "cocktail",
-        "diner"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
@@ -595,47 +650,18 @@
       "trend": 0
     },
     {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
       "tags": [
-        "dancefloor",
         "mariage",
-        "fr",
-        "pop"
+        "slow",
+        "fr"
       ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
       "mixte": 4,
-      "camelot": "3B",
+      "camelot": "9B",
       "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "L'Horizon",
-      "artist": "Pierre Garnier",
-      "tags": [
-        "mariage",
-        "fr",
-        "variete"
-      ],
-      "bpm": 76,
-      "youtubeId": "fj_MkTfWS3s",
-      "mixte": 5,
-      "camelot": "5A",
-      "moments": [
-        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -664,32 +690,6 @@
       "camelot": "6A",
       "moments": [
         "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Génération Impolie",
-      "artist": "Franglish feat. Keblack",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 90,
-      "youtubeId": "9bZkp7q19f0",
-      "mixte": 2,
-      "camelot": "2B",
-      "moments": [
-        "diner"
       ],
       "radio": 0,
       "singles": 0,
