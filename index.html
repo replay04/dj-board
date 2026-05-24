@@ -825,7 +825,21 @@ function parseTracks(arr) {
 
 function setMeta(u,w) {
   const el=document.querySelector('.logo-sub');
-  if(el) el.textContent='Semaine '+w+' / '+u.substring(0,4);
+  if(!el) return;
+  // Calculer lundi et dimanche de la semaine w
+  const year = parseInt(u.substring(0,4));
+  // Trouver le 4 janvier (toujours en semaine 1 ISO) puis remonter au lundi
+  const jan4 = new Date(year, 0, 4);
+  const dayOfWeek = jan4.getDay() || 7; // 1=lundi ... 7=dimanche
+  const week1Monday = new Date(jan4);
+  week1Monday.setDate(jan4.getDate() - dayOfWeek + 1);
+  // Ajouter (w-1) semaines
+  const monday = new Date(week1Monday);
+  monday.setDate(week1Monday.getDate() + (w - 1) * 7);
+  const sunday = new Date(monday);
+  sunday.setDate(monday.getDate() + 6);
+  const fmt = d => d.getDate() + ' ' + ['jan','fév','mar','avr','mai','juin','juil','aoû','sep','oct','nov','déc'][d.getMonth()];
+  el.textContent = 'du ' + fmt(monday) + ' au ' + fmt(sunday) + ' ' + year;
 }
 
 async function loadData() {
