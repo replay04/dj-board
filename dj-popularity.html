@@ -827,7 +827,7 @@ function updateKPIs() {
   set('kpi-latency-spotify', latSp ? fmtMs(latSp) : '—', latSp === null ? '' : latSp < 500 ? 'ok' : latSp < 1500 ? 'warn' : 'danger');
   set('kpi-latency-deezer', latDz ? fmtMs(latDz) : '—', latDz === null ? '' : latDz < 500 ? 'ok' : latDz < 1500 ? 'warn' : 'danger');
   set('kpi-set-size', `${setTracks.length} titre${setTracks.length !== 1 ? 's' : ''}`);
-  const oauthActive = !!localStorage.getItem(OAUTH_TOKEN_KEY);
+  const oauthActive = !!sessionStorage.getItem(OAUTH_TOKEN_KEY);
   set('kpi-token', spotifyToken ? (oauthActive ? '✓ OAuth' : '✓ CC (limité)') : '✗ Absent', spotifyToken ? 'ok' : 'danger');
   const statusLabels = { ok:'✓ OK', quota:'⚠ Quota', error:'✗ Erreur', unknown:'— Inconnu' };
   const statusCls = { ok:'ok', quota:'warn', error:'danger', unknown:'' };
@@ -1216,8 +1216,8 @@ async function spotifyLogin() {
   const verifier = generateRandom(64);
   const challenge = await sha256(verifier);
 
-  localStorage.setItem(OAUTH_STATE_KEY, state);
-  localStorage.setItem(OAUTH_VERIFIER_KEY, verifier);
+  sessionStorage.setItem(OAUTH_STATE_KEY, state);
+  sessionStorage.setItem(OAUTH_VERIFIER_KEY, verifier);
 
   const params = new URLSearchParams({
     response_type: 'code',
@@ -1229,6 +1229,9 @@ async function spotifyLogin() {
     code_challenge: challenge,
   });
 
+  // Sauvegarder l'onglet actif avant redirection
+  const activeTab = document.querySelector('.tab.active');
+  if (activeTab) localStorage.setItem('padj_active_tab', activeTab.getAttribute('onclick'));
   log('INFO', 'Redirection OAuth Spotify…');
   window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
 }
@@ -1250,8 +1253,8 @@ async function handleOAuthCallback() {
 
   if (!code) return; // Pas de callback
 
-  const savedState = localStorage.getItem(OAUTH_STATE_KEY);
-  const verifier = localStorage.getItem(OAUTH_VERIFIER_KEY);
+  const savedState = sessionStorage.getItem(OAUTH_STATE_KEY);
+  const verifier = sessionStorage.getItem(OAUTH_VERIFIER_KEY);
 
   if (state !== savedState) {
     log('ERROR', 'OAuth state mismatch — possible CSRF');
@@ -1284,19 +1287,30 @@ async function handleOAuthCallback() {
     const ms = Date.now() - t0;
 
     // Stocker token + expiry
-    localStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
-    localStorage.setItem(OAUTH_EXPIRY_KEY, String(expiry));
-    if (data.refresh_token) localStorage.setItem('padj_refresh_token', data.refresh_token);
+    sessionStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
+    sessionStorage.setItem(OAUTH_EXPIRY_KEY, String(expiry));
+    if (data.refresh_token) sessionStorage.setItem('padj_refresh_token', data.refresh_token);
 
     // Nettoyer l'URL (enlever ?code=... de l'URL)
     window.history.replaceState({}, '', window.location.pathname);
-    localStorage.removeItem(OAUTH_STATE_KEY);
-    localStorage.removeItem(OAUTH_VERIFIER_KEY);
+    sessionStorage.removeItem(OAUTH_STATE_KEY);
+    sessionStorage.removeItem(OAUTH_VERIFIER_KEY);
 
     _metrics.latenciesSpotify.push(ms);
     setServiceStatus('spotify', 'ok');
     updateBadgeLoggedIn(data);
     updateKPIs();
+    // Restaurer l'onglet actif avant la redirection OAuth
+    const savedTab = localStorage.getItem('padj_active_tab');
+    if (savedTab) {
+      localStorage.removeItem('padj_active_tab');
+      const match = savedTab.match(/switchTab\('([^']+)'/);
+      if (match) {
+        const tabName = match[1];
+        const tabEl = document.querySelector(`.tab[onclick*="'${tabName}'"]`);
+        switchTab(tabName, tabEl);
+      }
+    }
     log('OK', `OAuth Spotify réussi en ${fmtMs(ms)} — token valide ${Math.round(data.expires_in/60)}min`);
     showNotif('✅ Connecté à Spotify !');
     hideOAuthOverlay();
@@ -1313,7 +1327,7 @@ async function handleOAuthCallback() {
 
 // ── Refresh token ─────────────────────────────────────────────
 async function refreshSpotifyToken() {
-  const refreshToken = localStorage.getItem('padj_refresh_token');
+  const refreshToken = sessionStorage.getItem('padj_refresh_token');
   if (!refreshToken) { spotifyToken = null; showOAuthOverlay(); return null; }
   try {
     const res = await fetch('https://accounts.spotify.com/api/token', {
@@ -1328,9 +1342,9 @@ async function refreshSpotifyToken() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     spotifyToken = data.access_token;
-    localStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
+    sessionStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
     sessionStorage.setItem(OAUTH_EXPIRY_KEY, String(Date.now() + data.expires_in * 1000));
-    if (data.refresh_token) localStorage.setItem('padj_refresh_token', data.refresh_token);
+    if (data.refresh_token) sessionStorage.setItem('padj_refresh_token', data.refresh_token);
     log('OK', 'Token Spotify rafraîchi');
     return spotifyToken;
   } catch(e) {
@@ -1345,15 +1359,15 @@ async function refreshSpotifyToken() {
 async function getSpotifyToken() {
   // 1. Token en mémoire valide ?
   if (spotifyToken) {
-    const expiry = parseInt(localStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+    const expiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
     if (Date.now() < expiry - 60000) return spotifyToken; // 1min de marge
     // Token expiré → refresh
     log('INFO', 'Token expiré, refresh…');
     return await refreshSpotifyToken();
   }
   // 2. Token en sessionStorage ?
-  const stored = localStorage.getItem(OAUTH_TOKEN_KEY);
-  const expiry = parseInt(localStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+  const stored = sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  const expiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
   if (stored && Date.now() < expiry - 60000) {
     spotifyToken = stored;
     setServiceStatus('spotify', 'ok');
@@ -2518,8 +2532,8 @@ if (_urlParams.has('code') || _urlParams.has('error')) {
   handleOAuthCallback();
 } else {
   // Vérifier si token déjà présent en session
-  const _storedToken = localStorage.getItem(OAUTH_TOKEN_KEY);
-  const _storedExpiry = parseInt(localStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+  const _storedToken = sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  const _storedExpiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
   if (_storedToken && Date.now() < _storedExpiry - 60000) {
     spotifyToken = _storedToken;
     setServiceStatus('spotify', 'ok');
