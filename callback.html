@@ -21,7 +21,7 @@ if(error) {
   document.getElementById('msg').textContent = 'Erreur: ' + error;
 } else if(code) {
   document.getElementById('msg').textContent = 'Connexion réussie, redirection...';
-  window.location.href = '/dj-board/?code=' + encodeURIComponent(code);
+  window.location.href = 'https://replay04.github.io/dj-board/dj-popularity.html?code=' + encodeURIComponent(code) + (params.get('state') ? '&state=' + encodeURIComponent(params.get('state')) : '');
 } else {
   document.getElementById('msg').textContent = 'Aucun code reçu.';
 }
