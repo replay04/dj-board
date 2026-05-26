@@ -233,7 +233,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.5.7</div>
+    <div class="badge version"><div class="dot"></div> v2.5.8</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -458,7 +458,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.5.7';
+const APP_VERSION = '2.5.8';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1229,9 +1229,6 @@ async function spotifyLogin() {
     code_challenge: challenge,
   });
 
-  // Sauvegarder l'onglet actif avant redirection
-  const activeTab = document.querySelector('.tab.active');
-  if (activeTab) localStorage.setItem('padj_active_tab', activeTab.getAttribute('onclick'));
   log('INFO', 'Redirection OAuth Spotify…');
   window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
 }
@@ -1300,17 +1297,6 @@ async function handleOAuthCallback() {
     setServiceStatus('spotify', 'ok');
     updateBadgeLoggedIn(data);
     updateKPIs();
-    // Restaurer l'onglet actif avant la redirection OAuth
-    const savedTab = localStorage.getItem('padj_active_tab');
-    if (savedTab) {
-      localStorage.removeItem('padj_active_tab');
-      const match = savedTab.match(/switchTab\('([^']+)'/);
-      if (match) {
-        const tabName = match[1];
-        const tabEl = document.querySelector(`.tab[onclick*="'${tabName}'"]`);
-        switchTab(tabName, tabEl);
-      }
-    }
     log('OK', `OAuth Spotify réussi en ${fmtMs(ms)} — token valide ${Math.round(data.expires_in/60)}min`);
     showNotif('✅ Connecté à Spotify !');
     hideOAuthOverlay();
@@ -1878,19 +1864,17 @@ function renderGapResults(missing, owned) {
 
   const renderTrack = (t, status) => `
     <div class="gap-track">
-      ${t.image ? `<img src="${escHtml(t.image)}" style="width:40px;height:40px;border-radius:4px;object-fit:cover;flex-shrink:0">` : `<div style="width:40px;height:40px;background:var(--surface2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px">🎵</div>`}
+      <span class="gap-status ${status}">${status === 'missing' ? '❌' : '✅'}</span>
+      ${t.id ? `<a class="play-track-btn" href="spotify:track:${t.id}" title="Ouvrir dans Spotify">▶</a>` : ''}
       <div class="gap-track-info">
         <div class="gap-track-title">${escHtml(t.title)}</div>
         <div class="gap-track-artist">${escHtml(t.artist)}</div>
       </div>
       ${t.danceability ? `<div class="gap-dance" title="Danceability ${Math.round(t.danceability*100)}%">
-        <span style="font-size:10px;color:var(--text-dim)">💃</span>
         <div class="gap-dance-bar"><div class="gap-dance-fill" style="width:${Math.round(t.danceability*100)}%"></div></div>
       </div>` : ''}
-      ${t.bpm ? `<span class="meta-badge">${t.bpm} BPM</span>` : ''}
+      ${t.bpm ? `<span class="meta-badge">${t.bpm}</span>` : ''}
       <div class="score-badge ${scoreClass(t.popularity||0)}">${t.popularity||'—'}</div>
-      <span class="gap-status ${status}">${status === 'missing' ? '❌ Manque' : '✅ OK'}</span>
-      ${t.id ? `<a class="play-track-btn" href="spotify:track:${t.id}" title="Ouvrir dans Spotify">▶</a>` : ''}
     </div>`;
 
   container.innerHTML = `
