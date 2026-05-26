@@ -1,42 +1,15 @@
 {
-  "updated": "2026-05-24",
-  "week": 21,
+  "updated": "2026-05-26",
+  "week": 22,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 91,
+    "apple_count": 90,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Gone Gone Gone",
-      "artist": "David Guetta & Teddy Swims",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "electro"
-      ],
-      "bpm": 128,
-      "youtubeId": "8iT9DRe3cHE",
-      "mixte": 4,
-      "camelot": "11B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 71,
-      "deezer": 7,
-      "score": 6,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Melodrama",
       "artist": "Disiz & Theodora",
@@ -58,63 +31,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 15,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 27,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 13,
-      "deezer": 0,
-      "score": 4,
+      "apple": 5,
+      "deezer": 80,
+      "score": 6,
       "weeks": 0,
       "trend": 0
     },
@@ -139,9 +58,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 26,
+      "apple": 9,
       "deezer": 0,
-      "score": 4,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -164,8 +83,116 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 12,
+      "apple": 6,
       "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 15,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 19,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 20,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "electro"
+      ],
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
+      "mixte": 4,
+      "camelot": "11B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 8,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -190,7 +217,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 12,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Soirée mondaine",
+      "artist": "Oria",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 22,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -224,99 +279,18 @@
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 39,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
-      "mixte": 4,
-      "camelot": "3B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 48,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
-      "tags": [
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 60,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
         "mariage",
         "slow",
-        "fr"
+        "intl",
+        "pop"
       ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
       "mixte": 4,
-      "camelot": "9B",
+      "camelot": "8A",
       "moments": [
         "slow"
       ],
@@ -325,9 +299,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 54,
+      "apple": 36,
       "deezer": 0,
-      "score": 2,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -353,9 +327,62 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 72,
+      "apple": 66,
       "deezer": 0,
-      "score": 1,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Ça Fait Mal",
+      "artist": "Vitaa",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr",
+        "variete"
+      ],
+      "bpm": 72,
+      "youtubeId": "3SoSpZTcxVo",
+      "mixte": 5,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 54,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 58,
+      "deezer": 0,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -378,9 +405,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 77,
+      "apple": 63,
       "deezer": 0,
-      "score": 1,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -582,33 +609,6 @@
       "camelot": "1A",
       "moments": [
         "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Ça Fait Mal",
-      "artist": "Vitaa",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr",
-        "variete"
-      ],
-      "bpm": 72,
-      "youtubeId": "3SoSpZTcxVo",
-      "mixte": 5,
-      "camelot": "8A",
-      "moments": [
         "slow"
       ],
       "radio": 0,
