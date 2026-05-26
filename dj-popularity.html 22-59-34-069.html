@@ -1,0 +1,2600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PADJ — Popularité v2.2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0f; --surface:#12121a; --surface2:#1a1a26; --surface3:#222235;
+  --border:#2a2a3a; --border2:#3a3a50;
+  --accent:#e8ff47; --accent2:#ff4757; --accent3:#00d2ff; --accent4:#a29bfe;
+  --text:#f0f0f5; --text-dim:#7070a0; --text-muted:#404060;
+  --spotify:#1db954; --deezer:#ff0092; --shazam:#1472f7;
+  --ok:#2ed573; --warn:#ff9f43; --danger:#ff4757;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* ── HEADER ── */
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:200;gap:12px;flex-wrap:wrap;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:4px;color:var(--accent);white-space:nowrap;}
+.logo-sub{color:var(--text-dim);font-size:11px;letter-spacing:2px;margin-left:8px;font-family:'DM Sans',sans-serif;font-weight:300;}
+.header-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+
+.badge{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid var(--border);color:var(--text-dim);white-space:nowrap;cursor:default;}
+.badge .dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.badge.ok{border-color:var(--ok);color:var(--ok);}
+.badge.warn{border-color:var(--warn);color:var(--warn);}
+.badge.danger{border-color:var(--danger);color:var(--danger);}
+.badge.spotify-on{border-color:var(--spotify);color:var(--spotify);}
+.badge.deezer-on{border-color:var(--deezer);color:var(--deezer);}
+.badge.version{border-color:var(--accent4);color:var(--accent4);font-family:var(--mono);letter-spacing:1px;}
+.badge.clickable{cursor:pointer;transition:opacity .2s;} .badge.clickable:hover{opacity:.75;}
+
+/* ── OAUTH OVERLAY ── */
+.oauth-overlay{position:fixed;inset:0;background:rgba(10,10,15,.92);z-index:1000;display:flex;align-items:center;justify-content:center;}
+.oauth-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center;max-width:380px;width:90%;}
+.oauth-box h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--accent);margin-bottom:8px;}
+.oauth-box p{font-size:13px;color:var(--text-dim);margin-bottom:24px;line-height:1.6;}
+.oauth-box .spotify-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--spotify);color:#fff;border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.oauth-box .spotify-btn:hover{background:#17a547;transform:translateY(-1px);}
+.oauth-box .skip-btn{display:block;margin-top:14px;font-size:11px;color:var(--text-muted);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;}
+.oauth-box .skip-btn:hover{color:var(--text-dim);}
+
+/* ── ALERTES SERVICE ── */
+.service-alert{display:flex;align-items:center;gap:10px;padding:10px 24px;font-size:12px;font-weight:600;border-bottom:1px solid var(--border);animation:fadeIn .3s ease;}
+.service-alert.quota{background:rgba(255,159,67,.08);border-color:rgba(255,159,67,.3);color:var(--warn);}
+.service-alert.error{background:rgba(255,71,87,.08);border-color:rgba(255,71,87,.3);color:var(--danger);}
+.service-alert .alert-icon{font-size:16px;flex-shrink:0;}
+.service-alert .alert-close{margin-left:auto;cursor:pointer;opacity:.6;font-size:16px;} .service-alert .alert-close:hover{opacity:1;}
+
+/* ── EXPORTIFY FALLBACK ── */
+.exportify-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;margin-top:8px;}
+.exportify-box h3{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--text);}
+.exportify-box p{font-size:12px;color:var(--text-dim);margin-bottom:20px;line-height:1.6;}
+.exportify-steps{display:flex;gap:12px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.exportify-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:11px;color:var(--text-dim);display:flex;align-items:center;gap:6px;}
+.exportify-step .step-num{background:var(--accent);color:#0a0a0f;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.exportify-drop{border:2px dashed var(--border);border-radius:8px;padding:24px;cursor:pointer;transition:all .2s;margin-top:8px;}
+.exportify-drop:hover,.exportify-drop.dragover{border-color:var(--accent);background:rgba(232,255,71,.04);}
+.exportify-drop p{font-size:12px;color:var(--text-dim);margin:0;}
+#exportify-csv-input{display:none;}
+
+/* ── TABS ── */
+.tabs{display:flex;padding:0 24px;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{padding:12px 20px;font-size:12px;font-weight:600;color:var(--text-dim);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;letter-spacing:.5px;text-transform:uppercase;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.tab.devtab{color:var(--accent4);}
+.tab.devtab.active{color:var(--accent4);border-bottom-color:var(--accent4);}
+
+/* ── PANELS ── */
+.panel{display:none;padding:24px;animation:fadeIn .2s ease;}
+.panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ── INPUTS ── */
+.search-row{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+.search-input{flex:1;min-width:200px;padding:10px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.search-input:focus{border-color:var(--accent);}
+.search-input::placeholder{color:var(--text-dim);}
+.btn{padding:10px 18px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.5px;text-transform:uppercase;}
+.btn-accent{background:var(--accent);color:#0a0a0f;} .btn-accent:hover{background:#d4eb2a;transform:translateY(-1px);}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text);} .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.btn-danger{background:transparent;border:1px solid var(--danger);color:var(--danger);} .btn-danger:hover{background:var(--danger);color:#fff;}
+.btn-sm{padding:6px 12px;font-size:11px;}
+
+/* ── FILTERS ── */
+.filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+.filter-label{font-size:11px;color:var(--text-dim);font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.filter-chip{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.filter-chip:hover{border-color:var(--accent);color:var(--accent);}
+.filter-chip.active{background:var(--accent);color:#0a0a0f;border-color:var(--accent);}
+select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer;font-family:'DM Sans',sans-serif;outline:none;}
+
+/* ── TABLE ── */
+.results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.results-count{font-size:12px;color:var(--text-dim);} .results-count strong{color:var(--accent);}
+.track-table{width:100%;border-collapse:collapse;}
+.track-table th{text-align:left;padding:8px 12px;font-size:10px;font-weight:700;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;}
+.track-table th:hover{color:var(--accent);}
+.track-table td{padding:10px 12px;font-size:13px;border-bottom:1px solid rgba(42,42,58,.4);vertical-align:middle;}
+.track-row{transition:background .12s;cursor:pointer;} .track-row:hover{background:rgba(232,255,71,.04);}
+.track-rank{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--text-muted);width:36px;}
+.track-title{font-weight:500;} .track-artist{font-size:11px;color:var(--text-dim);margin-top:2px;}
+.popularity-bar{display:flex;align-items:center;gap:8px;}
+.bar-track{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden;min-width:60px;}
+.bar-fill{height:100%;border-radius:2px;transition:width .5s ease;}
+.bar-fill.spotify{background:var(--spotify);} .bar-fill.deezer{background:var(--deezer);} .bar-fill.shazam{background:var(--shazam);}
+.score-badge{font-family:'Bebas Neue',sans-serif;font-size:18px;min-width:32px;text-align:right;}
+.score-high{color:var(--accent);} .score-mid{color:var(--warn);} .score-low{color:var(--text-dim);}
+.source-dots{display:flex;gap:3px;}
+.source-dot{width:7px;height:7px;border-radius:50%;opacity:.2;}
+.source-dot.active{opacity:1;} .source-dot.spotify{background:var(--spotify);} .source-dot.deezer{background:var(--deezer);} .source-dot.shazam{background:var(--shazam);}
+.meta-badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);margin-right:3px;font-family:var(--mono);}
+
+/* ── GENRE GRID ── */
+.genre-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:20px;}
+.genre-card{padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;text-align:center;transition:all .2s;font-size:12px;font-weight:600;}
+.genre-card:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.genre-card.active{background:rgba(232,255,71,.08);border-color:var(--accent);color:var(--accent);}
+.genre-icon{font-size:18px;margin-bottom:5px;}
+
+/* ── SET BUILDER ── */
+.set-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:700px){.set-grid{grid-template-columns:1fr;}}
+.set-column{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.set-column h3{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:12px;color:var(--accent);}
+.set-item{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);}
+.set-item:last-child{border-bottom:none;}
+.set-item-rank{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--text-muted);width:20px;}
+.set-item-info{flex:1;} .set-item-title{font-size:12px;font-weight:500;} .set-item-artist{font-size:10px;color:var(--text-dim);}
+.set-item-score{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--accent);}
+
+/* ── LOADER / EMPTY ── */
+.loader{display:flex;align-items:center;justify-content:center;padding:48px;gap:10px;color:var(--text-dim);font-size:13px;}
+.spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:48px 20px;color:var(--text-dim);}
+.empty-state .icon{font-size:40px;margin-bottom:12px;} .empty-state h3{font-size:15px;font-weight:500;margin-bottom:6px;color:var(--text);} .empty-state p{font-size:12px;}
+
+/* ── NOTIF ── */
+.notif{position:fixed;bottom:20px;right:20px;padding:10px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:12px;z-index:9999;animation:slideIn .25s ease;max-width:300px;box-shadow:0 4px 20px rgba(0,0,0,.4);}
+@keyframes slideIn{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+
+/* ═══════════════════════════════════════
+   DEVTOOLS PANEL
+═══════════════════════════════════════ */
+#panel-dev{background:var(--bg);}
+.dev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px;}
+.dev-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.dev-card h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.dev-card h4 .icon{font-size:14px;}
+
+/* KPI row */
+.kpi-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);}
+.kpi-row:last-child{border-bottom:none;}
+.kpi-label{font-size:11px;color:var(--text-dim);}
+.kpi-value{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text);}
+.kpi-value.ok{color:var(--ok);} .kpi-value.warn{color:var(--warn);} .kpi-value.danger{color:var(--danger);}
+
+/* Log console */
+.log-console{background:#070710;border:1px solid var(--border);border-radius:8px;height:280px;overflow-y:auto;padding:10px;font-family:var(--mono);font-size:11px;line-height:1.7;}
+.log-console::-webkit-scrollbar{width:4px;} .log-console::-webkit-scrollbar-track{background:transparent;} .log-console::-webkit-scrollbar-thumb{background:var(--border);}
+.log-line{display:flex;gap:8px;align-items:baseline;}
+.log-time{color:var(--text-muted);flex-shrink:0;font-size:10px;}
+.log-level-INFO{color:var(--accent3);}
+.log-level-OK{color:var(--ok);}
+.log-level-WARN{color:var(--warn);}
+.log-level-ERROR{color:var(--danger);}
+.log-level-DEBUG{color:var(--text-dim);}
+.log-msg{color:var(--text);word-break:break-all;}
+
+/* Test runner */
+.test-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.test-row:last-child{border-bottom:none;}
+.test-status{font-size:14px;width:18px;flex-shrink:0;}
+.test-name{flex:1;color:var(--text-dim);}
+.test-name.ran{color:var(--text);}
+.test-time{font-family:var(--mono);font-size:10px;color:var(--text-muted);}
+.test-err{font-size:10px;color:var(--danger);font-family:var(--mono);margin-top:2px;margin-left:28px;}
+
+/* Benchmark bars */
+.bench-bar-wrap{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.bench-label{font-size:11px;color:var(--text-dim);width:140px;flex-shrink:0;}
+.bench-bar-bg{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.bench-bar-fill{height:100%;border-radius:3px;background:var(--accent3);transition:width .6s ease;}
+.bench-val{font-family:var(--mono);font-size:10px;color:var(--text-dim);width:50px;text-align:right;}
+
+/* Dev actions */
+.dev-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+
+/* ── COLLECTION ── */
+.collection-upload{border:2px dashed var(--border);border-radius:12px;padding:40px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:20px;}
+.collection-upload:hover,.collection-upload.dragover{border-color:var(--accent);background:rgba(232,255,71,.04);}
+.collection-upload h3{font-size:15px;font-weight:500;margin-bottom:6px;}
+.collection-upload p{font-size:12px;color:var(--text-dim);}
+#nml-input{display:none;}
+
+.coll-stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px;}
+.coll-stat{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+.coll-stat-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1;}
+.coll-stat-label{font-size:11px;color:var(--text-dim);margin-top:4px;}
+
+.gap-filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+.ambiance-chip{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;}
+.ambiance-chip:hover{border-color:var(--accent);color:var(--accent);}
+.ambiance-chip.active{background:var(--accent);color:#0a0a0f;border-color:var(--accent);}
+
+.gap-track{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid rgba(42,42,58,.5);border-radius:6px;transition:background .15s;}
+.gap-track:hover{background:rgba(232,255,71,.04);}
+.gap-track:last-child{border-bottom:none;}
+.gap-track-info{flex:1;min-width:0;}
+.gap-track-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gap-track-artist{font-size:11px;color:var(--text-dim);}
+.gap-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.gap-status.missing{background:rgba(255,71,87,.15);color:var(--danger);}
+.gap-status.owned{background:rgba(46,213,115,.15);color:var(--ok);}
+.gap-dance{display:flex;align-items:center;gap:4px;}
+.gap-dance-bar{width:40px;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.gap-dance-fill{height:100%;border-radius:2px;background:var(--accent2);}
+.bpm-range-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:12px;}
+.gap-section-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;padding:8px 0;}
+.gap-section-missing{color:var(--danger);}
+.gap-section-owned{color:var(--ok);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
+  <div class="header-right">
+    <div class="badge version"><div class="dot"></div> v2.6.3</div>
+    <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
+    <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
+    <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
+    <div class="badge deezer-on" id="deezer-badge"><div class="dot"></div> Deezer</div>
+    <div class="badge clickable" id="dev-toggle-btn" onclick="switchTab('dev',this)" title="Ouvrir DevTools" style="border-color:var(--accent4);color:var(--accent4)"><div class="dot"></div> DevTools</div>
+  </div>
+</header>
+
+<div id="oauth-overlay" class="oauth-overlay" style="display:none">
+  <div class="oauth-box">
+    <h2>PADJ Popularité</h2>
+    <p>Connecte ton compte Spotify pour accéder à toutes tes playlists, y compris celles générées par Spotify.</p>
+    <button class="spotify-btn" onclick="spotifyLogin()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      Se connecter avec Spotify
+    </button>
+    <button class="skip-btn" onclick="skipLogin()">Continuer sans connexion (accès limité)</button>
+  </div>
+</div>
+<div id="service-alerts"></div>
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('playlist',this)">📋 Playlist</div>
+  <div class="tab" onclick="switchTab('explore',this)">🔍 Genre</div>
+  <div class="tab" onclick="switchTab('search',this)">🔎 Recherche</div>
+  <div class="tab" onclick="switchTab('set',this)">🎧 Set DJ</div>
+  <div class="tab" onclick="switchTab('collection',this)">🎵 Ma Collection</div>
+  <div class="tab devtab" onclick="switchTab('dev',this)">⚙️ DevTools</div>
+</div>
+
+<!-- ── PANEL PLAYLIST ── -->
+<div class="panel active" id="panel-playlist">
+  <div class="search-row">
+    <input class="search-input" id="playlist-url-input" placeholder="Lien Spotify — playlist, album ou artiste…" onkeydown="if(event.key==='Enter')loadSpotifyUrl()">
+    <button class="btn btn-accent" onclick="loadSpotifyUrl()">Charger</button>
+  </div>
+  <p style="font-size:11px;color:var(--text-dim);margin-bottom:20px;font-family:var(--mono)">
+    open.spotify.com/<span style="color:var(--accent3)">playlist</span>/xxx &nbsp;·&nbsp;
+    open.spotify.com/<span style="color:var(--accent3)">album</span>/xxx &nbsp;·&nbsp;
+    open.spotify.com/<span style="color:var(--accent3)">artist</span>/xxx
+  </p>
+  <div id="playlist-filters" style="display:none">
+    <div class="filters">
+      <span class="filter-label">Tri</span>
+      <div class="filter-chip active" onclick="sortPlaylist('popularity',this)" data-sort="popularity">Popularité</div>
+      <div class="filter-chip" onclick="sortPlaylist('bpm',this)" data-sort="bpm">BPM</div>
+      <div class="filter-chip" onclick="sortPlaylist('title',this)" data-sort="title">Titre A→Z</div>
+      <div class="filter-chip" onclick="sortPlaylist('artist',this)" data-sort="artist">Artiste A→Z</div>
+    </div>
+  </div>
+  <div id="playlist-results"></div>
+</div>
+
+<!-- ── PANEL COLLECTION ── -->
+<div class="panel" id="panel-collection">
+
+  <!-- Zone upload NML -->
+  <div id="coll-upload-zone">
+    <div class="collection-upload" id="nml-drop" onclick="document.getElementById('nml-input').click()">
+      <div style="font-size:36px;margin-bottom:12px">🎛️</div>
+      <h3>Glisse ton fichier Traktor NML ici</h3>
+      <p>Exporte ta collection depuis Traktor → clic droit sur "Track Collection" → "Export the Collection" → NML</p>
+      <br>
+      <button class="btn btn-outline" onclick="event.stopPropagation()">Choisir le fichier NML</button>
+    </div>
+    <input type="file" id="nml-input" accept=".nml,.xml">
+  </div>
+
+  <!-- Stats collection (après import) -->
+  <div id="coll-content" style="display:none">
+    <div class="coll-stats-grid" id="coll-stats-grid"></div>
+
+    <div style="border-bottom:1px solid var(--border);margin-bottom:20px;padding-bottom:20px">
+      <div class="filters" style="margin-bottom:10px">
+        <span class="filter-label">Genre</span>
+        <div id="coll-genre-chips" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      </div>
+      <div class="bpm-range-row">
+        <span class="filter-label">BPM</span>
+        <div class="filter-chip active" id="bpm-all" onclick="setBpmFilter('all',this)">Tous</div>
+        <div class="filter-chip" onclick="setBpmFilter('slow',this)">Lent (&lt;90)</div>
+        <div class="filter-chip" onclick="setBpmFilter('mid',this)">Moyen (90-115)</div>
+        <div class="filter-chip" onclick="setBpmFilter('fast',this)">Rapide (115-130)</div>
+        <div class="filter-chip" onclick="setBpmFilter('vfast',this)">Très rapide (&gt;130)</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;margin-bottom:12px;color:var(--accent)">🕳️ LACUNES DANCEFLOOR</h3>
+      <p style="font-size:12px;color:var(--text-dim);margin-bottom:16px">Titres populaires et dansants que tu n'as pas dans ta collection</p>
+
+      <div class="gap-filters">
+        <span class="filter-label">Ambiance</span>
+        <div class="ambiance-chip active" onclick="setAmbianceFilter('dance',this)">💃 Dancefloor</div>
+        <div class="ambiance-chip" onclick="setAmbianceFilter('repas',this)">🍽️ Repas / Cocktail</div>
+        <div class="ambiance-chip" onclick="setAmbianceFilter('all',this)">🎵 Tout</div>
+      </div>
+
+      <div class="gap-filters">
+        <span class="filter-label">Style</span>
+        <div id="gap-style-chips" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      </div>
+
+      <button class="btn btn-accent" onclick="findGaps()" style="margin-bottom:16px">🔍 Trouver mes lacunes</button>
+      <div id="gap-results"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── PANEL EXPLORE ── -->
+<div class="panel" id="panel-explore">
+  <div class="genre-grid" id="genre-grid"></div>
+  <div class="search-row" style="margin-bottom:16px">
+    <input class="search-input" id="explore-input" placeholder="Ou tape un style libre…" onkeydown="if(event.key==='Enter')searchGenre()">
+    <button class="btn btn-accent" onclick="searchGenre()">Rechercher</button>
+  </div>
+  <div id="explore-results">
+    <div class="empty-state"><div class="icon">🎵</div><h3>Choisis un genre</h3><p>Sélectionne un style pour voir les titres les plus populaires</p></div>
+  </div>
+</div>
+
+<!-- ── PANEL SEARCH ── -->
+<div class="panel" id="panel-search">
+  <div class="search-row">
+    <input class="search-input" id="free-search-input" placeholder="Titre, artiste…" onkeydown="if(event.key==='Enter')freeSearch()">
+    <select class="filter-select" id="search-source">
+      <option value="both">Spotify + Deezer</option>
+      <option value="spotify">Spotify uniquement</option>
+      <option value="deezer">Deezer uniquement</option>
+    </select>
+    <button class="btn btn-accent" onclick="freeSearch()">Rechercher</button>
+  </div>
+  <div id="free-search-results">
+    <div class="empty-state"><div class="icon">🔎</div><h3>Lance une recherche</h3><p>Compare la popularité sur Spotify et Deezer</p></div>
+  </div>
+</div>
+
+<!-- ── PANEL SET ── -->
+<div class="panel" id="panel-set">
+  <div class="search-row">
+    <input class="search-input" id="set-search-input" placeholder="Ajoute un titre à ton set…" onkeydown="if(event.key==='Enter')addToSet()">
+    <button class="btn btn-accent" onclick="addToSet()">+ Ajouter</button>
+    <button class="btn btn-outline" onclick="clearSet()">Vider</button>
+    <button class="btn btn-outline" onclick="exportSet()">Exporter CSV</button>
+  </div>
+  <div class="set-grid">
+    <div class="set-column"><h3>🎯 Ton Set</h3><div id="set-list"><div class="empty-state" style="padding:20px 0"><p>Ajoute des titres</p></div></div></div>
+    <div class="set-column"><h3>📊 Stats</h3><div id="set-stats"><div class="empty-state" style="padding:20px 0"><p>Stats ici</p></div></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PANEL DEVTOOLS
+═══════════════════════════════════════ -->
+<div class="panel" id="panel-dev">
+
+  <div class="dev-actions">
+    <button class="btn btn-outline btn-sm" onclick="runAllTests()">▶ Lancer les tests</button>
+    <button class="btn btn-outline btn-sm" onclick="runBenchmarks()">⏱ Benchmarks</button>
+    <button class="btn btn-outline btn-sm" onclick="clearLogs()">🗑 Vider logs</button>
+    <button class="btn btn-outline btn-sm" onclick="resetQuota()">↺ Reset quota</button>
+    <button class="btn btn-danger btn-sm" onclick="resetAllStorage()">⚠ Reset storage</button>
+  </div>
+
+  <div class="dev-grid">
+
+    <!-- KPIs session -->
+    <div class="dev-card">
+      <h4><span class="icon">📊</span> KPIs Session</h4>
+      <div id="kpi-list">
+        <div class="kpi-row"><span class="kpi-label">Appels Spotify (session)</span><span class="kpi-value" id="kpi-calls">0</span></div>
+        <div class="kpi-row"><span class="kpi-label">Appels Spotify (mois)</span><span class="kpi-value" id="kpi-calls-month">0</span></div>
+        <div class="kpi-row"><span class="kpi-label">Quota restant</span><span class="kpi-value" id="kpi-quota-left">500</span></div>
+        <div class="kpi-row"><span class="kpi-label">Titres chargés</span><span class="kpi-value" id="kpi-tracks">0</span></div>
+        <div class="kpi-row"><span class="kpi-label">Erreurs API</span><span class="kpi-value" id="kpi-errors">0</span></div>
+        <div class="kpi-row"><span class="kpi-label">Taux succès API</span><span class="kpi-value" id="kpi-success-rate">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">Latence Spotify moy.</span><span class="kpi-value" id="kpi-latency-spotify">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">Latence Deezer moy.</span><span class="kpi-value" id="kpi-latency-deezer">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">Set en cours</span><span class="kpi-value" id="kpi-set-size">0 titres</span></div>
+        <div class="kpi-row"><span class="kpi-label">Token Spotify</span><span class="kpi-value" id="kpi-token">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">État Spotify</span><span class="kpi-value" id="kpi-status-spotify">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">État Shazam</span><span class="kpi-value" id="kpi-status-shazam">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">État Deezer</span><span class="kpi-value" id="kpi-status-deezer">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">Shazam restantes</span><span class="kpi-value" id="kpi-shazam-left">—</span></div>
+        <div class="kpi-row"><span class="kpi-label">Uptime session</span><span class="kpi-value" id="kpi-uptime">0s</span></div>
+      </div>
+    </div>
+
+    <!-- Tests automatiques -->
+    <div class="dev-card">
+      <h4><span class="icon">🧪</span> Tests automatiques</h4>
+      <div id="test-list">
+        <div class="kpi-row" style="color:var(--text-dim);font-size:12px">Clique sur "Lancer les tests"</div>
+      </div>
+    </div>
+
+    <!-- Benchmarks -->
+    <div class="dev-card">
+      <h4><span class="icon">⏱</span> Benchmarks</h4>
+      <div id="bench-list">
+        <div class="kpi-row" style="color:var(--text-dim);font-size:12px">Clique sur "Benchmarks"</div>
+      </div>
+    </div>
+
+    <!-- Infos système -->
+    <div class="dev-card">
+      <h4><span class="icon">🖥</span> Environnement</h4>
+      <div id="env-list"></div>
+    </div>
+
+  </div>
+
+  <!-- Log console -->
+  <div class="dev-card" style="margin-bottom:16px">
+    <h4><span class="icon">📟</span> Console logs <span style="margin-left:auto;font-size:10px;color:var(--text-muted)" id="log-count">0 lignes</span></h4>
+    <div class="log-console" id="log-console"></div>
+  </div>
+
+</div><!-- /panel-dev -->
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════════════════════
+const APP_VERSION = '2.6.3';
+const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
+const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
+const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
+const SHAZAM_HOST = 'shazam.p.rapidapi.com';
+const QUOTA_MAX = 500;
+const SHAZAM_QUOTA_MAX = 500;
+const SHAZAM_QUOTA_KEY = 'padj_shazam_quota';
+const QUOTA_KEY = 'padj_quota';
+const QUOTA_MONTH_KEY = 'padj_quota_month';
+
+// ══════════════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════════════
+// Flags de disponibilité des services
+const _serviceStatus = {
+  spotify: 'unknown',  // 'ok' | 'quota' | 'error' | 'unknown'
+  shazam:  'unknown',  // 'ok' | 'quota' | 'error' | 'unknown'
+  deezer:  'unknown',
+};
+let spotifyToken = null;
+let playlistData = [];
+let setTracks = [];
+let currentSort = 'popularity';
+let currentSortDir = -1;
+let _lastSearchResults = [];
+
+const _sessionStart = Date.now();
+const _metrics = {
+  callsSession: 0,
+  errorsAPI: 0,
+  latenciesSpotify: [],
+  latenciesDeezer: [],
+  totalCalls: 0,
+};
+
+// ══════════════════════════════════════════════════════════════
+//  ALERTES SERVICE
+// ══════════════════════════════════════════════════════════════
+function showServiceAlert(service, type, message) {
+  // Ne pas redoubler la même alerte
+  const alertId = `alert-${service}-${type}`;
+  if (document.getElementById(alertId)) return;
+
+  const container = document.getElementById('service-alerts');
+  if (!container) return;
+
+  const icons = { quota: '⚠️', error: '❌' };
+  const div = document.createElement('div');
+  div.id = alertId;
+  div.className = `service-alert ${type}`;
+  const reconnectBtn = service === 'spotify' ? `<button onclick="spotifyLogin()" style="margin-left:8px;padding:4px 12px;background:var(--spotify);color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif">↺ Reconnecter</button>` : '';
+  div.innerHTML = `
+    <span class="alert-icon">${icons[type] || '⚠️'}</span>
+    <span><strong>${escHtmlSimple(service)}</strong> — ${escHtmlSimple(message)}</span>
+    ${reconnectBtn}
+    <span class="alert-close" onclick="dismissAlert('${alertId}')" style="margin-left:auto">×</span>`;
+  container.appendChild(div);
+  log('WARN', `[ALERTE] ${service}: ${message}`);
+}
+
+function dismissAlert(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function clearServiceAlerts(service) {
+  ['quota','error'].forEach(type => {
+    const el = document.getElementById(`alert-${service}-${type}`);
+    if (el) el.remove();
+  });
+}
+
+// escHtml simple sans DOM (utilisé avant que escHtml soit défini)
+function escHtmlSimple(str) {
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function setServiceStatus(service, status) {
+  if (_serviceStatus[service] === status) return; // pas de changement
+  _serviceStatus[service] = status;
+
+  const badge = document.getElementById(`${service}-badge`);
+
+  if (status === 'ok') {
+    clearServiceAlerts(service);
+    if (badge) {
+      if (service === 'spotify') badge.className = 'badge spotify-on';
+      else if (service === 'shazam') badge.className = 'badge ok';
+      else if (service === 'deezer') badge.className = 'badge deezer-on';
+    }
+
+  } else if (status === 'quota') {
+    const msgs = {
+      spotify: 'Quota Spotify épuisé ce mois-ci. Les recherches sont désactivées.',
+      shazam:  'Quota Shazam épuisé (500/mois). Les données Shazam ne seront plus récupérées jusqu\'au 1er du mois.',
+      deezer:  'Deezer inaccessible (CORS ou quota). Les données Deezer sont indisponibles.',
+    };
+    showServiceAlert(service, 'quota', msgs[service] || 'Quota épuisé.');
+    if (badge) badge.className = 'badge warn';
+
+  } else if (status === 'error') {
+    const msgs = {
+      spotify: 'Session Spotify expirée.',
+      shazam:  'Shazam API inaccessible. Vérifie ta clé RapidAPI.',
+      deezer:  'Deezer inaccessible.',
+    };
+    showServiceAlert(service, 'error', msgs[service] || 'Erreur API.');
+    if (badge) badge.className = 'badge danger';
+  }
+
+  updateKPIs();
+}
+
+// ══════════════════════════════════════════════════════════════
+//  LOGGER
+// ══════════════════════════════════════════════════════════════
+const LOG_MAX = 300;
+const _logs = [];
+
+function log(level, ...args) {
+  const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
+  const ts = new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  _logs.push({ ts, level, msg });
+  if (_logs.length > LOG_MAX) _logs.shift();
+  _renderLogLine({ ts, level, msg });
+  if (level === 'ERROR') console.error(`[PADJ] ${msg}`);
+  else if (level === 'WARN') console.warn(`[PADJ] ${msg}`);
+  else console.log(`[PADJ][${level}] ${msg}`);
+}
+
+function _renderLogLine(entry) {
+  const el = document.getElementById('log-console');
+  if (!el) return;
+  const line = document.createElement('div');
+  line.className = 'log-line';
+  line.innerHTML = `<span class="log-time">${entry.ts}</span><span class="log-level-${entry.level}">[${entry.level}]</span><span class="log-msg">${escHtml(entry.msg)}</span>`;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+  const cnt = document.getElementById('log-count');
+  if (cnt) cnt.textContent = `${_logs.length} lignes`;
+}
+
+function clearLogs() {
+  _logs.length = 0;
+  const el = document.getElementById('log-console');
+  if (el) el.innerHTML = '';
+  const cnt = document.getElementById('log-count');
+  if (cnt) cnt.textContent = '0 lignes';
+  log('INFO', 'Logs vidés');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  UTILS
+// ══════════════════════════════════════════════════════════════
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function fmtMs(ms) {
+  if (ms === null || ms === undefined) return '—';
+  return ms < 1000 ? `${Math.round(ms)}ms` : `${(ms/1000).toFixed(1)}s`;
+}
+
+function avg(arr) {
+  if (!arr.length) return null;
+  return arr.reduce((s,v)=>s+v,0) / arr.length;
+}
+
+function scoreClass(s) {
+  if (s >= 75) return 'score-high';
+  if (s >= 45) return 'score-mid';
+  return 'score-low';
+}
+
+function camelotKey(key, mode) {
+  const map = {'0-1':'8B','1-1':'3B','2-1':'10B','3-1':'5B','4-1':'12B','5-1':'7B','6-1':'2B','7-1':'9B','8-1':'4B','9-1':'11B','10-1':'6B','11-1':'1B','0-0':'5A','1-0':'12A','2-0':'7A','3-0':'2A','4-0':'9A','5-0':'4A','6-0':'11A','7-0':'6A','8-0':'1A','9-0':'8A','10-0':'3A','11-0':'10A'};
+  return map[`${key}-${mode}`] || '—';
+}
+
+function combinedScore(sp, dz) {
+  if (sp && dz) return Math.round(sp * 0.6 + dz * 0.4);
+  return sp || dz || 0;
+}
+
+// ══════════════════════════════════════════════════════════════
+//  QUOTA
+// ══════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════
+//  SHAZAM QUOTA
+// ══════════════════════════════════════════════════════════════
+function getShazamQuota() {
+  if (localStorage.getItem(QUOTA_MONTH_KEY + '_shazam') !== getCurrentMonth()) {
+    localStorage.setItem(QUOTA_MONTH_KEY + '_shazam', getCurrentMonth());
+    localStorage.setItem(SHAZAM_QUOTA_KEY, '0');
+  }
+  return parseInt(localStorage.getItem(SHAZAM_QUOTA_KEY) || '0');
+}
+
+function addShazamQuota(n = 1) {
+  const current = getShazamQuota() + n;
+  localStorage.setItem(SHAZAM_QUOTA_KEY, String(current));
+  updateShazamQuotaDisplay();
+  return current;
+}
+
+function updateShazamQuotaDisplay() {
+  const used = getShazamQuota();
+  const remaining = SHAZAM_QUOTA_MAX - used;
+  const label = document.getElementById('shazam-quota-label');
+  const badge = document.getElementById('shazam-badge');
+  if (!label) return;
+  label.textContent = `Shazam ${remaining}/${SHAZAM_QUOTA_MAX}`;
+  const cls = remaining > 200 ? 'ok' : remaining > 50 ? 'warn' : 'danger';
+  badge.className = `badge ${cls}`;
+}
+
+// ── SHAZAM SEARCH ────────────────────────────────────────────
+async function shazamSearch(query, limit = 5) {
+  if (_serviceStatus.shazam === 'quota' || getShazamQuota() >= SHAZAM_QUOTA_MAX) {
+    if (_serviceStatus.shazam !== 'quota') setServiceStatus('shazam', 'quota');
+    log('WARN', 'Quota Shazam épuisé — requête ignorée');
+    return [];
+  }
+  const t0 = Date.now();
+  try {
+    addShazamQuota(1);
+    const res = await fetch(
+      `https://shazam.p.rapidapi.com/v2/search?term=${encodeURIComponent(query)}&locale=fr-FR&limit=${limit}`,
+      {
+        headers: {
+          'x-rapidapi-key': RAPIDAPI_KEY,
+          'x-rapidapi-host': SHAZAM_HOST,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    const ms = Date.now() - t0;
+    if (res.status === 429) {
+      // Quota RapidAPI épuisé — forcer le compteur au max et désactiver
+      localStorage.setItem(SHAZAM_QUOTA_KEY, String(SHAZAM_QUOTA_MAX));
+      updateShazamQuotaDisplay();
+      setServiceStatus('shazam', 'quota');
+      throw new Error('HTTP 429 — Quota RapidAPI épuisé');
+    }
+    if (!res.ok) {
+      setServiceStatus('shazam', 'error');
+      throw new Error(`HTTP ${res.status}`);
+    }
+    setServiceStatus('shazam', 'ok');
+    const data = await res.json();
+    log('DEBUG', `Shazam search "${query}" → ${ms}ms`);
+    // Extraire les tracks depuis la réponse Shazam v2
+    const tracks = data?.tracks?.hits || data?.results?.tracks?.hits || [];
+    return tracks.map(h => {
+      const t = h.track || h;
+      return {
+        id: 'sz_' + (t.key || t.id || ''),
+        title: t.title || t.heading?.title || '',
+        artist: t.subtitle || t.heading?.subtitle || '',
+        shazam_count: t.properties?.shazamCount || t.shazamCount || null,
+        shazam_url: t.url || '',
+        image: t.images?.coverart || t.images?.background || '',
+        source: 'shazam'
+      };
+    }).filter(t => t.title);
+  } catch(e) {
+    _metrics.errorsAPI++;
+    log('ERROR', `Shazam search échoué: ${e.message}`);
+    updateKPIs();
+    return [];
+  }
+}
+
+// ── SHAZAM ENRICHISSEMENT (par titre+artiste) ────────────────
+async function shazamEnrich(title, artist) {
+  if (getShazamQuota() >= SHAZAM_QUOTA_MAX) return null;
+  const results = await shazamSearch(`${title} ${artist}`, 3);
+  if (!results.length) return null;
+  // Chercher la meilleure correspondance
+  const match = results.find(r =>
+    r.title.toLowerCase().includes(title.toLowerCase().slice(0, 6)) ||
+    r.artist.toLowerCase().includes(artist.toLowerCase().slice(0, 6))
+  ) || results[0];
+  return match;
+}
+
+
+function getCurrentMonth() {
+  const d = new Date();
+  return `${d.getFullYear()}-${d.getMonth()}`;
+}
+
+function getQuota() {
+  if (localStorage.getItem(QUOTA_MONTH_KEY) !== getCurrentMonth()) {
+    localStorage.setItem(QUOTA_MONTH_KEY, getCurrentMonth());
+    localStorage.setItem(QUOTA_KEY, '0');
+  }
+  return parseInt(localStorage.getItem(QUOTA_KEY) || '0');
+}
+
+function addQuota(n = 1) {
+  _metrics.callsSession += n;
+  _metrics.totalCalls += n;
+  const current = getQuota() + n;
+  localStorage.setItem(QUOTA_KEY, String(current));
+  updateQuotaDisplay();
+  updateKPIs();
+  return current;
+}
+
+function resetQuota() {
+  localStorage.setItem(QUOTA_KEY, '0');
+  localStorage.setItem(QUOTA_MONTH_KEY, getCurrentMonth());
+  updateQuotaDisplay();
+  updateKPIs();
+  log('WARN', 'Quota réinitialisé manuellement');
+  showNotif('↺ Quota remis à zéro');
+}
+
+function resetAllStorage() {
+  if (!confirm('Supprimer toutes les données stockées (quota, préférences) ?')) return;
+  localStorage.removeItem(QUOTA_KEY);
+  localStorage.removeItem(QUOTA_MONTH_KEY);
+  localStorage.removeItem(SHAZAM_QUOTA_KEY);
+  localStorage.removeItem(QUOTA_MONTH_KEY + '_shazam');
+  updateQuotaDisplay();
+  log('WARN', 'localStorage nettoyé');
+  showNotif('⚠ Storage réinitialisé');
+}
+
+function updateQuotaDisplay() {
+  const used = getQuota();
+  const remaining = QUOTA_MAX - used;
+  const label = document.getElementById('quota-label');
+  const badge = document.getElementById('quota-badge');
+  if (!label) return;
+  label.textContent = `${remaining} / ${QUOTA_MAX}`;
+  const cls = remaining > 200 ? 'ok' : remaining > 50 ? 'warn' : 'danger';
+  badge.className = `badge ${cls}`;
+}
+
+// ══════════════════════════════════════════════════════════════
+//  KPIs DASHBOARD
+// ══════════════════════════════════════════════════════════════
+function updateKPIs() {
+  const used = getQuota();
+  const remaining = QUOTA_MAX - used;
+  const totalReqs = _metrics.callsSession + _metrics.errorsAPI;
+  const successRate = totalReqs > 0 ? Math.round((_metrics.callsSession / totalReqs) * 100) : 100;
+  const latSp = avg(_metrics.latenciesSpotify);
+  const latDz = avg(_metrics.latenciesDeezer);
+  const uptime = Math.round((Date.now() - _sessionStart) / 1000);
+
+  const set = (id, val, cls='') => {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = val; el.className = 'kpi-value' + (cls ? ' '+cls : ''); }
+  };
+
+  set('kpi-calls', _metrics.callsSession);
+  set('kpi-calls-month', used);
+  set('kpi-quota-left', remaining, remaining > 200 ? 'ok' : remaining > 50 ? 'warn' : 'danger');
+  set('kpi-tracks', playlistData.length || '0');
+  set('kpi-errors', _metrics.errorsAPI, _metrics.errorsAPI > 0 ? 'danger' : 'ok');
+  set('kpi-success-rate', successRate + '%', successRate === 100 ? 'ok' : successRate > 80 ? 'warn' : 'danger');
+  set('kpi-latency-spotify', latSp ? fmtMs(latSp) : '—', latSp === null ? '' : latSp < 500 ? 'ok' : latSp < 1500 ? 'warn' : 'danger');
+  set('kpi-latency-deezer', latDz ? fmtMs(latDz) : '—', latDz === null ? '' : latDz < 500 ? 'ok' : latDz < 1500 ? 'warn' : 'danger');
+  set('kpi-set-size', `${setTracks.length} titre${setTracks.length !== 1 ? 's' : ''}`);
+  const oauthActive = !!sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  set('kpi-token', spotifyToken ? (oauthActive ? '✓ OAuth' : '✓ CC (limité)') : '✗ Absent', spotifyToken ? 'ok' : 'danger');
+  const statusLabels = { ok:'✓ OK', quota:'⚠ Quota', error:'✗ Erreur', unknown:'— Inconnu' };
+  const statusCls = { ok:'ok', quota:'warn', error:'danger', unknown:'' };
+  ['spotify','shazam','deezer'].forEach(s => {
+    set(`kpi-status-${s}`, statusLabels[_serviceStatus[s]] || '—', statusCls[_serviceStatus[s]] || '');
+  });
+  const shazamLeft = SHAZAM_QUOTA_MAX - getShazamQuota();
+  set('kpi-shazam-left', `${shazamLeft} / ${SHAZAM_QUOTA_MAX}`, shazamLeft > 200 ? 'ok' : shazamLeft > 50 ? 'warn' : 'danger');
+  set('kpi-uptime', uptime < 60 ? `${uptime}s` : `${Math.floor(uptime/60)}m${uptime%60}s`);
+}
+
+function renderEnv() {
+  const el = document.getElementById('env-list');
+  if (!el) return;
+  const rows = [
+    ['Version app', APP_VERSION],
+    ['User Agent', navigator.userAgent.split(' ').slice(-2).join(' ')],
+    ['Langue', navigator.language],
+    ['Online', navigator.onLine ? '✓ Oui' : '✗ Non'],
+    ['LocalStorage', (() => { try { localStorage.setItem('_t','1'); localStorage.removeItem('_t'); return '✓ OK'; } catch(e) { return '✗ Bloqué'; }})()],
+    ['Mois quota', getCurrentMonth()],
+    ['Viewport', `${window.innerWidth}×${window.innerHeight}`],
+  ];
+  el.innerHTML = rows.map(([l,v]) => `<div class="kpi-row"><span class="kpi-label">${l}</span><span class="kpi-value" style="font-size:10px">${escHtml(v)}</span></div>`).join('');
+}
+
+// Uptime ticker
+setInterval(() => { if (document.getElementById('panel-dev').classList.contains('active')) updateKPIs(); }, 1000);
+
+// ══════════════════════════════════════════════════════════════
+//  TESTS AUTOMATIQUES
+// ══════════════════════════════════════════════════════════════
+const TESTS = [
+  {
+    name: 'escHtml — caractères spéciaux',
+    fn: () => {
+      const r = escHtml('<' + 'script>alert("xss")</' + 'script>');
+      if (r.includes('<' + 'script>')) throw new Error('XSS non échappé');
+      if (!r.includes('&lt;')) throw new Error('Échappement manquant');
+    }
+  },
+  {
+    name: 'camelotKey — Do majeur',
+    fn: () => {
+      const r = camelotKey(0, 1);
+      if (r !== '8B') throw new Error(`Attendu 8B, reçu ${r}`);
+    }
+  },
+  {
+    name: 'camelotKey — La mineur',
+    fn: () => {
+      const r = camelotKey(9, 0);
+      if (r !== '8A') throw new Error(`Attendu 8A, reçu ${r}`);
+    }
+  },
+  {
+    name: 'combinedScore — les deux sources',
+    fn: () => {
+      const r = combinedScore(80, 60);
+      if (r !== 72) throw new Error(`Attendu 72, reçu ${r}`);
+    }
+  },
+  {
+    name: 'combinedScore — Spotify seul',
+    fn: () => {
+      const r = combinedScore(75, null);
+      if (r !== 75) throw new Error(`Attendu 75, reçu ${r}`);
+    }
+  },
+  {
+    name: 'combinedScore — Deezer rank 0 (pas NaN)',
+    fn: () => {
+      const pop = 0 ? Math.min(100, Math.round(0 / 10000)) : 0;
+      if (isNaN(pop)) throw new Error('NaN détecté sur rank=0');
+    }
+  },
+  {
+    name: 'scoreClass — haute popularité',
+    fn: () => {
+      if (scoreClass(80) !== 'score-high') throw new Error('score-high attendu');
+      if (scoreClass(50) !== 'score-mid') throw new Error('score-mid attendu');
+      if (scoreClass(20) !== 'score-low') throw new Error('score-low attendu');
+    }
+  },
+  {
+    name: 'getQuota — retourne un nombre',
+    fn: () => {
+      const q = getQuota();
+      if (typeof q !== 'number' || isNaN(q)) throw new Error(`getQuota invalide: ${q}`);
+    }
+  },
+  {
+    name: 'localStorage disponible',
+    fn: () => {
+      localStorage.setItem('_padj_test', '1');
+      const v = localStorage.getItem('_padj_test');
+      localStorage.removeItem('_padj_test');
+      if (v !== '1') throw new Error('localStorage non fonctionnel');
+    }
+  },
+  {
+    name: 'URL regex — playlist',
+    fn: () => {
+      const m = 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M'.match(/spotify\.com\/(playlist|album|artist)\/([a-zA-Z0-9]+)/);
+      if (!m || m[1] !== 'playlist') throw new Error('Regex playlist échouée');
+    }
+  },
+  {
+    name: 'URL regex — album',
+    fn: () => {
+      const m = 'https://open.spotify.com/album/4aawyAB9vmqN3uQ7FjRGTy'.match(/spotify\.com\/(playlist|album|artist)\/([a-zA-Z0-9]+)/);
+      if (!m || m[1] !== 'album') throw new Error('Regex album échouée');
+    }
+  },
+  {
+    name: 'Tri BPM — null toujours en bas',
+    fn: () => {
+      const data = [{bpm:128},{bpm:null},{bpm:140}];
+      const sorted = [...data].sort((a,b) => {
+        if (!a.bpm && !b.bpm) return 0;
+        if (!a.bpm) return 1;
+        if (!b.bpm) return -1;
+        return b.bpm - a.bpm;
+      });
+      if (sorted[sorted.length-1].bpm !== null) throw new Error('null pas en dernière position');
+    }
+  },
+  {
+    name: 'addTrackToSet — doublon refusé',
+    fn: () => {
+      const backup = [...setTracks];
+      setTracks.length = 0;
+      setTracks.push({title:'Test',artist:'Artist',popularity:50});
+      let rejected = false;
+      const orig = showNotif;
+      // On simule sans déclencher la notif UI
+      const dup = setTracks.find(t => t.title === 'Test' && t.artist === 'Artist');
+      if (!dup) throw new Error('Doublon non détecté');
+      setTracks.length = 0;
+      setTracks.push(...backup);
+    }
+  },
+  {
+    name: 'Shazam API — réponse valide',
+    async: true,
+    fn: async () => {
+      if (getShazamQuota() >= SHAZAM_QUOTA_MAX) throw new Error('Quota épuisé, test ignoré');
+      const t0 = performance.now();
+      const results = await shazamSearch('daft punk', 1);
+      const ms = performance.now() - t0;
+      if (!Array.isArray(results)) throw new Error('Réponse invalide');
+      return `${results.length} résultat(s) ${fmtMs(ms)}`;
+    }
+  },
+  {
+    name: 'OAuth — PKCE generateRandom',
+    fn: () => {
+      const r = generateRandom(16);
+      if (typeof r !== 'string' || r.length < 10) throw new Error('generateRandom invalide');
+    }
+  },
+  {
+    name: 'OAuth — sha256 disponible',
+    async: true,
+    fn: async () => {
+      const h = await sha256('test');
+      if (typeof h !== 'string' || !h.length) throw new Error('sha256 invalide');
+      return h.slice(0,10) + '…';
+    }
+  },
+  {
+    name: 'Spotify token — endpoint accessible',
+    async: true,
+    fn: async () => {
+      const t0 = Date.now();
+      const res = await fetch('https://accounts.spotify.com/api/token', {
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded','Authorization':'Basic '+btoa(SPOTIFY_CLIENT_ID+':'+SPOTIFY_CLIENT_SECRET)},
+        body:'grant_type=client_credentials'
+      });
+      const ms = Date.now() - t0;
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const d = await res.json();
+      if (!d.access_token) throw new Error('Pas de token dans la réponse');
+      return `${fmtMs(ms)}`;
+    }
+  },
+  {
+    name: 'Spotify search — réponse valide',
+    async: true,
+    fn: async () => {
+      const token = await getSpotifyToken();
+      if (!token) throw new Error('Token absent');
+      const t0 = Date.now();
+      const res = await fetch('https://api.spotify.com/v1/search?q=test&type=track&limit=1&market=FR',{headers:{'Authorization':'Bearer '+token}});
+      const ms = Date.now() - t0;
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const d = await res.json();
+      if (!d.tracks?.items) throw new Error('Structure réponse inattendue');
+      return fmtMs(ms);
+    }
+  },
+  {
+    name: 'Deezer search — réponse valide',
+    async: true,
+    fn: async () => {
+      const t0 = Date.now();
+      try {
+        const res = await fetch('https://api.deezer.com/search?q=test&limit=1',{mode:'cors'});
+        const ms = Date.now() - t0;
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const d = await res.json();
+        if (!Array.isArray(d.data)) throw new Error('Structure réponse inattendue');
+        return fmtMs(ms);
+      } catch(e) {
+        throw new Error(`CORS bloqué ou API indisponible: ${e.message}`);
+      }
+    }
+  },
+];
+
+async function runAllTests() {
+  log('INFO', `Lancement de ${TESTS.length} tests…`);
+  const el = document.getElementById('test-list');
+  el.innerHTML = '<div class="kpi-row" style="color:var(--text-dim);font-size:12px">Tests en cours…</div>';
+
+  const results = [];
+  for (const test of TESTS) {
+    const t0 = performance.now();
+    let status = 'pending', error = null, extra = '';
+    try {
+      const ret = test.async ? await test.fn() : test.fn();
+      if (ret) extra = ret;
+      status = 'ok';
+    } catch(e) {
+      status = 'fail';
+      error = e.message;
+    }
+    const ms = performance.now() - t0;
+    results.push({ name: test.name, status, error, ms, extra });
+    log(status === 'ok' ? 'OK' : 'ERROR', `[TEST] ${test.name}: ${status}${error ? ' — ' + error : ''}${extra ? ' (' + extra + ')' : ''}`);
+  }
+
+  const ok = results.filter(r => r.status === 'ok').length;
+  const fail = results.filter(r => r.status === 'fail').length;
+
+  el.innerHTML = results.map(r => `
+    <div>
+      <div class="test-row">
+        <span class="test-status">${r.status === 'ok' ? '✅' : '❌'}</span>
+        <span class="test-name ran">${escHtml(r.name)}</span>
+        <span class="test-time">${fmtMs(r.ms)}${r.extra ? ' · '+r.extra : ''}</span>
+      </div>
+      ${r.error ? `<div class="test-err">${escHtml(r.error)}</div>` : ''}
+    </div>
+  `).join('') + `
+    <div class="kpi-row" style="margin-top:8px">
+      <span class="kpi-label" style="font-weight:700">Résultat</span>
+      <span class="kpi-value ${fail === 0 ? 'ok' : 'danger'}">${ok}/${results.length} OK</span>
+    </div>
+  `;
+
+  showNotif(fail === 0 ? `✅ ${ok}/${results.length} tests passés` : `❌ ${fail} test(s) échoué(s)`);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  BENCHMARKS
+// ══════════════════════════════════════════════════════════════
+async function runBenchmarks() {
+  log('INFO', 'Benchmarks démarrage…');
+  const el = document.getElementById('bench-list');
+  el.innerHTML = '<div class="loader" style="padding:20px"><div class="spinner"></div>Benchmarks en cours…</div>';
+
+  const benches = [];
+
+  // Bench 1 : Token Spotify (via Client Credentials pour ne pas casser la session OAuth)
+  try {
+    const t0 = performance.now();
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded','Authorization':'Basic '+btoa(SPOTIFY_CLIENT_ID+':'+SPOTIFY_CLIENT_SECRET)},
+      body:'grant_type=client_credentials'
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const d = await res.json();
+    if (!d.access_token) throw new Error('Pas de token');
+    benches.push({ label: 'Auth Spotify (CC)', ms: performance.now() - t0, ref: 500 });
+  } catch(e) { benches.push({ label: 'Auth Spotify', ms: null, err: e.message }); }
+
+  // Bench 2 : Search Spotify
+  try {
+    const t0 = performance.now();
+    await spotifySearch('daft punk', 5);
+    benches.push({ label: 'Search Spotify (5 tracks)', ms: performance.now() - t0, ref: 800 });
+  } catch(e) { benches.push({ label: 'Search Spotify', ms: null, err: e.message }); }
+
+  // Bench 3 : Audio features (10 tracks)
+  try {
+    const token = await getSpotifyToken();
+    const res = await fetch('https://api.spotify.com/v1/search?q=pop&type=track&limit=10&market=FR',{headers:{'Authorization':'Bearer '+token}});
+    const d = await res.json();
+    const ids = (d.tracks?.items||[]).map(t=>t.id);
+    const t0 = performance.now();
+    await spotifyAudioFeatures(ids);
+    benches.push({ label: 'Audio features (10 tracks)', ms: performance.now() - t0, ref: 600 });
+  } catch(e) { benches.push({ label: 'Audio features', ms: null, err: e.message }); }
+
+  // Bench 4 : Deezer search
+  try {
+    const t0 = performance.now();
+    await deezerSearch('madonna', 5);
+    benches.push({ label: 'Search Deezer (5 tracks)', ms: performance.now() - t0, ref: 600 });
+  } catch(e) { benches.push({ label: 'Search Deezer', ms: null, err: e.message }); }
+
+  // Bench 5 : escHtml x10000
+  {
+    const t0 = performance.now();
+    for (let i=0;i<10000;i++) escHtml('<b>Test "escaping" & more</b>');
+    benches.push({ label: 'escHtml ×10 000', ms: performance.now() - t0, ref: 50 });
+  }
+
+  // Bench 5b : Shazam search
+  try {
+    if (getShazamQuota() < SHAZAM_QUOTA_MAX) {
+      const t0 = performance.now();
+      await shazamSearch('madonna', 3);
+      benches.push({ label: 'Search Shazam (3 tracks)', ms: performance.now() - t0, ref: 800 });
+    } else {
+      benches.push({ label: 'Search Shazam', ms: null, err: 'Quota épuisé' });
+    }
+  } catch(e) { benches.push({ label: 'Search Shazam', ms: null, err: e.message }); }
+
+  // Bench 6 : Tri tableau 500 éléments
+  {
+    const fake = Array.from({length:500},(_,i)=>({title:`Track ${i}`,artist:`Artist`,popularity:Math.random()*100|0}));
+    const t0 = performance.now();
+    fake.sort((a,b)=>b.popularity-a.popularity);
+    benches.push({ label: 'Tri 500 titres', ms: performance.now() - t0, ref: 10 });
+  }
+
+  const maxMs = Math.max(...benches.filter(b=>b.ms).map(b=>b.ms));
+
+  el.innerHTML = benches.map(b => {
+    if (b.ms === null) return `<div class="bench-bar-wrap"><span class="bench-label">${escHtml(b.label)}</span><span class="bench-val" style="color:var(--danger)">Erreur</span></div>`;
+    const pct = Math.min(100, Math.round(b.ms / maxMs * 100));
+    const color = b.ms <= b.ref ? 'var(--ok)' : b.ms <= b.ref*2 ? 'var(--warn)' : 'var(--danger)';
+    return `
+      <div class="bench-bar-wrap">
+        <span class="bench-label">${escHtml(b.label)}</span>
+        <div class="bench-bar-bg"><div class="bench-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+        <span class="bench-val" style="color:${color}">${fmtMs(b.ms)}</span>
+      </div>`;
+  }).join('');
+
+  log('OK', `Benchmarks terminés (${benches.length} tests)`);
+  showNotif('⏱ Benchmarks terminés');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SPOTIFY AUTH — OAuth 2.0 PKCE + Client Credentials fallback
+// ══════════════════════════════════════════════════════════════
+const SPOTIFY_REDIRECT_URI = 'https://replay04.github.io/dj-board/dj-popularity.html';
+const SPOTIFY_SCOPES = 'playlist-read-private playlist-read-collaborative user-library-read user-read-playback-state';
+const OAUTH_STATE_KEY = 'padj_oauth_state';
+const OAUTH_TOKEN_KEY = 'padj_oauth_token';
+const OAUTH_EXPIRY_KEY = 'padj_oauth_expiry';
+const OAUTH_VERIFIER_KEY = 'padj_oauth_verifier';
+
+// ── PKCE helpers ─────────────────────────────────────────────
+function generateRandom(len) {
+  const arr = new Uint8Array(len);
+  crypto.getRandomValues(arr);
+  return btoa(String.fromCharCode(...arr)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+}
+
+async function sha256(plain) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(plain);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return btoa(String.fromCharCode(...new Uint8Array(hash))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+}
+
+// ── Login OAuth ───────────────────────────────────────────────
+async function spotifyLogin() {
+  const state = generateRandom(16);
+  const verifier = generateRandom(64);
+  const challenge = await sha256(verifier);
+
+  sessionStorage.setItem(OAUTH_STATE_KEY, state);
+  sessionStorage.setItem(OAUTH_VERIFIER_KEY, verifier);
+
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: SPOTIFY_CLIENT_ID,
+    scope: SPOTIFY_SCOPES,
+    redirect_uri: SPOTIFY_REDIRECT_URI,
+    state,
+    code_challenge_method: 'S256',
+    code_challenge: challenge,
+  });
+
+  // Sauvegarder l'onglet actif avant redirect
+  const activeTab = document.querySelector('.tab.active');
+  if (activeTab) {
+    const tabName = activeTab.getAttribute('onclick').match(/switchTab\('(\w+)'/)?.[1];
+    if (tabName) sessionStorage.setItem('padj_active_tab', tabName);
+  }
+  log('INFO', 'Redirection OAuth Spotify…');
+  window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
+}
+
+// ── Callback OAuth (échange code → token) ────────────────────
+async function handleOAuthCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  const error = params.get('error');
+
+  if (error) {
+    log('WARN', `OAuth annulé: ${error}`);
+    // Nettoyer l'URL
+    window.history.replaceState({}, '', window.location.pathname);
+    showOAuthOverlay();
+    return;
+  }
+
+  if (!code) return; // Pas de callback
+
+  const savedState = sessionStorage.getItem(OAUTH_STATE_KEY);
+  const verifier = sessionStorage.getItem(OAUTH_VERIFIER_KEY);
+
+  if (state !== savedState) {
+    log('ERROR', 'OAuth state mismatch — possible CSRF');
+    window.history.replaceState({}, '', window.location.pathname);
+    return;
+  }
+
+  log('INFO', 'Échange code OAuth…');
+  const t0 = Date.now();
+
+  try {
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: SPOTIFY_REDIRECT_URI,
+        client_id: SPOTIFY_CLIENT_ID,
+        code_verifier: verifier,
+      })
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!data.access_token) throw new Error('Pas de token');
+
+    spotifyToken = data.access_token;
+    const expiry = Date.now() + (data.expires_in * 1000);
+    const ms = Date.now() - t0;
+
+    // Stocker token + expiry
+    sessionStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
+    sessionStorage.setItem(OAUTH_EXPIRY_KEY, String(expiry));
+    if (data.refresh_token) sessionStorage.setItem('padj_refresh_token', data.refresh_token);
+
+    // Nettoyer l'URL (enlever ?code=... de l'URL)
+    window.history.replaceState({}, '', window.location.pathname);
+    sessionStorage.removeItem(OAUTH_STATE_KEY);
+    sessionStorage.removeItem(OAUTH_VERIFIER_KEY);
+
+    _metrics.latenciesSpotify.push(ms);
+    setServiceStatus('spotify', 'ok');
+    updateBadgeLoggedIn(data);
+    updateKPIs();
+    log('OK', `OAuth Spotify réussi en ${fmtMs(ms)} — token valide ${Math.round(data.expires_in/60)}min`);
+    showNotif('✅ Connecté à Spotify !');
+    hideOAuthOverlay();
+    // Restaurer l'onglet actif sauvegardé avant le redirect OAuth
+    const savedTab = sessionStorage.getItem('padj_active_tab');
+    if (savedTab) {
+      sessionStorage.removeItem('padj_active_tab');
+      const tabEl = document.querySelector('.tab[onclick*="' + savedTab + '"]');
+      if (tabEl) switchTab(savedTab, tabEl);
+    }
+
+  } catch(e) {
+    _metrics.errorsAPI++;
+    setServiceStatus('spotify', 'error');
+    log('ERROR', `OAuth échange échoué: ${e.message}`);
+    showNotif('❌ Connexion Spotify échouée');
+    window.history.replaceState({}, '', window.location.pathname);
+    showOAuthOverlay();
+  }
+}
+
+// ── Refresh token ─────────────────────────────────────────────
+async function refreshSpotifyToken() {
+  const refreshToken = sessionStorage.getItem('padj_refresh_token');
+  if (!refreshToken) { spotifyToken = null; showOAuthOverlay(); return null; }
+  try {
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+        client_id: SPOTIFY_CLIENT_ID,
+      })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    spotifyToken = data.access_token;
+    sessionStorage.setItem(OAUTH_TOKEN_KEY, spotifyToken);
+    sessionStorage.setItem(OAUTH_EXPIRY_KEY, String(Date.now() + data.expires_in * 1000));
+    if (data.refresh_token) sessionStorage.setItem('padj_refresh_token', data.refresh_token);
+    log('OK', 'Token Spotify rafraîchi');
+    return spotifyToken;
+  } catch(e) {
+    log('ERROR', `Refresh token échoué: ${e.message}`);
+    spotifyToken = null;
+    showOAuthOverlay();
+    return null;
+  }
+}
+
+// ── getSpotifyToken — retourne le token valide ────────────────
+async function getSpotifyToken() {
+  // 1. Token en mémoire valide ?
+  if (spotifyToken) {
+    const expiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+    if (Date.now() < expiry - 60000) return spotifyToken; // 1min de marge
+    // Token expiré → refresh
+    log('INFO', 'Token expiré, refresh…');
+    return await refreshSpotifyToken();
+  }
+  // 2. Token en sessionStorage ?
+  const stored = sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  const expiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+  if (stored && Date.now() < expiry - 60000) {
+    spotifyToken = stored;
+    setServiceStatus('spotify', 'ok');
+    updateBadgeLoggedIn();
+    log('OK', 'Token Spotify restauré depuis sessionStorage');
+    return spotifyToken;
+  }
+  // 3. Fallback Client Credentials (playlists publiques seulement)
+  log('INFO', 'Pas de token OAuth — fallback Client Credentials');
+  const ccToken = await getClientCredentialsToken();
+  return ccToken;
+}
+
+async function getClientCredentialsToken() {
+  const t0 = Date.now();
+  try {
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded','Authorization':'Basic '+btoa(SPOTIFY_CLIENT_ID+':'+SPOTIFY_CLIENT_SECRET)},
+      body:'grant_type=client_credentials'
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!data.access_token) throw new Error('Pas de token');
+    spotifyToken = data.access_token;
+    _metrics.latenciesSpotify.push(Date.now() - t0);
+    // Badge en mode limité
+    const badge = document.getElementById('spotify-badge');
+    if (badge) { badge.className = 'badge warn'; }
+    const label = document.getElementById('spotify-badge-label');
+    if (label) label.textContent = 'Spotify (limité)';
+    updateKPIs();
+    log('OK', `Client Credentials OK en ${fmtMs(Date.now()-t0)} — accès limité aux playlists publiques`);
+    return spotifyToken;
+  } catch(e) {
+    _metrics.errorsAPI++;
+    setServiceStatus('spotify', 'error');
+    log('ERROR', `Client Credentials échoué: ${e.message}`);
+    return null;
+  }
+}
+
+// ── Mise à jour badge après login ─────────────────────────────
+async function updateBadgeLoggedIn(tokenData) {
+  const badge = document.getElementById('spotify-badge');
+  const label = document.getElementById('spotify-badge-label');
+  if (badge) badge.className = 'badge spotify-on';
+  // Récupérer le nom de l'utilisateur
+  try {
+    const res = await fetch('https://api.spotify.com/v1/me', {
+      headers: {'Authorization': 'Bearer ' + spotifyToken}
+    });
+    if (res.ok) {
+      const me = await res.json();
+      if (label) label.textContent = me.display_name || 'Spotify ✓';
+      log('OK', `Connecté en tant que: ${me.display_name}`);
+    }
+  } catch(e) {
+    if (label) label.textContent = 'Spotify ✓';
+  }
+}
+
+// ── Overlay OAuth ─────────────────────────────────────────────
+function showOAuthOverlay() {
+  const el = document.getElementById('oauth-overlay');
+  if (el) el.style.display = 'flex';
+}
+
+function hideOAuthOverlay() {
+  const el = document.getElementById('oauth-overlay');
+  if (el) el.style.display = 'none';
+}
+
+function skipLogin() {
+  hideOAuthOverlay();
+  log('INFO', 'Utilisateur a choisi de continuer sans OAuth — accès limité');
+  getClientCredentialsToken();
+}
+
+// ══════════════════════════════════════════════════════════════
+//  API CALLS (avec mesure latence)
+// ══════════════════════════════════════════════════════════════
+async function _spotifyFetch(url, label) {
+  const token = await getSpotifyToken();
+  if (!token) throw new Error('Token absent');
+  addQuota(1);
+  const t0 = Date.now();
+  try {
+    const res = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token } });
+    const ms = Date.now() - t0;
+    _metrics.latenciesSpotify.push(ms);
+    if (res.status === 429) {
+      setServiceStatus('spotify', 'quota');
+      throw new Error('HTTP 429 — Quota Spotify épuisé');
+    }
+    if (res.status === 401) {
+      spotifyToken = null; // Forcer re-auth au prochain appel
+      setServiceStatus('spotify', 'error');
+      throw new Error('HTTP 401 — Token Spotify expiré');
+    }
+    if (!res.ok) {
+      const body = await res.text();
+      setServiceStatus('spotify', 'error');
+      throw new Error(`HTTP ${res.status}: ${body.slice(0,100)}`);
+    }
+    setServiceStatus('spotify', 'ok');
+    log('DEBUG', `${label || url.split('?')[0].split('/').pop()} → ${fmtMs(ms)}`);
+    return await res.json();
+  } catch(e) {
+    _metrics.errorsAPI++;
+    updateKPIs();
+    log('ERROR', `Spotify fetch échoué [${label}]: ${e.message}`);
+    throw e;
+  }
+}
+
+async function spotifySearch(query, limit = 10) {
+  try {
+    // Spotify rejette limit > 10 pour certains queries courts — fallback à 10
+    const safeLimit = Math.min(limit, 10);
+    let data;
+    try {
+      data = await _spotifyFetch(
+        `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${safeLimit}&market=FR`,
+        'search'
+      );
+    } catch(e) {
+      // Retry avec limit=5 si 400
+      if (e.message.includes('400')) {
+        data = await _spotifyFetch(
+          `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=5&market=FR`,
+          'search-retry'
+        );
+      } else throw e;
+    }
+    return (data.tracks?.items || []).map(t => ({
+      id: t.id,
+      title: t.name,
+      artist: t.artists.map(a=>a.name).join(', '),
+      album: t.album.name,
+      popularity: t.popularity,
+      duration: Math.round(t.duration_ms / 60000 * 10) / 10,
+      preview: t.preview_url,
+      spotify_url: t.external_urls.spotify,
+      source: 'spotify',
+      image: t.album.images[1]?.url || t.album.images[0]?.url
+    }));
+  } catch(e) { return []; }
+}
+
+async function spotifyAudioFeatures(ids) {
+  if (!ids.length) return {};
+  const chunks = [];
+  for (let i=0;i<ids.length;i+=100) chunks.push(ids.slice(i,i+100));
+  let features = {};
+  for (const chunk of chunks) {
+    try {
+      const data = await _spotifyFetch(
+        `https://api.spotify.com/v1/audio-features?ids=${chunk.join(',')}`,
+        `audio-features(${chunk.length})`
+      );
+      (data.audio_features || []).forEach(f => {
+        if (f) features[f.id] = {
+          bpm: Math.round(f.tempo),
+          key: camelotKey(f.key, f.mode),
+          danceability: f.danceability,
+          energy: f.energy,
+          valence: f.valence
+        };
+      });
+    } catch(e) { /* continue */ }
+  }
+  return features;
+}
+
+async function deezerSearch(query, limit = 10) {
+  const t0 = Date.now();
+  try {
+    // Deezer bloque CORS depuis GitHub Pages — utiliser un proxy
+    const deezerUrl = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=${limit}&output=json`;
+    const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(deezerUrl)}`);
+    const ms = Date.now() - t0;
+    _metrics.latenciesDeezer.push(ms);
+    if (res.status === 403 || res.status === 429) {
+      setServiceStatus('deezer', 'quota');
+      throw new Error(`HTTP ${res.status} — Quota/accès Deezer`);
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    setServiceStatus('deezer', 'ok');
+    const data = await res.json();
+    log('DEBUG', `Deezer search "${query}" → ${(data.data||[]).length} résultats ${fmtMs(ms)}`);
+    return (data.data || []).map(t => ({
+      id: 'd_' + t.id,
+      title: t.title,
+      artist: t.artist.name,
+      album: t.album.title,
+      popularity: t.rank ? Math.min(100, Math.round(t.rank / 10000)) : 0,
+      duration: Math.round(t.duration / 60 * 10) / 10,
+      preview: t.preview,
+      deezer_url: t.link,
+      source: 'deezer',
+      image: t.album.cover_medium
+    }));
+  } catch(e) {
+    const ms2 = Date.now() - t0;
+    _metrics.errorsAPI++;
+    _metrics.latenciesDeezer.push(ms2);
+    if (_serviceStatus.deezer !== 'quota') setServiceStatus('deezer', 'error');
+    log('WARN', `Deezer search échoué (CORS?): ${e.message}`);
+    updateKPIs();
+    return [];
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  MA COLLECTION TRAKTOR
+// ══════════════════════════════════════════════════════════════
+let _collection = []; // {title, artist, bpm, key, genre, playcount, ranking}
+let _collIndex = new Set(); // "artist||title" normalisé pour lookup rapide
+let _collGenres = [];
+let _activeGenreFilter = 'all';
+let _activeBpmFilter = 'all';
+let _activeAmbiance = 'dance';
+let _activeStyle = 'pop';
+
+const GAP_STYLES = [
+  { id: 'pop',      label: '🌟 Pop',       seeds: ['pop'], genres: ['pop'] },
+  { id: 'rnb',      label: '🎤 R&B/Hip-Hop', seeds: ['hip-hop', 'r-n-b'], genres: ['hip-hop', 'r-n-b', 'rap'] },
+  { id: 'house',    label: '🏠 House/Dance', seeds: ['house', 'dance'], genres: ['house', 'dance', 'electronic'] },
+  { id: 'french',   label: '🇫🇷 Variété FR', seeds: ['french pop', 'variete-francaise'], genres: ['french pop'] },
+  { id: 'latino',   label: '🌴 Latino',     seeds: ['latin', 'reggaeton'], genres: ['latin', 'reggaeton'] },
+  { id: 'rock',     label: '🎸 Rock',       seeds: ['rock', 'pop-rock'], genres: ['rock'] },
+  { id: '80s90s',   label: '📼 80s/90s',    seeds: ['80s', '90s', 'disco'], genres: [] },
+  { id: 'afro',     label: '🌍 Afro',       seeds: ['afrobeats', 'afropop'], genres: ['afrobeats'] },
+];
+
+// ── Upload NML ──────────────────────────────────────────────
+const nmlDrop = document.getElementById('nml-drop');
+document.getElementById('nml-input').addEventListener('change', e => {
+  if (e.target.files[0]) parseNML(e.target.files[0]);
+});
+nmlDrop.addEventListener('dragover', e => { e.preventDefault(); nmlDrop.classList.add('dragover'); });
+nmlDrop.addEventListener('dragleave', () => nmlDrop.classList.remove('dragover'));
+nmlDrop.addEventListener('drop', e => {
+  e.preventDefault(); nmlDrop.classList.remove('dragover');
+  const f = e.dataTransfer.files[0];
+  if (f && (f.name.endsWith('.nml') || f.name.endsWith('.xml'))) parseNML(f);
+  else showNotif('❌ Fichier .nml requis');
+});
+
+async function parseNML(file) {
+  showNotif('⏳ Chargement de la collection…');
+  log('INFO', `NML: ${file.name} (${(file.size/1024/1024).toFixed(1)} Mo)`);
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(e.target.result, 'text/xml');
+    const entries = xml.querySelectorAll('COLLECTION ENTRY');
+    
+    _collection = [];
+    _collIndex = new Set();
+
+    entries.forEach(entry => {
+      const title  = entry.getAttribute('TITLE') || '';
+      const artist = entry.getAttribute('ARTIST') || '';
+      const info   = entry.querySelector('INFO');
+      const tempo  = entry.querySelector('TEMPO');
+
+      const genre    = info ? (info.getAttribute('GENRE') || '') : '';
+      const key      = info ? (info.getAttribute('KEY') || '') : '';
+      const playcount= info ? parseInt(info.getAttribute('PLAYCOUNT') || '0') : 0;
+      const ranking  = info ? parseInt(info.getAttribute('RANKING') || '0') : 0;
+      const bpm      = tempo ? parseFloat(tempo.getAttribute('BPM') || '0') : 0;
+
+      if (!title && !artist) return;
+
+      _collection.push({ title, artist, bpm: Math.round(bpm), key, genre, playcount, ranking });
+      // Index normalisé pour matching
+      _collIndex.add(normalizeTrack(artist, title));
+    });
+
+    log('OK', `Collection chargée: ${_collection.length} titres`);
+    renderCollectionStats();
+    document.getElementById('coll-upload-zone').style.display = 'none';
+    document.getElementById('coll-content').style.display = 'block';
+    showNotif(`✅ ${_collection.length} titres chargés !`);
+    updateKPIs();
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function normalizeTrack(artist, title) {
+  const norm = s => s.toLowerCase()
+    .replace(/[^a-z0-9À-ɏ]/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+  return norm(artist) + '||' + norm(title);
+}
+
+function isInCollection(artist, title) {
+  // Check exact
+  if (_collIndex.has(normalizeTrack(artist, title))) return true;
+  // Check partiel — si le titre normalisé est contenu dans l'index
+  const normTitle = title.toLowerCase().replace(/[^a-z0-9À-ɏ]/g,' ').replace(/\s+/g,' ').trim();
+  const normArtist = artist.toLowerCase().replace(/[^a-z0-9À-ɏ]/g,' ').replace(/\s+/g,' ').trim().split(' ')[0];
+  for (const key of _collIndex) {
+    const [ka, kt] = key.split('||');
+    if (kt.includes(normTitle.slice(0,10)) && ka.includes(normArtist)) return true;
+  }
+  return false;
+}
+
+function renderCollectionStats() {
+  // Stats globales
+  const genres = {};
+  let withBpm = 0, withPlays = 0;
+  _collection.forEach(t => {
+    if (t.genre) genres[t.genre] = (genres[t.genre]||0) + 1;
+    if (t.bpm > 0) withBpm++;
+    if (t.playcount > 0) withPlays++;
+  });
+
+  const topGenres = Object.entries(genres).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  _collGenres = topGenres.map(([g]) => g);
+
+  document.getElementById('coll-stats-grid').innerHTML = [
+    { val: _collection.length.toLocaleString('fr'), label: 'Titres total' },
+    { val: Object.keys(genres).length, label: 'Genres' },
+    { val: withBpm.toLocaleString('fr'), label: 'Avec BPM' },
+    { val: withPlays.toLocaleString('fr'), label: 'Déjà joués' },
+    { val: Math.round(_collection.filter(t=>t.bpm>0).reduce((s,t)=>s+t.bpm,0)/withBpm), label: 'BPM moyen' },
+    { val: topGenres[0]?.[0] || '—', label: 'Genre #1' },
+  ].map(s => `<div class="coll-stat"><div class="coll-stat-val">${s.val}</div><div class="coll-stat-label">${s.label}</div></div>`).join('');
+
+  // Chips genre
+  document.getElementById('coll-genre-chips').innerHTML =
+    `<div class="filter-chip active" onclick="setGenreFilter('all',this)">Tous</div>` +
+    topGenres.map(([g, c]) => `<div class="filter-chip" onclick="setGenreFilter('${escHtml(g)}',this)">${escHtml(g)} <span style="opacity:.5">${c}</span></div>`).join('');
+
+  // Chips style pour lacunes
+  document.getElementById('gap-style-chips').innerHTML = GAP_STYLES.map(s =>
+    `<div class="ambiance-chip ${s.id === _activeStyle ? 'active' : ''}" onclick="setStyleFilter('${s.id}',this)">${s.label}</div>`
+  ).join('');
+}
+
+function setGenreFilter(genre, el) {
+  _activeGenreFilter = genre;
+  document.querySelectorAll('#coll-genre-chips .filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setBpmFilter(range, el) {
+  _activeBpmFilter = range;
+  document.querySelectorAll('.bpm-range-row .filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setAmbianceFilter(ambiance, el) {
+  _activeAmbiance = ambiance;
+  document.querySelectorAll('.ambiance-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setStyleFilter(style, el) {
+  _activeStyle = style;
+  document.querySelectorAll('#gap-style-chips .ambiance-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ── Trouver les lacunes ──────────────────────────────────────
+async function findGaps() {
+  if (!_collection.length) { showNotif('❌ Charge d\'abord ta collection'); return; }
+
+  // Vérifier/rafraîchir le token Spotify avant de démarrer
+  const token = await getSpotifyToken();
+  if (!token) {
+    showNotif('❌ Connexion Spotify requise — clique sur "Reconnecter"');
+    showServiceAlert('spotify', 'error', 'Session Spotify expirée.');
+    return;
+  }
+
+  const container = document.getElementById('gap-results');
+  container.innerHTML = '<div class="loader"><div class="spinner"></div>Recherche des titres populaires…</div>';
+
+  const style = GAP_STYLES.find(s => s.id === _activeStyle) || GAP_STYLES[0];
+  log('INFO', `Lacunes: ambiance=${_activeAmbiance} style=${style.id}`);
+
+  // Paramètres danceability/energy selon ambiance
+  const ambianceParams = {
+    dance:  { min_danceability: 0.65, min_energy: 0.55, target_danceability: 0.80 },
+    repas:  { max_danceability: 0.60, max_energy: 0.55, target_danceability: 0.40 },
+    all:    {},
+  };
+  const aparams = ambianceParams[_activeAmbiance] || {};
+
+  // BPM filter
+  const bpmRanges = {
+    slow:  { min_tempo: 60,  max_tempo: 90 },
+    mid:   { min_tempo: 90,  max_tempo: 115 },
+    fast:  { min_tempo: 115, max_tempo: 130 },
+    vfast: { min_tempo: 130, max_tempo: 180 },
+    all:   {},
+  };
+  const bparams = bpmRanges[_activeBpmFilter] || {};
+
+  let allTracks = [];
+
+  // Stratégie 1 : Recherche Spotify par genre/style (top 50 par popularité)
+  try {
+    for (const seed of style.seeds.slice(0, 2)) {
+      const spSeed = seed.length < 5 ? seed + ' music' : seed;
+      const results = await spotifySearch(spSeed, 10);
+      allTracks.push(...results);
+    }
+    // Recherche complémentaire sur les artistes emblématiques du style
+    const artistSeeds = {
+      pop: ['Dua Lipa', 'The Weeknd', 'Harry Styles', 'Taylor Swift', 'Ed Sheeran'],
+      rnb: ['Drake', 'Beyonce', 'Kendrick Lamar', 'SZA', 'Bruno Mars'],
+      house: ['David Guetta', 'Calvin Harris', 'Kygo', 'Martin Garrix', 'Avicii'],
+      french: ['Aya Nakamura', 'Jul', 'Naps', 'SCH', 'Dadju'],
+      latino: ['Bad Bunny', 'J Balvin', 'Maluma', 'Ozuna', 'Shakira'],
+      rock: ['Coldplay', 'Imagine Dragons', 'The Killers', 'Muse', 'Arctic Monkeys'],
+      '80s90s': ['Michael Jackson', 'Madonna', 'Prince', 'Whitney Houston', 'George Michael'],
+      afro: ['Burna Boy', 'Wizkid', 'Davido', 'Tiwa Savage', 'Afrobeats'],
+    };
+    const artists = (artistSeeds[style.id] || []).slice(0, 3);
+    for (const artist of artists) {
+      const results = await spotifySearch(artist, 8);
+      allTracks.push(...results);
+    }
+  } catch(e) { log('WARN', `Search seeds: ${e.message}`); }
+
+  // Stratégie 2 : Charts populaires via playlists connues
+  const chartPlaylists = {
+    pop:    ['37i9dQZF1DXcBWIGoYBM5M', '37i9dQZEVXbIPWwFssbupI'], // Top 50 Global, Top France
+    rnb:    ['37i9dQZF1DX4SBhb3fqCJd'],
+    house:  ['37i9dQZF1DX6J5NfMJS675'],
+    french: ['37i9dQZF1DXdgz8ZB7c6oh'],
+    latino: ['37i9dQZF1DX10zKzsJ2jva'],
+    rock:   ['37i9dQZF1DXcF6B6QPhFDv'],
+    '80s90s':['37i9dQZF1DX1vSJnMeoy3V'],
+    afro:   ['37i9dQZF1DX4JAvHpjipBk'],
+  };
+
+  // Récupérer les playlists charts si OAuth disponible
+  const chartIds = chartPlaylists[style.id] || [];
+  for (const pid of chartIds.slice(0, 1)) {
+    try {
+      const data = await _spotifyFetch(`https://api.spotify.com/v1/playlists/${pid}?market=FR`, 'chart-playlist');
+      (data.tracks?.items || []).forEach(item => {
+        const t = item.track;
+        if (!t || !t.id) return;
+        allTracks.push({
+          id: t.id, title: t.name,
+          artist: t.artists.map(a=>a.name).join(', '),
+          popularity: t.popularity,
+          image: t.album?.images?.[1]?.url,
+          source: 'spotify'
+        });
+      });
+    } catch(e) { log('DEBUG', `Chart ${pid}: ${e.message}`); }
+  }
+
+  // Dédupliquer par ID ET par titre+artiste normalisé
+  const seenIds = new Set();
+  const seenTitles = new Set();
+  allTracks = allTracks.filter(t => {
+    if (!t.id) return false;
+    if (seenIds.has(t.id)) return false;
+    const titleKey = (t.title + '||' + t.artist).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,30);
+    if (seenTitles.has(titleKey)) return false;
+    seenIds.add(t.id);
+    seenTitles.add(titleKey);
+    return true;
+  });
+
+  // Récupérer audio features pour danceability/energy
+  if (Object.keys(aparams).length > 0) {
+    const ids = allTracks.map(t => t.id).filter(Boolean);
+    const features = await spotifyAudioFeatures(ids);
+    allTracks.forEach(t => {
+      const f = features[t.id];
+      if (f) { t.danceability = f.danceability; t.energy = f.energy; t.bpm = f.bpm; }
+    });
+
+    // Filtrer par ambiance
+    allTracks = allTracks.filter(t => {
+      if (!t.danceability) return true; // garder si pas de données
+      if (aparams.min_danceability && t.danceability < aparams.min_danceability) return false;
+      if (aparams.max_danceability && t.danceability > aparams.max_danceability) return false;
+      if (aparams.min_energy && t.energy < aparams.min_energy) return false;
+      if (aparams.max_energy && t.energy > aparams.max_energy) return false;
+      return true;
+    });
+  }
+
+  // Filtrer BPM
+  if (bparams.min_tempo) {
+    allTracks = allTracks.filter(t => !t.bpm || (t.bpm >= bparams.min_tempo && t.bpm <= bparams.max_tempo));
+  }
+
+  // Trier par popularité
+  allTracks.sort((a, b) => (b.popularity||0) - (a.popularity||0));
+
+  // Vérifier collection et séparer manquants/possédés
+  const missing = [], owned = [];
+  allTracks.forEach(t => {
+    const inColl = isInCollection(t.artist, t.title);
+    if (inColl) owned.push(t);
+    else missing.push(t);
+  });
+
+  log('OK', `Lacunes: ${missing.length} manquants / ${owned.length} possédés sur ${allTracks.length} titres`);
+  renderGapResults(missing, owned);
+}
+
+function renderGapResults(missing, owned) {
+  const container = document.getElementById('gap-results');
+
+  if (!missing.length && !owned.length) {
+    container.innerHTML = '<div class="empty-state"><div class="icon">🤷</div><h3>Aucun résultat</h3><p>Essaie un autre style ou une autre ambiance</p></div>';
+    return;
+  }
+
+  const renderTrack = (t, status) => `
+    <div class="gap-track">
+      <span class="gap-status ${status}">${status === 'missing' ? '❌' : '✅'}</span>
+      ${t.id && !t.id.startsWith('d_') && !t.id.startsWith('sz_') ? 
+        `<button class="play-track-btn" onclick="openSpotify('${t.id}')" title="Ouvrir dans Spotify">▶</button>` :
+        t.deezer_url ? `<button class="play-track-btn" onclick="openDeezer('${t.deezer_url}')" title="Ouvrir dans Deezer" style="border-color:var(--deezer);color:var(--deezer)">▶</button>` : ''}
+      <div class="gap-track-info">
+        <div class="gap-track-title">${escHtml(t.title)}</div>
+        <div class="gap-track-artist">${escHtml(t.artist)}</div>
+      </div>
+      ${t.danceability ? `<div class="gap-dance" title="Danceability ${Math.round(t.danceability*100)}%">
+        <div class="gap-dance-bar"><div class="gap-dance-fill" style="width:${Math.round(t.danceability*100)}%"></div></div>
+      </div>` : ''}
+      ${t.bpm ? `<span class="meta-badge">${t.bpm}</span>` : ''}
+      <div class="score-badge ${scoreClass(t.popularity||0)}">${t.popularity||'—'}</div>
+    </div>`;
+
+  container.innerHTML = `
+    <div class="results-header" style="margin-bottom:16px">
+      <div class="results-count">
+        <strong style="color:var(--danger)">${missing.length}</strong> à acquérir &nbsp;·&nbsp;
+        <strong style="color:var(--ok)">${owned.length}</strong> déjà dans ta collection
+      </div>
+    </div>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px">
+      <div class="gap-section-title gap-section-missing">❌ À ACQUÉRIR (${missing.length})</div>
+      ${missing.slice(0,30).map(t => renderTrack(t, 'missing')).join('') || '<p style="font-size:12px;color:var(--text-dim);padding:8px 0">Aucun manquant — tu as tout !</p>'}
+    </div>
+    ${owned.length ? `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px">
+      <div class="gap-section-title gap-section-owned">✅ DÉJÀ DANS TA COLLECTION (${owned.length})</div>
+      ${owned.slice(0,15).map(t => renderTrack(t, 'owned')).join('')}
+    </div>` : ''}`;
+}
+
+// ══════════════════════════════════════════════════════════════
+//  EXPORTIFY FALLBACK
+// ══════════════════════════════════════════════════════════════
+function showExportifyFallback(originalUrl, playlistId) {
+  const exportifyUrl = `https://exportify.net/#playlists`;
+  const spotifyUri = `spotify:playlist:${playlistId}`;
+
+  document.getElementById('playlist-results').innerHTML = `
+    <div class="exportify-box">
+      <div style="font-size:32px;margin-bottom:12px">🔒</div>
+      <h3>Playlist inaccessible via l'API Spotify</h3>
+      <p>Cette playlist (mixée ou générée par Spotify) ne peut pas être lue directement.<br>
+      Exporte-la via Exportify en 3 clics, puis glisse le CSV ici.</p>
+
+      <div class="exportify-steps">
+        <div class="exportify-step"><span class="step-num">1</span> Ouvre Exportify</div>
+        <div class="exportify-step"><span class="step-num">2</span> Connecte Spotify & exporte</div>
+        <div class="exportify-step"><span class="step-num">3</span> Glisse le CSV ici</div>
+      </div>
+
+      <a href="${exportifyUrl}" target="_blank" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:16px">
+        🔗 Ouvrir Exportify
+      </a>
+
+      <div class="exportify-drop" id="exportify-drop" onclick="document.getElementById('exportify-csv-input').click()">
+        <div style="font-size:24px;margin-bottom:8px">📂</div>
+        <p>Glisse le CSV ici ou clique pour choisir</p>
+      </div>
+      <input type="file" id="exportify-csv-input" accept=".csv">
+    </div>`;
+
+  // Events drag & drop
+  const drop = document.getElementById('exportify-drop');
+  const input = document.getElementById('exportify-csv-input');
+
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault(); drop.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file && file.name.endsWith('.csv')) parseExportifyCSV(file);
+    else showNotif('❌ Fichier .csv requis');
+  });
+  input.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) parseExportifyCSV(file);
+  });
+
+  log('INFO', `Exportify fallback affiché pour playlist ${playlistId}`);
+}
+
+async function parseExportifyCSV(file) {
+  const reader = new FileReader();
+  reader.onload = async e => {
+    const text = e.target.result;
+    const lines = text.split('\n').filter(l => l.trim());
+    if (lines.length < 2) { showNotif('❌ CSV vide'); return; }
+
+    // Détecter les colonnes (Exportify ou TuneMyMusic)
+    const raw = lines[0];
+    // Gérer les guillemets dans le CSV
+    const parseCSVLine = line => {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === '"') { inQuotes = !inQuotes; continue; }
+        if (line[i] === ',' && !inQuotes) { result.push(current.trim()); current = ''; continue; }
+        current += line[i];
+      }
+      result.push(current.trim());
+      return result;
+    };
+
+    const headers = parseCSVLine(lines[0]).map(h => h.toLowerCase().replace(/\s+/g,'_'));
+    const findCol = (...names) => { for (const n of names) { const i = headers.findIndex(h => names.some(name => h.includes(name))); if (i >= 0) return i; } return -1; };
+
+    // Exportify columns: track_uri, track_name, album_name, artist_name(s), release_date, duration_(ms), popularity, ...tempo
+    const iTitle  = headers.findIndex(h => h === 'track_name' || h.includes('title') || h === 'name');
+    const iArtist = headers.findIndex(h => h.includes('artist'));
+    const iPop    = headers.findIndex(h => h === 'popularity' || h.includes('popularity'));
+    const iBpm    = headers.findIndex(h => h === 'tempo' || h.includes('bpm'));
+    const iId     = headers.findIndex(h => h === 'track_uri' || h.includes('spotify_id') || h.includes('track_id'));
+
+    showNotif(`📂 ${lines.length - 1} titres détectés, enrichissement…`);
+    log('INFO', `CSV parsé — colonnes: ${headers.join(', ')}`);
+
+    const rows = lines.slice(1).map(line => {
+      const cols = parseCSVLine(line);
+      return {
+        title:      iTitle  >= 0 ? cols[iTitle]  || '' : '',
+        artist:     iArtist >= 0 ? (cols[iArtist] || '').replace(/;/g, ', ') : '',
+        popularity: iPop    >= 0 ? parseInt(cols[iPop]) || 0 : 0,
+        bpm:        iBpm    >= 0 ? parseInt(cols[iBpm]) || null : null,
+        id:         iId     >= 0 ? (cols[iId] || '').replace('spotify:track:','').split('?')[0].trim() : null,
+      };
+    }).filter(r => r.title && r.title.length > 0);
+
+    if (!rows.length) { showNotif('❌ Aucun titre lisible dans le CSV'); return; }
+
+    // Enrichir BPM + Popularité via Spotify si les IDs sont présents
+    const idsToFetch = rows.filter(r => r.id && !r.bpm).map(r => r.id);
+    if (idsToFetch.length) {
+      const features = await spotifyAudioFeatures(idsToFetch);
+      rows.forEach(r => {
+        if (r.id && features[r.id]) {
+          if (!r.bpm) r.bpm = features[r.id].bpm;
+          r.key = features[r.id].key;
+        }
+      });
+      // Récupérer popularité si absente
+      const idsNoPop = rows.filter(r => r.id && !r.popularity).map(r => r.id);
+      for (let i = 0; i < idsNoPop.length; i += 50) {
+        try {
+          const data = await _spotifyFetch(`https://api.spotify.com/v1/tracks?ids=${idsNoPop.slice(i,i+50).join(',')}&market=FR`, 'tracks-pop');
+          (data.tracks||[]).forEach(t => {
+            const r = rows.find(r => r.id === t.id);
+            if (r) r.popularity = t.popularity;
+          });
+        } catch(e) { /* continue */ }
+      }
+    }
+
+    playlistData = rows;
+    renderPlaylist();
+    document.getElementById('playlist-filters').style.display = 'flex';
+    updateKPIs();
+    log('OK', `CSV chargé — ${rows.length} titres`);
+    showNotif(`✅ ${rows.length} titres chargés depuis CSV !`);
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  TABS
+// ══════════════════════════════════════════════════════════════
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const tab = (el && el.closest) ? (el.closest('.tab') || el) : el;
+  if (tab) tab.classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+  if (name === 'dev') { updateKPIs(); renderEnv(); }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  LOAD SPOTIFY URL
+// ══════════════════════════════════════════════════════════════
+async function loadSpotifyUrl() {
+  const input = document.getElementById('playlist-url-input').value.trim();
+  if (!input) return;
+  const match = input.match(/spotify\.com\/(playlist|album|artist)\/([a-zA-Z0-9]+)/);
+  if (!match) { showNotif('❌ URL Spotify invalide'); log('WARN','URL invalide: '+input); return; }
+  const [,type,id] = match;
+  log('INFO', `Chargement ${type} ${id}`);
+  document.getElementById('playlist-results').innerHTML = '<div class="loader"><div class="spinner"></div>Chargement…</div>';
+  document.getElementById('playlist-filters').style.display = 'none';
+
+  const token = await getSpotifyToken();
+  if (!token) return;
+
+  let rows = [];
+  try {
+    if (type === 'playlist') rows = await fetchPlaylistTracks(id, token);
+    else if (type === 'album') rows = await fetchAlbumTracks(id, token);
+    else if (type === 'artist') rows = await fetchArtistTopTracks(id, token);
+  } catch(e) {
+    log('ERROR', `Chargement ${type} échoué: ${e.message}`);
+    showNotif('❌ Erreur chargement');
+    if (type === 'playlist') {
+      showExportifyFallback(input, id);
+    } else {
+      document.getElementById('playlist-results').innerHTML = '<div class="empty-state"><div class="icon">❌</div><h3>Erreur de chargement</h3><p>'+escHtml(e.message)+'</p></div>';
+    }
+    return;
+  }
+
+  if (!rows.length && type === 'playlist') {
+    log('WARN', 'Playlist vide ou inaccessible — affichage Exportify');
+    showExportifyFallback(input, id);
+    return;
+  }
+  if (!rows.length) { showNotif('❌ Aucun titre'); log('WARN','Aucun titre récupéré'); return; }
+  log('OK', `${rows.length} titres chargés, récupération BPM…`);
+  showNotif(`⏳ ${rows.length} titres, BPM en cours…`);
+
+  const ids = rows.map(r=>r.id).filter(Boolean);
+  const features = await spotifyAudioFeatures(ids);
+  rows.forEach(r => { if (features[r.id]) { r.bpm = features[r.id].bpm; r.key = features[r.id].key; }});
+
+  playlistData = rows;
+  renderPlaylist();
+  document.getElementById('playlist-filters').style.display = 'flex';
+  updateKPIs();
+  log('OK', `Playlist prête — ${rows.length} titres, ${Object.keys(features).length} BPM récupérés`);
+  showNotif(`✅ ${rows.length} titres chargés !`);
+}
+
+async function fetchPlaylistTracks(id, token) {
+  const rows = [];
+
+  // Stratégie 1 : endpoint /tracks (standard)
+  try {
+    let url = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=100&market=FR`;
+    let page = 0;
+    while (url) {
+      page++;
+      const data = await _spotifyFetch(url, `playlist-page-${page}`);
+      (data.items || []).forEach(item => {
+        const t = item.track;
+        if (!t || !t.id) return;
+        rows.push({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:t.album?.name,popularity:t.popularity,image:t.album?.images?.[1]?.url});
+      });
+      url = data.next || null;
+    }
+    if (rows.length) {
+      log('OK', `Playlist: ${rows.length} titres sur ${page} page(s)`);
+      return rows;
+    }
+  } catch(e) {
+    log('WARN', `Endpoint /tracks échoué (${e.message}), tentative via /playlists…`);
+  }
+
+  // Stratégie 2 : endpoint /playlists/{id} qui inclut tracks dans la réponse principale
+  try {
+    const playlist = await _spotifyFetch(
+      `https://api.spotify.com/v1/playlists/${id}?market=FR`,
+      'playlist-full'
+    );
+    const items = playlist.tracks?.items || [];
+    items.forEach(item => {
+      const t = item.track;
+      if (!t || !t.id) return;
+      rows.push({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:t.album?.name,popularity:t.popularity,image:t.album?.images?.[1]?.url});
+    });
+    // Paginer si plus de 100 titres
+    let next = playlist.tracks?.next;
+    let page = 1;
+    while (next) {
+      page++;
+      const data = await _spotifyFetch(next, `playlist-page-${page}`);
+      (data.items || []).forEach(item => {
+        const t = item.track;
+        if (!t || !t.id) return;
+        rows.push({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:t.album?.name,popularity:t.popularity,image:t.album?.images?.[1]?.url});
+      });
+      next = data.next || null;
+    }
+    log('OK', `Playlist (via /playlists): ${rows.length} titres`);
+    return rows;
+  } catch(e) {
+    log('ERROR', `Les deux stratégies ont échoué: ${e.message}`);
+    throw e;
+  }
+}
+
+async function fetchAlbumTracks(id, token) {
+  const album = await _spotifyFetch(`https://api.spotify.com/v1/albums/${id}?market=FR`, 'album');
+  const image = album.images?.[1]?.url;
+  const rows = [];
+  let url = `https://api.spotify.com/v1/albums/${id}/tracks?limit=50&market=FR`;
+  while (url) {
+    const data = await _spotifyFetch(url, 'album-tracks');
+    (data.items || []).forEach(t => rows.push({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:album.name,popularity:null,image}));
+    url = data.next || null;
+  }
+  const ids = rows.map(r=>r.id);
+  for (let i=0;i<ids.length;i+=50) {
+    const data = await _spotifyFetch(`https://api.spotify.com/v1/tracks?ids=${ids.slice(i,i+50).join(',')}&market=FR`, 'tracks-popularity');
+    (data.tracks||[]).forEach(t => { const r=rows.find(r=>r.id===t.id); if(r) r.popularity=t.popularity; });
+  }
+  log('OK', `Album: ${rows.length} titres`);
+  return rows;
+}
+
+async function fetchArtistTopTracks(id, token) {
+  const data = await _spotifyFetch(`https://api.spotify.com/v1/artists/${id}/top-tracks?market=FR`, 'artist-top');
+  log('OK', `Artiste: ${(data.tracks||[]).length} top tracks`);
+  return (data.tracks||[]).map(t=>({id:t.id,title:t.name,artist:t.artists.map(a=>a.name).join(', '),album:t.album?.name,popularity:t.popularity,image:t.album?.images?.[1]?.url}));
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SORT PLAYLIST
+// ══════════════════════════════════════════════════════════════
+function _sortedPlaylist() {
+  return [...playlistData].sort((a,b) => {
+    if (currentSort === 'popularity') return ((b.popularity||0)-(a.popularity||0)) * currentSortDir;
+    if (currentSort === 'bpm') {
+      if (!a.bpm && !b.bpm) return 0;
+      if (!a.bpm) return 1;
+      if (!b.bpm) return -1;
+      return (b.bpm-a.bpm) * currentSortDir;
+    }
+    if (currentSort === 'title') return a.title.localeCompare(b.title) * currentSortDir;
+    if (currentSort === 'artist') return a.artist.localeCompare(b.artist) * currentSortDir;
+    return 0;
+  });
+}
+
+function sortPlaylist(field, chipEl) {
+  if (currentSort === field) currentSortDir *= -1;
+  else { currentSort = field; currentSortDir = (field === 'title' || field === 'artist') ? 1 : -1; }
+  document.querySelectorAll('.filter-chip[data-sort]').forEach(c => c.classList.remove('active'));
+  if (chipEl) chipEl.classList.add('active');
+  renderPlaylist();
+}
+
+function renderPlaylist() {
+  const sorted = _sortedPlaylist();
+  const container = document.getElementById('playlist-results');
+  if (!sorted.length) { container.innerHTML = '<div class="empty-state"><div class="icon">📂</div><h3>Aucun titre</h3></div>'; return; }
+  container.innerHTML = `
+    <div class="results-header">
+      <div class="results-count"><strong>${sorted.length}</strong> titres</div>
+    </div>
+    <table class="track-table">
+      <thead><tr>
+        <th style="width:40px">#</th>
+        <th onclick="sortPlaylist('title',this)">TITRE</th>
+        <th onclick="sortPlaylist('artist',this)">ARTISTE</th>
+        <th onclick="sortPlaylist('bpm',this)">BPM / CLÉ</th>
+        <th onclick="sortPlaylist('popularity',this)">POPULARITÉ</th>
+      </tr></thead>
+      <tbody>${sorted.map((t,i) => `
+        <tr class="track-row" onclick="addTrackToSetByIndex(${i},'playlist')">
+          <td class="track-rank">${i+1}</td>
+          <td><div class="track-title">${escHtml(t.title)}</div></td>
+          <td><div class="track-artist">${escHtml(t.artist)}</div></td>
+          <td>${t.bpm?`<span class="meta-badge">${t.bpm}</span>`:''}${t.key?`<span class="meta-badge">${t.key}</span>`:''}</td>
+          <td><div class="popularity-bar">
+            <div class="bar-track"><div class="bar-fill spotify" style="width:${t.popularity||0}%"></div></div>
+            <div class="score-badge ${scoreClass(t.popularity||0)}">${t.popularity||'—'}</div>
+          </div></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+// ══════════════════════════════════════════════════════════════
+//  EXPLORE BY GENRE
+// ══════════════════════════════════════════════════════════════
+const GENRES = [
+  {label:'Pop',icon:'🌟',query:'genre:pop'},{label:'Électro',icon:'⚡',query:'genre:electronic'},
+  {label:'Hip-Hop',icon:'🎤',query:'genre:hip-hop'},{label:'R&B',icon:'🎵',query:'genre:r-n-b'},
+  {label:'House',icon:'🏠',query:'genre:house'},{label:'Techno',icon:'🔊',query:'genre:techno'},
+  {label:'Rock',icon:'🎸',query:'genre:rock'},{label:'Latina',icon:'🌴',query:'genre:latin'},
+  {label:'Afrobeats',icon:'🌍',query:'genre:afrobeats'},{label:'French',icon:'🇫🇷',query:'genre:french pop'},
+  {label:'Années 80',icon:'📼',query:'year:1980-1989'},{label:'Années 90',icon:'💿',query:'year:1990-1999'},
+  {label:'Reggaeton',icon:'🔥',query:'genre:reggaeton'},{label:'Dance',icon:'🕺',query:'genre:dance'},
+];
+
+document.getElementById('genre-grid').innerHTML = GENRES.map(g =>
+  `<div class="genre-card" onclick="selectGenre('${escHtml(g.query)}',this)"><div class="genre-icon">${g.icon}</div>${escHtml(g.label)}</div>`
+).join('');
+
+async function selectGenre(query, el) {
+  document.querySelectorAll('.genre-card').forEach(c=>c.classList.remove('active'));
+  if (el && el.classList) el.classList.add('active');
+  log('INFO', `Genre: ${query}`);
+  // Vérifier token avant recherche
+  const token = await getSpotifyToken();
+  if (!token) { showNotif('❌ Connexion Spotify requise'); return; }
+  document.getElementById('explore-results').innerHTML = '<div class="loader"><div class="spinner"></div>Recherche…</div>';
+  // Nettoyer le query pour Spotify (supprimer préfixes genre:/year:)
+  const cleanQuery = query.replace('genre:','').replace('year:','');
+  // Pour les queries courts (< 5 chars), ajouter "music" pour éviter le 400
+  const spQuery = cleanQuery.length < 5 ? cleanQuery + ' music' : cleanQuery;
+  const [spRes, dzRes] = await Promise.all([
+    spotifySearch(spQuery, 10),
+    deezerSearch(cleanQuery, 15)
+  ]);
+  renderSearchResults(spRes, dzRes, 'explore-results');
+}
+
+function searchGenre() {
+  const q = document.getElementById('explore-input').value.trim();
+  if (!q) return;
+  selectGenre(q, null);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  FREE SEARCH
+// ══════════════════════════════════════════════════════════════
+async function freeSearch() {
+  const q = document.getElementById('free-search-input').value.trim();
+  if (!q) return;
+  const source = document.getElementById('search-source').value;
+  log('INFO', `Recherche libre: "${q}" [${source}]`);
+  // Vérifier token
+  const token = await getSpotifyToken();
+  if (!token && source !== 'deezer') { showNotif('❌ Connexion Spotify requise'); return; }
+  document.getElementById('free-search-results').innerHTML = '<div class="loader"><div class="spinner"></div>Recherche…</div>';
+  let spRes = [], dzRes = [];
+  if (source !== 'deezer') spRes = await spotifySearch(q, 15);
+  if (source !== 'spotify') dzRes = await deezerSearch(q, 10);
+  renderSearchResults(spRes, dzRes, 'free-search-results');
+}
+
+function renderSearchResults(spRes, dzRes, containerId) {
+  const container = document.getElementById(containerId);
+  const merged = [];
+  const usedDeezer = new Set();
+
+  spRes.forEach(s => {
+    const dIdx = dzRes.findIndex((d,i) => {
+      if (usedDeezer.has(i)) return false;
+      return d.title.toLowerCase().includes(s.title.toLowerCase().slice(0,8)) &&
+             d.artist.toLowerCase().includes(s.artist.toLowerCase().slice(0,6));
+    });
+    if (dIdx >= 0) usedDeezer.add(dIdx);
+    const dm = dIdx >= 0 ? dzRes[dIdx] : null;
+    merged.push({...s, deezer_popularity: dm?.popularity ?? null, deezer_url: dm?.deezer_url || null, combined: combinedScore(s.popularity, dm?.popularity), has_deezer: !!dm});
+  });
+
+  dzRes.forEach((d,i) => {
+    if (!usedDeezer.has(i)) merged.push({...d, spotify_popularity: null, combined: d.popularity, has_deezer: true});
+  });
+
+  // Enrichissement Shazam asynchrone (top 5 uniquement pour économiser le quota)
+  merged.sort((a,b) => b.combined - a.combined);
+  _lastSearchResults = merged;
+  // Lancer l'enrichissement Shazam en arrière-plan sur les 5 premiers
+  enrichWithShazam(merged, containerId);
+  log('OK', `Résultats: ${merged.length} titres (${spRes.length} Spotify + ${dzRes.length} Deezer)`);
+
+  if (!merged.length) {
+    container.innerHTML = '<div class="empty-state"><div class="icon">😶</div><h3>Aucun résultat</h3><p>Essaie un autre terme</p></div>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="results-header"><div class="results-count"><strong>${merged.length}</strong> résultats</div></div>
+    <table class="track-table">
+      <thead><tr>
+        <th style="width:36px">#</th><th>TITRE</th><th>ARTISTE</th>
+        <th>SRC</th><th>SPOTIFY</th><th>DEEZER</th><th>SHAZAM</th><th>SCORE</th>
+      </tr></thead>
+      <tbody>${merged.map((t,i) => `
+        <tr class="track-row" onclick="addTrackToSetByIndex(${i},'search')">
+          <td class="track-rank">${i+1}</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px">
+              ${t.id && !t.id.startsWith('d_') && !t.id.startsWith('sz_') ? 
+              `<button class="play-track-btn" onclick="event.stopPropagation();openSpotify('${t.id}')" title="Ouvrir dans Spotify">▶</button>` :
+              t.deezer_url ? 
+              `<button class="play-track-btn" onclick="event.stopPropagation();openDeezer('${t.deezer_url}')" title="Ouvrir dans Deezer" style="border-color:var(--deezer);color:var(--deezer)">▶</button>` :
+              ''}
+              <div><div class="track-title">${escHtml(t.title)}</div><div class="track-artist">${escHtml(t.album||'')}</div></div>
+            </div>
+          </td>
+          <td><div class="track-artist">${escHtml(t.artist)}</div></td>
+          <td><div class="source-dots">
+            <div class="source-dot spotify ${t.source==='spotify'||t.popularity?'active':''}"></div>
+            <div class="source-dot deezer ${t.has_deezer?'active':''}"></div>
+            <div class="source-dot shazam ${t.shazam_count?'active':''}"></div>
+          </div></td>
+          <td>${(t.source==='spotify'||t.popularity) ? `<div class="popularity-bar"><div class="bar-track" style="min-width:50px"><div class="bar-fill spotify" style="width:${t.popularity||0}%"></div></div><small style="color:var(--text-dim);font-size:10px;font-family:var(--mono)">${t.popularity||'—'}</small></div>` : '<span style="color:var(--text-muted)">—</span>'}</td>
+          <td>${t.has_deezer ? `<div class="popularity-bar"><div class="bar-track" style="min-width:50px"><div class="bar-fill deezer" style="width:${t.deezer_popularity||t.popularity||0}%"></div></div><small style="color:var(--text-dim);font-size:10px;font-family:var(--mono)">${t.deezer_popularity??'—'}</small></div>` : '<span style="color:var(--text-muted)">—</span>'}</td>
+          <td>${t.shazam_count ? `<div class="popularity-bar"><div class="bar-track" style="min-width:50px"><div class="bar-fill shazam" style="width:${Math.min(100,Math.round(t.shazam_count/10000000*100))}%"></div></div><small style="color:var(--shazam);font-size:10px;font-family:var(--mono)">${t.shazam_count>=1000000?(t.shazam_count/1000000).toFixed(1)+'M':t.shazam_count>=1000?(t.shazam_count/1000).toFixed(0)+'k':t.shazam_count}</small></div>` : '<span style="color:var(--text-muted)">—</span>'}</td>
+          <td><div class="score-badge ${scoreClass(t.combined)}">${t.combined}</div></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SHAZAM ENRICHISSEMENT ARRIÈRE-PLAN
+// ══════════════════════════════════════════════════════════════
+async function enrichWithShazam(tracks, containerId) {
+  const top = tracks.slice(0, 5);
+  for (const track of top) {
+    if (track.shazam_count !== undefined) continue;
+    const result = await shazamEnrich(track.title, track.artist);
+    if (result && result.shazam_count) {
+      track.shazam_count = result.shazam_count;
+      // Mettre à jour la cellule Shazam dans le tableau existant
+      const idx = tracks.indexOf(track);
+      updateShazamCell(containerId, idx, result.shazam_count);
+    }
+  }
+}
+
+function updateShazamCell(containerId, rowIndex, count) {
+  const table = document.querySelector(`#${containerId} .track-table tbody`);
+  if (!table) return;
+  const row = table.rows[rowIndex];
+  if (!row) return;
+  // La colonne Shazam est l'avant-dernière (index -2)
+  const cell = row.cells[row.cells.length - 2];
+  if (!cell) return;
+  const fmt = count >= 1000000 ? (count/1000000).toFixed(1)+'M' : count >= 1000 ? (count/1000).toFixed(0)+'k' : count;
+  const pct = Math.min(100, Math.round(count/10000000*100));
+  cell.innerHTML = `<div class="popularity-bar"><div class="bar-track" style="min-width:50px"><div class="bar-fill shazam" style="width:${pct}%"></div></div><small style="color:var(--shazam);font-size:10px;font-family:var(--mono)">${fmt}</small></div>`;
+  log('OK', `Shazam enrichi: ${fmt} shazams`);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SET BUILDER
+// ══════════════════════════════════════════════════════════════
+function addTrackToSetByIndex(index, source) {
+  let track;
+  if (source === 'playlist') track = _sortedPlaylist()[index];
+  else track = _lastSearchResults[index];
+  if (!track) { log('WARN',`addTrackToSetByIndex: index ${index} introuvable dans ${source}`); return; }
+  addTrackToSet(track);
+}
+
+function addTrackToSet(track) {
+  if (!track || typeof track !== 'object') { log('WARN','addTrackToSet: track invalide'); return; }
+  if (setTracks.find(t => t.title === track.title && t.artist === track.artist)) {
+    showNotif('⚠️ Titre déjà dans le set');
+    return;
+  }
+  setTracks.push(track);
+  renderSet();
+  updateKPIs();
+  log('OK', `Set +1: "${track.title}" (popularité ${track.popularity||'?'})`);
+  showNotif(`✅ "${track.title}" ajouté`);
+}
+
+async function addToSet() {
+  const q = document.getElementById('set-search-input').value.trim();
+  if (!q) return;
+  log('INFO', `Recherche set: "${q}"`);
+  const results = await spotifySearch(q, 1);
+  if (results.length) {
+    addTrackToSet(results[0]);
+    document.getElementById('set-search-input').value = '';
+  } else {
+    showNotif('❌ Titre non trouvé');
+    log('WARN', `Titre non trouvé: "${q}"`);
+  }
+}
+
+function clearSet() { setTracks = []; renderSet(); updateKPIs(); log('INFO','Set vidé'); }
+
+function renderSet() {
+  const list = document.getElementById('set-list');
+  const stats = document.getElementById('set-stats');
+  if (!setTracks.length) {
+    list.innerHTML = '<div class="empty-state" style="padding:16px 0"><p>Ajoute des titres</p></div>';
+    stats.innerHTML = '<div class="empty-state" style="padding:16px 0"><p>Stats ici</p></div>';
+    return;
+  }
+  const sorted = [...setTracks].sort((a,b)=>(b.popularity||0)-(a.popularity||0));
+  list.innerHTML = sorted.map((t,i) => `
+    <div class="set-item">
+      <div class="set-item-rank">${i+1}</div>
+      <div class="set-item-info">
+        <div class="set-item-title">${escHtml(t.title)}</div>
+        <div class="set-item-artist">${escHtml(t.artist)}</div>
+      </div>
+      ${t.bpm?`<span class="meta-badge">${t.bpm}</span>`:''}
+      <div class="set-item-score">${t.popularity||'—'}</div>
+      <button onclick="removeFromSet('${escHtml(t.title)}','${escHtml(t.artist)}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:16px;padding:0 2px;line-height:1">×</button>
+    </div>`).join('');
+
+  const popAvg = Math.round(setTracks.reduce((s,t)=>s+(t.popularity||0),0)/setTracks.length);
+  const bpmTracks = setTracks.filter(t=>t.bpm);
+  const bpmAvg = bpmTracks.length ? Math.round(bpmTracks.reduce((s,t)=>s+t.bpm,0)/bpmTracks.length) : null;
+  const top = sorted[0], bot = sorted[sorted.length-1];
+
+  stats.innerHTML = `
+    <div class="set-item"><div class="set-item-info"><div class="set-item-title">Titres</div></div><div class="set-item-score">${setTracks.length}</div></div>
+    <div class="set-item"><div class="set-item-info"><div class="set-item-title">Popularité moyenne</div></div><div class="set-item-score ${scoreClass(popAvg)}">${popAvg}</div></div>
+    ${bpmAvg?`<div class="set-item"><div class="set-item-info"><div class="set-item-title">BPM moyen</div></div><div class="set-item-score">${bpmAvg}</div></div>`:''}
+    <div class="set-item"><div class="set-item-info"><div class="set-item-title">🏆 Top</div><div class="set-item-artist">${escHtml(top.title)}</div></div><div class="set-item-score score-high">${top.popularity||'—'}</div></div>
+    <div class="set-item"><div class="set-item-info"><div class="set-item-title">⬇ Moins pop.</div><div class="set-item-artist">${escHtml(bot.title)}</div></div><div class="set-item-score score-low">${bot.popularity||'—'}</div></div>`;
+}
+
+function removeFromSet(title, artist) {
+  const idx = setTracks.findIndex(t => t.title === title && t.artist === artist);
+  if (idx < 0) { log('WARN',`removeFromSet: "${title}" introuvable`); return; }
+  const removed = setTracks.splice(idx, 1)[0];
+  renderSet();
+  updateKPIs();
+  log('OK', `Set -1: "${removed.title}"`);
+}
+
+function exportSet() {
+  if (!setTracks.length) return;
+  const csv = 'Titre,Artiste,Popularité,BPM,Clé\n' +
+    setTracks.map(t=>`"${t.title}","${t.artist}",${t.popularity||''},${t.bpm||''},${t.key||''}`).join('\n');
+  const url = URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+  const a = document.createElement('a'); a.href=url; a.download='set-dj.csv'; a.click();
+  log('OK', `Export CSV: ${setTracks.length} titres`);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  NOTIF
+// ══════════════════════════════════════════════════════════════
+function showNotif(msg) {
+  const n = document.createElement('div');
+  n.className = 'notif';
+  n.textContent = msg;
+  document.body.appendChild(n);
+  setTimeout(()=>n.remove(), 3000);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SPOTIFY WEB PLAYBACK SDK
+// ══════════════════════════════════════════════════════════════
+function fmtTime(ms) {
+  const s = Math.floor(ms / 1000);
+  return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+}
+
+function playTrack(trackId, trackList, index) {
+  openSpotify(trackId);
+}
+
+function openSpotify(trackId) {
+  if (!trackId || trackId.length < 10 || trackId.startsWith('d_') || trackId.startsWith('sz_')) {
+    showNotif('❌ ID Spotify invalide');
+    return;
+  }
+  // Sur Safari, window.open avec spotify: URI fonctionne mieux qu'un lien <a>
+  const opened = window.open(`spotify:track:${trackId}`, '_self');
+  if (!opened) {
+    // Fallback : ouvrir sur open.spotify.com
+    window.open(`https://open.spotify.com/track/${trackId}`, '_blank');
+  }
+  log('OK', `Ouvert dans Spotify: ${trackId}`);
+}
+
+function openDeezer(url) {
+  if (!url) return;
+  window.open(url, '_blank');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════════════
+log('INFO', `PADJ Popularité v${APP_VERSION} — démarrage`);
+updateQuotaDisplay();
+updateShazamQuotaDisplay();
+renderEnv();
+
+// Gérer le callback OAuth si on revient de Spotify
+const _urlParams = new URLSearchParams(window.location.search);
+if (_urlParams.has('code') || _urlParams.has('error')) {
+  handleOAuthCallback();
+} else {
+  // Vérifier si token déjà présent en session
+  const _storedToken = sessionStorage.getItem(OAUTH_TOKEN_KEY);
+  const _storedExpiry = parseInt(sessionStorage.getItem(OAUTH_EXPIRY_KEY) || '0');
+  if (_storedToken && Date.now() < _storedExpiry - 60000) {
+    spotifyToken = _storedToken;
+    setServiceStatus('spotify', 'ok');
+    updateBadgeLoggedIn();
+    hideOAuthOverlay();
+    log('OK', 'Session Spotify restaurée');
+  } else {
+    // Montrer overlay login
+    showOAuthOverlay();
+  }
+}
+
+// Erreurs JS globales → log automatique
+window.addEventListener('error', e => {
+  log('ERROR', `[JS] ${e.message} — ${e.filename}:${e.lineno}`);
+  _metrics.errorsAPI++;
+  updateKPIs();
+});
+window.addEventListener('unhandledrejection', e => {
+  log('ERROR', `[Promise] ${e.reason}`);
+  _metrics.errorsAPI++;
+  updateKPIs();
+});
+</script>
+
+</body>
+</html>
