@@ -233,7 +233,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.6.0</div>
+    <div class="badge version"><div class="dot"></div> v2.6.1</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -458,7 +458,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.6.0';
+const APP_VERSION = '2.6.1';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1485,10 +1485,23 @@ async function _spotifyFetch(url, label) {
 
 async function spotifySearch(query, limit = 10) {
   try {
-    const data = await _spotifyFetch(
-      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${limit}&market=FR`,
-      'search'
-    );
+    // Spotify rejette limit > 10 pour certains queries courts — fallback à 10
+    const safeLimit = Math.min(limit, 10);
+    let data;
+    try {
+      data = await _spotifyFetch(
+        `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${safeLimit}&market=FR`,
+        'search'
+      );
+    } catch(e) {
+      // Retry avec limit=5 si 400
+      if (e.message.includes('400')) {
+        data = await _spotifyFetch(
+          `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=5&market=FR`,
+          'search-retry'
+        );
+      } else throw e;
+    }
     return (data.tracks?.items || []).map(t => ({
       id: t.id,
       title: t.name,
@@ -1764,7 +1777,8 @@ async function findGaps() {
   // Stratégie 1 : Recherche Spotify par genre/style (top 50 par popularité)
   try {
     for (const seed of style.seeds.slice(0, 2)) {
-      const results = await spotifySearch(seed, 20);
+      const spSeed = seed.length < 5 ? seed + ' music' : seed;
+      const results = await spotifySearch(spSeed, 10);
       allTracks.push(...results);
     }
     // Recherche complémentaire sur les artistes emblématiques du style
@@ -1780,7 +1794,7 @@ async function findGaps() {
     };
     const artists = (artistSeeds[style.id] || []).slice(0, 3);
     for (const artist of artists) {
-      const results = await spotifySearch(artist, 10);
+      const results = await spotifySearch(artist, 8);
       allTracks.push(...results);
     }
   } catch(e) { log('WARN', `Search seeds: ${e.message}`); }
@@ -2274,9 +2288,11 @@ async function selectGenre(query, el) {
   document.getElementById('explore-results').innerHTML = '<div class="loader"><div class="spinner"></div>Recherche…</div>';
   // Nettoyer le query pour Spotify (supprimer préfixes genre:/year:)
   const cleanQuery = query.replace('genre:','').replace('year:','');
+  // Pour les queries courts (< 5 chars), ajouter "music" pour éviter le 400
+  const spQuery = cleanQuery.length < 5 ? cleanQuery + ' music' : cleanQuery;
   const [spRes, dzRes] = await Promise.all([
-    spotifySearch(cleanQuery, 20),
-    deezerSearch(cleanQuery, 10)
+    spotifySearch(spQuery, 10),
+    deezerSearch(cleanQuery, 15)
   ]);
   renderSearchResults(spRes, dzRes, 'explore-results');
 }
