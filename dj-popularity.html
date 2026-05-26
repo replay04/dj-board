@@ -233,7 +233,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.5.8</div>
+    <div class="badge version"><div class="dot"></div> v2.6.0</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -458,7 +458,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.5.8';
+const APP_VERSION = '2.6.0';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1190,7 +1190,7 @@ async function runBenchmarks() {
 //  SPOTIFY AUTH — OAuth 2.0 PKCE + Client Credentials fallback
 // ══════════════════════════════════════════════════════════════
 const SPOTIFY_REDIRECT_URI = 'https://replay04.github.io/dj-board/dj-popularity.html';
-const SPOTIFY_SCOPES = 'playlist-read-private playlist-read-collaborative user-library-read streaming user-read-playback-state user-modify-playback-state user-read-currently-playing';
+const SPOTIFY_SCOPES = 'playlist-read-private playlist-read-collaborative user-library-read user-read-playback-state';
 const OAUTH_STATE_KEY = 'padj_oauth_state';
 const OAUTH_TOKEN_KEY = 'padj_oauth_token';
 const OAUTH_EXPIRY_KEY = 'padj_oauth_expiry';
@@ -1229,6 +1229,12 @@ async function spotifyLogin() {
     code_challenge: challenge,
   });
 
+  // Sauvegarder l'onglet actif avant redirect
+  const activeTab = document.querySelector('.tab.active');
+  if (activeTab) {
+    const tabName = activeTab.getAttribute('onclick').match(/switchTab\('(\w+)'/)?.[1];
+    if (tabName) sessionStorage.setItem('padj_active_tab', tabName);
+  }
   log('INFO', 'Redirection OAuth Spotify…');
   window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
 }
@@ -1300,6 +1306,13 @@ async function handleOAuthCallback() {
     log('OK', `OAuth Spotify réussi en ${fmtMs(ms)} — token valide ${Math.round(data.expires_in/60)}min`);
     showNotif('✅ Connecté à Spotify !');
     hideOAuthOverlay();
+    // Restaurer l'onglet actif sauvegardé avant le redirect OAuth
+    const savedTab = sessionStorage.getItem('padj_active_tab');
+    if (savedTab) {
+      sessionStorage.removeItem('padj_active_tab');
+      const tabEl = document.querySelector('.tab[onclick*="' + savedTab + '"]');
+      if (tabEl) switchTab(savedTab, tabEl);
+    }
 
   } catch(e) {
     _metrics.errorsAPI++;
@@ -1519,7 +1532,9 @@ async function spotifyAudioFeatures(ids) {
 async function deezerSearch(query, limit = 10) {
   const t0 = Date.now();
   try {
-    const res = await fetch(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=${limit}&output=json`, {mode:'cors'});
+    // Deezer bloque CORS depuis GitHub Pages — utiliser un proxy
+    const deezerUrl = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=${limit}&output=json`;
+    const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(deezerUrl)}`);
     const ms = Date.now() - t0;
     _metrics.latenciesDeezer.push(ms);
     if (res.status === 403 || res.status === 429) {
@@ -1749,7 +1764,7 @@ async function findGaps() {
   // Stratégie 1 : Recherche Spotify par genre/style (top 50 par popularité)
   try {
     for (const seed of style.seeds.slice(0, 2)) {
-      const results = await spotifySearch(`genre:${seed}`, 20);
+      const results = await spotifySearch(seed, 20);
       allTracks.push(...results);
     }
     // Recherche complémentaire sur les artistes emblématiques du style
@@ -2253,10 +2268,15 @@ async function selectGenre(query, el) {
   document.querySelectorAll('.genre-card').forEach(c=>c.classList.remove('active'));
   if (el && el.classList) el.classList.add('active');
   log('INFO', `Genre: ${query}`);
+  // Vérifier token avant recherche
+  const token = await getSpotifyToken();
+  if (!token) { showNotif('❌ Connexion Spotify requise'); return; }
   document.getElementById('explore-results').innerHTML = '<div class="loader"><div class="spinner"></div>Recherche…</div>';
+  // Nettoyer le query pour Spotify (supprimer préfixes genre:/year:)
+  const cleanQuery = query.replace('genre:','').replace('year:','');
   const [spRes, dzRes] = await Promise.all([
-    spotifySearch(query, 20),
-    deezerSearch(query.replace('genre:','').replace('year:',''), 10)
+    spotifySearch(cleanQuery, 20),
+    deezerSearch(cleanQuery, 10)
   ]);
   renderSearchResults(spRes, dzRes, 'explore-results');
 }
@@ -2275,6 +2295,9 @@ async function freeSearch() {
   if (!q) return;
   const source = document.getElementById('search-source').value;
   log('INFO', `Recherche libre: "${q}" [${source}]`);
+  // Vérifier token
+  const token = await getSpotifyToken();
+  if (!token && source !== 'deezer') { showNotif('❌ Connexion Spotify requise'); return; }
   document.getElementById('free-search-results').innerHTML = '<div class="loader"><div class="spinner"></div>Recherche…</div>';
   let spRes = [], dzRes = [];
   if (source !== 'deezer') spRes = await spotifySearch(q, 15);
