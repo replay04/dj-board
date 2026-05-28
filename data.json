@@ -1,42 +1,15 @@
 {
-  "updated": "2026-05-27",
+  "updated": "2026-05-28",
   "week": 22,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 91,
+    "apple_count": 89,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 4,
-      "deezer": 85,
-      "score": 6,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Gone Gone Gone",
       "artist": "David Guetta & Teddy Swims",
@@ -58,9 +31,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 55,
-      "deezer": 22,
-      "score": 6,
+      "apple": 29,
+      "deezer": 2,
+      "score": 8,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 8,
+      "deezer": 0,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -83,33 +83,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 9,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 7,
+      "apple": 4,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -136,7 +110,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 21,
+      "apple": 31,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -163,7 +137,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 17,
+      "apple": 13,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -190,34 +164,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 18,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
-      "tags": [
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 30,
+      "apple": 20,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -244,36 +191,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
+      "apple": 26,
       "deezer": 0,
       "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
-      "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 29,
-      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -299,9 +219,61 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 36,
+      "apple": 25,
       "deezer": 0,
-      "score": 3,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 15,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 24,
+      "deezer": 0,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -327,35 +299,63 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 32,
+      "apple": 37,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
       "tags": [
-        "mariage",
-        "slow",
-        "fr"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
       "moments": [
-        "slow"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 34,
+      "apple": 0,
+      "deezer": 41,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 84,
       "deezer": 0,
-      "score": 3,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
