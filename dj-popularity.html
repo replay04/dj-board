@@ -51,6 +51,26 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .service-alert .alert-icon{font-size:16px;flex-shrink:0;}
 .service-alert .alert-close{margin-left:auto;cursor:pointer;opacity:.6;font-size:16px;} .service-alert .alert-close:hover{opacity:1;}
 
+
+/* ── SOUNDCLOUD ── */
+.sc-token-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;}
+.sc-token-box h3{font-size:14px;font-weight:600;margin-bottom:8px;}
+.sc-token-box p{font-size:12px;color:var(--text-dim);margin-bottom:14px;line-height:1.6;}
+.sc-token-input{width:100%;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:12px;outline:none;margin-bottom:10px;}
+.sc-token-input:focus{border-color:#ff5500;}
+.sc-track{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(42,42,58,.5);}
+.sc-track:last-child{border-bottom:none;}
+.sc-track-info{flex:1;min-width:0;}
+.sc-track-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sc-track-artist{font-size:11px;color:var(--text-dim);}
+.sc-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.sc-status.owned{background:rgba(46,213,115,.15);color:var(--ok);}
+.sc-status.missing{background:rgba(255,71,87,.15);color:var(--danger);}
+
+
+.play-track-btn{background:none;border:1px solid var(--border);color:var(--text-dim);cursor:pointer;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;transition:all .2s;flex-shrink:0;text-decoration:none;font-family:'DM Sans',sans-serif;}
+.play-track-btn:hover{border-color:var(--spotify);color:var(--spotify);}
+
 /* ── EXPORTIFY FALLBACK ── */
 .exportify-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;margin-top:8px;}
 .exportify-box h3{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--text);}
@@ -233,7 +253,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.6.1</div>
+    <div class="badge version"><div class="dot"></div> v2.7.2</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -260,6 +280,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
   <div class="tab" onclick="switchTab('search',this)">🔎 Recherche</div>
   <div class="tab" onclick="switchTab('set',this)">🎧 Set DJ</div>
   <div class="tab" onclick="switchTab('collection',this)">🎵 Ma Collection</div>
+  <div class="tab" onclick="switchTab('soundcloud',this)">☁️ SoundCloud</div>
   <div class="tab devtab" onclick="switchTab('dev',this)">⚙️ DevTools</div>
 </div>
 
@@ -340,6 +361,41 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
       <div id="gap-results"></div>
     </div>
 
+  </div>
+</div>
+
+
+<!-- ── PANEL SOUNDCLOUD ── -->
+<div class="panel" id="panel-soundcloud">
+
+  <div class="sc-token-box">
+    <h3>🔑 Connexion SoundCloud</h3>
+    <p>
+      1. Va sur <strong>soundcloud.com</strong> et connecte-toi<br>
+      2. Ouvre la console (Développement → Afficher la console JavaScript)<br>
+      3. Tape <code style="background:var(--surface);padding:2px 6px;border-radius:3px;font-family:var(--mono)">document.cookie.match(/oauth_token=([^;]+)/)?.[1]</code><br>
+      4. Copie le token qui s'affiche et colle-le ici
+    </p>
+    <input class="sc-token-input" id="sc-token-input" type="password" placeholder="Colle ton token ici (ex: 2-xxxxxx-xxxxxxxx-xxxxxxxxxxxxxxxx)">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-accent" onclick="loadSoundCloudLikes()">🎵 Charger mes likes</button>
+      <input class="search-input" id="sc-user-input" placeholder="ou URL profil: soundcloud.com/philippe-amouyal" style="flex:1">
+    </div>
+  </div>
+
+  <div id="sc-stats" style="display:none;margin-bottom:20px">
+    <div class="coll-stats-grid" id="sc-stats-grid"></div>
+  </div>
+
+  <div class="filters" id="sc-filters" style="display:none;margin-bottom:16px">
+    <span class="filter-label">Afficher</span>
+    <div class="filter-chip active" onclick="filterSCTracks('all',this)">Tous</div>
+    <div class="filter-chip" onclick="filterSCTracks('missing',this)">❌ Manquants</div>
+    <div class="filter-chip" onclick="filterSCTracks('owned',this)">✅ Possédés</div>
+  </div>
+
+  <div id="sc-results">
+    <div class="empty-state"><div class="icon">☁️</div><h3>Tes likes SoundCloud</h3><p>Entre ton token pour voir tes likes et les croiser avec ta collection Traktor</p></div>
   </div>
 </div>
 
@@ -458,7 +514,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.6.1';
+const APP_VERSION = '2.7.2';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1894,7 +1950,9 @@ function renderGapResults(missing, owned) {
   const renderTrack = (t, status) => `
     <div class="gap-track">
       <span class="gap-status ${status}">${status === 'missing' ? '❌' : '✅'}</span>
-      ${t.id ? `<a class="play-track-btn" href="spotify:track:${t.id}" title="Ouvrir dans Spotify">▶</a>` : ''}
+      ${t.id && !t.id.startsWith('d_') && !t.id.startsWith('sz_') ? 
+        `<button class="play-track-btn" onclick="openSpotify('${t.id}')" title="Ouvrir dans Spotify">▶</button>` :
+        t.deezer_url ? `<button class="play-track-btn" onclick="openDeezer('${t.deezer_url}')" title="Ouvrir dans Deezer" style="border-color:var(--deezer);color:var(--deezer)">▶</button>` : ''}
       <div class="gap-track-info">
         <div class="gap-track-title">${escHtml(t.title)}</div>
         <div class="gap-track-artist">${escHtml(t.artist)}</div>
@@ -1921,6 +1979,155 @@ function renderGapResults(missing, owned) {
       <div class="gap-section-title gap-section-owned">✅ DÉJÀ DANS TA COLLECTION (${owned.length})</div>
       ${owned.slice(0,15).map(t => renderTrack(t, 'owned')).join('')}
     </div>` : ''}`;
+}
+
+
+// ══════════════════════════════════════════════════════════════
+//  SOUNDCLOUD LIKES
+// ══════════════════════════════════════════════════════════════
+let _scTracks = [];
+let _scFilter = 'all';
+
+async function loadSoundCloudLikes() {
+  const token = document.getElementById('sc-token-input').value.trim();
+  const userInput = document.getElementById('sc-user-input').value.trim();
+
+  if (!token) { showNotif('❌ Entre ton token SoundCloud'); return; }
+
+  document.getElementById('sc-results').innerHTML = '<div class="loader"><div class="spinner"></div>Chargement des likes…</div>';
+  log('INFO', 'Chargement likes SoundCloud…');
+
+  // Extraire le username depuis l'URL si fourni
+  let username = 'me';
+  if (userInput) {
+    const m = userInput.match(/soundcloud\.com\/([^/]+)/);
+    if (m) username = m[1];
+  }
+
+  const allTracks = [];
+  let nextUrl = username === 'me'
+    ? 'https://api-v2.soundcloud.com/me/likes?limit=200&offset=0'
+    : `https://api-v2.soundcloud.com/users/${username}/track_likes?limit=200&offset=0`;
+
+  let pages = 0;
+  while (nextUrl && pages < 10) {
+    pages++;
+    try {
+      const res = await fetch(nextUrl, {
+        headers: {
+          'Authorization': `OAuth ${token}`,
+          'Accept': 'application/json',
+          'Origin': 'https://soundcloud.com',
+          'Referer': 'https://soundcloud.com/',
+        }
+      });
+      if (!res.ok) {
+        if (res.status === 401) throw new Error('Token invalide ou expiré');
+        if (res.status === 403) throw new Error('Accès refusé — vérifie le token');
+        throw new Error(`HTTP ${res.status}`);
+      }
+      const data = await res.json();
+      (data.collection || []).forEach(item => {
+        const t = item.track || item;
+        if (!t || !t.title) return;
+        allTracks.push({
+          id: t.id,
+          title: t.title,
+          artist: t.user?.username || t.publisher_metadata?.artist || '',
+          url: t.permalink_url || '',
+          duration: t.duration,
+          genre: t.genre || '',
+          playbackCount: t.playback_count || 0,
+          likesCount: t.likes_count || 0,
+          image: t.artwork_url || '',
+        });
+      });
+      nextUrl = data.next_href || null;
+      log('DEBUG', `Page ${pages}: ${(data.collection||[]).length} likes`);
+    } catch(e) {
+      log('ERROR', `SoundCloud: ${e.message}`);
+      showNotif('❌ ' + e.message);
+      document.getElementById('sc-results').innerHTML = `<div class="empty-state"><div class="icon">❌</div><h3>${escHtml(e.message)}</h3><p>Vérifie ton token et réessaie</p></div>`;
+      return;
+    }
+  }
+
+  _scTracks = allTracks;
+  log('OK', `${allTracks.length} likes SoundCloud chargés`);
+  showNotif(`✅ ${allTracks.length} likes chargés !`);
+
+  // Croiser avec collection Traktor si disponible
+  if (typeof _collection !== 'undefined' && _collection.length > 0) {
+    _scTracks.forEach(t => {
+      t.inCollection = isInCollection(t.artist, t.title);
+    });
+    log('OK', `Croisement Traktor: ${_scTracks.filter(t=>t.inCollection).length} possédés`);
+  } else {
+    log('INFO', 'Collection Traktor non chargée — charge ton NML dans l\'onglet Ma Collection');
+    _scTracks.forEach(t => { t.inCollection = false; });
+  }
+
+  renderSCStats();
+  renderSCTracks();
+  document.getElementById('sc-stats').style.display = 'block';
+  document.getElementById('sc-filters').style.display = 'flex';
+}
+
+function renderSCStats() {
+  const total = _scTracks.length;
+  const owned = _scTracks.filter(t => t.inCollection).length;
+  const missing = total - owned;
+
+  document.getElementById('sc-stats-grid').innerHTML = [
+    { val: total, label: 'Likes total' },
+    { val: missing, label: '❌ Manquants' },
+    { val: owned, label: '✅ Dans Traktor' },
+    { val: Math.round(owned/total*100) + '%', label: 'Taux possession' },
+  ].map(s => `<div class="coll-stat"><div class="coll-stat-val">${s.val}</div><div class="coll-stat-label">${s.label}</div></div>`).join('');
+}
+
+function filterSCTracks(filter, el) {
+  _scFilter = filter;
+  document.querySelectorAll('#sc-filters .filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderSCTracks();
+}
+
+function openSCTrack(index) {
+  const t = _scTracks[index];
+  if (t && t.url) window.open(t.url, '_blank');
+}
+
+function renderSCTracks() {
+  const container = document.getElementById('sc-results');
+  let tracks = _scTracks;
+  if (_scFilter === 'missing') tracks = tracks.filter(t => !t.inCollection);
+  if (_scFilter === 'owned') tracks = tracks.filter(t => t.inCollection);
+
+  if (!tracks.length) {
+    container.innerHTML = '<div class="empty-state"><div class="icon">🤷</div><h3>Aucun résultat</h3></div>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="results-header" style="margin-bottom:12px">
+      <div class="results-count"><strong>${tracks.length}</strong> titre${tracks.length > 1 ? 's' : ''}</div>
+    </div>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px">
+      ${tracks.slice(0, 100).map(t => `
+        <div class="sc-track">
+          ${t.image ? `<img src="${escHtml(t.image.replace('large','t50x50'))}" style="width:36px;height:36px;border-radius:4px;object-fit:cover;flex-shrink:0">` : '<div style="width:36px;height:36px;background:var(--surface);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center">☁️</div>'}
+          <div class="sc-track-info">
+            <div class="sc-track-title">${escHtml(t.title)}</div>
+            <div class="sc-track-artist">${escHtml(t.artist)}</div>
+          </div>
+          ${t.playbackCount > 0 ? `<span class="meta-badge">${t.playbackCount >= 1000 ? (t.playbackCount/1000).toFixed(0)+'k' : t.playbackCount} plays</span>` : ''}
+          <span class="sc-status ${t.inCollection ? 'owned' : 'missing'}">${t.inCollection ? '✅ Traktor' : '❌ Manque'}</span>
+          ${t.url ? `<button class="play-track-btn" onclick="openSCTrack(${_scTracks.indexOf(t)})" title="Ouvrir sur SoundCloud" style="border-color:#ff5500;color:#ff5500">▶</button>` : ''}
+        </div>
+      `).join('')}
+      ${tracks.length > 100 ? `<p style="font-size:12px;color:var(--text-dim);text-align:center;padding:12px 0">Affichage limité à 100 sur ${tracks.length} résultats</p>` : ''}
+    </div>`;
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2334,7 +2541,7 @@ function renderSearchResults(spRes, dzRes, containerId) {
     });
     if (dIdx >= 0) usedDeezer.add(dIdx);
     const dm = dIdx >= 0 ? dzRes[dIdx] : null;
-    merged.push({...s, deezer_popularity: dm?.popularity ?? null, combined: combinedScore(s.popularity, dm?.popularity), has_deezer: !!dm});
+    merged.push({...s, deezer_popularity: dm?.popularity ?? null, deezer_url: dm?.deezer_url || null, combined: combinedScore(s.popularity, dm?.popularity), has_deezer: !!dm});
   });
 
   dzRes.forEach((d,i) => {
@@ -2365,7 +2572,11 @@ function renderSearchResults(spRes, dzRes, containerId) {
           <td class="track-rank">${i+1}</td>
           <td>
             <div style="display:flex;align-items:center;gap:8px">
-              <a class="play-track-btn" href="${t.id ? 'spotify:track:'+t.id : '#'}" onclick="event.stopPropagation()" title="Ouvrir dans Spotify">▶</a>
+              ${t.id && !t.id.startsWith('d_') && !t.id.startsWith('sz_') ? 
+              `<button class="play-track-btn" onclick="event.stopPropagation();openSpotify('${t.id}')" title="Ouvrir dans Spotify">▶</button>` :
+              t.deezer_url ? 
+              `<button class="play-track-btn" onclick="event.stopPropagation();openDeezer('${t.deezer_url}')" title="Ouvrir dans Deezer" style="border-color:var(--deezer);color:var(--deezer)">▶</button>` :
+              ''}
               <div><div class="track-title">${escHtml(t.title)}</div><div class="track-artist">${escHtml(t.album||'')}</div></div>
             </div>
           </td>
@@ -2527,18 +2738,26 @@ function fmtTime(ms) {
 }
 
 function playTrack(trackId, trackList, index) {
-  if (!trackId || trackId.length < 10) {
-    showNotif('❌ ID track invalide');
+  openSpotify(trackId);
+}
+
+function openSpotify(trackId) {
+  if (!trackId || trackId.length < 10 || trackId.startsWith('d_') || trackId.startsWith('sz_')) {
+    showNotif('❌ ID Spotify invalide');
     return;
   }
-  // Méthode safe pour Safari — ne redirige pas la page
-  const a = document.createElement('a');
-  a.href = `spotify:track:${trackId}`;
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => a.remove(), 100);
+  // Sur Safari, window.open avec spotify: URI fonctionne mieux qu'un lien <a>
+  const opened = window.open(`spotify:track:${trackId}`, '_self');
+  if (!opened) {
+    // Fallback : ouvrir sur open.spotify.com
+    window.open(`https://open.spotify.com/track/${trackId}`, '_blank');
+  }
   log('OK', `Ouvert dans Spotify: ${trackId}`);
+}
+
+function openDeezer(url) {
+  if (!url) return;
+  window.open(url, '_blank');
 }
 
 // ══════════════════════════════════════════════════════════════
