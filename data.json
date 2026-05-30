@@ -1,42 +1,15 @@
 {
-  "updated": "2026-05-29",
+  "updated": "2026-05-30",
   "week": 22,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 82,
+    "apple_count": 84,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 4,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "What You Want",
       "artist": "Angèle & Justice",
@@ -58,9 +31,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 38,
-      "deezer": 64,
-      "score": 5,
+      "apple": 26,
+      "deezer": 54,
+      "score": 6,
       "weeks": 0,
       "trend": 0
     },
@@ -85,9 +58,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 29,
+      "apple": 10,
       "deezer": 0,
-      "score": 4,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -110,7 +83,89 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 7,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 30,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 19,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 28,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -138,7 +193,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 6,
+      "deezer": 2,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -163,32 +218,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 15,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 20,
+      "apple": 21,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -216,33 +246,32 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 40,
+      "apple": 37,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "mariage",
-        "slow",
+        "pop",
         "fr"
       ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
       "moments": [
-        "slow"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 49,
+      "apple": 33,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -270,61 +299,32 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 60,
+      "deezer": 48,
       "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
       "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 53,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
         "mariage",
-        "fr",
-        "pop"
+        "slow",
+        "fr"
       ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
       "moments": [
-        "dance",
-        "fin"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 70,
+      "apple": 60,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
