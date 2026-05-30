@@ -56,8 +56,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .sc-token-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;}
 .sc-token-box h3{font-size:14px;font-weight:600;margin-bottom:8px;}
 .sc-token-box p{font-size:12px;color:var(--text-dim);margin-bottom:14px;line-height:1.6;}
-.sc-token-input{width:100%;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:12px;outline:none;margin-bottom:10px;}
-.sc-token-input:focus{border-color:#ff5500;}
 .sc-track{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(42,42,58,.5);}
 .sc-track:last-child{border-bottom:none;}
 .sc-track-info{flex:1;min-width:0;}
@@ -253,7 +251,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.7.4</div>
+    <div class="badge version"><div class="dot"></div> v2.7.5</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -369,18 +367,17 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <div class="panel" id="panel-soundcloud">
 
   <div class="sc-token-box">
-    <h3>🔑 Connexion SoundCloud</h3>
+    <h3>☁️ Import SoundCloud Likes</h3>
     <p>
-      1. Va sur <strong>soundcloud.com</strong> et connecte-toi<br>
-      2. Ouvre la console (Développement → Afficher la console JavaScript)<br>
-      3. Tape <code style="background:var(--surface);padding:2px 6px;border-radius:3px;font-family:var(--mono)">document.cookie.match(/oauth_token=([^;]+)/)?.[1]</code><br>
-      4. Copie le token qui s'affiche et colle-le ici
+      Lance le script <strong>soundcloud_likes_exporter.py</strong> sur ton Mac — 
+      il exporte automatiquement tous tes likes en JSON.<br>
+      Glisse ensuite le fichier <code style="background:var(--surface);padding:2px 6px;border-radius:3px;font-family:var(--mono)">soundcloud_likes.json</code> ici.
     </p>
-    <input class="sc-token-input" id="sc-token-input" type="password" placeholder="Colle ton token ici (ex: 2-xxxxxx-xxxxxxxx-xxxxxxxxxxxxxxxx)">
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn btn-accent" onclick="loadSoundCloudLikes()">🎵 Charger mes likes</button>
-      <input class="search-input" id="sc-user-input" placeholder="ou URL profil: soundcloud.com/philippe-amouyal" style="flex:1">
+    <div class="collection-upload" id="sc-drop" onclick="document.getElementById('sc-json-input').click()" style="padding:24px;margin-bottom:0">
+      <div style="font-size:28px;margin-bottom:8px">☁️</div>
+      <p style="margin:0">Glisse <strong>soundcloud_likes.json</strong> ici ou clique pour choisir</p>
     </div>
+    <input type="file" id="sc-json-input" accept=".json">
   </div>
 
   <div id="sc-stats" style="display:none;margin-bottom:20px">
@@ -514,7 +511,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.7.4';
+const APP_VERSION = '2.7.5';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1988,90 +1985,66 @@ function renderGapResults(missing, owned) {
 let _scTracks = [];
 let _scFilter = 'all';
 
-async function loadSoundCloudLikes() {
-  const token = document.getElementById('sc-token-input').value.trim();
-  const userInput = document.getElementById('sc-user-input').value.trim();
+// ── Event listeners drop zone SoundCloud ──
+const scDrop = document.getElementById('sc-drop');
+if (scDrop) {
+  scDrop.addEventListener('dragover', e => { e.preventDefault(); scDrop.classList.add('dragover'); });
+  scDrop.addEventListener('dragleave', () => scDrop.classList.remove('dragover'));
+  scDrop.addEventListener('drop', e => {
+    e.preventDefault(); scDrop.classList.remove('dragover');
+    const f = e.dataTransfer.files[0];
+    if (f && f.name.endsWith('.json')) parseSCJson(f);
+    else showNotif('❌ Fichier .json requis');
+  });
+}
+const scJsonInput = document.getElementById('sc-json-input');
+if (scJsonInput) {
+  scJsonInput.addEventListener('change', e => {
+    if (e.target.files[0]) parseSCJson(e.target.files[0]);
+  });
+}
 
-  if (!token) { showNotif('❌ Entre ton token SoundCloud'); return; }
-
-  document.getElementById('sc-results').innerHTML = '<div class="loader"><div class="spinner"></div>Chargement des likes…</div>';
-  log('INFO', 'Chargement likes SoundCloud…');
-
-  // Extraire le username depuis l'URL si fourni
-  let username = 'me';
-  if (userInput) {
-    const m = userInput.match(/soundcloud\.com\/([^/]+)/);
-    if (m) username = m[1];
-  }
-
-  const allTracks = [];
-  // SoundCloud v2 API — endpoint correct pour les likes
-  let nextUrl = username === 'me'
-    ? 'https://api-v2.soundcloud.com/me/track_likes?limit=200&offset=0'
-    : `https://api-v2.soundcloud.com/users/${username}/track_likes?limit=200&offset=0`;
-
-  let pages = 0;
-  while (nextUrl && pages < 10) {
-    pages++;
+function parseSCJson(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
     try {
-      // Passer par corsproxy pour éviter le CORS bloqué par SoundCloud
-      const proxiedUrl = `https://corsproxy.io/?${encodeURIComponent(nextUrl)}`;
-      const res = await fetch(proxiedUrl, {
-        headers: {
-          'Authorization': `OAuth ${token}`,
-          'Accept': 'application/json',
-        }
-      });
-      if (!res.ok) {
-        if (res.status === 401) throw new Error('Token invalide ou expiré');
-        if (res.status === 403) throw new Error('Accès refusé — vérifie le token');
-        throw new Error(`HTTP ${res.status}`);
+      const data = JSON.parse(e.target.result);
+      const tracks = data.tracks || data;
+      if (!Array.isArray(tracks) && !data.tracks) throw new Error('Format invalide');
+      const list = Array.isArray(tracks) ? tracks : data.tracks;
+      _scTracks = list.map(t => ({
+        id: t.id || null,
+        title: t.title || '',
+        artist: t.artist || '',
+        url: t.url || '',
+        playbackCount: t.playback_count || t.playbackCount || 0,
+        genre: t.genre || '',
+        image: t.artwork_url || t.image || '',
+        inCollection: false,
+      })).filter(t => t.title);
+
+      // Croiser avec Traktor si disponible
+      if (typeof _collection !== 'undefined' && _collection.length > 0) {
+        _scTracks.forEach(t => { t.inCollection = isInCollection(t.artist, t.title); });
+        log('OK', `Croisement Traktor: ${_scTracks.filter(t=>t.inCollection).length} possédés`);
       }
-      const data = await res.json();
-      (data.collection || []).forEach(item => {
-        const t = item.track || item;
-        if (!t || !t.title) return;
-        allTracks.push({
-          id: t.id,
-          title: t.title,
-          artist: t.user?.username || t.publisher_metadata?.artist || '',
-          url: t.permalink_url || '',
-          duration: t.duration,
-          genre: t.genre || '',
-          playbackCount: t.playback_count || 0,
-          likesCount: t.likes_count || 0,
-          image: t.artwork_url || '',
-        });
-      });
-      nextUrl = data.next_href || null;
-      log('DEBUG', `Page ${pages}: ${(data.collection||[]).length} likes`);
-    } catch(e) {
-      log('ERROR', `SoundCloud: ${e.message}`);
-      showNotif('❌ ' + e.message);
-      document.getElementById('sc-results').innerHTML = `<div class="empty-state"><div class="icon">❌</div><h3>${escHtml(e.message)}</h3><p>Vérifie ton token et réessaie</p></div>`;
-      return;
+
+      log('OK', `${_scTracks.length} likes SoundCloud chargés depuis JSON`);
+      showNotif(`✅ ${_scTracks.length} likes chargés !`);
+      renderSCStats();
+      renderSCTracks();
+      document.getElementById('sc-stats').style.display = 'block';
+      document.getElementById('sc-filters').style.display = 'flex';
+    } catch(err) {
+      log('ERROR', `Parsing JSON SoundCloud: ${err.message}`);
+      showNotif('❌ Fichier JSON invalide');
     }
-  }
+  };
+  reader.readAsText(file, 'UTF-8');
+}
 
-  _scTracks = allTracks;
-  log('OK', `${allTracks.length} likes SoundCloud chargés`);
-  showNotif(`✅ ${allTracks.length} likes chargés !`);
-
-  // Croiser avec collection Traktor si disponible
-  if (typeof _collection !== 'undefined' && _collection.length > 0) {
-    _scTracks.forEach(t => {
-      t.inCollection = isInCollection(t.artist, t.title);
-    });
-    log('OK', `Croisement Traktor: ${_scTracks.filter(t=>t.inCollection).length} possédés`);
-  } else {
-    log('INFO', 'Collection Traktor non chargée — charge ton NML dans l\'onglet Ma Collection');
-    _scTracks.forEach(t => { t.inCollection = false; });
-  }
-
-  renderSCStats();
-  renderSCTracks();
-  document.getElementById('sc-stats').style.display = 'block';
-  document.getElementById('sc-filters').style.display = 'flex';
+async function loadSoundCloudLikes() {
+  showNotif('ℹ️ Lance soundcloud_likes_exporter.py sur ton Mac puis glisse le JSON ici');
 }
 
 function renderSCStats() {
