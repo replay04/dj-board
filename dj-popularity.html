@@ -63,6 +63,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .sc-track-artist{font-size:11px;color:var(--text-dim);}
 .sc-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
 .sc-status.owned{background:rgba(46,213,115,.15);color:var(--ok);}
+.sc-versions{font-size:10px;color:var(--text-dim);padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.06);white-space:nowrap;flex-shrink:0;}
 .sc-status.missing{background:rgba(255,71,87,.15);color:var(--danger);}
 
 
@@ -251,7 +252,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.9.1</div>
+    <div class="badge version"><div class="dot"></div> v2.9.3</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -515,7 +516,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.9.1';
+const APP_VERSION = '2.9.3';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1754,104 +1755,92 @@ function keyWords(s) {
 }
 
 function isInCollection(artist, title) {
-  // Préparer les variantes du titre
-  const dashIdx0 = title.indexOf(' - ');
+  // Remixeur = uniquement les mots entre parenthèses ou crochets
+  const parens = (title.match(/\(([^)]+)\)/g)||[]).concat(title.match(/\[([^\]]+)\]/g)||[]);
+  const remixerWords = parens.flatMap(p => keyWords(p.slice(1,-1)));
+  const hasRemix = remixerWords.length > 0;
+
+  // Titre nettoyé sans parenthèses
   const titleClean = title.replace(/\([^)]*\)/g,'').replace(/\[[^\]]*\]/g,'').trim();
-  // titleBase = partie avant " - " si format "Artiste - Titre(remix)", sinon titre nettoyé
-  const titleBase = dashIdx0 > 0
-    ? normalizeStr(title.slice(0, dashIdx0))
-    : normalizeStr(titleClean);
-  const artistNorm = normalizeStr(artist);
-  const baseTitleWords = keyWords(titleBase);
-  const artistWords = keyWords(artist);
+  const dashIdx = titleClean.indexOf(' - ');
+  const mainArtist = dashIdx > 0 ? titleClean.slice(0, dashIdx) : artist;
+  const mainTitle  = dashIdx > 0 ? titleClean.slice(dashIdx + 3) : titleClean;
 
-  // 1. Match exact
-  if (_collIndex.has(artistNorm + '||' + normalizeStr(title))) return true;
-  if (_collIndex.has(artistNorm + '||' + titleBase)) return true;
+  const mainTitleWords  = keyWords(mainTitle);
+  const mainArtistWords = keyWords(mainArtist);
+  const artistWords     = keyWords(artist);
+  const lookupArtist    = mainArtistWords.length > 0 ? mainArtistWords : artistWords;
 
-  // 2. Match par nom de fichier — mots titre de base + artiste SC dans le même fichier
-  if (baseTitleWords.length >= 1 && artistWords.length > 0) {
-    for (const key of _collIndex) {
-      if (!key.startsWith('file||')) continue;
-      const fn = key.slice(6);
-      const titleMatches = baseTitleWords.filter(w => fn.includes(w));
-      const artistMatch = artistWords.some(w => fn.includes(w));
-      if (titleMatches.length >= Math.min(2, baseTitleWords.length) && artistMatch) return true;
-    }
+  // 1. Match exact complet (titre avec remix)
+  if (_collIndex.has(normalizeStr(artist) + '||' + normalizeStr(title))) return true;
+
+  // 2. Sans remix : match titre nettoyé + artiste
+  if (!hasRemix) {
+    if (_collIndex.has(normalizeStr(artist) + '||' + normalizeStr(titleClean))) return true;
+    if (dashIdx > 0 && _collIndex.has(normalizeStr(mainArtist) + '||' + normalizeStr(mainTitle))) return true;
   }
 
-  // 3. Match fuzzy — mots titre de base dans titre Traktor + artiste SC dans artiste Traktor
-  if (baseTitleWords.length >= 1 && artistWords.length > 0) {
+  // 3. Avec remix : titre de base + remixeur OBLIGATOIRE dans le même fichier/titre Traktor
+  for (const key of _collIndex) {
+    if (key.startsWith('file||') || key.startsWith('paren||')) continue;
+    const [ka, kt] = key.split('||');
+    if (!kt || !ka) continue;
+    const combined = ka + ' ' + kt;
+    const titleOk  = mainTitleWords.some(w => combined.includes(w));
+    const artistOk = lookupArtist.some(w => combined.includes(w));
+    const remixOk  = !hasRemix || remixerWords.some(w => combined.includes(w));
+    if (titleOk && artistOk && remixOk) return true;
+  }
+  for (const key of _collIndex) {
+    if (!key.startsWith('file||')) continue;
+    const fn = key.slice(6);
+    const titleOk  = mainTitleWords.some(w => fn.includes(w));
+    const artistOk = lookupArtist.some(w => fn.includes(w));
+    const remixOk  = !hasRemix || remixerWords.some(w => fn.includes(w));
+    if (titleOk && artistOk && remixOk) return true;
+  }
+
+  // 4. Sans remix : fuzzy souple (2+ mots du titre + artiste)
+  if (!hasRemix && mainTitleWords.length > 0) {
     for (const key of _collIndex) {
       if (key.startsWith('file||') || key.startsWith('paren||')) continue;
       const [ka, kt] = key.split('||');
       if (!kt || !ka) continue;
-      const titleMatches = baseTitleWords.filter(w => kt.includes(w));
-      const artistMatch = artistWords.some(w => ka.includes(w));
-      if (titleMatches.length >= Math.min(2, baseTitleWords.length) && artistMatch) return true;
-    }
-  }
-
-  // 3b. Format SoundCloud "Artiste original - Remixeur(tags)" :
-  // Le mot du titre base peut être l'artiste Traktor (ex: "fugees" dans titleBase → artiste Traktor "Fugees")
-  // Utile quand SoundCloud met le remixeur comme artiste SC
-  if (baseTitleWords.length >= 1) {
-    for (const key of _collIndex) {
-      if (key.startsWith('file||') || key.startsWith('paren||')) continue;
-      const [ka, kt] = key.split('||');
-      if (!kt || !ka) continue;
-      // Un mot du titre SC correspond à l'artiste Traktor
-      const artistFromTitle = baseTitleWords.some(w => ka.includes(w) && w.length > 4);
-      // ET les autres mots du titre SC correspondent au titre Traktor
-      const titleWords2 = keyWords(titleClean);
-      const titleMatches = titleWords2.filter(w => kt.includes(w));
-      if (artistFromTitle && titleMatches.length >= 1) return true;
-    }
-  }
-
-  // 4. Format "Artiste - Titre" : extraire et tester séparément
-  if (dashIdx0 > 0) {
-    const scArtist2 = title.slice(0, dashIdx0);
-    const scTitle2 = title.slice(dashIdx0 + 3).replace(/\([^)]*\)/g,'').replace(/\[[^\]]*\]/g,'').trim();
-    if (_collIndex.has(normalizeStr(scArtist2) + '||' + normalizeStr(scTitle2))) return true;
-    if (_collIndex.has(artistNorm + '||' + normalizeStr(scTitle2))) return true;
-    // Fuzzy : artiste extrait dans artiste Traktor + titre extrait dans titre Traktor
-    const aw2 = keyWords(scArtist2);
-    const tw2 = keyWords(scTitle2);
-    if (aw2.length > 0 && tw2.length >= 2) {
-      for (const key of _collIndex) {
-        if (key.startsWith('file||') || key.startsWith('paren||')) continue;
-        const [ka, kt] = key.split('||');
-        if (!kt || !ka) continue;
-        const am = aw2.some(w => ka.includes(w));
-        const tm = tw2.filter(w => kt.includes(w));
-        if (am && tm.length >= 2) return true;
-      }
-    }
-  }
-
-  // 5. Titre de base + remixeur dans le MÊME fichier/titre Traktor
-  const scParens = (title.match(/\(([^)]+)\)/g)||[]).concat(title.match(/\[([^\]]+)\]/g)||[])
-    .map(m => normalizeStr(m.slice(1,-1))).filter(w => w.length > 3);
-  if (baseTitleWords.length >= 2 && scParens.length > 0) {
-    for (const key of _collIndex) {
-      if (!key.startsWith('file||')) continue;
-      const fn = key.slice(6);
-      const baseOk = baseTitleWords.filter(w => fn.includes(w)).length >= Math.min(2, baseTitleWords.length);
-      const parenOk = scParens.some(pw => keyWords(pw).some(w => fn.includes(w)));
-      if (baseOk && parenOk) return true;
-    }
-    for (const key of _collIndex) {
-      if (key.startsWith('file||') || key.startsWith('paren||')) continue;
-      const [, kt] = key.split('||');
-      if (!kt) continue;
-      const baseOk = baseTitleWords.filter(w => kt.includes(w)).length >= Math.min(2, baseTitleWords.length);
-      const parenOk = scParens.some(pw => keyWords(pw).some(w => kt.includes(w)));
-      if (baseOk && parenOk) return true;
+      const tm = mainTitleWords.filter(w => kt.includes(w));
+      const am = lookupArtist.some(w => ka.includes(w));
+      if (tm.length >= Math.min(2, mainTitleWords.length) && am) return true;
     }
   }
 
   return false;
+}
+
+function countOtherVersions(artist, title) {
+  // Compter les versions du même titre de base dans Traktor (sans le remix exact)
+  const parens = (title.match(/\(([^)]+)\)/g)||[]).concat(title.match(/\[([^\]]+)\]/g)||[]);
+  const remixerWords = parens.flatMap(p => keyWords(p.slice(1,-1)));
+  const hasRemix = remixerWords.length > 0;
+
+  const titleClean = title.replace(/\([^)]*\)/g,'').replace(/\[[^\]]*\]/g,'').trim();
+  const dashIdx = titleClean.indexOf(' - ');
+  const mainArtist = dashIdx > 0 ? titleClean.slice(0, dashIdx) : artist;
+  const mainTitle  = dashIdx > 0 ? titleClean.slice(dashIdx + 3) : titleClean;
+
+  const mainTitleWords  = keyWords(mainTitle);
+  const mainArtistWords = keyWords(mainArtist).length > 0 ? keyWords(mainArtist) : keyWords(artist);
+
+  if (mainTitleWords.length === 0) return 0;
+
+  const found = new Set();
+  for (const key of _collIndex) {
+    if (key.startsWith('file||') || key.startsWith('paren||')) continue;
+    const [ka, kt] = key.split('||');
+    if (!kt || !ka) continue;
+    const titleOk  = mainTitleWords.filter(w => kt.includes(w)).length >= Math.min(2, mainTitleWords.length);
+    const artistOk = mainArtistWords.some(w => ka.includes(w));
+    if (titleOk && artistOk) found.add(ka + '||' + kt);
+  }
+  return found.size;
 }
 
 function renderCollectionStats() {
@@ -2235,6 +2224,7 @@ function renderSCTracks() {
           ${t.playbackCount > 0 ? `<span class="meta-badge">${t.playbackCount >= 1000 ? (t.playbackCount/1000).toFixed(0)+'k' : t.playbackCount} plays</span>` : ''}
           ${!t.inCollection && t.downloadable ? '<span class="sc-status" style="background:rgba(0,210,255,.15);color:var(--accent3);flex-shrink:0">⬇ Gratuit</span>' : ''}
           <span class="sc-status ${t.inCollection ? 'owned' : 'missing'}">${t.inCollection ? '✅ Traktor' : '❌ Manque'}</span>
+          ${!t.inCollection && _collection.length > 0 ? (() => { const v = countOtherVersions(t.artist, t.title); return v > 0 ? `<span class="sc-versions" title="Tu as ${v} autre${v>1?'s':''} version${v>1?'s':''} de ce titre">${v} autre${v>1?'s':''} version${v>1?'s':''}</span>` : ''; })() : ''}
           ${t.url ? `<button class="play-track-btn" onclick="openSCTrack(${_scTracks.indexOf(t)})" title="Ouvrir sur SoundCloud" style="border-color:#ff5500;color:#ff5500">▶</button>` : ''}
         </div>
       `).join('')}
