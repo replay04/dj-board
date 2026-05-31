@@ -251,7 +251,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.7.6</div>
+    <div class="badge version"><div class="dot"></div> v2.8.3</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -515,7 +515,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.7.6';
+const APP_VERSION = '2.8.3';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1701,9 +1701,28 @@ async function parseNML(file) {
 
       if (!title && !artist) return;
 
-      _collection.push({ title, artist, bpm: Math.round(bpm), key, genre, playcount, ranking });
-      // Index normalisé pour matching
+      const filename = entry.querySelector('LOCATION')?.getAttribute('FILE') || '';
+      _collection.push({ title, artist, bpm: Math.round(bpm), key, genre, playcount, ranking, filename });
+
+      // Index 1 : titre + artiste exact
       _collIndex.add(normalizeTrack(artist, title));
+
+      // Index 2 : nom de fichier complet
+      if (filename) _collIndex.add('file||' + normalizeStr(filename));
+
+      // Index 3 : titre sans les parenthèses (version de base)
+      const titleBase = normalizeStr(title.replace(/\([^)]*\)/g, '').replace(/\[[^\]]*\]/g, ''));
+      if (titleBase) _collIndex.add(normalizeStr(artist) + '||' + titleBase);
+
+      // Index 4 : mots entre parenthèses du titre (remixeur, éditeur)
+      const parenWords = [...title.matchAll(/\(([^)]+)\)/g), ...title.matchAll(/\[([^\]]+)\]/g)]
+        .map(m => normalizeStr(m[1])).filter(w => w.length > 2);
+      parenWords.forEach(pw => _collIndex.add('paren||' + pw));
+
+      // Index 5 : mots entre parenthèses du nom de fichier
+      const fileParenWords = [...filename.matchAll(/\(([^)]+)\)/g), ...filename.matchAll(/\[([^\]]+)\]/g)]
+        .map(m => normalizeStr(m[1])).filter(w => w.length > 2);
+      fileParenWords.forEach(pw => _collIndex.add('paren||' + pw));
     });
 
     log('OK', `Collection chargée: ${_collection.length} titres`);
@@ -1716,23 +1735,85 @@ async function parseNML(file) {
   reader.readAsText(file, 'UTF-8');
 }
 
-function normalizeTrack(artist, title) {
-  const norm = s => s.toLowerCase()
+function normalizeStr(s) {
+  return (s || '').toLowerCase()
     .replace(/[^a-z0-9À-ɏ]/g, ' ')
     .replace(/\s+/g, ' ').trim();
-  return norm(artist) + '||' + norm(title);
+}
+
+function normalizeTrack(artist, title) {
+  return normalizeStr(artist) + '||' + normalizeStr(title);
+}
+
+// Extraire les mots significatifs d'un nom (longueur > 3, pas des mots vides)
+function keyWords(s) {
+  const stop = new Set(['the','and','feat','remix','edit','mix','version','extended',
+    'original','radio','club','vip','bootleg','cover','rework','retouch','mashup',
+    'les','des','une','pour','avec','dans','sur','par','qui','que','du','de','la','le']);
+  return normalizeStr(s).split(' ').filter(w => w.length > 3 && !stop.has(w));
 }
 
 function isInCollection(artist, title) {
-  // Check exact
+  // 1. Match exact
   if (_collIndex.has(normalizeTrack(artist, title))) return true;
-  // Check partiel — si le titre normalisé est contenu dans l'index
-  const normTitle = title.toLowerCase().replace(/[^a-z0-9À-ɏ]/g,' ').replace(/\s+/g,' ').trim();
-  const normArtist = artist.toLowerCase().replace(/[^a-z0-9À-ɏ]/g,' ').replace(/\s+/g,' ').trim().split(' ')[0];
+
+  // 2. Match par nom de fichier (le titre SoundCloud complet peut être dans le nom de fichier)
+  const normFull = normalizeStr(title + ' ' + artist);
   for (const key of _collIndex) {
-    const [ka, kt] = key.split('||');
-    if (kt.includes(normTitle.slice(0,10)) && ka.includes(normArtist)) return true;
+    if (!key.startsWith('file||')) continue;
+    const fn = key.slice(6);
+    // Le nom de fichier contient les mots clés du titre SC
+    const titleWords = keyWords(title);
+    if (titleWords.length >= 2) {
+      const matches = titleWords.filter(w => fn.includes(w));
+      if (matches.length >= Math.min(2, titleWords.length)) return true;
+    }
   }
+
+  // 3. Match fuzzy — mots clés du titre SC dans les entrées collection
+  const scWords = keyWords(title);
+  const scArtistWords = keyWords(artist);
+  if (scWords.length === 0) return false;
+
+  for (const key of _collIndex) {
+    if (key.startsWith('file||')) continue;
+    const [ka, kt] = key.split('||');
+    if (!kt) continue;
+
+    // Compter les mots du titre SC présents dans le titre Traktor
+    const titleMatches = scWords.filter(w => kt.includes(w));
+    const artistMatch = scArtistWords.some(w => ka.includes(w) || kt.includes(w));
+
+    // Si au moins 2 mots du titre matchent ET l'artiste correspond
+    if (titleMatches.length >= 2 && artistMatch) return true;
+
+    // Si le titre SC contient "Artiste - Titre" (format SoundCloud commun)
+    // Extraire et tester séparément
+    const dashIdx = title.indexOf(' - ');
+    if (dashIdx > 0) {
+      const scArtist2 = title.slice(0, dashIdx);
+      const scTitle2 = title.slice(dashIdx + 3);
+      if (_collIndex.has(normalizeTrack(scArtist2, scTitle2))) return true;
+      if (_collIndex.has(normalizeTrack(artist, scTitle2))) return true;
+    }
+  }
+
+  // 4. Match titre de base (sans parenthèses)
+  const scTitleBase = normalizeStr(title.replace(/\([^)]*\)/g,'').replace(/\[[^\]]*\]/g,''));
+  if (scTitleBase.length > 4 && _collIndex.has(normalizeStr(artist) + '||' + scTitleBase)) return true;
+
+  // 5. Match par mots entre parenthèses (remixeur/éditeur dans Traktor)
+  const scParens = (title.match(/\(([^)]+)\)/g)||[]).concat(title.match(/\[([^\]]+)\]/g)||[])
+    .map(m => normalizeStr(m.slice(1,-1))).filter(w => w.length > 3);
+  for (const pw of scParens) {
+    if (!_collIndex.has('paren||' + pw)) continue;
+    for (const key of _collIndex) {
+      if (key.startsWith('file||') || key.startsWith('paren||')) continue;
+      const [, kt] = key.split('||');
+      if (kt && scTitleBase.length > 3 && kt.includes(scTitleBase.slice(0, 8))) return true;
+    }
+  }
+
   return false;
 }
 
@@ -2024,6 +2105,7 @@ function parseSCJson(file) {
         playbackCount: t.playback_count || t.playbackCount || 0,
         genre: t.genre || '',
         image: t.artwork_url || t.image || '',
+        downloadable: t.downloadable || t.download_url ? true : false,
         inCollection: false,
       })).filter(t => t.title);
 
@@ -2100,6 +2182,7 @@ function renderSCTracks() {
             <div class="sc-track-artist">${escHtml(t.artist)}</div>
           </div>
           ${t.playbackCount > 0 ? `<span class="meta-badge">${t.playbackCount >= 1000 ? (t.playbackCount/1000).toFixed(0)+'k' : t.playbackCount} plays</span>` : ''}
+          ${!t.inCollection && t.downloadable ? '<span class="sc-status" style="background:rgba(0,210,255,.15);color:var(--accent3);flex-shrink:0">⬇ Gratuit</span>' : ''}
           <span class="sc-status ${t.inCollection ? 'owned' : 'missing'}">${t.inCollection ? '✅ Traktor' : '❌ Manque'}</span>
           ${t.url ? `<button class="play-track-btn" onclick="openSCTrack(${_scTracks.indexOf(t)})" title="Ouvrir sur SoundCloud" style="border-color:#ff5500;color:#ff5500">▶</button>` : ''}
         </div>
