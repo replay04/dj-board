@@ -251,7 +251,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.8.6</div>
+    <div class="badge version"><div class="dot"></div> v2.8.7</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -515,7 +515,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.8.6';
+const APP_VERSION = '2.8.7';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1757,50 +1757,65 @@ function isInCollection(artist, title) {
   // 1. Match exact titre + artiste
   if (_collIndex.has(normalizeTrack(artist, title))) return true;
 
-  // 2. Match par nom de fichier — mots clés du titre SC dans le fichier Traktor
+  // 2. Match par nom de fichier — mots clés du titre SC ET artiste dans le fichier
   const titleWords = keyWords(title);
+  const artistWords = keyWords(artist);
   if (titleWords.length >= 2) {
     for (const key of _collIndex) {
       if (!key.startsWith('file||')) continue;
       const fn = key.slice(6);
-      const matches = titleWords.filter(w => fn.includes(w));
-      if (matches.length >= Math.min(2, titleWords.length)) return true;
+      const titleMatches = titleWords.filter(w => fn.includes(w));
+      const artistMatch = artistWords.length === 0 || artistWords.some(w => fn.includes(w));
+      if (titleMatches.length >= Math.min(2, titleWords.length) && artistMatch) return true;
     }
   }
 
-  // 3. Match fuzzy — mots clés + artiste dans les titres Traktor
+  // 3. Match fuzzy — EXIGE que l'artiste corresponde (évite Lorna vs Joe Mazzola)
   const scWords = keyWords(title);
   const scArtistWords = keyWords(artist);
-  if (scWords.length > 0) {
+  if (scWords.length > 0 && scArtistWords.length > 0) {
     for (const key of _collIndex) {
       if (key.startsWith('file||') || key.startsWith('paren||')) continue;
       const [ka, kt] = key.split('||');
-      if (!kt) continue;
+      if (!kt || !ka) continue;
       const titleMatches = scWords.filter(w => kt.includes(w));
-      const artistMatch = scArtistWords.some(w => ka.includes(w) || kt.includes(w));
+      // L'artiste DOIT correspondre — pas juste le titre
+      const artistMatch = scArtistWords.some(w => ka.includes(w));
       if (titleMatches.length >= 2 && artistMatch) return true;
-      // Format "Artiste - Titre" commun sur SoundCloud
-      const dashIdx = title.indexOf(' - ');
-      if (dashIdx > 0) {
-        const scArtist2 = title.slice(0, dashIdx);
-        const scTitle2 = title.slice(dashIdx + 3);
-        if (_collIndex.has(normalizeTrack(scArtist2, scTitle2))) return true;
-        if (_collIndex.has(normalizeTrack(artist, scTitle2))) return true;
+    }
+  }
+
+  // 3b. Format "Artiste - Titre" commun sur SoundCloud
+  const dashIdx = title.indexOf(' - ');
+  if (dashIdx > 0) {
+    const scArtist2 = title.slice(0, dashIdx);
+    const scTitle2 = title.slice(dashIdx + 3);
+    if (_collIndex.has(normalizeTrack(scArtist2, scTitle2))) return true;
+    if (_collIndex.has(normalizeTrack(artist, scTitle2))) return true;
+    // Fuzzy sur le titre extrait avec artiste extrait
+    const words2 = keyWords(scTitle2);
+    const artistWords2 = keyWords(scArtist2);
+    if (words2.length >= 2 && artistWords2.length > 0) {
+      for (const key of _collIndex) {
+        if (key.startsWith('file||') || key.startsWith('paren||')) continue;
+        const [ka, kt] = key.split('||');
+        if (!kt || !ka) continue;
+        const tm = words2.filter(w => kt.includes(w));
+        const am = artistWords2.some(w => ka.includes(w));
+        if (tm.length >= 2 && am) return true;
       }
     }
   }
 
-  // 4. Match titre de base (sans parenthèses)
+  // 4. Match titre de base (sans parenthèses) + artiste exact
   const scTitleBase = normalizeStr(title.replace(/\([^)]*\)/g,'').replace(/\[[^\]]*\]/g,''));
   if (scTitleBase.length > 4 && _collIndex.has(normalizeStr(artist) + '||' + scTitleBase)) return true;
 
-  // 5. Match titre de base + remixeur dans le MÊME fichier ou titre Traktor
-  // Exige que les deux soient présents simultanément → évite les faux positifs
+  // 5. Match titre de base + remixeur dans le MÊME fichier/titre Traktor
   const scParens = (title.match(/\(([^)]+)\)/g)||[]).concat(title.match(/\[([^\]]+)\]/g)||[])
     .map(m => normalizeStr(m.slice(1,-1))).filter(w => w.length > 3);
   if (scTitleBase.length > 3 && scParens.length > 0) {
     const scBaseWords = keyWords(scTitleBase);
-    // Dans les fichiers Traktor
     for (const key of _collIndex) {
       if (!key.startsWith('file||')) continue;
       const fn = key.slice(6);
@@ -1809,7 +1824,6 @@ function isInCollection(artist, title) {
       const parenOk = scParens.some(pw => keyWords(pw).some(w => fn.includes(w)));
       if (baseOk && parenOk) return true;
     }
-    // Dans les titres Traktor
     for (const key of _collIndex) {
       if (key.startsWith('file||') || key.startsWith('paren||')) continue;
       const [, kt] = key.split('||');
