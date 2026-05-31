@@ -251,7 +251,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.7.5</div>
+    <div class="badge version"><div class="dot"></div> v2.7.6</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -368,10 +368,14 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 
   <div class="sc-token-box">
     <h3>☁️ Import SoundCloud Likes</h3>
+    <div id="sc-nml-warning" style="display:none;background:rgba(255,159,67,.12);border:1px solid var(--warn);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--warn)">
+      ⚠️ <strong>Ta collection Traktor n'est pas chargée</strong> — le croisement ne fonctionnera pas.<br>
+      <span style="cursor:pointer;text-decoration:underline" onclick="switchTab('collection',document.querySelector('.tab[onclick*=collection]'))">👉 Charge d'abord ton NML dans Ma Collection</span>, puis reviens ici.
+    </div>
     <p>
-      Lance le script <strong>soundcloud_likes_exporter.py</strong> sur ton Mac — 
-      il exporte automatiquement tous tes likes en JSON.<br>
-      Glisse ensuite le fichier <code style="background:var(--surface);padding:2px 6px;border-radius:3px;font-family:var(--mono)">soundcloud_likes.json</code> ici.
+      1. Lance <strong>soundcloud_likes_exporter.py</strong> sur ton Mac pour générer le JSON<br>
+      2. Charge ton NML dans <strong>Ma Collection</strong> (si pas déjà fait)<br>
+      3. Glisse le fichier <code style="background:var(--surface);padding:2px 6px;border-radius:3px;font-family:var(--mono)">soundcloud_likes.json</code> ici
     </p>
     <div class="collection-upload" id="sc-drop" onclick="document.getElementById('sc-json-input').click()" style="padding:24px;margin-bottom:0">
       <div style="font-size:28px;margin-bottom:8px">☁️</div>
@@ -511,7 +515,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.7.5';
+const APP_VERSION = '2.7.6';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -2247,6 +2251,10 @@ function switchTab(name, el) {
   if (tab) tab.classList.add('active');
   document.getElementById('panel-' + name).classList.add('active');
   if (name === 'dev') { updateKPIs(); renderEnv(); }
+  if (name === 'soundcloud') {
+    const warn = document.getElementById('sc-nml-warning');
+    if (warn) warn.style.display = (typeof _collection === 'undefined' || _collection.length === 0) ? 'block' : 'none';
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
