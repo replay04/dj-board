@@ -251,7 +251,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.8.7</div>
+    <div class="badge version"><div class="dot"></div> v2.8.8</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -515,7 +515,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.8.7';
+const APP_VERSION = '2.8.8';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -2109,7 +2109,9 @@ if (scJsonInput) {
   });
 }
 
-function parseSCJson(file) {
+async function parseSCJson(file) {
+  // Afficher loader immédiatement
+  document.getElementById('sc-results').innerHTML = '<div class="loader"><div class="spinner"></div>Chargement et croisement avec Traktor…</div>';
   const reader = new FileReader();
   reader.onload = e => {
     try {
@@ -2171,6 +2173,18 @@ function filterSCTracks(filter, el) {
   document.querySelectorAll('#sc-filters .filter-chip').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
   renderSCTracks();
+}
+
+async function crossWithTraktor(tracks) {
+  const CHUNK = 50;
+  for (let i = 0; i < tracks.length; i += CHUNK) {
+    const chunk = tracks.slice(i, i + CHUNK);
+    chunk.forEach(t => { t.inCollection = isInCollection(t.artist, t.title); });
+    const pct = Math.round((i + CHUNK) / tracks.length * 100);
+    document.getElementById('sc-results').innerHTML = `<div class="loader"><div class="spinner"></div>Croisement… ${Math.min(pct,100)}%</div>`;
+    // Laisser le navigateur respirer
+    await new Promise(r => setTimeout(r, 0));
+  }
 }
 
 function openSCTrack(index) {
