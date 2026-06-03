@@ -1,42 +1,15 @@
 {
-  "updated": "2026-06-02",
+  "updated": "2026-06-03",
   "week": 23,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 77,
+    "apple_count": 80,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 6,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "What You Want",
       "artist": "Angèle & Justice",
@@ -58,9 +31,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 10,
-      "deezer": 0,
-      "score": 5,
+      "apple": 12,
+      "deezer": 57,
+      "score": 7,
       "weeks": 0,
       "trend": 0
     },
@@ -83,7 +56,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 8,
+      "apple": 10,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -110,26 +83,26 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 16,
+      "apple": 23,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
         "mariage",
-        "slow",
-        "intl",
-        "pop"
+        "ambiance",
+        "fr"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
       "moments": [
+        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -137,62 +110,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 30,
+      "apple": 25,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
+      "title": "End of Beginning",
+      "artist": "DJO",
       "tags": [
-        "dancefloor",
+        "ambiance",
         "intl",
         "pop"
       ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
       "moments": [
-        "dance",
-        "fin"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 21,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 31,
+      "apple": 19,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -220,7 +165,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 6,
+      "deezer": 5,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -245,7 +190,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 18,
+      "apple": 11,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -270,7 +215,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 28,
+      "apple": 27,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -296,78 +241,25 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 29,
+      "apple": 18,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
-      "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 31,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
-      "tags": [
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 42,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
         "mariage",
         "slow",
-        "fr"
+        "intl",
+        "pop"
       ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
       "mixte": 4,
-      "camelot": "9B",
+      "camelot": "8A",
       "moments": [
         "slow"
       ],
@@ -376,7 +268,62 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 33,
+      "apple": 34,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 37,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 36,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -404,7 +351,60 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 66,
+      "apple": 32,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 39,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 63,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
