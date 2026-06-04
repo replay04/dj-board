@@ -1,67 +1,15 @@
 {
-  "updated": "2026-06-03",
+  "updated": "2026-06-04",
   "week": 23,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 80,
+    "apple_count": 84,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 12,
-      "deezer": 57,
-      "score": 7,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 10,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Melodrama",
       "artist": "Disiz & Theodora",
@@ -83,9 +31,63 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 23,
+      "apple": 17,
+      "deezer": 70,
+      "score": 6,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 32,
+      "deezer": 62,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 9,
       "deezer": 0,
-      "score": 4,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -110,7 +112,32 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 25,
+      "apple": 13,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 11,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -137,7 +164,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 19,
+      "apple": 21,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 24,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -165,7 +220,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 5,
+      "deezer": 3,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -190,142 +245,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 19,
       "deezer": 0,
       "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 27,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Ensemble",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 66,
-      "youtubeId": "2pCh-KLR9M0",
-      "mixte": 4,
-      "camelot": "2A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 18,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 34,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 37,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 36,
-      "deezer": 0,
-      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -351,9 +273,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 32,
+      "apple": 26,
       "deezer": 0,
-      "score": 3,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Ensemble",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 66,
+      "youtubeId": "2pCh-KLR9M0",
+      "mixte": 4,
+      "camelot": "2A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 25,
+      "deezer": 0,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -379,23 +327,49 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 39,
-      "score": 2,
+      "deezer": 29,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 48,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
         "mariage",
         "slow",
-        "fr"
+        "intl",
+        "pop"
       ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
       "mixte": 4,
-      "camelot": "9B",
+      "camelot": "8A",
       "moments": [
         "slow"
       ],
@@ -404,9 +378,64 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 63,
+      "apple": 54,
       "deezer": 0,
       "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Dream As One",
+      "artist": "Miley Cyrus",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 82,
+      "youtubeId": "RLRrAVHPkPE",
+      "mixte": 4,
+      "camelot": "3A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 60,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Quand Même",
+      "artist": "M. Pokora",
+      "tags": [
+        "mariage",
+        "fr",
+        "variete"
+      ],
+      "bpm": 84,
+      "youtubeId": "Hl2Z6P74URo",
+      "mixte": 5,
+      "camelot": "1A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 84,
+      "deezer": 0,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -567,61 +596,6 @@
       "trend": 0
     },
     {
-      "title": "Dream As One",
-      "artist": "Miley Cyrus",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 82,
-      "youtubeId": "RLRrAVHPkPE",
-      "mixte": 4,
-      "camelot": "3A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Quand Même",
-      "artist": "M. Pokora",
-      "tags": [
-        "mariage",
-        "fr",
-        "variete"
-      ],
-      "bpm": 84,
-      "youtubeId": "Hl2Z6P74URo",
-      "mixte": 5,
-      "camelot": "1A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "Ça Fait Mal",
       "artist": "Vitaa",
       "tags": [
@@ -662,6 +636,32 @@
       "camelot": "5A",
       "moments": [
         "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
+      "moments": [
         "slow"
       ],
       "radio": 0,
