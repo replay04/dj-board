@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-05",
+  "updated": "2026-06-06",
   "week": 23,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 78,
+    "apple_count": 86,
     "deezer_count": 100
   },
   "tracks": [
@@ -31,24 +31,24 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 51,
-      "deezer": 3,
+      "apple": 40,
+      "deezer": 5,
       "score": 7,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
       "tags": [
         "ambiance",
         "fr",
         "rap"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
       "mixte": 3,
-      "camelot": "4B",
+      "camelot": "12A",
       "moments": [
         "cocktail",
         "diner"
@@ -58,36 +58,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
-      "deezer": 70,
-      "score": 6,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 21,
-      "deezer": 62,
-      "score": 6,
+      "apple": 60,
+      "deezer": 26,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -117,44 +90,17 @@
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 23,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
         "ambiance",
-        "intl",
-        "pop"
+        "fr",
+        "rap"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
       "mixte": 3,
-      "camelot": "9B",
+      "camelot": "4B",
       "moments": [
         "cocktail",
         "diner"
@@ -164,63 +110,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 26,
+      "apple": 17,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 28,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
         "dancefloor",
         "mariage",
         "fr",
         "pop"
       ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
       "moments": [
-        "dance",
-        "fin"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 29,
-      "deezer": 0,
+      "apple": 45,
+      "deezer": 75,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -245,7 +163,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 20,
+      "apple": 31,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -273,36 +191,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 25,
+      "apple": 27,
       "deezer": 0,
       "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
-      "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 29,
-      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -327,24 +218,106 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 43,
+      "apple": 48,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Ensemble",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 44,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 34,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 42,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
       "artist": "Charlotte Cardin",
       "tags": [
         "mariage",
         "slow",
         "fr"
       ],
-      "bpm": 66,
-      "youtubeId": "2pCh-KLR9M0",
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
       "mixte": 4,
-      "camelot": "2A",
+      "camelot": "9B",
       "moments": [
         "slow"
       ],
@@ -353,9 +326,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 50,
+      "apple": 52,
       "deezer": 0,
-      "score": 3,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -378,7 +351,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 52,
+      "apple": 59,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -502,6 +475,33 @@
       "mixte": 2,
       "camelot": "5A",
       "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
         "diner"
       ],
       "radio": 0,
@@ -650,32 +650,6 @@
       "trend": 0
     },
     {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "Les Épines du Cœur",
       "artist": "Vanessa Paradis",
       "tags": [
@@ -795,6 +769,32 @@
       "moments": [
         "cocktail",
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Ensemble",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 66,
+      "youtubeId": "2pCh-KLR9M0",
+      "mixte": 4,
+      "camelot": "2A",
+      "moments": [
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
