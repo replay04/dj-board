@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-06",
+  "updated": "2026-06-07",
   "week": 23,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 86,
+    "apple_count": 89,
     "deezer_count": 100
   },
   "tracks": [
@@ -31,88 +31,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 40,
-      "deezer": 5,
+      "apple": 52,
+      "deezer": 7,
       "score": 7,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
-      "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 60,
-      "deezer": 26,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 10,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 17,
-      "deezer": 0,
-      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -137,8 +58,60 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 45,
-      "deezer": 75,
+      "apple": 26,
+      "deezer": 51,
+      "score": 6,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 28,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 14,
+      "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -170,82 +143,107 @@
       "trend": 0
     },
     {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
       "tags": [
-        "dancefloor",
         "mariage",
-        "fr",
-        "pop"
+        "slow",
+        "fr"
       ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
       "mixte": 4,
-      "camelot": "3B",
+      "camelot": "9B",
       "moments": [
-        "dance",
-        "fin"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 27,
+      "apple": 30,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
       "moments": [
-        "slow"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 48,
+      "apple": 33,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
       "tags": [
-        "mariage",
         "ambiance",
-        "fr"
+        "fr",
+        "rap"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
       "moments": [
         "cocktail",
-        "slow"
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 44,
+      "apple": 0,
+      "deezer": 38,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 35,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -272,7 +270,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 34,
+      "apple": 32,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -300,35 +298,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 42,
+      "apple": 45,
       "deezer": 0,
       "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 52,
-      "deezer": 0,
-      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -351,9 +323,63 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 59,
+      "apple": 44,
       "deezer": 0,
-      "score": 2,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Soirée mondaine",
+      "artist": "Oria",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 89,
+      "deezer": 0,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Ensemble",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 66,
+      "youtubeId": "2pCh-KLR9M0",
+      "mixte": 4,
+      "camelot": "2A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 86,
+      "deezer": 0,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -489,20 +515,20 @@
       "trend": 0
     },
     {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
-        "ambiance",
+        "mariage",
+        "slow",
         "intl",
         "pop"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
       "moments": [
-        "cocktail",
-        "diner"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
@@ -769,32 +795,6 @@
       "moments": [
         "cocktail",
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Ensemble",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 66,
-      "youtubeId": "2pCh-KLR9M0",
-      "mixte": 4,
-      "camelot": "2A",
-      "moments": [
-        "slow"
       ],
       "radio": 0,
       "singles": 0,
