@@ -51,6 +51,25 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .service-alert .alert-icon{font-size:16px;flex-shrink:0;}
 .service-alert .alert-close{margin-left:auto;cursor:pointer;opacity:.6;font-size:16px;} .service-alert .alert-close:hover{opacity:1;}
 
+
+/* ── SOUNDCLOUD ── */
+.sc-token-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;}
+.sc-token-box h3{font-size:14px;font-weight:600;margin-bottom:8px;}
+.sc-token-box p{font-size:12px;color:var(--text-dim);margin-bottom:14px;line-height:1.6;}
+.sc-track{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(42,42,58,.5);}
+.sc-track:last-child{border-bottom:none;}
+.sc-track-info{flex:1;min-width:0;}
+.sc-track-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sc-track-artist{font-size:11px;color:var(--text-dim);}
+.sc-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.sc-status.owned{background:rgba(46,213,115,.15);color:var(--ok);}
+.sc-versions{font-size:10px;color:var(--text-dim);padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.06);white-space:nowrap;flex-shrink:0;}
+.sc-status.missing{background:rgba(255,71,87,.15);color:var(--danger);}
+
+
+.play-track-btn{background:none;border:1px solid var(--border);color:var(--text-dim);cursor:pointer;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;transition:all .2s;flex-shrink:0;text-decoration:none;font-family:'DM Sans',sans-serif;}
+.play-track-btn:hover{border-color:var(--spotify);color:var(--spotify);}
+
 /* ── EXPORTIFY FALLBACK ── */
 .exportify-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;margin-top:8px;}
 .exportify-box h3{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--text);}
@@ -233,7 +252,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 <header>
   <div class="logo">PADJ <span class="logo-sub">POPULARITÉ</span></div>
   <div class="header-right">
-    <div class="badge version"><div class="dot"></div> v2.5.7</div>
+    <div class="badge version"><div class="dot"></div> v2.9.6</div>
     <div class="badge" id="quota-badge" title="Requêtes Spotify estimées ce mois"><div class="dot"></div><span id="quota-label">… / 500</span></div>
     <div class="badge clickable" id="spotify-badge" onclick="spotifyLogin()" title="Connexion Spotify"><div class="dot"></div><span id="spotify-badge-label">Connexion Spotify</span></div>
     <div class="badge" id="shazam-badge"><div class="dot"></div><span id="shazam-quota-label">Shazam</span></div>
@@ -260,6 +279,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
   <div class="tab" onclick="switchTab('search',this)">🔎 Recherche</div>
   <div class="tab" onclick="switchTab('set',this)">🎧 Set DJ</div>
   <div class="tab" onclick="switchTab('collection',this)">🎵 Ma Collection</div>
+  <div class="tab" onclick="switchTab('soundcloud',this)">☁️ SoundCloud</div>
   <div class="tab devtab" onclick="switchTab('dev',this)">⚙️ DevTools</div>
 </div>
 
@@ -340,6 +360,44 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
       <div id="gap-results"></div>
     </div>
 
+  </div>
+</div>
+
+
+<!-- ── PANEL SOUNDCLOUD ── -->
+<div class="panel" id="panel-soundcloud">
+
+  <div class="sc-token-box">
+    <h3>☁️ Import SoundCloud Likes</h3>
+    <div id="sc-nml-warning" style="display:none;background:rgba(255,159,67,.12);border:1px solid var(--warn);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--warn)">
+      ⚠️ <strong>Ta collection Traktor n'est pas chargée</strong> — le croisement ne fonctionnera pas.<br>
+      <span style="cursor:pointer;text-decoration:underline" onclick="switchTab('collection',document.querySelector('.tab[onclick*=collection]'))">👉 Charge d'abord ton NML dans Ma Collection</span>, puis reviens ici.
+    </div>
+    <p>
+      1. Lance <strong>soundcloud_likes_exporter.py</strong> sur ton Mac pour générer le JSON<br>
+      2. Charge ton NML dans <strong>Ma Collection</strong> (si pas déjà fait)<br>
+      3. Glisse le fichier <code style="background:var(--surface);padding:2px 6px;border-radius:3px;font-family:var(--mono)">soundcloud_likes.json</code> ici
+    </p>
+    <div class="collection-upload" id="sc-drop" onclick="document.getElementById('sc-json-input').click()" style="padding:24px;margin-bottom:0">
+      <div style="font-size:28px;margin-bottom:8px">☁️</div>
+      <p style="margin:0">Glisse <strong>soundcloud_likes.json</strong> ici ou clique pour choisir</p>
+    </div>
+    <input type="file" id="sc-json-input" accept=".json">
+  </div>
+
+  <div id="sc-stats" style="display:none;margin-bottom:20px">
+    <div class="coll-stats-grid" id="sc-stats-grid"></div>
+  </div>
+
+  <div class="filters" id="sc-filters" style="display:none;margin-bottom:16px">
+    <span class="filter-label">Afficher</span>
+    <div class="filter-chip active" onclick="filterSCTracks('all',this)">Tous</div>
+    <div class="filter-chip" onclick="filterSCTracks('missing',this)">❌ Manquants</div>
+    <div class="filter-chip" onclick="filterSCTracks('owned',this)">✅ Possédés</div>
+  </div>
+
+  <div id="sc-results">
+    <div class="empty-state"><div class="icon">☁️</div><h3>Tes likes SoundCloud</h3><p>Entre ton token pour voir tes likes et les croiser avec ta collection Traktor</p></div>
   </div>
 </div>
 
@@ -458,7 +516,7 @@ select.filter-select{padding:5px 12px;border-radius:20px;font-size:11px;border:1
 // ══════════════════════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════════════════════
-const APP_VERSION = '2.5.7';
+const APP_VERSION = '2.9.6';
 const SPOTIFY_CLIENT_ID = '6a0b352e6eef416081cf01bddb253212';
 const SPOTIFY_CLIENT_SECRET = '51b22bf7443e439bbbd78ae280f3e70e';
 const RAPIDAPI_KEY = '6c7521b633msh318cec975a5d1c6p153530jsnd70b789a379c';
@@ -1190,7 +1248,7 @@ async function runBenchmarks() {
 //  SPOTIFY AUTH — OAuth 2.0 PKCE + Client Credentials fallback
 // ══════════════════════════════════════════════════════════════
 const SPOTIFY_REDIRECT_URI = 'https://replay04.github.io/dj-board/dj-popularity.html';
-const SPOTIFY_SCOPES = 'playlist-read-private playlist-read-collaborative user-library-read streaming user-read-playback-state user-modify-playback-state user-read-currently-playing';
+const SPOTIFY_SCOPES = 'playlist-read-private playlist-read-collaborative user-library-read user-read-playback-state';
 const OAUTH_STATE_KEY = 'padj_oauth_state';
 const OAUTH_TOKEN_KEY = 'padj_oauth_token';
 const OAUTH_EXPIRY_KEY = 'padj_oauth_expiry';
@@ -1229,9 +1287,12 @@ async function spotifyLogin() {
     code_challenge: challenge,
   });
 
-  // Sauvegarder l'onglet actif avant redirection
+  // Sauvegarder l'onglet actif avant redirect
   const activeTab = document.querySelector('.tab.active');
-  if (activeTab) localStorage.setItem('padj_active_tab', activeTab.getAttribute('onclick'));
+  if (activeTab) {
+    const tabName = activeTab.getAttribute('onclick').match(/switchTab\('(\w+)'/)?.[1];
+    if (tabName) sessionStorage.setItem('padj_active_tab', tabName);
+  }
   log('INFO', 'Redirection OAuth Spotify…');
   window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
 }
@@ -1300,20 +1361,16 @@ async function handleOAuthCallback() {
     setServiceStatus('spotify', 'ok');
     updateBadgeLoggedIn(data);
     updateKPIs();
-    // Restaurer l'onglet actif avant la redirection OAuth
-    const savedTab = localStorage.getItem('padj_active_tab');
-    if (savedTab) {
-      localStorage.removeItem('padj_active_tab');
-      const match = savedTab.match(/switchTab\('([^']+)'/);
-      if (match) {
-        const tabName = match[1];
-        const tabEl = document.querySelector(`.tab[onclick*="'${tabName}'"]`);
-        switchTab(tabName, tabEl);
-      }
-    }
     log('OK', `OAuth Spotify réussi en ${fmtMs(ms)} — token valide ${Math.round(data.expires_in/60)}min`);
     showNotif('✅ Connecté à Spotify !');
     hideOAuthOverlay();
+    // Restaurer l'onglet actif sauvegardé avant le redirect OAuth
+    const savedTab = sessionStorage.getItem('padj_active_tab');
+    if (savedTab) {
+      sessionStorage.removeItem('padj_active_tab');
+      const tabEl = document.querySelector('.tab[onclick*="' + savedTab + '"]');
+      if (tabEl) switchTab(savedTab, tabEl);
+    }
 
   } catch(e) {
     _metrics.errorsAPI++;
@@ -1486,10 +1543,23 @@ async function _spotifyFetch(url, label) {
 
 async function spotifySearch(query, limit = 10) {
   try {
-    const data = await _spotifyFetch(
-      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${limit}&market=FR`,
-      'search'
-    );
+    // Spotify rejette limit > 10 pour certains queries courts — fallback à 10
+    const safeLimit = Math.min(limit, 10);
+    let data;
+    try {
+      data = await _spotifyFetch(
+        `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${safeLimit}&market=FR`,
+        'search'
+      );
+    } catch(e) {
+      // Retry avec limit=5 si 400
+      if (e.message.includes('400')) {
+        data = await _spotifyFetch(
+          `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=5&market=FR`,
+          'search-retry'
+        );
+      } else throw e;
+    }
     return (data.tracks?.items || []).map(t => ({
       id: t.id,
       title: t.name,
@@ -1533,7 +1603,9 @@ async function spotifyAudioFeatures(ids) {
 async function deezerSearch(query, limit = 10) {
   const t0 = Date.now();
   try {
-    const res = await fetch(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=${limit}&output=json`, {mode:'cors'});
+    // Deezer bloque CORS depuis GitHub Pages — utiliser un proxy
+    const deezerUrl = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&limit=${limit}&output=json`;
+    const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(deezerUrl)}`);
     const ms = Date.now() - t0;
     _metrics.latenciesDeezer.push(ms);
     if (res.status === 403 || res.status === 429) {
@@ -1630,9 +1702,28 @@ async function parseNML(file) {
 
       if (!title && !artist) return;
 
-      _collection.push({ title, artist, bpm: Math.round(bpm), key, genre, playcount, ranking });
-      // Index normalisé pour matching
+      const filename = entry.querySelector('LOCATION')?.getAttribute('FILE') || '';
+      _collection.push({ title, artist, bpm: Math.round(bpm), key, genre, playcount, ranking, filename });
+
+      // Index 1 : titre + artiste exact
       _collIndex.add(normalizeTrack(artist, title));
+
+      // Index 2 : nom de fichier complet
+      if (filename) _collIndex.add('file||' + normalizeStr(filename));
+
+      // Index 3 : titre sans les parenthèses (version de base)
+      const titleBase = normalizeStr(title.replace(/\([^)]*\)/g, '').replace(/\[[^\]]*\]/g, ''));
+      if (titleBase) _collIndex.add(normalizeStr(artist) + '||' + titleBase);
+
+      // Index 4 : mots entre parenthèses du titre (remixeur, éditeur)
+      const parenWords = [...title.matchAll(/\(([^)]+)\)/g), ...title.matchAll(/\[([^\]]+)\]/g)]
+        .map(m => normalizeStr(m[1])).filter(w => w.length > 2);
+      parenWords.forEach(pw => _collIndex.add('paren||' + pw));
+
+      // Index 5 : mots entre parenthèses du nom de fichier
+      const fileParenWords = [...filename.matchAll(/\(([^)]+)\)/g), ...filename.matchAll(/\[([^\]]+)\]/g)]
+        .map(m => normalizeStr(m[1])).filter(w => w.length > 2);
+      fileParenWords.forEach(pw => _collIndex.add('paren||' + pw));
     });
 
     log('OK', `Collection chargée: ${_collection.length} titres`);
@@ -1645,24 +1736,116 @@ async function parseNML(file) {
   reader.readAsText(file, 'UTF-8');
 }
 
-function normalizeTrack(artist, title) {
-  const norm = s => s.toLowerCase()
+function normalizeStr(s) {
+  return (s || '').toLowerCase()
     .replace(/[^a-z0-9À-ɏ]/g, ' ')
     .replace(/\s+/g, ' ').trim();
-  return norm(artist) + '||' + norm(title);
+}
+
+function normalizeTrack(artist, title) {
+  return normalizeStr(artist) + '||' + normalizeStr(title);
+}
+
+// Extraire les mots significatifs d'un nom (longueur > 3, pas des mots vides)
+function keyWords(s) {
+  const stop = new Set(['the','and','feat','remix','edit','mix','version','extended',
+    'original','radio','club','vip','bootleg','cover','rework','retouch','mashup',
+    'les','des','une','pour','avec','dans','sur','par','qui','que','du','de','la','le']);
+  return normalizeStr(s).split(' ').filter(w => w.length > 3 && !stop.has(w));
 }
 
 function isInCollection(artist, title) {
-  // Check exact
-  if (_collIndex.has(normalizeTrack(artist, title))) return true;
-  // Check partiel — si le titre normalisé est contenu dans l'index
-  const normTitle = title.toLowerCase().replace(/[^a-z0-9À-ɏ]/g,' ').replace(/\s+/g,' ').trim();
-  const normArtist = artist.toLowerCase().replace(/[^a-z0-9À-ɏ]/g,' ').replace(/\s+/g,' ').trim().split(' ')[0];
-  for (const key of _collIndex) {
-    const [ka, kt] = key.split('||');
-    if (kt.includes(normTitle.slice(0,10)) && ka.includes(normArtist)) return true;
+  // Extraire le remixeur — UNIQUEMENT les mots entre parenthèses/crochets
+  const parens = (title.match(/\(([^)]+)\)/g)||[]).concat(title.match(/\[([^\]]+)\]/g)||[]);
+  const remixerWords = parens.flatMap(p => keyWords(p.slice(1,-1)));
+  const hasRemix = remixerWords.length > 0;
+
+  // Titre nettoyé sans parenthèses
+  const titleClean = title.replace(/\([^)]*\)/g,'').replace(/\[[^\]]*\]/g,'').trim();
+  const dashIdx = titleClean.indexOf(' - ');
+
+  // Format "Artiste - Titre(remix)" commun sur SoundCloud
+  // mainArtist = partie AVANT le tiret (ex: "Pitbull", "Des'ree", "Papi Chulo")
+  // mainTitle  = partie APRÈS le tiret (ex: "I Know You Want Me", "Life")
+  const mainArtist = dashIdx > 0 ? titleClean.slice(0, dashIdx) : artist;
+  const mainTitle  = dashIdx > 0 ? titleClean.slice(dashIdx + 3) : titleClean;
+
+  const mainTitleWords = keyWords(mainTitle);
+  // Artiste normalisé complet (gère les artistes courts comme Des'ree, Sia, 2 Pac)
+  const mainArtistNorm = normalizeStr(mainArtist);
+  // Si pas de tiret dans le titre, utiliser l'artiste SC directement
+  const fallbackArtist = dashIdx < 0 ? normalizeStr(artist) : null;
+
+  // 1. Match exact complet
+  if (_collIndex.has(normalizeStr(artist) + '||' + normalizeStr(title))) return true;
+
+  // 2. Sans remix : match titre nettoyé
+  if (!hasRemix) {
+    if (_collIndex.has(normalizeStr(artist) + '||' + normalizeStr(titleClean))) return true;
+    if (dashIdx > 0 && _collIndex.has(mainArtistNorm + '||' + normalizeStr(mainTitle))) return true;
   }
+
+  // 3. Match avec ou sans remix : titre + artiste (+ remixeur si présent)
+  for (const key of _collIndex) {
+    if (key.startsWith('file||') || key.startsWith('paren||')) continue;
+    const [ka, kt] = key.split('||');
+    if (!kt || !ka) continue;
+    const combined = ka + ' ' + kt;
+    const titleOk  = mainTitleWords.length === 0 || mainTitleWords.some(w => combined.includes(w));
+    // Artiste : chercher mainArtist (avant le tiret) comme sous-chaîne
+    const artistOk = (mainArtistNorm && combined.includes(mainArtistNorm)) ||
+                     (fallbackArtist && combined.includes(fallbackArtist));
+    const remixOk  = !hasRemix || remixerWords.some(w => combined.includes(w));
+    if (titleOk && artistOk && remixOk) return true;
+  }
+
+  // 4. Sans remix : fuzzy souple (2+ mots titre + artiste)
+  if (!hasRemix && mainTitleWords.length > 0) {
+    for (const key of _collIndex) {
+      if (key.startsWith('file||') || key.startsWith('paren||')) continue;
+      const [ka, kt] = key.split('||');
+      if (!kt || !ka) continue;
+      const tm = mainTitleWords.filter(w => kt.includes(w));
+      const artistOk = (mainArtistNorm && ka.includes(mainArtistNorm)) ||
+                       (fallbackArtist && ka.includes(fallbackArtist));
+      if (tm.length >= Math.min(2, mainTitleWords.length) && artistOk) return true;
+    }
+  }
+
   return false;
+}
+
+function countOtherVersions(artist, title) {
+  // Compter les versions du même titre de base dans Traktor
+  const titleClean = title.replace(/\([^)]*\)/g,'').replace(/\[[^\]]*\]/g,'').trim();
+  const dashIdx = titleClean.indexOf(' - ');
+  const mainArtist = dashIdx > 0 ? titleClean.slice(0, dashIdx) : artist;
+  const mainTitle  = dashIdx > 0 ? titleClean.slice(dashIdx + 3) : titleClean;
+
+  const mainTitleWords = keyWords(mainTitle);
+  // Artiste : accepter mots de 3+ chars (Des'ree → ['des','ree'])
+  const mainArtistNorm = normalizeStr(mainArtist);
+  const mainArtistWords3 = mainArtistNorm.split(' ').filter(w => w.length >= 3);
+  // Fallback : artiste SC original
+  const artistWords = keyWords(artist);
+
+  if (mainTitleWords.length === 0 && mainArtistWords3.length === 0) return 0;
+
+  const found = new Set();
+  for (const key of _collIndex) {
+    if (key.startsWith('file||') || key.startsWith('paren||')) continue;
+    const [ka, kt] = key.split('||');
+    if (!kt || !ka) continue;
+    // Match titre (souple : 1+ mot si titre court, 2+ sinon)
+    const tm = mainTitleWords.filter(w => kt.includes(w));
+    const titleOk = tm.length >= Math.min(2, Math.max(1, mainTitleWords.length));
+    // Match artiste avec mots de 3+ chars
+    const artistOk = mainArtistWords3.length > 0
+      ? mainArtistWords3.some(w => ka.includes(w))
+      : artistWords.some(w => ka.includes(w));
+    if (titleOk && artistOk) found.add(ka + '||' + kt);
+  }
+  return found.size;
 }
 
 function renderCollectionStats() {
@@ -1763,7 +1946,8 @@ async function findGaps() {
   // Stratégie 1 : Recherche Spotify par genre/style (top 50 par popularité)
   try {
     for (const seed of style.seeds.slice(0, 2)) {
-      const results = await spotifySearch(`genre:${seed}`, 20);
+      const spSeed = seed.length < 5 ? seed + ' music' : seed;
+      const results = await spotifySearch(spSeed, 10);
       allTracks.push(...results);
     }
     // Recherche complémentaire sur les artistes emblématiques du style
@@ -1779,7 +1963,7 @@ async function findGaps() {
     };
     const artists = (artistSeeds[style.id] || []).slice(0, 3);
     for (const artist of artists) {
-      const results = await spotifySearch(artist, 10);
+      const results = await spotifySearch(artist, 8);
       allTracks.push(...results);
     }
   } catch(e) { log('WARN', `Search seeds: ${e.message}`); }
@@ -1878,19 +2062,19 @@ function renderGapResults(missing, owned) {
 
   const renderTrack = (t, status) => `
     <div class="gap-track">
-      ${t.image ? `<img src="${escHtml(t.image)}" style="width:40px;height:40px;border-radius:4px;object-fit:cover;flex-shrink:0">` : `<div style="width:40px;height:40px;background:var(--surface2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px">🎵</div>`}
+      <span class="gap-status ${status}">${status === 'missing' ? '❌' : '✅'}</span>
+      ${t.id && !t.id.startsWith('d_') && !t.id.startsWith('sz_') ? 
+        `<button class="play-track-btn" onclick="openSpotify('${t.id}')" title="Ouvrir dans Spotify">▶</button>` :
+        t.deezer_url ? `<button class="play-track-btn" onclick="openDeezer('${t.deezer_url}')" title="Ouvrir dans Deezer" style="border-color:var(--deezer);color:var(--deezer)">▶</button>` : ''}
       <div class="gap-track-info">
         <div class="gap-track-title">${escHtml(t.title)}</div>
         <div class="gap-track-artist">${escHtml(t.artist)}</div>
       </div>
       ${t.danceability ? `<div class="gap-dance" title="Danceability ${Math.round(t.danceability*100)}%">
-        <span style="font-size:10px;color:var(--text-dim)">💃</span>
         <div class="gap-dance-bar"><div class="gap-dance-fill" style="width:${Math.round(t.danceability*100)}%"></div></div>
       </div>` : ''}
-      ${t.bpm ? `<span class="meta-badge">${t.bpm} BPM</span>` : ''}
+      ${t.bpm ? `<span class="meta-badge">${t.bpm}</span>` : ''}
       <div class="score-badge ${scoreClass(t.popularity||0)}">${t.popularity||'—'}</div>
-      <span class="gap-status ${status}">${status === 'missing' ? '❌ Manque' : '✅ OK'}</span>
-      ${t.id ? `<a class="play-track-btn" href="spotify:track:${t.id}" title="Ouvrir dans Spotify">▶</a>` : ''}
     </div>`;
 
   container.innerHTML = `
@@ -1908,6 +2092,167 @@ function renderGapResults(missing, owned) {
       <div class="gap-section-title gap-section-owned">✅ DÉJÀ DANS TA COLLECTION (${owned.length})</div>
       ${owned.slice(0,15).map(t => renderTrack(t, 'owned')).join('')}
     </div>` : ''}`;
+}
+
+
+// ══════════════════════════════════════════════════════════════
+//  SOUNDCLOUD LIKES
+// ══════════════════════════════════════════════════════════════
+let _scTracks = [];
+let _scFilter = 'all';
+let _scDisplayLimit = 100;   // nb de titres affichés ; +100 via "Voir plus"
+
+// ── Event listeners drop zone SoundCloud ──
+const scDrop = document.getElementById('sc-drop');
+if (scDrop) {
+  scDrop.addEventListener('dragover', e => { e.preventDefault(); scDrop.classList.add('dragover'); });
+  scDrop.addEventListener('dragleave', () => scDrop.classList.remove('dragover'));
+  scDrop.addEventListener('drop', e => {
+    e.preventDefault(); scDrop.classList.remove('dragover');
+    const f = e.dataTransfer.files[0];
+    if (f && f.name.endsWith('.json')) parseSCJson(f);
+    else showNotif('❌ Fichier .json requis');
+  });
+}
+const scJsonInput = document.getElementById('sc-json-input');
+if (scJsonInput) {
+  scJsonInput.addEventListener('change', e => {
+    if (e.target.files[0]) parseSCJson(e.target.files[0]);
+  });
+}
+
+async function parseSCJson(file) {
+  // Afficher loader immédiatement
+  document.getElementById('sc-results').innerHTML = '<div class="loader"><div class="spinner"></div>Chargement et croisement avec Traktor…</div>';
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      const tracks = data.tracks || data;
+      if (!Array.isArray(tracks) && !data.tracks) throw new Error('Format invalide');
+      const list = Array.isArray(tracks) ? tracks : data.tracks;
+      _scTracks = list.map(t => ({
+        id: t.id || null,
+        title: t.title || '',
+        artist: t.artist || '',
+        url: t.url || '',
+        playbackCount: t.playback_count || t.playbackCount || 0,
+        genre: t.genre || '',
+        image: t.artwork_url || t.image || '',
+        downloadable: t.downloadable || t.download_url ? true : false,
+        inCollection: false,
+      })).filter(t => t.title);
+
+      // Croiser avec Traktor si disponible
+      if (typeof _collection !== 'undefined' && _collection.length > 0) {
+        _scTracks.forEach(t => { t.inCollection = isInCollection(t.artist, t.title); });
+        log('OK', `Croisement Traktor: ${_scTracks.filter(t=>t.inCollection).length} possédés`);
+      }
+
+      log('OK', `${_scTracks.length} likes SoundCloud chargés depuis JSON`);
+      showNotif(`✅ ${_scTracks.length} likes chargés !`);
+      renderSCStats();
+      renderSCTracks();
+      document.getElementById('sc-stats').style.display = 'block';
+      document.getElementById('sc-filters').style.display = 'flex';
+    } catch(err) {
+      log('ERROR', `Parsing JSON SoundCloud: ${err.message}`);
+      showNotif('❌ Fichier JSON invalide');
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+async function loadSoundCloudLikes() {
+  showNotif('ℹ️ Lance soundcloud_likes_exporter.py sur ton Mac puis glisse le JSON ici');
+}
+
+function renderSCStats() {
+  const total = _scTracks.length;
+  const owned = _scTracks.filter(t => t.inCollection).length;
+  const missing = total - owned;
+
+  document.getElementById('sc-stats-grid').innerHTML = [
+    { val: total, label: 'Likes total' },
+    { val: missing, label: '❌ Manquants' },
+    { val: owned, label: '✅ Dans Traktor' },
+    { val: Math.round(owned/total*100) + '%', label: 'Taux possession' },
+  ].map(s => `<div class="coll-stat"><div class="coll-stat-val">${s.val}</div><div class="coll-stat-label">${s.label}</div></div>`).join('');
+}
+
+function filterSCTracks(filter, el) {
+  _scFilter = filter;
+  _scDisplayLimit = 100;   // on repart du début quand on change de filtre
+  document.querySelectorAll('#sc-filters .filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderSCTracks();
+}
+
+function showMoreSC() {
+  _scDisplayLimit += 100;
+  renderSCTracks();
+}
+
+function showAllSC() {
+  _scDisplayLimit = Infinity;
+  renderSCTracks();
+}
+
+async function crossWithTraktor(tracks) {
+  const CHUNK = 50;
+  for (let i = 0; i < tracks.length; i += CHUNK) {
+    const chunk = tracks.slice(i, i + CHUNK);
+    chunk.forEach(t => { t.inCollection = isInCollection(t.artist, t.title); });
+    const pct = Math.round((i + CHUNK) / tracks.length * 100);
+    document.getElementById('sc-results').innerHTML = `<div class="loader"><div class="spinner"></div>Croisement… ${Math.min(pct,100)}%</div>`;
+    // Laisser le navigateur respirer
+    await new Promise(r => setTimeout(r, 0));
+  }
+}
+
+function openSCTrack(index) {
+  const t = _scTracks[index];
+  if (t && t.url) window.open(t.url, '_blank');
+}
+
+function renderSCTracks() {
+  const container = document.getElementById('sc-results');
+  let tracks = _scTracks;
+  if (_scFilter === 'missing') tracks = tracks.filter(t => !t.inCollection);
+  if (_scFilter === 'owned') tracks = tracks.filter(t => t.inCollection);
+
+  if (!tracks.length) {
+    container.innerHTML = '<div class="empty-state"><div class="icon">🤷</div><h3>Aucun résultat</h3></div>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="results-header" style="margin-bottom:12px">
+      <div class="results-count"><strong>${tracks.length}</strong> titre${tracks.length > 1 ? 's' : ''}</div>
+    </div>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px">
+      ${tracks.slice(0, _scDisplayLimit).map(t => `
+        <div class="sc-track">
+          ${t.image ? `<img src="${escHtml(t.image.replace('large','t50x50'))}" style="width:36px;height:36px;border-radius:4px;object-fit:cover;flex-shrink:0">` : '<div style="width:36px;height:36px;background:var(--surface);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center">☁️</div>'}
+          <div class="sc-track-info">
+            <div class="sc-track-title">${escHtml(t.title)}</div>
+            <div class="sc-track-artist">${escHtml(t.artist)}</div>
+          </div>
+          ${t.playbackCount > 0 ? `<span class="meta-badge">${t.playbackCount >= 1000 ? (t.playbackCount/1000).toFixed(0)+'k' : t.playbackCount} plays</span>` : ''}
+          ${!t.inCollection && t.downloadable ? '<span class="sc-status" style="background:rgba(0,210,255,.15);color:var(--accent3);flex-shrink:0">⬇ Gratuit</span>' : ''}
+          <span class="sc-status ${t.inCollection ? 'owned' : 'missing'}">${t.inCollection ? '✅ Traktor' : '❌ Manque'}</span>
+          ${!t.inCollection && _collection.length > 0 ? (() => { const v = countOtherVersions(t.artist, t.title); return v > 0 ? `<span class="sc-versions" title="Tu as ${v} autre${v>1?'s':''} version${v>1?'s':''} de ce titre">${v} autre${v>1?'s':''} version${v>1?'s':''}</span>` : ''; })() : ''}
+          ${t.url ? `<button class="play-track-btn" onclick="openSCTrack(${_scTracks.indexOf(t)})" title="Ouvrir sur SoundCloud" style="border-color:#ff5500;color:#ff5500">▶</button>` : ''}
+        </div>
+      `).join('')}
+      ${tracks.length > _scDisplayLimit ? `
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:14px 0 4px">
+          <button class="btn btn-outline btn-sm" onclick="showMoreSC()">Voir plus (+${Math.min(100, tracks.length - _scDisplayLimit)})</button>
+          <button class="btn btn-outline btn-sm" onclick="showAllSC()">Tout afficher (${tracks.length})</button>
+        </div>
+        <p style="font-size:12px;color:var(--text-dim);text-align:center;padding:4px 0">${Math.min(_scDisplayLimit, tracks.length)} sur ${tracks.length} affichés</p>
+      ` : (tracks.length > 100 ? `<p style="font-size:12px;color:var(--text-dim);text-align:center;padding:12px 0">Les ${tracks.length} résultats sont affichés</p>` : '')}
+    </div>`;
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2053,6 +2398,10 @@ function switchTab(name, el) {
   if (tab) tab.classList.add('active');
   document.getElementById('panel-' + name).classList.add('active');
   if (name === 'dev') { updateKPIs(); renderEnv(); }
+  if (name === 'soundcloud') {
+    const warn = document.getElementById('sc-nml-warning');
+    if (warn) warn.style.display = (typeof _collection === 'undefined' || _collection.length === 0) ? 'block' : 'none';
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2269,10 +2618,17 @@ async function selectGenre(query, el) {
   document.querySelectorAll('.genre-card').forEach(c=>c.classList.remove('active'));
   if (el && el.classList) el.classList.add('active');
   log('INFO', `Genre: ${query}`);
+  // Vérifier token avant recherche
+  const token = await getSpotifyToken();
+  if (!token) { showNotif('❌ Connexion Spotify requise'); return; }
   document.getElementById('explore-results').innerHTML = '<div class="loader"><div class="spinner"></div>Recherche…</div>';
+  // Nettoyer le query pour Spotify (supprimer préfixes genre:/year:)
+  const cleanQuery = query.replace('genre:','').replace('year:','');
+  // Pour les queries courts (< 5 chars), ajouter "music" pour éviter le 400
+  const spQuery = cleanQuery.length < 5 ? cleanQuery + ' music' : cleanQuery;
   const [spRes, dzRes] = await Promise.all([
-    spotifySearch(query, 20),
-    deezerSearch(query.replace('genre:','').replace('year:',''), 10)
+    spotifySearch(spQuery, 10),
+    deezerSearch(cleanQuery, 15)
   ]);
   renderSearchResults(spRes, dzRes, 'explore-results');
 }
@@ -2291,6 +2647,9 @@ async function freeSearch() {
   if (!q) return;
   const source = document.getElementById('search-source').value;
   log('INFO', `Recherche libre: "${q}" [${source}]`);
+  // Vérifier token
+  const token = await getSpotifyToken();
+  if (!token && source !== 'deezer') { showNotif('❌ Connexion Spotify requise'); return; }
   document.getElementById('free-search-results').innerHTML = '<div class="loader"><div class="spinner"></div>Recherche…</div>';
   let spRes = [], dzRes = [];
   if (source !== 'deezer') spRes = await spotifySearch(q, 15);
@@ -2311,7 +2670,7 @@ function renderSearchResults(spRes, dzRes, containerId) {
     });
     if (dIdx >= 0) usedDeezer.add(dIdx);
     const dm = dIdx >= 0 ? dzRes[dIdx] : null;
-    merged.push({...s, deezer_popularity: dm?.popularity ?? null, combined: combinedScore(s.popularity, dm?.popularity), has_deezer: !!dm});
+    merged.push({...s, deezer_popularity: dm?.popularity ?? null, deezer_url: dm?.deezer_url || null, combined: combinedScore(s.popularity, dm?.popularity), has_deezer: !!dm});
   });
 
   dzRes.forEach((d,i) => {
@@ -2342,7 +2701,11 @@ function renderSearchResults(spRes, dzRes, containerId) {
           <td class="track-rank">${i+1}</td>
           <td>
             <div style="display:flex;align-items:center;gap:8px">
-              <a class="play-track-btn" href="${t.id ? 'spotify:track:'+t.id : '#'}" onclick="event.stopPropagation()" title="Ouvrir dans Spotify">▶</a>
+              ${t.id && !t.id.startsWith('d_') && !t.id.startsWith('sz_') ? 
+              `<button class="play-track-btn" onclick="event.stopPropagation();openSpotify('${t.id}')" title="Ouvrir dans Spotify">▶</button>` :
+              t.deezer_url ? 
+              `<button class="play-track-btn" onclick="event.stopPropagation();openDeezer('${t.deezer_url}')" title="Ouvrir dans Deezer" style="border-color:var(--deezer);color:var(--deezer)">▶</button>` :
+              ''}
               <div><div class="track-title">${escHtml(t.title)}</div><div class="track-artist">${escHtml(t.album||'')}</div></div>
             </div>
           </td>
@@ -2504,18 +2867,26 @@ function fmtTime(ms) {
 }
 
 function playTrack(trackId, trackList, index) {
-  if (!trackId || trackId.length < 10) {
-    showNotif('❌ ID track invalide');
+  openSpotify(trackId);
+}
+
+function openSpotify(trackId) {
+  if (!trackId || trackId.length < 10 || trackId.startsWith('d_') || trackId.startsWith('sz_')) {
+    showNotif('❌ ID Spotify invalide');
     return;
   }
-  // Méthode safe pour Safari — ne redirige pas la page
-  const a = document.createElement('a');
-  a.href = `spotify:track:${trackId}`;
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => a.remove(), 100);
+  // Sur Safari, window.open avec spotify: URI fonctionne mieux qu'un lien <a>
+  const opened = window.open(`spotify:track:${trackId}`, '_self');
+  if (!opened) {
+    // Fallback : ouvrir sur open.spotify.com
+    window.open(`https://open.spotify.com/track/${trackId}`, '_blank');
+  }
   log('OK', `Ouvert dans Spotify: ${trackId}`);
+}
+
+function openDeezer(url) {
+  if (!url) return;
+  window.open(url, '_blank');
 }
 
 // ══════════════════════════════════════════════════════════════
