@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-10",
+  "updated": "2026-06-11",
   "week": 24,
   "sources": {
     "radio_count": 0,
@@ -31,8 +31,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 69,
-      "deezer": 3,
+      "apple": 64,
+      "deezer": 7,
       "score": 6,
       "weeks": 0,
       "trend": 0
@@ -58,9 +58,87 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 4,
+      "apple": 6,
       "deezer": 0,
       "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 5,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 15,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 13,
+      "deezer": 0,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -85,111 +163,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 52,
-      "deezer": 45,
-      "score": 5,
+      "apple": 0,
+      "deezer": 35,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 9,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
       "tags": [
         "dancefloor",
         "intl",
         "pop"
       ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
       "mixte": 5,
-      "camelot": "5B",
+      "camelot": "7B",
       "moments": [
-        "dance"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 50,
       "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 14,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
-      "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 33,
       "score": 3,
       "weeks": 0,
       "trend": 0
@@ -216,7 +218,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 46,
+      "apple": 42,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -244,51 +246,24 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 48,
+      "apple": 43,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Mystery of Love",
-      "artist": "Sufjan Stevens",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl"
-      ],
-      "bpm": 68,
-      "youtubeId": "hNP3PBkuTvo",
-      "mixte": 5,
-      "camelot": "2A",
-      "moments": [
-        "slow",
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 67,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
       "tags": [
         "ambiance",
-        "intl",
-        "pop"
+        "fr",
+        "rap"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
       "mixte": 3,
-      "camelot": "9B",
+      "camelot": "12A",
       "moments": [
         "cocktail",
         "diner"
@@ -298,35 +273,32 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 54,
-      "deezer": 0,
+      "apple": 0,
+      "deezer": 54,
       "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Dream As One",
-      "artist": "Miley Cyrus",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "mariage",
-        "ambiance",
-        "intl",
-        "pop"
+        "pop",
+        "fr"
       ],
-      "bpm": 82,
-      "youtubeId": "RLRrAVHPkPE",
-      "mixte": 4,
-      "camelot": "3A",
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
       "moments": [
-        "cocktail",
-        "slow"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 70,
+      "apple": 57,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -353,7 +325,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 81,
+      "apple": 84,
       "deezer": 0,
       "score": 1,
       "weeks": 0,
@@ -438,6 +410,33 @@
       "trend": 0
     },
     {
+      "title": "Mystery of Love",
+      "artist": "Sufjan Stevens",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl"
+      ],
+      "bpm": 68,
+      "youtubeId": "hNP3PBkuTvo",
+      "mixte": 5,
+      "camelot": "2A",
+      "moments": [
+        "slow",
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Pocahontas",
       "artist": "PLK",
       "tags": [
@@ -464,20 +463,20 @@
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "End of Beginning",
+      "artist": "DJO",
       "tags": [
-        "mariage",
         "ambiance",
-        "fr"
+        "intl",
+        "pop"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
       "moments": [
         "cocktail",
-        "slow"
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
@@ -516,20 +515,21 @@
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
+      "title": "Dream As One",
+      "artist": "Miley Cyrus",
       "tags": [
-        "dancefloor",
+        "mariage",
+        "ambiance",
         "intl",
         "pop"
       ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
+      "bpm": 82,
+      "youtubeId": "RLRrAVHPkPE",
+      "mixte": 4,
+      "camelot": "3A",
       "moments": [
-        "dance",
-        "fin"
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
@@ -537,7 +537,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 97,
       "score": 0,
       "weeks": 0,
       "trend": 0
