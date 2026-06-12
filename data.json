@@ -1,42 +1,15 @@
 {
-  "updated": "2026-06-11",
+  "updated": "2026-06-12",
   "week": 24,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 90,
+    "apple_count": 85,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Gone Gone Gone",
-      "artist": "David Guetta & Teddy Swims",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "electro"
-      ],
-      "bpm": 128,
-      "youtubeId": "8iT9DRe3cHE",
-      "mixte": 4,
-      "camelot": "11B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 64,
-      "deezer": 7,
-      "score": 6,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Melodrama",
       "artist": "Disiz & Theodora",
@@ -58,8 +31,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 6,
-      "deezer": 0,
+      "apple": 10,
+      "deezer": 94,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -83,7 +56,33 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 5,
+      "apple": 8,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Génération Impolie",
+      "artist": "Franglish feat. Keblack",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 90,
+      "youtubeId": "9bZkp7q19f0",
+      "mixte": 2,
+      "camelot": "2B",
+      "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 1,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -110,8 +109,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 15,
+      "apple": 26,
       "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "electro"
+      ],
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
+      "mixte": 4,
+      "camelot": "11B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 4,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -136,7 +162,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
+      "apple": 16,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -163,8 +189,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 0,
-      "deezer": 35,
+      "apple": 64,
+      "deezer": 80,
       "score": 3,
       "weeks": 0,
       "trend": 0
@@ -190,35 +216,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 50,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 42,
+      "apple": 36,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -246,7 +244,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 43,
+      "apple": 46,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -280,6 +278,34 @@
       "trend": 0
     },
     {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 67,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "One Track Mind",
       "artist": "Naïka",
       "tags": [
@@ -298,36 +324,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 57,
+      "apple": 68,
       "deezer": 0,
       "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 84,
-      "deezer": 0,
-      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -463,6 +462,33 @@
       "trend": 0
     },
     {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "End of Beginning",
       "artist": "DJO",
       "tags": [
@@ -537,7 +563,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 97,
+      "deezer": 0,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -664,32 +690,6 @@
       "camelot": "6A",
       "moments": [
         "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Génération Impolie",
-      "artist": "Franglish feat. Keblack",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 90,
-      "youtubeId": "9bZkp7q19f0",
-      "mixte": 2,
-      "camelot": "2B",
-      "moments": [
-        "diner"
       ],
       "radio": 0,
       "singles": 0,
