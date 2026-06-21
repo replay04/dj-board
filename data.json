@@ -1,42 +1,15 @@
 {
-  "updated": "2026-06-20",
+  "updated": "2026-06-21",
   "week": 25,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 94,
+    "apple_count": 90,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 19,
-      "deezer": 81,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Gone Gone Gone",
       "artist": "David Guetta & Teddy Swims",
@@ -58,9 +31,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 85,
-      "deezer": 5,
-      "score": 5,
+      "apple": 69,
+      "deezer": 6,
+      "score": 6,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 33,
+      "deezer": 98,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -83,7 +83,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 24,
+      "apple": 11,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -110,7 +110,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 12,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -136,7 +136,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 17,
+      "apple": 21,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -164,7 +164,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 31,
+      "apple": 24,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -191,86 +191,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 41,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 42,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 40,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 32,
+      "apple": 37,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -298,7 +219,141 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 55,
+      "deezer": 36,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 38,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 34,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 42,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 51,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 52,
+      "deezer": 0,
       "score": 2,
       "weeks": 0,
       "trend": 0
@@ -435,33 +490,6 @@
       "trend": 0
     },
     {
-      "title": "End of Beginning",
-      "artist": "DJO",
-      "tags": [
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "Argent Sale",
       "artist": "La Rvfleuze",
       "tags": [
@@ -474,34 +502,6 @@
       "camelot": "1B",
       "moments": [
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
       ],
       "radio": 0,
       "singles": 0,
