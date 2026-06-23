@@ -1,39 +1,37 @@
 {
-  "updated": "2026-06-22",
+  "updated": "2026-06-23",
   "week": 26,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 92,
+    "apple_count": 87,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "Gone Gone Gone",
-      "artist": "David Guetta & Teddy Swims",
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
       "tags": [
         "dancefloor",
-        "intl",
-        "electro"
+        "intl"
       ],
-      "bpm": 128,
-      "youtubeId": "8iT9DRe3cHE",
-      "mixte": 4,
-      "camelot": "11B",
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
       "moments": [
-        "dance",
-        "fin"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 34,
-      "deezer": 9,
-      "score": 7,
+      "apple": 12,
+      "deezer": 0,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -58,31 +56,6 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 8,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
       "apple": 13,
       "deezer": 0,
       "score": 4,
@@ -90,18 +63,17 @@
       "trend": 0
     },
     {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
       "tags": [
         "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
+        "intl",
+        "electro"
       ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
+      "mixte": 4,
+      "camelot": "11B",
       "moments": [
         "dance",
         "fin"
@@ -111,8 +83,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 29,
-      "deezer": 0,
+      "apple": 0,
+      "deezer": 2,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -137,7 +109,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 21,
+      "apple": 11,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -165,24 +137,24 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 24,
+      "apple": 20,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
       "tags": [
         "ambiance",
         "fr",
         "rap"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
       "mixte": 3,
-      "camelot": "4B",
+      "camelot": "12A",
       "moments": [
         "cocktail",
         "diner"
@@ -192,34 +164,32 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 35,
-      "deezer": 0,
+      "apple": 0,
+      "deezer": 32,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
+        "pop",
+        "fr"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
       "camelot": "8A",
       "moments": [
-        "slow"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 40,
+      "apple": 45,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -246,51 +216,50 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 62,
-      "deezer": 83,
-      "score": 3,
+      "apple": 52,
+      "deezer": 0,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
       "tags": [
-        "ambiance",
-        "intl",
-        "pop"
+        "mariage",
+        "slow",
+        "fr"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
       "camelot": "9B",
       "moments": [
-        "cocktail",
-        "diner"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 37,
+      "apple": 55,
       "deezer": 0,
-      "score": 3,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
         "ambiance",
         "fr",
         "rap"
       ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
       "mixte": 3,
-      "camelot": "12A",
+      "camelot": "4B",
       "moments": [
         "cocktail",
         "diner"
@@ -301,59 +270,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 59,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 56,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 86,
-      "deezer": 0,
+      "deezer": 88,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -490,6 +407,87 @@
       "trend": 0
     },
     {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Argent Sale",
       "artist": "La Rvfleuze",
       "tags": [
@@ -502,6 +500,34 @@
       "camelot": "1B",
       "moments": [
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
@@ -610,32 +636,6 @@
       "camelot": "5A",
       "moments": [
         "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
-      "moments": [
         "slow"
       ],
       "radio": 0,
