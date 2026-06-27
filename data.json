@@ -1,42 +1,15 @@
 {
-  "updated": "2026-06-26",
+  "updated": "2026-06-27",
   "week": 26,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 89,
+    "apple_count": 85,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Gone Gone Gone",
-      "artist": "David Guetta & Teddy Swims",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "electro"
-      ],
-      "bpm": 128,
-      "youtubeId": "8iT9DRe3cHE",
-      "mixte": 4,
-      "camelot": "11B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 71,
-      "deezer": 4,
-      "score": 6,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Melodrama",
       "artist": "Disiz & Theodora",
@@ -58,7 +31,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 19,
+      "apple": 21,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -83,7 +56,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 12,
+      "apple": 17,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -110,25 +83,24 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 27,
+      "apple": 28,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
+      "title": "Gone Gone Gone",
+      "artist": "David Guetta & Teddy Swims",
       "tags": [
         "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
+        "intl",
+        "electro"
       ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
+      "bpm": 128,
+      "youtubeId": "8iT9DRe3cHE",
       "mixte": 4,
-      "camelot": "3B",
+      "camelot": "11B",
       "moments": [
         "dance",
         "fin"
@@ -138,7 +110,58 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 29,
+      "apple": 0,
+      "deezer": 4,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 27,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 24,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -165,7 +188,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 41,
+      "apple": 49,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -192,33 +215,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 45,
+      "apple": 32,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Zoo",
-      "artist": "Shakira",
+      "title": "Soirée mondaine",
+      "artist": "Oria",
       "tags": [
         "dancefloor",
-        "intl",
+        "mariage",
+        "fr",
         "pop"
       ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
       "moments": [
-        "dance"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 34,
+      "apple": 42,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -272,32 +297,62 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 52,
+      "apple": 65,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "One Track Mind",
-      "artist": "Naïka",
+      "title": "La recette",
+      "artist": "Jeck & Carla",
       "tags": [
-        "pop",
-        "fr"
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
       "moments": [
-        "cocktail"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 81,
+      "apple": 63,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 74,
       "deezer": 0,
       "score": 1,
       "weeks": 0,
@@ -435,33 +490,6 @@
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "Argent Sale",
       "artist": "La Rvfleuze",
       "tags": [
@@ -474,34 +502,6 @@
       "camelot": "1B",
       "moments": [
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
       ],
       "radio": 0,
       "singles": 0,
