@@ -1,40 +1,37 @@
 {
-  "updated": "2026-06-29",
+  "updated": "2026-06-30",
   "week": 27,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 87,
+    "apple_count": 85,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
+        "pop",
+        "fr"
       ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
-      "mixte": 4,
-      "camelot": "3B",
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
       "moments": [
-        "dance",
-        "fin"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 25,
-      "deezer": 62,
-      "score": 6,
+      "apple": 7,
+      "deezer": 0,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -59,34 +56,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 10,
+      "apple": 19,
       "deezer": 0,
-      "score": 5,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "One Track Mind",
-      "artist": "Naïka",
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
-        "pop",
-        "fr"
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
       "moments": [
-        "cocktail"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 29,
-      "deezer": 62,
-      "score": 5,
+      "apple": 36,
+      "deezer": 76,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -136,7 +135,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 16,
+      "apple": 29,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -189,9 +188,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 12,
+      "apple": 25,
       "deezer": 0,
       "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 29,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -223,33 +249,6 @@
       "trend": 0
     },
     {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 41,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "La recette",
       "artist": "Jeck & Carla",
       "tags": [
@@ -271,170 +270,64 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 35,
+      "apple": 41,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
+      "title": "Soirée mondaine",
+      "artist": "Oria",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
-      "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 41,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Pocahontas",
-      "artist": "PLK",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 87,
-      "youtubeId": "JvokQ1Mkbl0",
-      "mixte": 2,
-      "camelot": "5A",
-      "moments": [
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 62,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Dream As One",
-      "artist": "Miley Cyrus",
-      "tags": [
+        "dancefloor",
         "mariage",
-        "ambiance",
-        "intl",
+        "fr",
         "pop"
       ],
-      "bpm": 82,
-      "youtubeId": "RLRrAVHPkPE",
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
       "mixte": 4,
-      "camelot": "3A",
+      "camelot": "3B",
       "moments": [
-        "cocktail",
-        "slow"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 0,
-      "deezer": 62,
-      "score": 2,
+      "apple": 40,
+      "deezer": 0,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "L'Horizon",
-      "artist": "Pierre Garnier",
+      "title": "Mystery of Love",
+      "artist": "Sufjan Stevens",
       "tags": [
         "mariage",
-        "fr",
-        "variete"
+        "slow",
+        "intl"
       ],
-      "bpm": 76,
-      "youtubeId": "fj_MkTfWS3s",
+      "bpm": 68,
+      "youtubeId": "hNP3PBkuTvo",
       "mixte": 5,
-      "camelot": "5A",
+      "camelot": "2A",
       "moments": [
-        "cocktail",
-        "slow"
+        "slow",
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 0,
-      "deezer": 62,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Génération Impolie",
-      "artist": "Franglish feat. Keblack",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 90,
-      "youtubeId": "9bZkp7q19f0",
-      "mixte": 2,
-      "camelot": "2B",
-      "moments": [
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 62,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
-      "tags": [
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 90,
+      "apple": 68,
       "deezer": 0,
-      "score": 1,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -517,20 +410,19 @@
       "trend": 0
     },
     {
-      "title": "Mystery of Love",
-      "artist": "Sufjan Stevens",
+      "title": "Pocahontas",
+      "artist": "PLK",
       "tags": [
-        "mariage",
-        "slow",
-        "intl"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 68,
-      "youtubeId": "hNP3PBkuTvo",
-      "mixte": 5,
-      "camelot": "2A",
+      "bpm": 87,
+      "youtubeId": "JvokQ1Mkbl0",
+      "mixte": 2,
+      "camelot": "5A",
       "moments": [
-        "slow",
-        "cocktail"
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
@@ -571,6 +463,33 @@
       "trend": 0
     },
     {
+      "title": "End of Beginning",
+      "artist": "DJO",
+      "tags": [
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Argent Sale",
       "artist": "La Rvfleuze",
       "tags": [
@@ -583,6 +502,34 @@
       "camelot": "1B",
       "moments": [
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Dream As One",
+      "artist": "Miley Cyrus",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 82,
+      "youtubeId": "RLRrAVHPkPE",
+      "mixte": 4,
+      "camelot": "3A",
+      "moments": [
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
@@ -650,6 +597,33 @@
       "trend": 0
     },
     {
+      "title": "L'Horizon",
+      "artist": "Pierre Garnier",
+      "tags": [
+        "mariage",
+        "fr",
+        "variete"
+      ],
+      "bpm": 76,
+      "youtubeId": "fj_MkTfWS3s",
+      "mixte": 5,
+      "camelot": "5A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Tant Pis Pour Elle",
       "artist": "Charlotte Cardin",
       "tags": [
@@ -690,6 +664,32 @@
       "camelot": "6A",
       "moments": [
         "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Génération Impolie",
+      "artist": "Franglish feat. Keblack",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 90,
+      "youtubeId": "9bZkp7q19f0",
+      "mixte": 2,
+      "camelot": "2B",
+      "moments": [
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
