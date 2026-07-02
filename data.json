@@ -1,12 +1,12 @@
 {
-  "updated": "2026-07-01",
+  "updated": "2026-07-02",
   "week": 27,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 88,
+    "apple_count": 87,
     "deezer_count": 100
   },
   "tracks": [
@@ -29,9 +29,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 8,
-      "deezer": 79,
+      "apple": 27,
+      "deezer": 62,
       "score": 6,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 6,
+      "deezer": 0,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -57,8 +82,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 18,
-      "deezer": 79,
+      "apple": 41,
+      "deezer": 62,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -84,32 +109,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 24,
+      "apple": 23,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
       "tags": [
         "dancefloor",
-        "intl"
+        "intl",
+        "pop"
       ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
       "moments": [
-        "dance"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
+      "apple": 14,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -137,33 +164,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 10,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 20,
-      "deezer": 0,
+      "deezer": 11,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -216,7 +217,113 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 52,
+      "apple": 45,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 46,
+      "deezer": 99,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 43,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Pocahontas",
+      "artist": "PLK",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 87,
+      "youtubeId": "JvokQ1Mkbl0",
+      "mixte": 2,
+      "camelot": "5A",
+      "moments": [
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 62,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 56,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -244,116 +351,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 63,
+      "apple": 64,
       "deezer": 0,
       "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Pocahontas",
-      "artist": "PLK",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 87,
-      "youtubeId": "JvokQ1Mkbl0",
-      "mixte": 2,
-      "camelot": "5A",
-      "moments": [
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 79,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 83,
-      "deezer": 0,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 66,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 77,
-      "deezer": 0,
-      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -380,8 +380,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 79,
-      "score": 1,
+      "deezer": 62,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -407,8 +407,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 79,
-      "score": 1,
+      "deezer": 62,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -433,8 +433,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 79,
-      "score": 1,
+      "deezer": 62,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
