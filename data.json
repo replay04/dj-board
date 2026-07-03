@@ -1,37 +1,39 @@
 {
-  "updated": "2026-07-02",
+  "updated": "2026-07-03",
   "week": 27,
   "sources": {
     "radio_count": 0,
     "singles_count": 2,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 87,
+    "apple_count": 91,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "One Track Mind",
-      "artist": "Naïka",
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
-        "pop",
-        "fr"
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
       "moments": [
-        "cocktail"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 27,
-      "deezer": 62,
-      "score": 6,
+      "apple": 54,
+      "deezer": 38,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -54,7 +56,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 6,
+      "apple": 7,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -82,8 +84,33 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 41,
-      "deezer": 62,
+      "apple": 16,
+      "deezer": 77,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 25,
+      "deezer": 77,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -109,7 +136,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 23,
+      "apple": 20,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -136,7 +163,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 14,
+      "apple": 27,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -164,8 +191,34 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 11,
+      "deezer": 4,
       "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 37,
+      "deezer": 0,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -191,25 +244,24 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 32,
-      "score": 3,
+      "deezer": 48,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "Ensemble",
+      "artist": "Charlotte Cardin",
       "tags": [
         "mariage",
-        "ambiance",
+        "slow",
         "fr"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 66,
+      "youtubeId": "2pCh-KLR9M0",
+      "mixte": 4,
+      "camelot": "2A",
       "moments": [
-        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -217,62 +269,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 45,
+      "apple": 58,
       "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 46,
-      "deezer": 99,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 43,
-      "deezer": 0,
-      "score": 3,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -297,8 +296,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 62,
-      "score": 2,
+      "deezer": 77,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -323,9 +322,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 56,
+      "apple": 77,
       "deezer": 0,
-      "score": 2,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -351,9 +350,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 64,
+      "apple": 83,
       "deezer": 0,
-      "score": 2,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -380,8 +379,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 62,
-      "score": 2,
+      "deezer": 77,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -407,8 +406,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 62,
-      "score": 2,
+      "deezer": 77,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -433,8 +432,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 62,
-      "score": 2,
+      "deezer": 77,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -531,6 +530,33 @@
       "moments": [
         "slow",
         "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
@@ -643,7 +669,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 0,
+      "apple": 91,
       "deezer": 0,
       "score": 0,
       "weeks": 0,
@@ -769,32 +795,6 @@
       "moments": [
         "cocktail",
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Ensemble",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 66,
-      "youtubeId": "2pCh-KLR9M0",
-      "mixte": 4,
-      "camelot": "2A",
-      "moments": [
-        "slow"
       ],
       "radio": 0,
       "singles": 0,
