@@ -1,27 +1,27 @@
 {
-  "updated": "2026-07-12",
-  "week": 28,
+  "updated": "2026-07-13",
+  "week": 29,
   "sources": {
     "radio_count": 0,
-    "singles_count": 2,
+    "singles_count": 0,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 90,
+    "apple_count": 94,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
         "ambiance",
         "fr",
         "rap"
       ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
       "mixte": 3,
-      "camelot": "12A",
+      "camelot": "4B",
       "moments": [
         "cocktail",
         "diner"
@@ -31,8 +31,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 45,
-      "deezer": 43,
+      "apple": 18,
+      "deezer": 90,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -56,27 +56,28 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 5,
+      "apple": 2,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "Soirée mondaine",
+      "artist": "Oria",
       "tags": [
-        "ambiance",
+        "dancefloor",
+        "mariage",
         "fr",
-        "rap"
+        "pop"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
       "moments": [
-        "cocktail",
-        "diner"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
@@ -84,8 +85,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 11,
-      "deezer": 0,
-      "score": 4,
+      "deezer": 94,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -110,8 +111,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 37,
-      "deezer": 91,
+      "apple": 26,
+      "deezer": 89,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -144,30 +145,28 @@
       "trend": 0
     },
     {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
+      "title": "Zoo",
+      "artist": "Shakira",
       "tags": [
         "dancefloor",
-        "mariage",
-        "fr",
+        "intl",
         "pop"
       ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
-      "mixte": 4,
-      "camelot": "3B",
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
       "moments": [
-        "dance",
-        "fin"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 26,
+      "apple": 38,
       "deezer": 0,
-      "score": 4,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -192,35 +191,140 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 38,
+      "apple": 66,
       "deezer": 0,
-      "score": 3,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Zoo",
-      "artist": "Shakira",
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
       "tags": [
         "dancefloor",
         "intl",
         "pop"
       ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
       "mixte": 5,
-      "camelot": "5B",
+      "camelot": "7B",
       "moments": [
-        "dance"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 52,
+      "apple": 56,
       "deezer": 0,
       "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Ensemble",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 66,
+      "youtubeId": "2pCh-KLR9M0",
+      "mixte": 4,
+      "camelot": "2A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 54,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 69,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 72,
+      "deezer": 0,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 80,
+      "deezer": 94,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -350,7 +454,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 94,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -435,33 +539,6 @@
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "La recette",
       "artist": "Jeck & Carla",
       "tags": [
@@ -512,7 +589,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 94,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -593,33 +670,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
-      "mixte": 4,
-      "camelot": "9B",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
+      "deezer": 94,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -672,7 +723,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 94,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -744,57 +795,6 @@
       "moments": [
         "cocktail",
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Ensemble",
-      "artist": "Charlotte Cardin",
-      "tags": [
-        "mariage",
-        "slow",
-        "fr"
-      ],
-      "bpm": 66,
-      "youtubeId": "2pCh-KLR9M0",
-      "mixte": 4,
-      "camelot": "2A",
-      "moments": [
-        "slow"
       ],
       "radio": 0,
       "singles": 0,
