@@ -1,42 +1,15 @@
 {
-  "updated": "2026-07-23",
+  "updated": "2026-07-24",
   "week": 30,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 90,
+    "apple_count": 88,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 14,
-      "deezer": 67,
-      "score": 6,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Soirée mondaine",
       "artist": "Oria",
@@ -59,9 +32,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
-      "deezer": 66,
+      "apple": 12,
+      "deezer": 74,
       "score": 6,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 21,
+      "deezer": 80,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -91,33 +91,6 @@
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 17,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "I Just Might",
       "artist": "Bruno Mars",
       "tags": [
@@ -138,7 +111,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 31,
+      "apple": 25,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -166,33 +139,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 3,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 12,
-      "deezer": 0,
+      "deezer": 10,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -219,7 +166,34 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 35,
+      "deezer": 37,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 46,
+      "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
@@ -245,35 +219,33 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 33,
+      "apple": 45,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
+      "title": "Zoo",
+      "artist": "Shakira",
       "tags": [
         "dancefloor",
-        "mariage",
-        "fr",
+        "intl",
         "pop"
       ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
       "mixte": 5,
-      "camelot": "7A",
+      "camelot": "5B",
       "moments": [
-        "dance",
-        "fin"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 47,
+      "apple": 44,
       "deezer": 0,
       "score": 3,
       "weeks": 0,
@@ -299,36 +271,37 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 89,
-      "deezer": 66,
-      "score": 2,
+      "apple": 0,
+      "deezer": 74,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "La recette",
+      "artist": "Jeck & Carla",
       "tags": [
+        "dancefloor",
         "mariage",
-        "slow",
-        "intl",
+        "fr",
         "pop"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
       "moments": [
-        "slow"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 57,
+      "apple": 77,
       "deezer": 0,
-      "score": 2,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -354,9 +327,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 89,
-      "deezer": 66,
-      "score": 2,
+      "apple": 0,
+      "deezer": 74,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -382,7 +355,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 66,
+      "deezer": 74,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -408,7 +381,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 66,
+      "deezer": 74,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -433,7 +406,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 66,
+      "deezer": 74,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -531,6 +504,33 @@
       "moments": [
         "slow",
         "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
