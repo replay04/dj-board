@@ -1,39 +1,64 @@
 {
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "week": 31,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 90,
+    "apple_count": 94,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
-        "ambiance",
+        "dancefloor",
+        "mariage",
         "fr",
-        "rap"
+        "pop"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
       "moments": [
-        "cocktail",
-        "diner"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
-      "deezer": 77,
-      "score": 6,
+      "apple": 36,
+      "deezer": 60,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 7,
+      "deezer": 0,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -59,34 +84,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
-      "deezer": 68,
-      "score": 6,
+      "apple": 23,
+      "deezer": 88,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
-        "dancefloor",
-        "intl"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
       "moments": [
-        "dance"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 10,
+      "apple": 30,
       "deezer": 0,
-      "score": 5,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -118,58 +145,6 @@
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 42,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 69,
-      "deezer": 68,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "SPA",
       "artist": "GIMS & Theodora",
       "tags": [
@@ -191,88 +166,35 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 39,
-      "score": 2,
+      "deezer": 30,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
-        "dancefloor",
         "mariage",
-        "fr",
-        "pop"
+        "ambiance",
+        "fr"
       ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 58,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
       "mixte": 5,
-      "camelot": "7B",
+      "camelot": "9A",
       "moments": [
-        "dance",
-        "fin"
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 55,
+      "apple": 46,
       "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 61,
-      "deezer": 0,
-      "score": 2,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -297,7 +219,34 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 68,
+      "deezer": 88,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 74,
+      "deezer": 0,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -325,7 +274,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 68,
+      "deezer": 88,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -352,7 +301,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 68,
+      "deezer": 88,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -378,7 +327,32 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 68,
+      "deezer": 88,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 88,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -583,6 +557,32 @@
       "moments": [
         "dance",
         "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
