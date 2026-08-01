@@ -1,39 +1,39 @@
 {
-  "updated": "2026-07-31",
+  "updated": "2026-08-01",
   "week": 31,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 89,
+    "apple_count": 88,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
-        "mariage",
         "ambiance",
-        "fr"
+        "fr",
+        "rap"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
       "moments": [
         "cocktail",
-        "slow"
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 21,
-      "deezer": 0,
-      "score": 4,
+      "apple": 30,
+      "deezer": 68,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -56,7 +56,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 19,
+      "apple": 10,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 17,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -84,7 +111,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 10,
+      "deezer": 6,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -111,61 +138,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 26,
+      "apple": 14,
       "deezer": 0,
       "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 28,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 33,
-      "deezer": 0,
-      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -191,8 +166,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 38,
-      "score": 3,
+      "deezer": 46,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -217,7 +192,33 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 55,
+      "apple": 57,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 58,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -489,32 +490,6 @@
       "trend": 0
     },
     {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "Dream As One",
       "artist": "Miley Cyrus",
       "tags": [
@@ -769,6 +744,31 @@
       "moments": [
         "cocktail",
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
