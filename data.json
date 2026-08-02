@@ -1,42 +1,15 @@
 {
-  "updated": "2026-08-01",
+  "updated": "2026-08-02",
   "week": 31,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 88,
+    "apple_count": 83,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 30,
-      "deezer": 68,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Nuevayol",
       "artist": "Bad Bunny",
@@ -56,7 +29,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 10,
+      "apple": 7,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -83,7 +56,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 17,
+      "apple": 16,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -111,7 +84,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 6,
+      "deezer": 3,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -138,9 +111,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 14,
+      "apple": 12,
       "deezer": 0,
       "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 64,
+      "deezer": 74,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -166,8 +166,35 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 46,
-      "score": 2,
+      "deezer": 36,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 42,
+      "deezer": 0,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -192,35 +219,64 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 57,
+      "apple": 70,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Zoo",
-      "artist": "Shakira",
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
       "tags": [
         "dancefloor",
         "intl",
         "pop"
       ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
       "mixte": 5,
-      "camelot": "5B",
+      "camelot": "7B",
       "moments": [
-        "dance"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 58,
+      "apple": 54,
       "deezer": 0,
       "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 73,
+      "deezer": 0,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -356,33 +412,6 @@
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "End of Beginning",
       "artist": "DJO",
       "tags": [
@@ -435,48 +464,19 @@
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
+      "title": "Zoo",
+      "artist": "Shakira",
       "tags": [
         "dancefloor",
         "intl",
         "pop"
       ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
       "mixte": 5,
-      "camelot": "7B",
+      "camelot": "5B",
       "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
