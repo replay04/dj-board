@@ -1,15 +1,42 @@
 {
-  "updated": "2026-08-02",
-  "week": 31,
+  "updated": "2026-08-03",
+  "week": 32,
   "sources": {
     "radio_count": 0,
-    "singles_count": 1,
+    "singles_count": 0,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 83,
+    "apple_count": 88,
     "deezer_count": 100
   },
   "tracks": [
+    {
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 15,
+      "deezer": 75,
+      "score": 6,
+      "weeks": 0,
+      "trend": 0
+    },
     {
       "title": "Nuevayol",
       "artist": "Bad Bunny",
@@ -29,9 +56,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 7,
+      "apple": 8,
       "deezer": 0,
       "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 67,
+      "deezer": 44,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -56,7 +110,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 16,
+      "apple": 19,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 27,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -84,7 +165,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 3,
+      "deezer": 5,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -111,90 +192,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 12,
+      "apple": 11,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 64,
-      "deezer": 74,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
+        "pop",
+        "fr"
       ],
       "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
+      "youtubeId": "PhxPYdBRgYs",
       "mixte": 3,
-      "camelot": "12A",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 36,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
       "camelot": "8A",
       "moments": [
-        "slow"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 42,
+      "apple": 26,
       "deezer": 0,
-      "score": 3,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -219,35 +244,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 70,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 54,
-      "deezer": 0,
+      "apple": 84,
+      "deezer": 80,
       "score": 2,
       "weeks": 0,
       "trend": 0
@@ -274,7 +272,33 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 73,
+      "apple": 61,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 85,
       "deezer": 0,
       "score": 1,
       "weeks": 0,
@@ -412,6 +436,33 @@
       "trend": 0
     },
     {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "End of Beginning",
       "artist": "DJO",
       "tags": [
@@ -451,32 +502,6 @@
       "camelot": "1B",
       "moments": [
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
       ],
       "radio": 0,
       "singles": 0,
@@ -744,31 +769,6 @@
       "moments": [
         "cocktail",
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
