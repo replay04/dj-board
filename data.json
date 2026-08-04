@@ -1,42 +1,15 @@
 {
-  "updated": "2026-08-03",
+  "updated": "2026-08-04",
   "week": 32,
   "sources": {
     "radio_count": 0,
-    "singles_count": 0,
+    "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
     "apple_count": 88,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 15,
-      "deezer": 75,
-      "score": 6,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Nuevayol",
       "artist": "Bad Bunny",
@@ -63,17 +36,17 @@
       "trend": 0
     },
     {
-      "title": "SPA",
-      "artist": "GIMS & Theodora",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
         "ambiance",
         "fr",
         "rap"
       ],
-      "bpm": 88,
-      "youtubeId": "hT8nvc6fxBs",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
       "mixte": 3,
-      "camelot": "12A",
+      "camelot": "4B",
       "moments": [
         "cocktail",
         "diner"
@@ -83,8 +56,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 67,
-      "deezer": 44,
+      "apple": 26,
+      "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -110,34 +83,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 19,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 27,
+      "apple": 15,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -165,7 +111,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 5,
+      "deezer": 3,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -192,9 +138,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 17,
       "deezer": 0,
       "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 35,
+      "deezer": 0,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -217,9 +190,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 26,
+      "apple": 38,
       "deezer": 0,
-      "score": 4,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "SPA",
+      "artist": "GIMS & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 88,
+      "youtubeId": "hT8nvc6fxBs",
+      "mixte": 3,
+      "camelot": "12A",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 40,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -244,8 +244,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 84,
-      "deezer": 80,
+      "apple": 74,
+      "deezer": 96,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 60,
+      "deezer": 0,
       "score": 2,
       "weeks": 0,
       "trend": 0
@@ -272,33 +298,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 61,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 85,
+      "apple": 77,
       "deezer": 0,
       "score": 1,
       "weeks": 0,
