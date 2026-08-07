@@ -1,12 +1,12 @@
 {
-  "updated": "2026-08-06",
+  "updated": "2026-08-07",
   "week": 32,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 91,
+    "apple_count": 90,
     "deezer_count": 100
   },
   "tracks": [
@@ -29,35 +29,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 5,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
-      "mixte": 4,
-      "camelot": "3B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 8,
+      "apple": 7,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -84,26 +56,26 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 15,
+      "apple": 17,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
         "mariage",
-        "slow",
-        "intl",
-        "pop"
+        "ambiance",
+        "fr"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
       "moments": [
+        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -111,35 +83,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 30,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 21,
+      "apple": 25,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -167,31 +111,34 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 3,
+      "deezer": 9,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "One Track Mind",
-      "artist": "Naïka",
+      "title": "Soirée mondaine",
+      "artist": "Oria",
       "tags": [
-        "pop",
-        "fr"
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
       "moments": [
-        "cocktail"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 28,
+      "apple": 13,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -219,25 +166,50 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 35,
+      "deezer": 25,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "mariage",
-        "ambiance",
+        "pop",
         "fr"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
       "moments": [
-        "cocktail",
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 50,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
         "slow"
       ],
       "radio": 0,
@@ -245,36 +217,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 47,
+      "apple": 67,
       "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 60,
-      "deezer": 70,
-      "score": 3,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -299,35 +244,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 37,
+      "apple": 58,
       "deezer": 0,
-      "score": 3,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Tant Pis Pour Elle",
-      "artist": "Charlotte Cardin",
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
+        "dancefloor",
         "mariage",
-        "slow",
-        "fr"
+        "fr",
+        "pop"
       ],
-      "bpm": 68,
-      "youtubeId": "4lSWkqXoVRo",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
       "mixte": 4,
-      "camelot": "9B",
+      "camelot": "6B",
       "moments": [
-        "slow"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 50,
+      "apple": 80,
       "deezer": 0,
-      "score": 3,
+      "score": 1,
       "weeks": 0,
       "trend": 0
     },
@@ -515,6 +461,34 @@
       "trend": 0
     },
     {
+      "title": "La recette",
+      "artist": "Jeck & Carla",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Zoo",
       "artist": "Shakira",
       "tags": [
@@ -636,6 +610,32 @@
       "camelot": "5A",
       "moments": [
         "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Tant Pis Pour Elle",
+      "artist": "Charlotte Cardin",
+      "tags": [
+        "mariage",
+        "slow",
+        "fr"
+      ],
+      "bpm": 68,
+      "youtubeId": "4lSWkqXoVRo",
+      "mixte": 4,
+      "camelot": "9B",
+      "moments": [
         "slow"
       ],
       "radio": 0,
