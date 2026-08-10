@@ -1,12 +1,12 @@
 {
-  "updated": "2026-08-09",
-  "week": 32,
+  "updated": "2026-08-10",
+  "week": 33,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 92,
+    "apple_count": 91,
     "deezer_count": 100
   },
   "tracks": [
@@ -29,7 +29,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 5,
+      "apple": 6,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -57,8 +57,33 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 6,
-      "deezer": 0,
+      "apple": 8,
+      "deezer": 93,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 15,
+      "deezer": 93,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -84,7 +109,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 29,
+      "apple": 20,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -112,86 +137,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 3,
+      "deezer": 7,
       "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 28,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 44,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 37,
-      "deezer": 0,
-      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -217,33 +164,113 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 44,
-      "score": 2,
+      "deezer": 36,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
+        "mariage",
         "ambiance",
-        "intl",
-        "pop"
+        "fr"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
       "moments": [
         "cocktail",
-        "diner"
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 68,
+      "apple": 40,
+      "deezer": 0,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 55,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 54,
+      "deezer": 0,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 53,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -375,53 +402,26 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 93,
       "score": 0,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "End of Beginning",
+      "artist": "DJO",
       "tags": [
-        "mariage",
-        "slow",
+        "ambiance",
         "intl",
         "pop"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
       "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
@@ -537,7 +537,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 93,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -618,7 +618,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 93,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -697,7 +697,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 93,
       "score": 0,
       "weeks": 0,
       "trend": 0
