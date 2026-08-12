@@ -1,12 +1,12 @@
 {
-  "updated": "2026-08-11",
+  "updated": "2026-08-12",
   "week": 33,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 87,
+    "apple_count": 89,
     "deezer_count": 100
   },
   "tracks": [
@@ -31,8 +31,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 19,
-      "deezer": 88,
+      "apple": 7,
+      "deezer": 0,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -59,8 +59,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 15,
-      "deezer": 85,
+      "apple": 9,
+      "deezer": 0,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -84,7 +84,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 13,
+      "apple": 15,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -112,7 +112,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 12,
+      "deezer": 9,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -139,33 +139,35 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 30,
+      "deezer": 32,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "One Track Mind",
-      "artist": "Naïka",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
-        "pop",
+        "mariage",
+        "ambiance",
         "fr"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
       "moments": [
-        "cocktail"
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 64,
-      "deezer": 85,
-      "score": 3,
+      "apple": 56,
+      "deezer": 0,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -197,108 +199,27 @@
       "trend": 0
     },
     {
-      "title": "Pocahontas",
-      "artist": "PLK",
+      "title": "Zoo",
+      "artist": "Shakira",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 87,
-      "youtubeId": "JvokQ1Mkbl0",
-      "mixte": 2,
-      "camelot": "5A",
-      "moments": [
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 85,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Dream As One",
-      "artist": "Miley Cyrus",
-      "tags": [
-        "mariage",
-        "ambiance",
+        "dancefloor",
         "intl",
         "pop"
       ],
-      "bpm": 82,
-      "youtubeId": "RLRrAVHPkPE",
-      "mixte": 4,
-      "camelot": "3A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 85,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "L'Horizon",
-      "artist": "Pierre Garnier",
-      "tags": [
-        "mariage",
-        "fr",
-        "variete"
-      ],
-      "bpm": 76,
-      "youtubeId": "fj_MkTfWS3s",
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
       "mixte": 5,
-      "camelot": "5A",
+      "camelot": "5B",
       "moments": [
-        "cocktail",
-        "slow"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 0,
-      "deezer": 85,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Génération Impolie",
-      "artist": "Franglish feat. Keblack",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 90,
-      "youtubeId": "9bZkp7q19f0",
-      "mixte": 2,
-      "camelot": "2B",
-      "moments": [
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 85,
+      "apple": 76,
+      "deezer": 0,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -409,20 +330,19 @@
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "Pocahontas",
+      "artist": "PLK",
       "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 87,
+      "youtubeId": "JvokQ1Mkbl0",
+      "mixte": 2,
+      "camelot": "5A",
       "moments": [
-        "slow"
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
@@ -436,19 +356,19 @@
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
         "mariage",
-        "ambiance",
-        "fr"
+        "slow",
+        "intl",
+        "pop"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
       "moments": [
-        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -570,19 +490,21 @@
       "trend": 0
     },
     {
-      "title": "Zoo",
-      "artist": "Shakira",
+      "title": "Dream As One",
+      "artist": "Miley Cyrus",
       "tags": [
-        "dancefloor",
+        "mariage",
+        "ambiance",
         "intl",
         "pop"
       ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
+      "bpm": 82,
+      "youtubeId": "RLRrAVHPkPE",
+      "mixte": 4,
+      "camelot": "3A",
       "moments": [
-        "dance"
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
@@ -650,6 +572,33 @@
       "trend": 0
     },
     {
+      "title": "L'Horizon",
+      "artist": "Pierre Garnier",
+      "tags": [
+        "mariage",
+        "fr",
+        "variete"
+      ],
+      "bpm": 76,
+      "youtubeId": "fj_MkTfWS3s",
+      "mixte": 5,
+      "camelot": "5A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Tant Pis Pour Elle",
       "artist": "Charlotte Cardin",
       "tags": [
@@ -690,6 +639,32 @@
       "camelot": "6A",
       "moments": [
         "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Génération Impolie",
+      "artist": "Franglish feat. Keblack",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 90,
+      "youtubeId": "9bZkp7q19f0",
+      "mixte": 2,
+      "camelot": "2B",
+      "moments": [
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
@@ -769,6 +744,31 @@
       "moments": [
         "cocktail",
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
