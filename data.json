@@ -1,37 +1,35 @@
 {
-  "updated": "2026-08-12",
+  "updated": "2026-08-13",
   "week": 33,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 89,
+    "apple_count": 92,
     "deezer_count": 100
   },
   "tracks": [
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
+        "dancefloor",
+        "intl"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
-      "mixte": 3,
-      "camelot": "4B",
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
       "moments": [
-        "cocktail",
-        "diner"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 7,
+      "apple": 8,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
@@ -59,23 +57,52 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 9,
+      "apple": 10,
       "deezer": 0,
       "score": 5,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 16,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
         "dancefloor",
-        "intl"
+        "mariage",
+        "fr",
+        "pop"
       ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
       "moments": [
         "dance"
       ],
@@ -84,7 +111,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 15,
+      "apple": 13,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -112,7 +139,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 9,
+      "deezer": 2,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -139,7 +166,34 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 32,
+      "deezer": 29,
+      "score": 3,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "tags": [
+        "mariage",
+        "slow",
+        "intl",
+        "pop"
+      ],
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
+      "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 44,
+      "deezer": 0,
       "score": 3,
       "weeks": 0,
       "trend": 0
@@ -165,62 +219,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 56,
+      "apple": 53,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
+      "title": "End of Beginning",
+      "artist": "DJO",
       "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 65,
-      "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Zoo",
-      "artist": "Shakira",
-      "tags": [
-        "dancefloor",
+        "ambiance",
         "intl",
         "pop"
       ],
-      "bpm": 104,
-      "youtubeId": "Kw3935PH01E",
-      "mixte": 5,
-      "camelot": "5B",
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
       "moments": [
-        "dance"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 76,
+      "apple": 68,
       "deezer": 0,
-      "score": 1,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -356,60 +384,6 @@
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
-      "tags": [
-        "mariage",
-        "slow",
-        "intl",
-        "pop"
-      ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
-      "moments": [
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "End of Beginning",
-      "artist": "DJO",
-      "tags": [
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
-      "moments": [
-        "cocktail",
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
       "title": "Argent Sale",
       "artist": "La Rvfleuze",
       "tags": [
@@ -477,6 +451,32 @@
       "moments": [
         "dance",
         "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Zoo",
+      "artist": "Shakira",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 104,
+      "youtubeId": "Kw3935PH01E",
+      "mixte": 5,
+      "camelot": "5B",
+      "moments": [
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
