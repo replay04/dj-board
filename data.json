@@ -1,93 +1,15 @@
 {
-  "updated": "2026-08-15",
+  "updated": "2026-08-16",
   "week": 33,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 88,
+    "apple_count": 90,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
-      "mixte": 4,
-      "camelot": "3B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 7,
-      "deezer": 63,
-      "score": 7,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 10,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 40,
-      "deezer": 63,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Melodrama",
       "artist": "Disiz & Theodora",
@@ -109,7 +31,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 20,
+      "apple": 14,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -136,34 +58,59 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 28,
+      "apple": 20,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
+        "dancefloor",
         "mariage",
-        "ambiance",
-        "fr"
+        "fr",
+        "pop"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
       "moments": [
-        "cocktail",
-        "slow"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 17,
+      "apple": 24,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 15,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -191,7 +138,35 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 3,
+      "deezer": 4,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Soirée mondaine",
+      "artist": "Oria",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 16,
+      "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -218,61 +193,60 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 31,
+      "deezer": 38,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Pocahontas",
-      "artist": "PLK",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
+        "mariage",
         "ambiance",
-        "fr",
-        "rap"
+        "fr"
       ],
-      "bpm": 87,
-      "youtubeId": "JvokQ1Mkbl0",
-      "mixte": 2,
-      "camelot": "5A",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
       "moments": [
-        "diner"
+        "cocktail",
+        "slow"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 0,
-      "deezer": 63,
-      "score": 2,
+      "apple": 39,
+      "deezer": 0,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
+        "pop",
+        "fr"
       ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
       "moments": [
-        "dance"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 71,
+      "apple": 50,
       "deezer": 0,
-      "score": 2,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -297,89 +271,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 61,
+      "apple": 55,
       "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Dream As One",
-      "artist": "Miley Cyrus",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "intl",
-        "pop"
-      ],
-      "bpm": 82,
-      "youtubeId": "RLRrAVHPkPE",
-      "mixte": 4,
-      "camelot": "3A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 63,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "L'Horizon",
-      "artist": "Pierre Garnier",
-      "tags": [
-        "mariage",
-        "fr",
-        "variete"
-      ],
-      "bpm": 76,
-      "youtubeId": "fj_MkTfWS3s",
-      "mixte": 5,
-      "camelot": "5A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 63,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Génération Impolie",
-      "artist": "Franglish feat. Keblack",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 90,
-      "youtubeId": "9bZkp7q19f0",
-      "mixte": 2,
-      "camelot": "2B",
-      "moments": [
-        "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 63,
       "score": 2,
       "weeks": 0,
       "trend": 0
@@ -477,6 +370,32 @@
       "moments": [
         "slow",
         "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Pocahontas",
+      "artist": "PLK",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 87,
+      "youtubeId": "JvokQ1Mkbl0",
+      "mixte": 2,
+      "camelot": "5A",
+      "moments": [
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
@@ -596,6 +515,34 @@
       "trend": 0
     },
     {
+      "title": "Dream As One",
+      "artist": "Miley Cyrus",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "intl",
+        "pop"
+      ],
+      "bpm": 82,
+      "youtubeId": "RLRrAVHPkPE",
+      "mixte": 4,
+      "camelot": "3A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Quand Même",
       "artist": "M. Pokora",
       "tags": [
@@ -650,6 +597,33 @@
       "trend": 0
     },
     {
+      "title": "L'Horizon",
+      "artist": "Pierre Garnier",
+      "tags": [
+        "mariage",
+        "fr",
+        "variete"
+      ],
+      "bpm": 76,
+      "youtubeId": "fj_MkTfWS3s",
+      "mixte": 5,
+      "camelot": "5A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
       "title": "Tant Pis Pour Elle",
       "artist": "Charlotte Cardin",
       "tags": [
@@ -690,6 +664,32 @@
       "camelot": "6A",
       "moments": [
         "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Génération Impolie",
+      "artist": "Franglish feat. Keblack",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 90,
+      "youtubeId": "9bZkp7q19f0",
+      "mixte": 2,
+      "camelot": "2B",
+      "moments": [
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
