@@ -1,15 +1,93 @@
 {
-  "updated": "2026-08-16",
-  "week": 33,
+  "updated": "2026-08-17",
+  "week": 34,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 90,
+    "apple_count": 93,
     "deezer_count": 100
   },
   "tracks": [
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 9,
+      "deezer": 0,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Soirée mondaine",
+      "artist": "Oria",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 108,
+      "youtubeId": "xzBTvODwmr8",
+      "mixte": 4,
+      "camelot": "3B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 10,
+      "deezer": 89,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 24,
+      "deezer": 89,
+      "score": 5,
+      "weeks": 0,
+      "trend": 0
+    },
     {
       "title": "Melodrama",
       "artist": "Disiz & Theodora",
@@ -31,26 +109,26 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 14,
+      "apple": 11,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "The Fate of Ophelia",
-      "artist": "Taylor Swift",
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
       "tags": [
         "mariage",
-        "slow",
-        "intl",
-        "pop"
+        "ambiance",
+        "fr"
       ],
-      "bpm": 140,
-      "youtubeId": "ko70cExuzZM",
-      "mixte": 4,
-      "camelot": "8A",
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
       "moments": [
+        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -58,59 +136,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 20,
+      "apple": 30,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
+      "title": "La recette",
+      "artist": "Jeck & Carla",
       "tags": [
         "dancefloor",
         "mariage",
         "fr",
         "pop"
       ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
+      "bpm": 100,
+      "youtubeId": "9kBpbQDZdbQ",
+      "mixte": 5,
+      "camelot": "7A",
       "moments": [
-        "dance"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 24,
-      "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 15,
+      "apple": 21,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -138,24 +192,23 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 4,
+      "deezer": 8,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Soirée mondaine",
-      "artist": "Oria",
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
       "tags": [
         "dancefloor",
-        "mariage",
-        "fr",
+        "intl",
         "pop"
       ],
-      "bpm": 108,
-      "youtubeId": "xzBTvODwmr8",
-      "mixte": 4,
-      "camelot": "3B",
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
       "moments": [
         "dance",
         "fin"
@@ -165,9 +218,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 16,
+      "apple": 37,
       "deezer": 0,
-      "score": 4,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -193,25 +246,25 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 38,
-      "score": 3,
+      "deezer": 40,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
       "tags": [
         "mariage",
-        "ambiance",
-        "fr"
+        "slow",
+        "intl",
+        "pop"
       ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
+      "bpm": 140,
+      "youtubeId": "ko70cExuzZM",
+      "mixte": 4,
+      "camelot": "8A",
       "moments": [
-        "cocktail",
         "slow"
       ],
       "radio": 0,
@@ -219,59 +272,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 39,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 50,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 55,
+      "apple": 64,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -403,6 +404,33 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
+      "deezer": 89,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
       "deezer": 0,
       "score": 0,
       "weeks": 0,
@@ -448,34 +476,6 @@
       "camelot": "1B",
       "moments": [
         "diner"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 0,
-      "score": 0,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "La recette",
-      "artist": "Jeck & Carla",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 100,
-      "youtubeId": "9kBpbQDZdbQ",
-      "mixte": 5,
-      "camelot": "7A",
-      "moments": [
-        "dance",
-        "fin"
       ],
       "radio": 0,
       "singles": 0,
@@ -537,7 +537,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 89,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -618,7 +618,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 89,
       "score": 0,
       "weeks": 0,
       "trend": 0
@@ -697,7 +697,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 0,
+      "deezer": 89,
       "score": 0,
       "weeks": 0,
       "trend": 0
