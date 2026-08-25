@@ -1,12 +1,12 @@
 {
-  "updated": "2026-08-24",
+  "updated": "2026-08-25",
   "week": 35,
   "sources": {
     "radio_count": 0,
-    "singles_count": 0,
+    "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 89,
+    "apple_count": 88,
     "deezer_count": 100
   },
   "tracks": [
@@ -31,7 +31,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 26,
+      "apple": 24,
       "deezer": 49,
       "score": 6,
       "weeks": 0,
@@ -59,7 +59,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 16,
+      "apple": 10,
       "deezer": 73,
       "score": 6,
       "weeks": 0,
@@ -84,33 +84,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 4,
+      "apple": 3,
       "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 22,
-      "deezer": 73,
       "score": 5,
       "weeks": 0,
       "trend": 0
@@ -136,7 +111,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 17,
+      "apple": 27,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -189,35 +164,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 21,
+      "apple": 37,
       "deezer": 0,
-      "score": 4,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 41,
-      "deezer": 95,
       "score": 3,
       "weeks": 0,
       "trend": 0
@@ -245,6 +193,33 @@
       "spotify": 0,
       "apple": 0,
       "deezer": 50,
+      "score": 2,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
+      "tags": [
+        "dancefloor",
+        "mariage",
+        "fr",
+        "pop"
+      ],
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 59,
+      "deezer": 95,
       "score": 2,
       "weeks": 0,
       "trend": 0
@@ -296,7 +271,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 77,
+      "apple": 74,
       "deezer": 0,
       "score": 1,
       "weeks": 0,
@@ -371,6 +346,31 @@
       "camelot": "2B",
       "moments": [
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 73,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
