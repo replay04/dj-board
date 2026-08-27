@@ -1,40 +1,15 @@
 {
-  "updated": "2026-08-26",
+  "updated": "2026-08-27",
   "week": 35,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 90,
+    "apple_count": 89,
     "deezer_count": 100
   },
   "tracks": [
-    {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
-      "tags": [
-        "dancefloor",
-        "intl"
-      ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 7,
-      "deezer": 0,
-      "score": 5,
-      "weeks": 0,
-      "trend": 0
-    },
     {
       "title": "Melodrama",
       "artist": "Disiz & Theodora",
@@ -56,7 +31,32 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 16,
+      "apple": 28,
+      "deezer": 0,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 17,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -83,7 +83,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 30,
+      "apple": 29,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -111,7 +111,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 2,
+      "deezer": 10,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -138,9 +138,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 27,
+      "apple": 21,
       "deezer": 0,
       "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 45,
+      "deezer": 0,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -166,8 +193,8 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 33,
-      "score": 3,
+      "deezer": 48,
+      "score": 2,
       "weeks": 0,
       "trend": 0
     },
@@ -192,36 +219,9 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 61,
+      "apple": 71,
       "deezer": 0,
       "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
-      "tags": [
-        "mariage",
-        "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 83,
-      "deezer": 0,
-      "score": 1,
       "weeks": 0,
       "trend": 0
     },
