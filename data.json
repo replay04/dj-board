@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-03",
+  "updated": "2026-09-04",
   "week": 36,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 91,
+    "apple_count": 93,
     "deezer_count": 100
   },
   "tracks": [
@@ -32,33 +32,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 4,
-      "deezer": 66,
-      "score": 7,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 23,
-      "deezer": 66,
+      "apple": 10,
+      "deezer": 72,
       "score": 6,
       "weeks": 0,
       "trend": 0
@@ -82,35 +57,35 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 11,
+      "apple": 9,
       "deezer": 0,
-      "score": 4,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "What You Want",
+      "artist": "Angèle & Justice",
       "tags": [
-        "ambiance",
-        "intl",
+        "dancefloor",
+        "mariage",
+        "fr",
         "pop"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
+      "bpm": 110,
+      "youtubeId": "e5s8MdtnbMM",
+      "mixte": 4,
+      "camelot": "6B",
       "moments": [
-        "cocktail",
-        "diner"
+        "dance"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 30,
-      "deezer": 0,
+      "apple": 43,
+      "deezer": 82,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -137,8 +112,35 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 6,
+      "deezer": 2,
       "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
+      "tags": [
+        "ambiance",
+        "fr",
+        "rap"
+      ],
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
+      "moments": [
+        "cocktail",
+        "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 42,
+      "deezer": 94,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -164,77 +166,23 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 31,
+      "deezer": 34,
       "score": 3,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Comme Caroline",
-      "artist": "Zaho feat. MC Solaar",
+      "title": "End of Beginning",
+      "artist": "DJO",
       "tags": [
-        "mariage",
         "ambiance",
-        "fr"
-      ],
-      "bpm": 78,
-      "youtubeId": "uRA8xnBxm8U",
-      "mixte": 5,
-      "camelot": "9A",
-      "moments": [
-        "cocktail",
-        "slow"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 35,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
         "intl",
         "pop"
       ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 45,
-      "deezer": 0,
-      "score": 3,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
-      "tags": [
-        "ambiance",
-        "fr",
-        "rap"
-      ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
       "mixte": 3,
-      "camelot": "4B",
+      "camelot": "9B",
       "moments": [
         "cocktail",
         "diner"
@@ -244,35 +192,8 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 71,
+      "apple": 61,
       "deezer": 0,
-      "score": 2,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "What You Want",
-      "artist": "Angèle & Justice",
-      "tags": [
-        "dancefloor",
-        "mariage",
-        "fr",
-        "pop"
-      ],
-      "bpm": 110,
-      "youtubeId": "e5s8MdtnbMM",
-      "mixte": 4,
-      "camelot": "6B",
-      "moments": [
-        "dance"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 80,
-      "deezer": 88,
       "score": 2,
       "weeks": 0,
       "trend": 0
@@ -298,7 +219,34 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 66,
+      "deezer": 72,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 90,
+      "deezer": 0,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -326,7 +274,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 66,
+      "deezer": 72,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -353,7 +301,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 66,
+      "deezer": 72,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -379,7 +327,32 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 66,
+      "deezer": 72,
+      "score": 1,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "One Track Mind",
+      "artist": "Naïka",
+      "tags": [
+        "pop",
+        "fr"
+      ],
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
+      "mixte": 3,
+      "camelot": "8A",
+      "moments": [
+        "cocktail"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 72,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -503,6 +476,33 @@
       "mixte": 4,
       "camelot": "8A",
       "moments": [
+        "slow"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Comme Caroline",
+      "artist": "Zaho feat. MC Solaar",
+      "tags": [
+        "mariage",
+        "ambiance",
+        "fr"
+      ],
+      "bpm": 78,
+      "youtubeId": "uRA8xnBxm8U",
+      "mixte": 5,
+      "camelot": "9A",
+      "moments": [
+        "cocktail",
         "slow"
       ],
       "radio": 0,
