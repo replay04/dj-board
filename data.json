@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "week": 36,
   "sources": {
     "radio_count": 0,
@@ -32,34 +32,36 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 10,
-      "deezer": 72,
+      "apple": 12,
+      "deezer": 67,
       "score": 6,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Nuevayol",
-      "artist": "Bad Bunny",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
-        "dancefloor",
-        "intl"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 136,
-      "youtubeId": "s4ftEdW2wdo",
-      "mixte": 2,
-      "camelot": "6A",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
+      "mixte": 3,
+      "camelot": "4B",
       "moments": [
-        "dance"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 9,
+      "apple": 21,
       "deezer": 0,
-      "score": 5,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -84,8 +86,33 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 43,
-      "deezer": 82,
+      "apple": 48,
+      "deezer": 81,
+      "score": 4,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "Nuevayol",
+      "artist": "Bad Bunny",
+      "tags": [
+        "dancefloor",
+        "intl"
+      ],
+      "bpm": 136,
+      "youtubeId": "s4ftEdW2wdo",
+      "mixte": 2,
+      "camelot": "6A",
+      "moments": [
+        "dance"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 14,
+      "deezer": 0,
       "score": 4,
       "weeks": 0,
       "trend": 0
@@ -112,35 +139,33 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 2,
+      "deezer": 3,
       "score": 4,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
+        "pop",
+        "fr"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
       "mixte": 3,
-      "camelot": "4B",
+      "camelot": "8A",
       "moments": [
-        "cocktail",
-        "diner"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 42,
-      "deezer": 94,
-      "score": 3,
+      "apple": 49,
+      "deezer": 67,
+      "score": 4,
       "weeks": 0,
       "trend": 0
     },
@@ -166,7 +191,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 34,
+      "deezer": 36,
       "score": 3,
       "weeks": 0,
       "trend": 0
@@ -192,7 +217,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 61,
+      "apple": 52,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -219,34 +244,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 72,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
-      "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
-      ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
-      "moments": [
-        "dance",
-        "fin"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 90,
-      "deezer": 0,
+      "deezer": 67,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -274,7 +272,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 72,
+      "deezer": 67,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -301,7 +299,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 72,
+      "deezer": 67,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -327,32 +325,7 @@
       "tiktok": 0,
       "spotify": 0,
       "apple": 0,
-      "deezer": 72,
-      "score": 1,
-      "weeks": 0,
-      "trend": 0
-    },
-    {
-      "title": "One Track Mind",
-      "artist": "Naïka",
-      "tags": [
-        "pop",
-        "fr"
-      ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
-      "mixte": 3,
-      "camelot": "8A",
-      "moments": [
-        "cocktail"
-      ],
-      "radio": 0,
-      "singles": 0,
-      "shazam": 0,
-      "tiktok": 0,
-      "spotify": 0,
-      "apple": 0,
-      "deezer": 72,
+      "deezer": 67,
       "score": 1,
       "weeks": 0,
       "trend": 0
@@ -529,6 +502,33 @@
       "camelot": "1B",
       "moments": [
         "diner"
+      ],
+      "radio": 0,
+      "singles": 0,
+      "shazam": 0,
+      "tiktok": 0,
+      "spotify": 0,
+      "apple": 0,
+      "deezer": 0,
+      "score": 0,
+      "weeks": 0,
+      "trend": 0
+    },
+    {
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
+      "tags": [
+        "dancefloor",
+        "intl",
+        "pop"
+      ],
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
+      "moments": [
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
