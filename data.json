@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-05",
+  "updated": "2026-09-06",
   "week": 36,
   "sources": {
     "radio_count": 0,
     "singles_count": 1,
     "shazam_count": 0,
     "spotify_count": 0,
-    "apple_count": 93,
+    "apple_count": 91,
     "deezer_count": 100
   },
   "tracks": [
@@ -32,36 +32,34 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 12,
+      "apple": 19,
       "deezer": 67,
       "score": 6,
       "weeks": 0,
       "trend": 0
     },
     {
-      "title": "Melodrama",
-      "artist": "Disiz & Theodora",
+      "title": "One Track Mind",
+      "artist": "Naïka",
       "tags": [
-        "ambiance",
-        "fr",
-        "rap"
+        "pop",
+        "fr"
       ],
-      "bpm": 154,
-      "youtubeId": "O2tKlnfrLkY",
+      "bpm": 88,
+      "youtubeId": "PhxPYdBRgYs",
       "mixte": 3,
-      "camelot": "4B",
+      "camelot": "8A",
       "moments": [
-        "cocktail",
-        "diner"
+        "cocktail"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 21,
-      "deezer": 0,
-      "score": 4,
+      "apple": 28,
+      "deezer": 67,
+      "score": 5,
       "weeks": 0,
       "trend": 0
     },
@@ -86,7 +84,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 48,
+      "apple": 32,
       "deezer": 81,
       "score": 4,
       "weeks": 0,
@@ -111,7 +109,7 @@
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 14,
+      "apple": 23,
       "deezer": 0,
       "score": 4,
       "weeks": 0,
@@ -145,27 +143,29 @@
       "trend": 0
     },
     {
-      "title": "One Track Mind",
-      "artist": "Naïka",
+      "title": "Melodrama",
+      "artist": "Disiz & Theodora",
       "tags": [
-        "pop",
-        "fr"
+        "ambiance",
+        "fr",
+        "rap"
       ],
-      "bpm": 88,
-      "youtubeId": "PhxPYdBRgYs",
+      "bpm": 154,
+      "youtubeId": "O2tKlnfrLkY",
       "mixte": 3,
-      "camelot": "8A",
+      "camelot": "4B",
       "moments": [
-        "cocktail"
+        "cocktail",
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 49,
-      "deezer": 67,
-      "score": 4,
+      "apple": 33,
+      "deezer": 0,
+      "score": 3,
       "weeks": 0,
       "trend": 0
     },
@@ -197,27 +197,27 @@
       "trend": 0
     },
     {
-      "title": "End of Beginning",
-      "artist": "DJO",
+      "title": "I Just Might",
+      "artist": "Bruno Mars",
       "tags": [
-        "ambiance",
+        "dancefloor",
         "intl",
         "pop"
       ],
-      "bpm": 77,
-      "youtubeId": "xy3AcmW0lrQ",
-      "mixte": 3,
-      "camelot": "9B",
+      "bpm": 103,
+      "youtubeId": "mrV8kK5t0V8",
+      "mixte": 5,
+      "camelot": "7B",
       "moments": [
-        "cocktail",
-        "diner"
+        "dance",
+        "fin"
       ],
       "radio": 0,
       "singles": 0,
       "shazam": 0,
       "tiktok": 0,
       "spotify": 0,
-      "apple": 52,
+      "apple": 67,
       "deezer": 0,
       "score": 2,
       "weeks": 0,
@@ -490,17 +490,19 @@
       "trend": 0
     },
     {
-      "title": "Argent Sale",
-      "artist": "La Rvfleuze",
+      "title": "End of Beginning",
+      "artist": "DJO",
       "tags": [
-        "rap",
-        "fr"
+        "ambiance",
+        "intl",
+        "pop"
       ],
-      "bpm": 85,
-      "youtubeId": "2An67RbHxi4",
-      "mixte": 1,
-      "camelot": "1B",
+      "bpm": 77,
+      "youtubeId": "xy3AcmW0lrQ",
+      "mixte": 3,
+      "camelot": "9B",
       "moments": [
+        "cocktail",
         "diner"
       ],
       "radio": 0,
@@ -515,20 +517,18 @@
       "trend": 0
     },
     {
-      "title": "I Just Might",
-      "artist": "Bruno Mars",
+      "title": "Argent Sale",
+      "artist": "La Rvfleuze",
       "tags": [
-        "dancefloor",
-        "intl",
-        "pop"
+        "rap",
+        "fr"
       ],
-      "bpm": 103,
-      "youtubeId": "mrV8kK5t0V8",
-      "mixte": 5,
-      "camelot": "7B",
+      "bpm": 85,
+      "youtubeId": "2An67RbHxi4",
+      "mixte": 1,
+      "camelot": "1B",
       "moments": [
-        "dance",
-        "fin"
+        "diner"
       ],
       "radio": 0,
       "singles": 0,
